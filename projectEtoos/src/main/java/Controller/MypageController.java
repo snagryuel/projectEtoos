@@ -10,19 +10,12 @@ import member.MemberDTO;
 
 import java.io.IOException;
 
-/**
- * Servlet implementation class JoinOkController
- */
-@WebServlet("JoinOkController.do")
-public class JoinOkController extends HttpServlet {
+public class MypageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		MemberDTO dto = new MemberDTO();
 		String birth = "";
-				
-		String gubun = req.getParameter("gubun");
-		String id = req.getParameter("id");
-		String pwd = req.getParameter("pwd");
+		
 		String name = req.getParameter("name");
 		String phone = req.getParameter("phone");
 		String email = req.getParameter("email");
@@ -30,27 +23,30 @@ public class JoinOkController extends HttpServlet {
 		String birthMonth = req.getParameter("birthMonth");
 		String birthDay = req.getParameter("birthDay");
 		String addr = req.getParameter("addr");
+		String pwd = req.getParameter("pwd");
+		String pwdCheck = req.getParameter("pwdCheck");
 		
 		birth = birthYear+"-"+birthMonth+"-"+birthDay;
-		
+		if(!pwd.equals(pwdCheck)) {
+			req.setAttribute("errMsg", "회원정보 수정에 실패하였습니다 다시 확인해 주시기 바랍니다");
+			req.getRequestDispatcher("/mypage.do").forward(req, resp);
+		}
 		dto.setAddr(addr);
 		dto.setBirth(birth);
 		dto.setEmail(email);
-		dto.setGubun(gubun);
-		dto.setId(id);
 		dto.setName(name);
 		dto.setPhone(phone);
 		dto.setPwd(pwd);
 		
 		MemberDAO dao = new MemberDAO();
-		int result = dao.joinmember(dto);
-		if(result != 0) {
-			req.getRequestDispatcher("/login.do").forward(req, resp);
-		}else {
-			req.setAttribute("errMsg", "회원가입에 실패하였습니다 다시 확인해 주시기 바랍니다");
-			req.getRequestDispatcher("/join.do").forward(req, resp);
+		
+		boolean result = dao.MemberUpdate(dto);
+		if(!result) {
+			req.setAttribute("errMsg", "회원정보 수정에 실패하였습니다 다시 확인해 주시기 바랍니다");
 		}
+		req.getRequestDispatcher("/mypage.do").forward(req, resp);
 	}
+
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
 	}
