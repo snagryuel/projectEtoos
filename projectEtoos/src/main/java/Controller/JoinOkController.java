@@ -13,7 +13,7 @@ import java.io.IOException;
 /**
  * Servlet implementation class JoinOkController
  */
-@WebServlet("JoinOkController.do")
+@WebServlet("/JoinOkController.do")
 public class JoinOkController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

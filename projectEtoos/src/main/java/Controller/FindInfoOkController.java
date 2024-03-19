@@ -12,7 +12,7 @@ import member.MemberDTO;
 import java.io.IOException;
 
 
-@WebServlet("FindInfoOkController.do")
+@WebServlet("/FindInfoOkController.do")
 public class FindInfoOkController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
