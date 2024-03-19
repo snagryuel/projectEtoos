@@ -15,7 +15,7 @@
   </context-param>
   <context-param>
     <param-name>URL</param-name>
-    <param-value>jdbc:mariadb://localhost:3306/maria</param-value>
+    <param-value>jdbc:mariadb://10.41.1.171:3306/etoos</param-value>
   </context-param>
   <context-param>
     <param-name>dbId</param-name>
@@ -25,14 +25,4 @@
     <param-name>dbPwd</param-name>
     <param-value>1234</param-value>
   </context-param>
-  <servlet>
-    <description></description>
-    <display-name>JoinOkController</display-name>
-    <servlet-name>JoinOkController</servlet-name>
-    <servlet-class>Controller.JoinOkController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>JoinOkController</servlet-name>
-    <url-pattern>/JoinOkController</url-pattern>
-  </servlet-mapping>
 </web-app>
