@@ -25,4 +25,14 @@
     <param-name>dbPwd</param-name>
     <param-value>1234</param-value>
   </context-param>
+  <servlet>
+    <description></description>
+    <display-name>JoinOkController</display-name>
+    <servlet-name>JoinOkController</servlet-name>
+    <servlet-class>Controller.JoinOkController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JoinOkController</servlet-name>
+    <url-pattern>/JoinOkController</url-pattern>
+  </servlet-mapping>
 </web-app>
