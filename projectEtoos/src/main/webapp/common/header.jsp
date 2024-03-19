@@ -193,13 +193,14 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
-</div>
+	</div>
 <script>
 let teacher = document.querySelector("#teacher");
 let course = document.querySelector("#course");
 let sub_teacher = document.querySelector("#header .menu_teacher");
-let sub_course = document.querySelector("#header .menu_teacher");
+let sub_course = document.querySelector("#header .menu_course");
 
 function showOfHide(menu) {
 	menu.classList.toggle("off");
