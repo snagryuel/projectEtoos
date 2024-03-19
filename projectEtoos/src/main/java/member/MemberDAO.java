@@ -7,7 +7,7 @@ public class MemberDAO extends JDBConnect {
 	public boolean joinmember(MemberDTO dto){
 		int result = 0;
 		StringBuilder sb = new StringBuilder();
-		sb.append("INSERT INTO '테이블명' ('컬럼명들') VALUES(?, ?, ?, ?, ?, ?, ?)");//이부분 테이블에 맞게 수정 필요
+		sb.append("INSERT INTO '테이블명입력' ('컬럼명들') VALUES(?, ?, ?, ?, ?, ?, ?)");//이부분 테이블에 맞게 수정 필요
 		try {
 			psmt = conn.prepareStatement(sb.toString());
 			psmt.setString(1, dto.getGubun());
