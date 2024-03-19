@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* 헤더 관련 */
 #header {
 	width : 100%;
 	background : #fff;
@@ -75,16 +76,16 @@
 #header .menu_teacher div.sub > p {
 	font-size : 20px;
 	font-weight : 600;
-	padding-bottom : 20px;
+	padding-bottom : 25px;
 }
 
 #header .menu_teacher div.sub2 > p {
 	font-weight : 600;
-	padding-bottom : 10px;
+	padding-bottom : 20px;
 }
 
 #header .menu_teacher div ul li {
-	padding-bottom : 10px;
+	padding-bottom : 15px;
 }
 
 #header .menu_teacher div ul li a:hover {
@@ -98,4 +99,21 @@
 
 .off {
 	display : none !important;
+}
+
+/* 푸터 관련 */
+#footer {
+	width : 100%;
+	background : #fff;
+	position : absolute;
+	bottom : 0;
+	border-top : 1px solid #ababab;
+	z-index : 1000;
+}
+#footer ul li {
+	padding-bottom : 10px;
+}
+#footer ul li:last-child {
+	padding-top : 10px;
+	font-weight : 600;
 }
