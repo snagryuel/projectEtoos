@@ -4,7 +4,7 @@ import common.JDBConnect;
 
 public class MemberDAO extends JDBConnect {
 	public MemberDAO(){}
-	public boolean joinmember(MemberDTO dto){
+	public int joinmember(MemberDTO dto){
 		int result = 0;
 		StringBuilder sb = new StringBuilder();
 		sb.append("INSERT INTO '테이블명' ('컬럼명들') VALUES(?, ?, ?, ?, ?, ?, ?)");//이부분 테이블에 맞게 수정 필요
@@ -21,7 +21,7 @@ public class MemberDAO extends JDBConnect {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return false;
+		return result;
 	}
 	public boolean MemberUpdate(MemberDTO dto) {
 		
