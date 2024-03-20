@@ -9,7 +9,9 @@
 <title>Admin</title>
 </head>
 <body>
-	<%@ include file="./sideBar.jsp" %>
+	<jsp:include page="./sideBar.jsp">
+		<jsp:param value="1" name="page_gubun"/>
+	</jsp:include>
 	<main>
 		<div class="container">
 			<div class="search-area">
