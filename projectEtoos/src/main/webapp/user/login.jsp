@@ -35,7 +35,7 @@
         </form>
         <div class="find_info"><br>
             <a id="find_id" href="#">계정 찾기</a><a> |</a>
-            <a id="find_password" href="#">회원가입</a>
+            <a id="joinPage" href="#">회원가입</a>
         </div>
   	</div>
   </div>
