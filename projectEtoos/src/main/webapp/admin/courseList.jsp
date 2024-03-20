@@ -49,7 +49,10 @@
 				</form>
 			</div>
 			<div class="list">
-				<p>총 000건</p>
+				<div class="list-top">
+					<p>총 000건</p>
+					<p><button>등록하기</button></p>
+				</div>
 				<table>
 					<thead>
 						<tr>
