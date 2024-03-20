@@ -98,11 +98,48 @@ public class MemberDAO extends JDBConnect {
 
 	}		
 		
+	public MemberDTO changePassword(String id, String name, String birth, String phone, String pwd) {
+
+		MemberDTO dto =new MemberDTO();
+		String sql = "UPDATE tbl_memberList "
+				+ "SET pw=? WHERE id=?"; 
+
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,id);
+			psmt.setString(2,name);
+			psmt.setString(3,phone);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+					sql = "UPDATE tbl_memberList "
+							+ "SET pw=? WHERE id=?"; 
+					
+					psmt = conn.prepareStatement(sql);
+					psmt.setString(1, pwd);
+					psmt.setString(2, id);
+					psmt.executeUpdate();
+				}
+
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
+		
+
+	}
+	
+	
+	
 	
 
 	
-	public boolean updatePwd(MemberDTO dto){
-		return false;
+//	public boolean updatePwd(MemberDTO dto){
+
+		
+		
 	
-	}
+	//}
 }
