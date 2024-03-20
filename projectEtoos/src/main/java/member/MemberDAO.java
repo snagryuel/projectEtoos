@@ -101,8 +101,7 @@ public class MemberDAO extends JDBConnect {
 	public MemberDTO changePassword(String id, String name, String birth, String phone, String pwd) {
 
 		MemberDTO dto =new MemberDTO();
-		String sql = "UPDATE tbl_memberList "
-				+ "SET pw=? WHERE id=?"; 
+		String sql = "SELECT * FROM tbl_member WHERE id=? AND name=? AND birth=? AND phone=?" ;
 
 		
 		try {
