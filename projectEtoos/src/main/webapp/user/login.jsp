@@ -29,7 +29,7 @@
         <form id="frm" name="frm">
             <input type="text" name="id" id="id" class="login_input_text"  placeholder="아이디"><br>
             <input type="password" name="pwd" id="pwd" class="login_input_text" placeholder="비밀번호"><br>
-            <div id="errId" style="display: none;"></div>
+            <div id="errId" style="display: none;"></div><br>
             <input type="submit" class="login_input_btn" value="Login" onclick="loginOk()" >
         </form>
         <div class="find_info"><br>
@@ -43,7 +43,7 @@
   <%@ include file="/common/footer.jsp" %>
   
   
-</body>
+
   
   <script>
   
@@ -93,6 +93,6 @@ function loginOk() {
 }
  
 </script>
-
+</body>
 
 </html>

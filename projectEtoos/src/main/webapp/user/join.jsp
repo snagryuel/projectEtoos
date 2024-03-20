@@ -28,20 +28,22 @@
 
  <div id="content">
 	<img class="logo" alt="logo" src="https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg">
-	<div class="select">
-        <input type="radio" id="select" name=""><label for="select">14세 미만 학생</label>
-        <input type="radio" id="select2" name="student"><label for="select2">학생</label>
-        <input type="radio" id="select3" name=""><label for="select3">학부모/일반</label>
-        <input type="radio" id="select4" name=""><label for="select4">교/강사</label>
+	<div class="joinGubun">
+		<input type="submit" class="joinSelect" id="youngStudent" value="14세 미만 학생" >
+		<input type="submit" class="joinSelect" id="student" value="학생" >
+		<input type="submit" class="joinSelect" id="parents" value="학부모/일반" >
+		<input type="submit" class="joinSelect" id="teacher" value="교/강사" >
 	</div>
+	
+	<br><br>
 	
 	<div class="login_info">
         이미 가입 하셨나요?<a> |</a>
-        <a id="loginNow" href="#">로그인하기</a><br><br>
+        <a id="loginNow" href="/projectEtoos/user/login.jsp">로그인하기</a><br><br>
     </div>
 </div>
 
-
+  <%@ include file="/common/footer.jsp" %>
 
 </body>
 </html>
