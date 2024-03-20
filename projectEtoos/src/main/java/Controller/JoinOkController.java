@@ -10,10 +10,7 @@ import member.MemberDTO;
 
 import java.io.IOException;
 
-/**
- * Servlet implementation class JoinOkController
- */
-@WebServlet("/JoinOkController.do")
+@WebServlet("/user/JoinOk.do")
 public class JoinOkController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -43,13 +40,20 @@ public class JoinOkController extends HttpServlet {
 		dto.setPwd(pwd);
 		
 		MemberDAO dao = new MemberDAO();
-		int result = dao.joinmember(dto);
-		if(result != 0) {
-			req.getRequestDispatcher("/login.do").forward(req, resp);
-		}else {
+		try {
+			int result = dao.joinmember(dto);
+			if(result != 0) {
+				req.getRequestDispatcher("/Login.do").forward(req, resp);
+			}else {
+				req.setAttribute("errMsg", "회원가입에 실패하였습니다 다시 확인해 주시기 바랍니다");
+				req.getRequestDispatcher("Join.do").forward(req, resp);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
 			req.setAttribute("errMsg", "회원가입에 실패하였습니다 다시 확인해 주시기 바랍니다");
 			req.getRequestDispatcher("/join.do").forward(req, resp);
 		}
+		
 	}
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
