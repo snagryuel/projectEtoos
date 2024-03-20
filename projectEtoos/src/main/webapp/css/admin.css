@@ -83,7 +83,7 @@ main .search-area form button {
 	font-size : 15px;
 }
 main .list p {
-	padding : 20px 0;
+	padding : 50px 0 20px;
 }
 main .list table {
 	width : 100%;
@@ -111,6 +111,7 @@ main .list table th {
 }
 
 main .list .paging {
+	margin-top : 20px;
 	width : 100%;
 }
 main .list >  .paging > ul {

@@ -26,6 +26,8 @@
 							<th>No</th>
 							<th>이름</th>
 							<th>아이디</th>
+							<th>과목1</th>
+							<th>과목2</th>
 							<th>생년월일</th>
 							<th>가입일</th>
 							<th>삭제</th>
@@ -36,6 +38,8 @@
 							<td>0</td>
 							<td>장지현</td>
 							<td>Geehyun</td>
+							<td>국어</td>
+							<td></td>
 							<td>1996-10-17</td>
 							<td>2024-03-20</td>
 							<td><button>삭제</button></td>
@@ -44,6 +48,8 @@
 							<td>0</td>
 							<td>장지현</td>
 							<td>Geehyun</td>
+							<td>국어</td>
+							<td></td>
 							<td>1996-10-17</td>
 							<td>2024-03-20</td>
 							<td><button>삭제</button></td>
@@ -52,6 +58,8 @@
 							<td>0</td>
 							<td>장지현</td>
 							<td>Geehyun</td>
+							<td>국어</td>
+							<td></td>
 							<td>1996-10-17</td>
 							<td>2024-03-20</td>
 							<td><button>삭제</button></td>
@@ -60,6 +68,8 @@
 							<td>0</td>
 							<td>장지현</td>
 							<td>Geehyun</td>
+							<td>국어</td>
+							<td></td>
 							<td>1996-10-17</td>
 							<td>2024-03-20</td>
 							<td><button>삭제</button></td>
@@ -68,6 +78,8 @@
 							<td>0</td>
 							<td>장지현</td>
 							<td>Geehyun</td>
+							<td>국어</td>
+							<td></td>
 							<td>1996-10-17</td>
 							<td>2024-03-20</td>
 							<td><button>삭제</button></td>
@@ -76,6 +88,8 @@
 							<td>0</td>
 							<td>장지현</td>
 							<td>Geehyun</td>
+							<td>국어</td>
+							<td></td>
 							<td>1996-10-17</td>
 							<td>2024-03-20</td>
 							<td><button>삭제</button></td>
@@ -84,6 +98,8 @@
 							<td>0</td>
 							<td>장지현</td>
 							<td>Geehyun</td>
+							<td>국어</td>
+							<td></td>
 							<td>1996-10-17</td>
 							<td>2024-03-20</td>
 							<td><button>삭제</button></td>
@@ -92,6 +108,8 @@
 							<td>0</td>
 							<td>장지현</td>
 							<td>Geehyun</td>
+							<td>국어</td>
+							<td></td>
 							<td>1996-10-17</td>
 							<td>2024-03-20</td>
 							<td><button>삭제</button></td>
@@ -100,6 +118,8 @@
 							<td>0</td>
 							<td>장지현</td>
 							<td>Geehyun</td>
+							<td>국어</td>
+							<td></td>
 							<td>1996-10-17</td>
 							<td>2024-03-20</td>
 							<td><button>삭제</button></td>
@@ -108,6 +128,8 @@
 							<td>0</td>
 							<td>장지현</td>
 							<td>Geehyun</td>
+							<td>국어</td>
+							<td></td>
 							<td>1996-10-17</td>
 							<td>2024-03-20</td>
 							<td><button>삭제</button></td>
