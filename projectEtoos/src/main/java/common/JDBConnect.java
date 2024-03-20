@@ -17,7 +17,7 @@ public class JDBConnect {//기본 생성자
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			String url="jdbc:mariadb://10.41.1.171:3306/etoos";
-			String dbId = "root";
+			String dbId = "user";
 			String dbPwd = "1234";
 			conn = DriverManager.getConnection(url, dbId, dbPwd);
 			System.out.println("DB 연결 성공 : 기본 생성자");

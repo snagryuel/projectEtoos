@@ -27,7 +27,7 @@
  <div id="content">
  	<div>
         <img class="logo" alt="logo" src="https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg">
-        <form id="frm" name="frm">
+        <form id="frm" name="frm" action = "LoginOk.do">
             <input type="text" name="id" id="id" class="login_input_text"  placeholder="아이디"><br>
             <input type="password" name="pwd" id="pwd" class="login_input_text" placeholder="비밀번호"><br>
             <div id="errId" style="display: none;"></div><br>
@@ -35,7 +35,7 @@
         </form>
         <div class="find_info"><br>
             <a id="find_id" href="#">계정 찾기</a><a> |</a>
-            <a id="joinPage" href="#">회원가입</a>
+            <a id="joinPage" href="Join.do">회원가입</a>
         </div>
   	</div>
   </div>
