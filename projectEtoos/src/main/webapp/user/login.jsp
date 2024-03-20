@@ -20,7 +20,7 @@
 		<p>ETOOS 통합회원</p>
 	</div>
 	<div id="exit">
-		<a href="#"><img class="xSymbol" alt="xSymbol" src="/projectEtoos/img/xSymbol.png"/></a>
+		<%@ include file="/common/loginHeader.jsp" %>
 	</div>
 </div>
 

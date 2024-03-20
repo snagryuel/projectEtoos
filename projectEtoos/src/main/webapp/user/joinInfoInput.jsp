@@ -13,15 +13,10 @@
 <body>
 
 <div id="titleContents">
-	<div id="prevLogin">
-		<a href="#"><</a>
-	</div>
 	<div id="title">
 		<p>ETOOS 통합회원</p>
 	</div>
-	<div id="exit">
-		<a href="#"><img class="xSymbol" alt="xSymbol" src="/projectEtoos/img/xSymbol.png"/></a>
-	</div>
+	<%@ include file="/common/loginHeader.jsp" %>
 </div>
 
 
@@ -38,11 +33,10 @@
 	        <input type="password" class="join_input_text"  name="pwd" id="pwd" value="" placeholder="영문 + 숫자 + 특수문자 포함 8~20자 이하" maxlength="20"><br>
 	        <input type="password" class="join_input_text"  name="pwd2" id="pwd2" value="" placeholder="비밀번호 재입력" maxlength="20"><br>
 	        <div id="errId" style="display: none;"></div><br>
-	        <div class="mismatch-message hide">비밀번호가 일치하지 않습니다</div>
 	        <div>(필수) 개인정보</div><br>
-	        <input type="text" class="join_input_text"  name="name" id="name" value="" placeholder="이름" maxlength="20"><br>
+	        
 	        <input type="email" class="join_input_text"  name="email" id="email" value="" placeholder="이메일" maxlength="100"><br>
-	        <input type="tel" class="join_input_text"  name="phone" id="phone" value="" placeholder="핸드폰 번호" maxlength="20"><br>
+	        <input type="tel" class="join_input_text"  name="phone" id="phone" value="" placeholder="휴대폰 번호" maxlength="20"><br>
 			<div class="info" id="info__birth">
 			생년월일<br><br>
 			  <select class="box" id="birth-year">

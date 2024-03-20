@@ -13,15 +13,10 @@
 <body>
 
 <div id="titleContents">
-	<div id="prevLogin">
-		<a href="#"><</a>
-	</div>
 	<div id="title">
 		<p>ETOOS 통합회원</p>
 	</div>
-	<div id="exit">
-		<a href="#"><img class="xSymbol" alt="xSymbol" src="/projectEtoos/img/xSymbol.png"/></a>
-	</div>
+	<%@ include file="/common/loginHeader.jsp" %>
 </div>
 
 

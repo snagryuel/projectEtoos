@@ -15,21 +15,17 @@ html, body {
 	box-shadow : 5px 5px 5px #999999b8;
 	text-align: center;
 	padding-top: 45px;
+	display: flex;
+	justify-content: center;
 }
 
 #title {
 	display: inline-block;
 }
 
-#exit {
-	display: inline-block; 
-  	margin-left: 50px;
-}
-
-
 #content {
 	margin : 0 auto;
-    height : 700px;
+    height : 600px;
     padding-bottom : 250px;
 	display : flex;
 	justify-content: center;

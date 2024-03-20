@@ -20,21 +20,11 @@ html, body {
   
 }
 
-#prevLogin {
-	display: inline-block;
-	padding-right: 50px;
-}
-
 #title {
 	display: inline-block;
 	
 }
 
-#exit {
-	display: inline-block; 
-  	margin-left: 50px;
-  	
-} 
 
 #content {
 	margin : 0 auto;
