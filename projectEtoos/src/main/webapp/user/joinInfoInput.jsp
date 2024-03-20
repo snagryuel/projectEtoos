@@ -33,16 +33,18 @@
 		</div>
 		
 		<form name="frm" id="frm">
-	        <input type="text" class="join_input_text_id" name="id" id="id" placeholder="아이디(6자 이상, 20자 이하)" maxlength="20">
+	        <input type="text" class="join_input_text_id" name="id" id="id" value="" placeholder="아이디(6자 이상, 20자 이하)" maxlength="20">
 	        <button class="overlap">중복확인</button><br>
-	        <input type="password" class="join_input_text"  name="pwd" id="pwd" placeholder="영문 + 숫자 + 특수문자 포함 8~20자 이하" maxlength="20"><br>
-	        <input type="password" class="join_input_text"  name="pwd2" id="pwd2" placeholder="비밀번호 재입력" maxlength="20"><br>
+	        <input type="password" class="join_input_text"  name="pwd" id="pwd" value="" placeholder="영문 + 숫자 + 특수문자 포함 8~20자 이하" maxlength="20"><br>
+	        <input type="password" class="join_input_text"  name="pwd2" id="pwd2" value="" placeholder="비밀번호 재입력" maxlength="20"><br>
 	        <div id="errId" style="display: none;"></div><br>
+	        <div class="mismatch-message hide">비밀번호가 일치하지 않습니다</div>
 	        <div>(필수) 개인정보</div><br>
-	        <input type="text" class="join_input_text"  name="name" id="name" placeholder="이름" maxlength="20"><br>
-	        <input type="email" class="join_input_text"  name="email" id="email" placeholder="이메일" maxlength="100"><br>
-	        <input type="tel" class="join_input_text"  name="phone" id="phone" placeholder="핸드폰 번호" maxlength="20"><br>
+	        <input type="text" class="join_input_text"  name="name" id="name" value="" placeholder="이름" maxlength="20"><br>
+	        <input type="email" class="join_input_text"  name="email" id="email" value="" placeholder="이메일" maxlength="100"><br>
+	        <input type="tel" class="join_input_text"  name="phone" id="phone" value="" placeholder="핸드폰 번호" maxlength="20"><br>
 			<div class="info" id="info__birth">
+			생년월일<br><br>
 			  <select class="box" id="birth-year">
 			    <option selected>출생 연도</option>
 			  </select>
@@ -57,7 +59,7 @@
 				(선택) 개인정보<br><br>
 				<input type="text" class="join_input_text" name="addr" id="addr"placeholder="주소" maxlength="20">
 			</div>
-	        <input type="submit" class="completeBtn" onclick="submitOk()" value="완료" />
+	        <input type="submit" class="completeBtn" name="completeBtn" id="completeBtn" value="완료" />
         
     </form>
 
@@ -67,21 +69,35 @@
 <%@ include file="/common/footer.jsp" %> 
  
 <script>
-function submitOk(){
-    let frm = document.getElementById("frm");
-    strId = frm.id.value;
-    if (strId.length < 6 || strId.length > 20 || ) {
+
+document.querySelector("#completeBtn").addEventListener("click", function(e){
+	const id = document.querySelector("#id");
+	const pwd = document.querySelector("#pwd");
+	
+	
+	if(id.value.length < 6 || id.value.length > 20) {
         let errId = document.getElementById("errId");
         errId.style.display = "block";
         errId.style.color = "red";
-        errId.innerHTML="<strong>아이디를 6자~20자의 영문자, 숫자만 사용 가능합니다.</strong>";
-        event.preventDefault();
-        strId.focus();
-        
- 
-    }
-    
- } 
+		e.preventDefault();
+		id.focus();
+		return errId.innerHTML="<strong>아이디는 6~20자의 영문자, 숫자만 사용 가능합니다.</strong>";
+	}
+	
+	if(pwd.value.length < 8 || pwd.value.length > 20) {
+        let errId = document.getElementById("errId");
+        errId.style.display = "block";
+        errId.style.color = "red";
+		e.preventDefault();
+		pwd.focus();
+		return errId.innerHTML="<strong>비밀번호를 8~20자의 영문자, 숫자, 특수문자(!, @, #)만 사용가능합니다.</strong>";
+	}
+	
+	else{
+		location.href = "joinInfoInput.jsp";
+	}
+}, false);
+
 
 let birthYearEl = document.querySelector('#birth-year');
 isYearOptionExisted = false;
