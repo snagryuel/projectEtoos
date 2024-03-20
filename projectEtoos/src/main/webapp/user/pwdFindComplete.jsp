@@ -6,8 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>계정 찾기</title>
-<link rel="stylesheet" href="/projectEtoos/css/findAccount.css" type="text/css">
+<title>비밀번호 변경 완료</title>
+<link rel="stylesheet" href="/projectEtoos/css/pwdFindComplete.css" type="text/css">
 <link rel="stylesheet" href="../css/reset.css" type="text/css">
 </head>
 <body>
@@ -21,19 +21,26 @@
 
 
 <div id="hTag">
-	<h3>통합회원 계정 찾기</h3>
+	<h3>비밀번호 찾기</h3><br>
+	<h4>새로운 비밀번호로 변경이 완료되었습니다.</h4>
 </div>
 
- <div id="content">
 
+ <div id="content">
  	<div>
-		<input type="submit" class="findId" id="findId" name="findId" value="아이디 찾기" >
-		<input type="submit" class="findPwd" id="findPwd" name="findPwd" value="비밀번호 찾기" >
+		<input type="submit" class="loginGo" id="loginGo" name="loginGo"  value="로그인하러 가기" >
 	</div>
 </div>
 
 
 <%@ include file="/common/footer.jsp" %>
+
+<script>
+document.querySelector("#loginGo").addEventListener("click", function(e){
+	location.href = "login.jsp";	
+}, false);
+
+</script>
 
 </body>
 </html>

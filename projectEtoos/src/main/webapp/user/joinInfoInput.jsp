@@ -37,6 +37,7 @@
 	        
 	        <input type="email" class="join_input_text"  name="email" id="email" value="" placeholder="이메일" maxlength="100"><br>
 	        <input type="tel" class="join_input_text"  name="phone" id="phone" value="" placeholder="휴대폰 번호" maxlength="20"><br>
+			
 			<div class="info" id="info__birth">
 			생년월일<br><br>
 			  <select class="box" id="birth-year">
@@ -127,7 +128,7 @@ birthYearEl.addEventListener('focus', function () {
     
  }
 }
-},  false );
+}, false);
 
 
 let birthMonthEl = document.querySelector('#birth-month');
@@ -145,7 +146,7 @@ birthMonthEl.addEventListener('focus', function () {
     this.appendChild(monthOption);
  }
 }
-});
+}, false);
 
 
 let birthDayEl = document.querySelector('#birth-day');
@@ -156,14 +157,14 @@ birthDayEl.addEventListener('focus', function () {
 	if(!isDayOptionExisted) {
 	isDayOptionExisted = true;
  	
- 	for(var i = 1; i <= 12; i++) {
+ 	for(var i = 1; i <= 31; i++) {
    	let dayOption = document.createElement('option');
    	dayOption.setAttribute('value', i);
    	dayOption.innerText = i;
     this.appendChild(dayOption);
  }
 }
-});
+}, false);
 
  </script>
 

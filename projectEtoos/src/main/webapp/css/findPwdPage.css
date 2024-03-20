@@ -25,9 +25,18 @@ html, body {
 }
 
 
+#hTag {
+	margin-top: 60px;	
+}
+
+h3, h4 {
+	text-align : center;
+}
+
+
 #content {
 	margin : 0 auto;
-    height : 1100px;
+    height : 700px;
     padding-bottom : 250px;
 	display : flex;
 	justify-content: center;
@@ -36,76 +45,44 @@ html, body {
 
 #content > div {
 	width: 500px;
-    height: 850px;
+    height: 500px;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     border: solid 1px rgba(0, 0, 0, 0.08);
     box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.04);
     text-align: center;
+    padding-top: 50px;
 }
 
-.logo {
-    margin: 50px 0px;
-    width: 135px;
+.input_text {
+	width: 330px;
+    height: 50px;
+    border-radius: 11px;
+    border: solid 1px #dfdfdf;
+    background: #fff;
+    margin-bottom: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 16px;
 }
 
-.join_input_text_id {
-    width: 250px;
+#id ::placeholder {
+    color: #c6c6c6;
+
+}
+
+#phone ::placeholder {
+    color: #c6c6c6;
+
+}
+
+#birth-year {
+	width: 143px;
     height: 50px;
     border-radius: 11px;
     border: solid 1px #dfdfdf;
     background: #fff;
     margin-top: -5px;
-    margin-bottom: 15px;
-    padding: 15px;
-    box-sizing: border-box;
-    font-size: 16px;
-}
-
-.join_input_text {
-    width: 330px;
-    height: 50px;
-    border-radius: 11px;
-    border: solid 1px #dfdfdf;
-    background: #fff;
-    margin-bottom: 15px;
-    padding: 15px;
-    box-sizing: border-box;
-    font-size: 16px;
-}
-
-.join_input_text_id ::placeholder {
-    color: #c6c6c6;
-
-}
-
-.join_input_text ::placeholder {
-    color: #c6c6c6;
-
-}
-
-.overlap {
-    width: 80px;
-    height: 48px;
-    border-radius: 11px;
-    background-color: #0D6E77;
-    font-weight: bold;
-    border: none;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.overlap:hover{
-	background-color: #1597a2;
-}
-
-#birth-year {
-	width: 140px;
-    height: 50px;
-    border-radius: 11px;
-    border: solid 1px #dfdfdf;
-    background: #fff;
     margin-bottom: 15px;
     padding: 15px;
     box-sizing: border-box;
@@ -163,7 +140,29 @@ info#info__birth select::-webkit-scrollbar {
 }
 
 
+
 .completeBtn {
+    width: 330px;
+    height: 50px;
+    border-radius: 11px;
+    border: 1px solid #0D6E77;
+    font-weight: bold;
+    border: none;
+    color: #0D6E77;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+
+}
+
+.completeBtn:hover {
+	color: white;
+    background-color: #0D6E77;
+
+}
+
+
+.cancelBtn {
     width: 330px;
     height: 50px;
     border-radius: 11px;
@@ -173,12 +172,14 @@ info#info__birth select::-webkit-scrollbar {
     color: white;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 30px;
 
 }
 
-.completeBtn:hover {
-    background-color: #1597a2;
-
+.cancelBtn:hover {
+	border: 1px solid #0D6E77;
+	color: #0D6E77;
+	background-color: #ffffff;
 }
 
 
