@@ -38,7 +38,7 @@ html, body {
 
 #content {
 	margin : 0 auto;
-    height : 700px;
+    height : 800px;
     padding-bottom : 250px;
 	display : flex;
 	justify-content: center;
@@ -64,25 +64,4 @@ html, body {
 .logo {
     margin: 50px 0px;
     width: 135px;
-}
-
-.agree {
-	padding-left: 65px;
-	padding-right: 50px;
-}
-
-.detailAgree {
-	cursor:pointer;
-	
-}
-
-.login_info a {
-    font-size: 14px;
-    font-family: 'Noto Sans KR', sans-serif;
-    color: blue;
-    line-height: 25px;
-}
-
-.login_info a:hover {
-    color: #0D6E77;
 }
