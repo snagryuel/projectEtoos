@@ -1,4 +1,13 @@
 @charset "UTF-8";
+
+button {
+	padding : 10px 20px;
+	background : #fff;
+	border : 1px solid #ababab;
+	box-sizing : border-box;
+	font-size : 15px;
+}
+
 /* 사이드바 관련 */
 html, body {
 	height : auto;
@@ -214,3 +223,51 @@ div.list div.list-top {
 	justify-content: space-between;
 }
 
+/* 코스 등록/수정 페이지 */
+main .container #frm table {
+	border : 1px solid #ababab;
+	border-collapse : collapse;
+	width : 100%;
+	margin-bottom : 10px;
+	background : #597c85;
+}
+
+main .container #frm table caption {
+	padding : 10px;
+	display : inline-block;
+	font-weight : 800;
+	color : #fff;
+}
+
+main .container #frm table th {
+	width : 200px;
+	border : 1px solid #ababab;
+	background : #eee;
+	vertical-align : middle;
+}
+
+main .container #frm table td {
+	border : 1px solid #ababab;
+	background : #fff;
+}
+main .container #frm table td.idx {
+	width : 100px;
+	text-align : center;
+}
+main .container #frm table th, main .container #frm table td {
+	padding : 10px;
+	vertical-align : middle;
+}
+
+main .container #frm table tr.add,  main .container #frm table tr td.del{
+	text-align : center;
+}
+
+main .container #frm .buttones {
+	display : flex;
+	justify-content: space-between;
+}
+
+main .container #frm table tr.add,  main .container #frm .btn_manager {
+	text-align : center;
+}
