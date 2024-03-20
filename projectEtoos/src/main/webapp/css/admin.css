@@ -7,6 +7,15 @@ button {
 	box-sizing : border-box;
 	font-size : 15px;
 }
+/* 메뉴 제목 */
+h1#title {
+	font-weight : 800;
+	text-align : left;
+	font-size : 25px;
+	padding : 10px 0 20px;
+	border-bottom : 2px solid #457D87;
+	margin-bottom : 50px;
+}
 
 /* 사이드바 관련 */
 html, body {
@@ -25,7 +34,7 @@ aside#side {
 	display : flex;
 	flex-direction: column;
     align-items: center;
-    position : fixed;
+    position : absolute;
 }
 aside#side h1 > a{
 	color : #fff !important;
@@ -60,6 +69,10 @@ aside#side ul li:hover > a {
 	color : #457D87 !important;
 	font-weight : 600;
 }
+
+aside#side h1 a:hover {
+	text-decoration : underline;
+}
 /* 콘텐츠 관련 */
 main {
 	padding : 50px 0 50px 25% ;
@@ -73,12 +86,10 @@ main .container {
 }
 main .search-area {
 	width : 100%;
-	background : #eee;
 	height : 100px;
 	display : flex;
 	align-items: center;
     justify-content: space-around;
-    border : 1px solid #ababab;
 }
 main .search-area form input {
 	width : 500px;
@@ -165,7 +176,7 @@ main .container .gird {
 	box-sizing : border-box;
 }
 main .container .search-area form .select-list {
-	border : 1px solid #ddd;
+	border : 1px solid #ababab;
 	background : #fff;
 	height : auto;
 	white-space:nowrap;
@@ -190,10 +201,10 @@ main .container .search-area .select-list ul {
 
 main .container .search-area .select-list ul li{
 	padding : 10px;
-	border-top : 1px solid #ddd;
+	border-top : 1px solid #ababab;
 }
 main .container .search-area .select-list ul li:last-child {
-	border-bottom : 1px solid #ddd;
+	border-bottom : 1px solid #ababab;
 }
 main .container .search-area .select-list ul li:hover {
 	color : #fff;
