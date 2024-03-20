@@ -14,6 +14,7 @@
 	</jsp:include>
 	<main>
 		<div class="container">
+			<h1 id="title">강좌 조회</h1>
 			<div class="search-area">
 				<form action="" id="frm" class="gird" method="get">
 					<div class="sub1 select-list">
@@ -53,7 +54,7 @@
 			<div class="list">
 				<div class="list-top">
 					<p>총 000건</p>
-					<p><button>등록하기</button></p>
+					<p><button><a href="./courseRegister.jsp">등록하기</a></button></p>
 				</div>
 				<table>
 					<thead>

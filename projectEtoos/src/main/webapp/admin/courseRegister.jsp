@@ -9,9 +9,12 @@
 <title>Admin</title>
 </head>
 <body>
-	<%@ include file="./sideBar.jsp" %>
+	<jsp:include page="./sideBar.jsp">
+		<jsp:param value="3" name="page_gubun"/>
+	</jsp:include>
 	<main>
 		<div class="container">
+			<h1 id="title">강좌 관리</h1>
 			<form action="" id="frm">
 				<table>
 					<caption>기본정보</caption>

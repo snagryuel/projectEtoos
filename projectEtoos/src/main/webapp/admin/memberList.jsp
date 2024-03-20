@@ -14,6 +14,7 @@
 	</jsp:include>
 	<main>
 		<div class="container">
+			<h1 id="title">회원 조회</h1>
 			<div class="search-area">
 				<form id="frm">
 					<input type="text" name="name" id="name" value="" maxlength="20">
