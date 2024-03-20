@@ -25,19 +25,84 @@ public class MemberDAO extends JDBConnect {
 		}
 		return result;
 	}
-	public boolean MemberUpdate(MemberDTO dto) {
-		
-		return false;
-	}
 	public MemberDTO getMemberInfo(MemberDTO dto) {
 		return null;
 	}
 	
-	public MemberDTO getMemberInfoForId(MemberDTO dto) {
-		return null;
-	}
+	public MemberDTO getMemberInfo(String id, String pwd) {
+		MemberDTO dto =new MemberDTO();
+		String sql = "SELECT * FROM tbl_member WHERE id=?  ";			
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+		
+			if(rs.next()) {
+				if ( rs.getString("pwd").equals(pwd) ){
+					dto.setId(rs.getString("id"));
+					dto.setName(rs.getString("name"));
+					dto.setPwd(rs.getString("pwd"));
+					dto.setBirth(rs.getString("birth"));
+					dto.setAddr(rs.getString("addr"));
+				}
+				
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
+
+	}		
+		
+
+	
+	
+	public String getMemberInfoForId(String name, String birth, String phone) {
+		
+		MemberDTO dto =new MemberDTO();
+		String sql = "SELECT id FROM tbl_member WHERE name=? AND birth=? phone=? ";			
+		String id=null;
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, name);
+			psmt.setString(2, birth);
+			psmt.setString(3, phone);
+
+
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				id= rs.getString("id");
+			}
+		
+			/*if(rs.next()) {
+				if ( rs.getString("name").equals(name) && rs.getString("birth").equals(birth) &&rs.getString("phone").equals(phone)  ){
+					dto.setId(rs.getString("id"));
+					dto.setName(rs.getString("name"));
+					dto.setPwd(rs.getString("pwd"));
+					dto.setBirth(rs.getString("birth"));
+					dto.setAddr(rs.getString("addr"));
+				}
+				
+			} */
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return id;
+
+	}		
+		
+	
+
 	
 	public boolean updatePwd(MemberDTO dto){
 		return false;
+	
 	}
 }
