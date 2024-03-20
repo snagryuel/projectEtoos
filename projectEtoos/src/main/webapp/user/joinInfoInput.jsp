@@ -34,13 +34,13 @@
 		
 		<form name="frm" id="frm">
 	        <input type="text" class="join_input_text_id" name="id" id="id" placeholder="아이디(6자 이상, 20자 이하)" maxlength="20">
-	        <button>중복확인</button><br>
+	        <button class="overlap">중복확인</button><br>
 	        <input type="password" class="join_input_text"  name="pwd" id="pwd" placeholder="영문 + 숫자 + 특수문자 포함 8~20자 이하" maxlength="20"><br>
 	        <input type="password" class="join_input_text"  name="pwd2" id="pwd2" placeholder="비밀번호 재입력" maxlength="20"><br>
 	        <div id="errId" style="display: none;"></div><br>
 	        <div>(필수) 개인정보</div><br>
 	        <input type="text" class="join_input_text"  name="name" id="name" placeholder="이름" maxlength="20"><br>
-	        <input type="email" class="join_input_text"  name="email" id="email" placeholder="이메일" maxlength="20"><br>
+	        <input type="email" class="join_input_text"  name="email" id="email" placeholder="이메일" maxlength="100"><br>
 	        <input type="tel" class="join_input_text"  name="phone" id="phone" placeholder="핸드폰 번호" maxlength="20"><br>
 			<div class="info" id="info__birth">
 			  <select class="box" id="birth-year">
@@ -70,19 +70,73 @@
 function submitOk(){
     let frm = document.getElementById("frm");
     strId = frm.id.value;
-    if (strId.length < 6 || strId.length > 20) {
+    if (strId.length < 6 || strId.length > 20 || ) {
         let errId = document.getElementById("errId");
         errId.style.display = "block";
         errId.style.color = "red";
         errId.innerHTML="<strong>아이디를 6자~20자의 영문자, 숫자만 사용 가능합니다.</strong>";
         event.preventDefault();
         strId.focus();
+        
  
     }
-    return false;
+    
+ } 
+
+let birthYearEl = document.querySelector('#birth-year');
+isYearOptionExisted = false;
+
+birthYearEl.addEventListener('focus', function () {
+
+	if(!isYearOptionExisted) {
+ 	isYearOptionExisted = true;
+ 	
+ 	for(var i = 1940; i <= 2023; i++) {
+   	let yearOption = document.createElement('option');
+   	yearOption.setAttribute('value', i);
+   	yearOption.innerText = i;
+    this.appendChild(yearOption);
+    
+ }
 }
- 
- 
+},  false );
+
+
+let birthMonthEl = document.querySelector('#birth-month');
+isMonthOptionExisted = false;
+
+birthMonthEl.addEventListener('focus', function () {
+
+	if(!isMonthOptionExisted) {
+	isMonthOptionExisted = true;
+ 	
+ 	for(var i = 1; i <= 12; i++) {
+   	let monthOption = document.createElement('option');
+   	monthOption.setAttribute('value', i);
+   	monthOption.innerText = i;
+    this.appendChild(monthOption);
+ }
+}
+});
+
+
+let birthDayEl = document.querySelector('#birth-day');
+isDayOptionExisted = false;
+
+birthDayEl.addEventListener('focus', function () {
+
+	if(!isDayOptionExisted) {
+	isDayOptionExisted = true;
+ 	
+ 	for(var i = 1; i <= 12; i++) {
+   	let dayOption = document.createElement('option');
+   	dayOption.setAttribute('value', i);
+   	dayOption.innerText = i;
+    this.appendChild(dayOption);
+ }
+}
+});
+
  </script>
 
 </body>
