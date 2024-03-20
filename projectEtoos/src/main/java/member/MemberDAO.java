@@ -25,13 +25,15 @@ public class MemberDAO extends JDBConnect {
 		}
 		return result;
 	}
-	public MemberDTO getMemberInfo(MemberDTO dto) {
-		return null;
-	}
 	
-	public MemberDTO getMemberInfo(String id, String pwd) {
-		MemberDTO dto =new MemberDTO();
-		String sql = "SELECT * FROM tbl_member WHERE id=?  ";			
+	
+	
+	
+	public MemberDTO getMemberInfo(MemberDTO dto) {
+		String id = null;
+		String pwd = null;
+		
+		String sql = "SELECT id, name, pwd, birth, addr  FROM tbl_member WHERE id=?  ";			
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -59,12 +61,15 @@ public class MemberDAO extends JDBConnect {
 
 	
 	
-	public String getMemberInfoForId(String name, String birth, String phone) {
+	public MemberDTO getMemberInfoForId(MemberDTO dto) {
 		
-		MemberDTO dto =new MemberDTO();
 		String sql = "SELECT id FROM tbl_member WHERE name=? AND birth=? phone=? ";			
-		String id=null;
-		try {
+		String id= null;
+		String name= dto.getName();
+		String birth= dto.getBirth();
+		String phone= dto.getPhone();
+		
+		try{
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, name);
 			psmt.setString(2, birth);
@@ -76,6 +81,7 @@ public class MemberDAO extends JDBConnect {
 			while(rs.next()) {
 				
 				id= rs.getString("id");
+				
 			}
 		
 			/*if(rs.next()) {
@@ -88,21 +94,24 @@ public class MemberDAO extends JDBConnect {
 				}
 				
 			} */
-			
+			dto.setId(id);
 			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return id;
+		return dto;
 
 	}		
 		
-	public MemberDTO changePassword(String id, String name, String birth, String phone, String pwd) {
+	public boolean updatePwd(MemberDTO dto) {
 
-		MemberDTO dto =new MemberDTO();
-		String sql = "SELECT * FROM tbl_member WHERE id=? AND name=? AND birth=? AND phone=?" ;
-
+		String pwd = null;
+		String id = dto.getId();
+		String name = dto.getName();
+		String phone = dto.getPhone();
+		String sql = "SELECT id, name, pwd, birth, addr  FROM tbl_member WHERE id=? AND name=? AND birth=? AND phone=?" ;
+		
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -112,12 +121,11 @@ public class MemberDAO extends JDBConnect {
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 					sql = "UPDATE tbl_memberList "
-							+ "SET pw=? WHERE id=?"; 
+							+ "SET pwd=? WHERE id=? "; 
 					
 					psmt = conn.prepareStatement(sql);
 					psmt.setString(1, pwd);
 					psmt.setString(2, id);
-					psmt.executeUpdate();
 				}
 
 			
@@ -125,19 +133,15 @@ public class MemberDAO extends JDBConnect {
 			e.printStackTrace();
 		}
 		
-		return dto;
+		return false;
 		
 
 	}
-	
-	
-	
-	
 
 	
 //	public boolean updatePwd(MemberDTO dto){
 
-		
+		// 작업 완료
 		
 	
 	//}
