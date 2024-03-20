@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>login</title>
-<link rel="stylesheet" href="/etoos_test/css/join.css" type="text/css">
+<link rel="stylesheet" href="/projectEtoos/css/join.css" type="text/css">
+<link rel="stylesheet" href="../css/reset.css" type="text/css">
 </head>
 <body>
 
@@ -28,10 +29,10 @@
  <div id="content">
 	<img class="logo" alt="logo" src="/etoos_test/img/logo.jpg">
 	<div class="select">
-        <input type="radio" id="select" name="shop"><label for="select">14세 미만 학생</label>
-        <input type="radio" id="select2" name="shop"><label for="select2">학생</label>
-        <input type="radio" id="select3" name="shop"><label for="select3">학부모/일반</label>
-        <input type="radio" id="select4" name="shop"><label for="select4">교/강사</label>
+        <input type="radio" id="select" name=""><label for="select">14세 미만 학생</label>
+        <input type="radio" id="select2" name="student"><label for="select2">학생</label>
+        <input type="radio" id="select3" name=""><label for="select3">학부모/일반</label>
+        <input type="radio" id="select4" name=""><label for="select4">교/강사</label>
 	</div>
 	
 	<div class="login_info">

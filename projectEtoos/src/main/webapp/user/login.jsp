@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>login</title>
-<link rel="stylesheet" href="/etoos_test/css/login.css" type="text/css">
+<link rel="stylesheet" href="/projectEtoos/css/login.css" type="text/css">
+<link rel="stylesheet" href="../css/reset.css" type="text/css">
 </head>
 <body>
 
@@ -26,7 +27,7 @@
             <input type="text" name="id" id="id" class="login_input_text"  placeholder="아이디"><br>
             <input type="password" name="pwd" id="pwd" class="login_input_text" placeholder="비밀번호"><br>
             <div id="errId" style="display: none;"></div>
-            <input type="submit" class="login_input_btn" value="Login" onclick="login_ok()" >
+            <input type="submit" class="login_input_btn" value="Login" onclick="loginOk()" >
         </form>
         <div class="find_info"><br>
             <a id="find_id" href="#">아이디 찾기</a><a> |</a>
@@ -36,7 +37,7 @@
   
   <script>
   
-function login_ok() {
+function loginOk() {
 	let frm = document.getElementById("frm");
 	let errId = document.getElementById("errId");
 	
