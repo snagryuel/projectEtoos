@@ -15,8 +15,8 @@
 </head>
 <body>
 
-<div id="header">
-	<div id="headerTitle">
+<div id=titleContents>
+	<div id="title">
 		<p>ETOOS 통합회원</p>
 	</div>
 	<div id="exit">
@@ -25,6 +25,7 @@
 </div>
 
  <div id="content">
+ 	<div>
         <img class="logo" alt="logo" src="https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg">
         <form id="frm" name="frm">
             <input type="text" name="id" id="id" class="login_input_text"  placeholder="아이디"><br>
@@ -36,16 +37,16 @@
             <a id="find_id" href="#">아이디 찾기</a><a> |</a>
             <a id="find_password" href="#">비밀번호 찾기</a>
         </div>
-        
-
+  	</div>
   </div>
   
-  <%@ include file="/common/footer.jsp" %>
+  <%-- <%@ include file="/common/footer.jsp" %> --%>
+  <jsp:include page="/common/footer.jsp"></jsp:include>
   
   
 
   
-  <script>
+ <script>
   
 function loginOk() {
 	let frm = document.getElementById("frm");
