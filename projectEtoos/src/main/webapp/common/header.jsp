@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <link rel="stylesheet" href="/projectEtoos/css/common.css" type="text/css">
 <link rel="stylesheet" href="/projectEtoos/css/reset.css" type="text/css">
 
@@ -8,8 +9,8 @@
 		<div class="nav">
 			<h1><a href="#"><img src="https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg"></a></h1>
 			<ul>
-				<li><a href="#" id="teacher">선생님</a></li>
-				<li><a href="#" id="course">전체강좌</a></li>	
+				<li><a href="#" id="teacher" <c:if test="${param.page_gubun eq 1 }">class="selected"</c:if>>선생님</a></li>
+				<li><a href="#" id="course" <c:if test="${param.page_gubun eq 2 }">class="selected"</c:if>>전체강좌</a></li>	
 				<!--검색바  -->
 				<li>
 				<input type="text" name="search_word" id="search_word" value="" maxlength="20" />

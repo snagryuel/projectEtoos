@@ -1,0 +1,106 @@
+@charset "UTF-8";
+/* main {
+	width : 1100px;
+	background : pink;
+} */
+main #visual {
+	padding-top : 200px;
+	/* background : skyblue; */
+	background : url(https://upimg.etoos.com/book/banner/main_book_bn4.gif) no-repeat ;
+	background-position : center bottom;
+	background-color : #eef6e1;
+	height : 370px;
+}
+main .container {
+	padding-top : 20px;
+	padding-bottom : 200px;
+}
+
+main .container .section {
+	width : 100%;
+	height : 500px;
+	margin-bottom : 50px;
+}
+
+main .container .section .title {
+	width : 200px;
+	text-align : center;
+	padding : 20px;
+	border-radius : 100px;
+	background : #457D87;
+	color : #fff;
+}
+
+main .container .section .slide {
+	display : grid;
+	align-items: center;
+    justify-items: center;
+	grid-template-areas: "prev list next";
+	grid-template-columns : 10% 80% 10%;
+	width : 100%;
+	text-align : center;
+	padding : 30px 0;
+}
+
+main .container .section .slide .arrow {
+	width : 50px;
+	height : 50px;
+	border-radius : 100%;
+	background : #fff;
+	border : 1px solid #ababab;
+}
+
+main .container .section .slide .arrow:hover {
+	background : #457D87;
+	color : #fff;
+	box-shadow : 2px 2px 2px #999999b8;
+}
+
+main .container .section .slide ul {
+	width : 100%;
+	display : flex;
+	flex-wrap: nowrap;
+	overflow : hidden;
+	gap :5%;
+}
+main .container .section .slide ul li {
+	width : 30%;
+}
+
+
+main .container .section .slide ul li div.thum {
+	width : 100%;
+	background : #d9f1d9;
+	border-radius : 10px;
+	overflow : hidden;
+}
+main .container .recomended-teacher .slide ul li div.thum {
+	background : #d9f1d9;
+}
+
+main .container .recomended-course .slide ul li div.thum {
+	background : #bfe0ed;
+}
+
+main .container .section .slide ul li div.thum img {
+	position : relative;
+	bottom : -10px;
+}
+
+main .container .section .slide ul li div.desc {
+	text-align : left;
+	padding : 10px;
+}
+
+main .container .section .slide ul li div.desc span {
+	display : block;
+	padding : 5px;
+}
+
+main .container .section .slide ul li:hover div.desc span {
+	text-decoration : underline;
+}
+
+main .container .section .slide ul li div.desc span:nth-child(1) {
+	font-weight : 700;
+}
