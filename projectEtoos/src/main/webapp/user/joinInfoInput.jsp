@@ -29,7 +29,7 @@
 		
 		<form name="frm" id="frm">
 	        <input type="text" class="join_input_text_id" name="id" id="id" value="" placeholder="아이디(6자 이상, 20자 이하)" maxlength="20">
-	        <button class="overlap">중복확인</button><br>
+	        <button class="overlap" name="overlap" id="overlap" >중복확인</button><br>
 	        <input type="password" class="join_input_text"  name="pwd" id="pwd" value="" placeholder="영문 + 숫자 + 특수문자 포함 8~20자 이하" maxlength="20"><br>
 	        <input type="password" class="join_input_text"  name="pwd2" id="pwd2" value="" placeholder="비밀번호 재입력" maxlength="20"><br>
 	        <div id="errId" style="display: none;"></div><br>
@@ -91,6 +91,24 @@ document.querySelector("#completeBtn").addEventListener("click", function(e){
 		location.href = "joinInfoInput.jsp";
 	}
 }, false);
+
+
+
+
+document.querySelector("#overlap").addEventListener("click", function(e){
+	const id = document.querySelector("#id");
+	
+	if(id.value.length == "") {
+        let errId = document.getElementById("errId");
+        errId.style.display = "block";
+        errId.style.color = "red";
+		e.preventDefault();
+		id.focus();
+		return errId.innerHTML="<strong>아이디를 입력해주세요.</strong>";
+	}
+	
+}, false);
+
 
 
 let birthYearEl = document.querySelector('#birth-year');
