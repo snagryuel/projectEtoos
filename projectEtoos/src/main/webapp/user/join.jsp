@@ -27,7 +27,7 @@
 
 
  <div id="content">
-	<img class="logo" alt="logo" src="/etoos_test/img/logo.jpg">
+	<img class="logo" alt="logo" src="https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg">
 	<div class="select">
         <input type="radio" id="select" name=""><label for="select">14세 미만 학생</label>
         <input type="radio" id="select2" name="student"><label for="select2">학생</label>

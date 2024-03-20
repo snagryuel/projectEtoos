@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,8 @@
 <title>login</title>
 <link rel="stylesheet" href="/projectEtoos/css/login.css" type="text/css">
 <link rel="stylesheet" href="../css/reset.css" type="text/css">
+
+
 </head>
 <body>
 
@@ -22,7 +25,7 @@
 </div>
 
  <div id="content">
-        <img class="logo" alt="logo" src="/projectEtoos/img/logo.jpg">
+        <img class="logo" alt="logo" src="https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg">
         <form id="frm" name="frm">
             <input type="text" name="id" id="id" class="login_input_text"  placeholder="아이디"><br>
             <input type="password" name="pwd" id="pwd" class="login_input_text" placeholder="비밀번호"><br>
@@ -33,7 +36,14 @@
             <a id="find_id" href="#">아이디 찾기</a><a> |</a>
             <a id="find_password" href="#">비밀번호 찾기</a>
         </div>
+        
+
   </div>
+  
+  <%@ include file="/common/footer.jsp" %>
+  
+  
+</body>
   
   <script>
   
@@ -84,5 +94,5 @@ function loginOk() {
  
 </script>
 
-</body>
+
 </html>
