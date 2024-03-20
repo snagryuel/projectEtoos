@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,96 +70,17 @@
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach var = "list" items="${courseList }">
 						<tr>
 							<td>0</td>
-							<td>논리적 구조 독해</td>
-							<td>장지현</td>
-							<td>국어</td>
-							<td>없음</td>
-							<td>2024-03-20 ~ 2024-03-24</td>
+							<td>${list.coursename }</td>
+							<td>${list.name }</td>
+							<td>${list.sub1 }</td>
+							<td>${list.sub2 }</td>
+							<td>${list.sugangStart } ~ ${list.sugangEnd }</td>
 							<td><button>수정</button><button>삭제</button></td>
 						</tr>
-						<tr>
-							<td>0</td>
-							<td>논리적 구조 독해</td>
-							<td>장지현</td>
-							<td>국어</td>
-							<td>없음</td>
-							<td>2024-03-20 ~ 2024-03-24</td>
-							<td><button>수정</button><button>삭제</button></td>
-						</tr>
-						<tr>
-							<td>0</td>
-							<td>논리적 구조 독해</td>
-							<td>장지현</td>
-							<td>국어</td>
-							<td>없음</td>
-							<td>2024-03-20 ~ 2024-03-24</td>
-							<td><button>수정</button><button>삭제</button></td>
-						</tr>
-						<tr>
-							<td>0</td>
-							<td>논리적 구조 독해</td>
-							<td>장지현</td>
-							<td>국어</td>
-							<td>없음</td>
-							<td>2024-03-20 ~ 2024-03-24</td>
-							<td><button>수정</button><button>삭제</button></td>
-						</tr>
-						<tr>
-							<td>0</td>
-							<td>논리적 구조 독해</td>
-							<td>장지현</td>
-							<td>국어</td>
-							<td>없음</td>
-							<td>2024-03-20 ~ 2024-03-24</td>
-							<td><button>수정</button><button>삭제</button></td>
-						</tr>
-						<tr>
-							<td>0</td>
-							<td>논리적 구조 독해</td>
-							<td>장지현</td>
-							<td>국어</td>
-							<td>없음</td>
-							<td>2024-03-20 ~ 2024-03-24</td>
-							<td><button>수정</button><button>삭제</button></td>
-						</tr>
-						<tr>
-							<td>0</td>
-							<td>논리적 구조 독해</td>
-							<td>장지현</td>
-							<td>국어</td>
-							<td>없음</td>
-							<td>2024-03-20 ~ 2024-03-24</td>
-							<td><button>수정</button><button>삭제</button></td>
-						</tr>
-						<tr>
-							<td>0</td>
-							<td>논리적 구조 독해</td>
-							<td>장지현</td>
-							<td>국어</td>
-							<td>없음</td>
-							<td>2024-03-20 ~ 2024-03-24</td>
-							<td><button>수정</button><button>삭제</button></td>
-						</tr>
-						<tr>
-							<td>0</td>
-							<td>논리적 구조 독해</td>
-							<td>장지현</td>
-							<td>국어</td>
-							<td>없음</td>
-							<td>2024-03-20 ~ 2024-03-24</td>
-							<td><button>수정</button><button>삭제</button></td>
-						</tr>
-						<tr>
-							<td>0</td>
-							<td>논리적 구조 독해</td>
-							<td>장지현</td>
-							<td>국어</td>
-							<td>없음</td>
-							<td>2024-03-20 ~ 2024-03-24</td>
-							<td><button>수정</button><button>삭제</button></td>
-						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
 				<div class="paging">
