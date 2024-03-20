@@ -20,7 +20,7 @@
 		<p>ETOOS 통합회원</p>
 	</div>
 	<div id="exit">
-		<a href="#"><img class="x-symbol" alt="x-symbol" src="/projectEtoos/img/xSymbol.png"/></a>
+		<a href="#"><img class="xSymbol" alt="xSymbol" src="/projectEtoos/img/xSymbol.png"/></a>
 	</div>
 </div>
 
@@ -34,14 +34,14 @@
             <input type="submit" class="login_input_btn" value="Login" onclick="loginOk()" >
         </form>
         <div class="find_info"><br>
-            <a id="find_id" href="#">아이디 찾기</a><a> |</a>
-            <a id="find_password" href="#">비밀번호 찾기</a>
+            <a id="find_id" href="#">계정 찾기</a><a> |</a>
+            <a id="find_password" href="#">회원가입</a>
         </div>
   	</div>
   </div>
   
-  <%-- <%@ include file="/common/footer.jsp" %> --%>
-  <jsp:include page="/common/footer.jsp"></jsp:include>
+  <%@ include file="/common/footer.jsp" %>
+
   
   
 
