@@ -7,7 +7,7 @@ body {
 	display : flex;
 	position : relative;
 }
-aside {
+aside#side {
 	background : #457D87;
 	max-width : 400px;
 	width : 25%;
@@ -18,43 +18,43 @@ aside {
     align-items: center;
     position : fixed;
 }
-aside h1 > a{
+aside#side h1 > a{
 	color : #fff !important;
 	padding : 50px 20px;
 	display : block;
 	font-size : 30px;
 	font-weight : 600;
 }
-aside ul {
+aside#side ul {
 	width : 100%;
 }
-aside ul li:first-child {
+aside#side ul li:first-child {
 	border-top : 1px solid #fff;
 }
-aside ul li {
+aside#side ul li {
 	background : #ffffff5e;
 	width : 100%;
 	border-bottom : 1px solid #fff;
 }
-aside ul li a {
+aside#side ul li a {
 	display : block;
 	width : 100%;
 	padding : 20px 30px;
 	font-size : 20px;
 	box-sizing : border-box;
 }
-aside ul li.selected,  
-aside ul li.selected > a,
-aside ul li:hover, 
-aside ul li:hover > a {
+aside#side ul li.selected,  
+aside#side ul li.selected > a,
+aside#side ul li:hover, 
+aside#side ul li:hover > a {
 	background : #fff;
 	color : #457D87 !important;
 	font-weight : 600;
 }
 /* 콘텐츠 관련 */
 main {
-	padding : 50px 30px;
-	padding-left : 25%;
+	padding : 50px 25%;
+	margin-bottom : 250px;
 	width : 60%;
 }
 main .container {

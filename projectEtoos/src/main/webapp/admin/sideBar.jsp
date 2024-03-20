@@ -2,7 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <link rel="stylesheet" href="../css/reset.css" type="text/css">
 <link rel="stylesheet" href="../css/admin.css" type="text/css">
-<aside>
+<aside id="side">
 	<h1><a href="#">관리자</a></h1>
 	<ul>
 		<li class="selected"><a href="#">회원조회</a></li>
