@@ -7,7 +7,7 @@ public class MemberDAO extends JDBConnect {
 	public int joinmember(MemberDTO dto){
 		int result = 0;
 		StringBuilder sb = new StringBuilder();
-		sb.append("INSERT INTO '테이블명' ('컬럼명들') VALUES(?, ?, ?, ?, ?, ?, ?)");//이부분 테이블에 맞게 수정 필요
+		sb.append("INSERT INTO tbl_memberlist (gubun, name, pwd, phone, email, birth, addr, id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");//이부분 테이블에 맞게 수정 필요
 		try {
 			psmt = conn.prepareStatement(sb.toString());
 			psmt.setString(1, dto.getGubun());
@@ -17,6 +17,8 @@ public class MemberDAO extends JDBConnect {
 			psmt.setString(5, dto.getEmail());
 			psmt.setString(6, dto.getBirth());
 			psmt.setString(7, dto.getAddr());
+			psmt.setString(8, dto.getId());
+			System.out.println(sb.toString());
 			result = psmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
