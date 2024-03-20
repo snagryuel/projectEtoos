@@ -1,10 +1,11 @@
 @charset "UTF-8";
 /* 사이드바 관련 */
 html, body {
-	height : 100%;
+	height : auto;
 }
 body {
 	display : flex;
+	position : relative;
 }
 aside {
 	background : #457D87;
@@ -90,17 +91,17 @@ main .list table {
 	width : 100%;
 }
 
-table, tr{
+main .list table, main .list tr{
 	border : 1px solid #ababab;
 	border-collapse : collapse;
 	text-align : center;
 }
 
-th, td {
+main .list table th, main .list table  td {
 	padding : 15px 0;
 }
 
-main table button {
+main .list table button {
 	padding : 10px 20px;
 	background : #fff;
 	box-sizing : border-box;
