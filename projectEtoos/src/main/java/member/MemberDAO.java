@@ -33,7 +33,7 @@ public class MemberDAO extends JDBConnect {
 		String id = null;
 		String pwd = null;
 		
-		String sql = "SELECT id, name, pwd, birth, addr  FROM tbl_member WHERE id=?  ";			
+		String sql = "SELECT id, pwd, FROM tbl_member WHERE id=?  ";			
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -43,10 +43,8 @@ public class MemberDAO extends JDBConnect {
 			if(rs.next()) {
 				if ( rs.getString("pwd").equals(pwd) ){
 					dto.setId(rs.getString("id"));
-					dto.setName(rs.getString("name"));
 					dto.setPwd(rs.getString("pwd"));
-					dto.setBirth(rs.getString("birth"));
-					dto.setAddr(rs.getString("addr"));
+					
 				}
 				
 			}
@@ -94,6 +92,7 @@ public class MemberDAO extends JDBConnect {
 				}
 				
 			} */
+			
 			dto.setId(id);
 			
 		} catch(Exception e) {
