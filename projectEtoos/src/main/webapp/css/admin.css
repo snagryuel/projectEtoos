@@ -15,7 +15,7 @@ aside {
 	display : flex;
 	flex-direction: column;
     align-items: center;
-    position : relative;
+    position : fixed;
 }
 aside h1 > a{
 	color : #fff !important;
@@ -53,6 +53,7 @@ aside ul li:hover > a {
 /* 콘텐츠 관련 */
 main {
 	padding : 50px 30px;
+	padding-left : 25%;
 	width : 60%;
 }
 main .container {
