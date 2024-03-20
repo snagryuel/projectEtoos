@@ -201,10 +201,16 @@ main .container .search-area .buttones {
 	text-align : center;
 	padding : 10px 0;
 }
-main .container .search-area .buttones button {
+main .container .search-area .buttones button, div.list div.list-top button {
 	padding : 10px 20px;
 	background : #fff;
 	border : 1px solid #ababab;
 	box-sizing : border-box;
 	font-size : 15px;
 }
+
+div.list div.list-top {
+	display : flex;
+	justify-content: space-between;
+}
+
