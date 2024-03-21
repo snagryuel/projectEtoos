@@ -1,5 +1,7 @@
 package member;
 
+import java.sql.SQLException;
+
 import common.JDBConnect;
 
 public class MemberDAO extends JDBConnect {
@@ -7,7 +9,7 @@ public class MemberDAO extends JDBConnect {
 	public int joinmember(MemberDTO dto){
 		int result = 0;
 		StringBuilder sb = new StringBuilder();
-		sb.append("INSERT INTO tbl_memberlist (gubun, name, pwd, phone, email, birth, addr, id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");//이부분 테이블에 맞게 수정 필요
+		sb.append("INSERT INTO tbl_memberlist (gubun, name, pwd, phone, email, birth, addr, id) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
 		try {
 			psmt = conn.prepareStatement(sb.toString());
 			psmt.setString(1, dto.getGubun());
@@ -18,7 +20,6 @@ public class MemberDAO extends JDBConnect {
 			psmt.setString(6, dto.getBirth());
 			psmt.setString(7, dto.getAddr());
 			psmt.setString(8, dto.getId());
-			System.out.println(sb.toString());
 			result = psmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -103,13 +104,14 @@ public class MemberDAO extends JDBConnect {
 
 	}		
 		
-	public boolean updatePwd(MemberDTO dto) {
+	public int updatePwd(MemberDTO dto) {
 
-		String pwd = null;
+		int result = 0;
+		String pwd = dto.getPwd();
 		String id = dto.getId();
 		String name = dto.getName();
 		String phone = dto.getPhone();
-		String sql = "SELECT id, name, pwd, birth, addr  FROM tbl_member WHERE id=? AND name=? AND birth=? AND phone=?" ;
+		String sql = "SELECT id, name, pwd, birth, addr  FROM tbl_memberlist WHERE id=? AND name=? AND birth=? AND phone=?" ;
 		
 		
 		try {
@@ -125,6 +127,7 @@ public class MemberDAO extends JDBConnect {
 					psmt = conn.prepareStatement(sql);
 					psmt.setString(1, pwd);
 					psmt.setString(2, id);
+					result = psmt.executeUpdate();
 				}
 
 			
@@ -132,9 +135,36 @@ public class MemberDAO extends JDBConnect {
 			e.printStackTrace();
 		}
 		
-		return false;
+		return result;
 		
 
+	}
+	public int MemberUpdate(MemberDTO dto) {
+		int result = 0;
+		StringBuilder sb = new StringBuilder();
+		sb.append("UPDATE tbl_memberlist");
+		sb.append(" SET pwd = ?,");
+		sb.append("name = ?,");
+		sb.append("phone = ?,");
+		sb.append("birth = ?,");
+		sb.append("addr = ?,");
+		sb.append("email = ?");
+		sb.append(" WHERE id = ?");
+		
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			psmt.setString(1, dto.getPwd());
+			psmt.setString(2, dto.getName());
+			psmt.setString(3, dto.getPhone());
+			psmt.setString(4, dto.getBirth());
+			psmt.setString(5, dto.getAddr());
+			psmt.setString(6, dto.getEmail());
+			psmt.setString(7, dto.getId());
+			result = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	

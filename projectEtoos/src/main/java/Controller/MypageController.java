@@ -40,8 +40,8 @@ public class MypageController extends HttpServlet {
 		
 		MemberDAO dao = new MemberDAO();
 		
-		boolean result = dao.MemberUpdate(dto);
-		if(!result) {
+		int result = dao.MemberUpdate(dto);
+		if(result == 0) {
 			req.setAttribute("errMsg", "회원정보 수정에 실패하였습니다 다시 확인해 주시기 바랍니다");
 		}
 		req.getRequestDispatcher("/mypage.do").forward(req, resp);

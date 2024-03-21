@@ -103,9 +103,9 @@ public class FindInfoOkController extends HttpServlet {
 			} else {
 				dto.setPwd(pwd);
 				
-				boolean result = dao.updatePwd(dto);
+				int result = dao.updatePwd(dto);
 				
-				if(result) {
+				if(result != 0) {
 					resp.sendRedirect("findPwd.do?result="+result);
 				} else {
 					req.setAttribute("AuthYN", AuthYN);
