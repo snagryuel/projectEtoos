@@ -12,7 +12,7 @@ import member.MemberDTO;
 import java.io.IOException;
 
 
-@WebServlet("/LoginOk.do")
+@WebServlet("/user/LoginOk.do")
 public class LoginOkController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -55,7 +55,8 @@ public class LoginOkController extends HttpServlet {
 		if (AuthYN) {
 			session.setAttribute("id", id);
 			session.setAttribute("loginYN", "Y");
-			resp.sendRedirect("MainController.do");
+			session.setAttribute("gubun", target.getGubun());
+			resp.sendRedirect("Main.do");
 		} else {
 		req.setAttribute("errMsg", "로그인 오류");
 		req.getRequestDispatcher("/login/login.jsp").forward(req, resp);  // 로그인 페이지 주소 넣어야 함.
