@@ -1,0 +1,191 @@
+@charset "UTF-8";
+/* 사이드바 관련 */
+aside#side {
+	background : #457D87;
+	max-width : 400px;
+	width : 25%;
+	height : 100%;
+	box-shadow : 5px 5px 5px #999999b8;
+	display : flex;
+	flex-direction: column;
+    align-items: center;
+    position : absolute;
+    padding-top:150px !important;
+    box-sizing:border-box;
+}
+
+aside#side h1 > a{
+	color : #fff !important;
+	padding : 50px 20px;
+	display : block;
+	font-size : 30px;
+	font-weight : 600;
+}
+aside#side > ul {
+	width : 100%;
+}
+aside#side > ul > .depth1:first-child {
+	border-top : 1px solid #fff;
+}
+aside#side > ul > .depth1 {
+	background : #ffffff5e;
+	width : 100%;
+	border-bottom : 1px solid #fff;
+}
+aside#side > ul > .depth1 > div{
+	width : 100%;
+	padding : 20px 30px;
+	box-sizing : border-box;
+	display : flex;
+	justify-content: space-between;
+	font-size : 20px;
+}
+aside#side > ul > .depth1 > div >  a {
+	display : block;
+}
+aside#side > ul > .depth1.selected,  
+aside#side > ul > .depth1.selected > div > a,
+aside#side > ul > .depth1:hover, 
+aside#side > ul > .depth1:hover > div > a {
+	background : #fff;
+	color : #457D87 !important;
+	font-weight : 600;
+}
+aside#side > ul > .depth1 > ul {
+	padding-bottom : 10px;
+	display : grid;
+	grid-template-columns : 100px 100px;
+	grid-auto-rows: 30px;
+    justify-content: center;
+    align-items: center;
+    gap : 5px;
+}
+aside#side > ul > .depth1 > ul > .depth2 {
+	border : 1px solid #adadad;
+	text-align : center;
+	padding :5px;
+}
+
+/* 메뉴 제목 */
+main .container h1#title {
+	font-weight : 800;
+	text-align : left;
+	font-size : 25px;
+	padding : 10px 0 20px;
+	border-bottom : 2px solid #457D87;
+	margin-bottom : 30px;
+}
+
+/* 콘텐츠 영역 관련(공통) */
+main {
+	display : flex;
+	padding-top : 200px;
+	padding-bottom : 600px;
+	height : auto;
+}
+#empty {
+	width : 400px;
+}
+main .container {
+	height : 1000px;
+	padding : 20px;
+	margin : 0;
+	
+}
+
+/* 선생님 리스트 */
+
+main .container > div.wrapper {
+	border : 1px solid #adadad;
+}
+
+main .container .tap ul {
+	display : grid;
+	grid-template-columns : repeat(7,1fr);
+	grid-template-rows : 50px;
+    justify-content: space-between;
+	width : 100%;
+	gap : 0px;
+	border-bottom : 1px solid #adadad;
+	align-items: center;
+}
+main .container .tap ul li {
+	border-left : 1px solid #adadad;
+	box-sizing : border-box;
+	text-align : center;
+}
+main .container .tap ul li:first-child {
+	border-left : none;
+}
+
+main .container .tap ul li.selected-tap span,
+main .container .tap ul li:hover span  {
+	background : #7ebecd73;
+	border-radius : 10px;
+	padding : 0 10px;
+}
+
+main .container .contents {
+	width : 100%;
+	padding : 20px;
+	box-sizing : border-box;
+}
+
+main .container .contents .section .title {
+	padding : 20px;
+	font-weight : 800;
+	font-size : 25px;
+	color : #457D87;
+}
+
+main .container .contents .section .list {	
+	display : grid;
+	gap : 20px;
+    justify-content: space-evenly;
+	grid-template : auto / 30% 30% 30%;
+}
+
+main .container .contents .section .list article {
+	background : pink;
+	border-radius : 20px;
+	position : relative;
+	overflow : hidden;
+}
+
+main .container .contents .section .list article span {
+	position : absolute;
+	display : inline-block;
+}
+
+main .container .contents .section .list article div.thum {
+	text-align : right;
+}
+
+main .container .contents .section .list article span:nth-child(1) {
+	top : 80%;
+	width : 100%;
+	padding : 25px 10px;
+	background : #0000005c;
+	color : #fff;
+	height : 300px;
+}
+
+main .container .contents .section .list article span:nth-child(2) {
+	top : 70%;
+	font-weight : 800;
+	text-shadow : 2px 2px 2px #0000005c;
+	font-size : 20px;
+	right : 15px;
+	color : #fff;
+}
+
+main .container .contents .section .list article:hover span:nth-child(1) {
+	transition : top 0.5s;
+	top : 20%;
+}
+
+main .container .contents .section .list article:hover span:nth-child(2) {
+	transition : top 0.5s;
+	top : 10%;
+}
+

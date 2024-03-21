@@ -7,9 +7,9 @@
 <div id="header">
 	<div class="container">
 		<div class="nav">
-			<h1><a href="#"><img src="https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg"></a></h1>
+			<h1><a href="/projectEtoos/user/main.jsp"><img src="https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg"></a></h1>
 			<ul>
-				<li><a href="#" id="teacher" <c:if test="${param.page_gubun eq 1 }">class="selected"</c:if>>선생님</a></li>
+				<li><a href="/projectEtoos/user/teacherList.jsp" id="teacher" <c:if test="${param.page_gubun eq 1 }">class="selected"</c:if>>선생님</a></li>
 				<li><a href="#" id="course" <c:if test="${param.page_gubun eq 2 }">class="selected"</c:if>>전체강좌</a></li>	
 				<!--검색바  -->
 				<li>
@@ -209,5 +209,16 @@ function showOfHide(menu) {
 
 teacher.addEventListener("mouseover", (e)=>{e.preventDefault();showOfHide(sub_teacher);});
 sub_teacher.addEventListener("mouseleave", (e)=>{e.preventDefault();showOfHide(sub_teacher);});
+
+let login = document.querySelector("#login");
+let join = document.querySelector("#join");
+
+login.addEventListener("click", ()=>{
+	window.location = "/projectEtoos/user/Login.do";
+})
+
+join.addEventListener("click", ()=>{
+	window.location = "/projectEtoos/user/Join.do";
+})
 
 </script>
