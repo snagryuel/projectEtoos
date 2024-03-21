@@ -10,7 +10,8 @@
 <body>
 	<form id="frm" action="/projectEtoos/user/AuthChek.do" method="post">
 		<input type="text"name="id" id="id" <c:if test='${requestScope.authYN == "Y"}'>readonly</c:if> value="${id}">
-		<button id="check">중복확인</button>
+		<input type="hidden" name="authYN" id="authYN" value="${param.authYN}">
+		<c:if test="${ param.authYN == 'N' || param.authYN == null }"><button id="check">중복확인</button></c:if>
 	</form>
 	${ requestScope.authYN }
 	<c:if test="${ param.authYN == 'Y' }"><p>중복확인 완료되었습니다.<br>사용을 원하시면, 아래 [확정]을 눌러주세요</p></c:if>
@@ -41,6 +42,7 @@ frm.addEventListener("submit", (e)=>{
 let send = document.querySelector("#send");
 send.addEventListener("click", ()=>{
 	opener.document.querySelector("#id").value = document.querySelector("#id").value;
+	opener.document.querySelector("#authYN").value = document.querySelector("#authYN").value;
 	window.close();
 })
 

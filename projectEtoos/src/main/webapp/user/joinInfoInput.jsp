@@ -40,17 +40,18 @@
 	        <input type="email" class="join_input_text"  name="email" id="email" value="" placeholder="이메일" maxlength="100"><br>
 	        <input type="tel" class="join_input_text"  name="phone" id="phone" value="" placeholder="휴대폰 번호" maxlength="20"><br>
 	        <input type="hidden" name="gubun" value="${param.gubun}">
+	        <input type="hidden" name="authYN" id="authYN" value="">
 			
 			<div class="info" id="info__birth">
 			생년월일<br><br>
 			  <select class="box" name="birthYear" id="birth-year">
-			    <option selected>출생 연도</option>
+			    <option selected value="">출생 연도</option>
 			  </select>
 			  <select class="box" name="birthMonth" id="birth-month">
-			    <option selected>월</option>
+			    <option selected value="">월</option>
 			  </select>
 			  <select class="box" name="birthDay"  id="birth-day">
-			    <option selected>일</option>
+			    <option selected value="">일</option>
 			  </select>
 			</div>
 			<div>
@@ -69,16 +70,10 @@
 
 </script>
 <script>
-
-
-
 const rexForId = /^[0-9a-zA-Z]{6,20}$/;
 const rexForPwd = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@!#])[A-Za-z\d@!#]{8,20}$/;
 const rexForPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
 const rexForEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-
-let authYN = true;
-/* 
 let frm = document.querySelector("#frm");
 frm.addEventListener("submit", function(e){
 	e.preventDefault();
@@ -89,42 +84,43 @@ frm.addEventListener("submit", function(e){
 	const pwdVal = document.querySelector("#pwd").value;
 	const pwd2 = document.querySelector("#pwd2");
 	const pwd2Val = document.querySelector("#pwd2").value;
+	const name = document.querySelector("#name");
+	const nameVal = document.querySelector("#name").value;
 	const email = document.querySelector("#email");
 	const emailVal = document.querySelector("#email").value;
 	const phone = document.querySelector("#phone");
 	const phoneVal = document.querySelector("#phone").value;
+	const authYN = document.querySelector("#authYN").value;
+	const year = document.querySelector("#birth-year");
+	const yearVal = document.querySelector("#birth-year").value;
+	const month = document.querySelector("#birth-month");
+	const monthVal = document.querySelector("#birth-month").value;
+	const day = document.querySelector("#birth-day");
+	const dayVal = document.querySelector("#birth-day").value;
 	
 	let errId = document.getElementById("errId");
     errId.style.display = "block";
     errId.style.color = "red";
     
+    // 아이디 관련
     if(!idVal) {
     	id.focus();
 		return errId.innerHTML="<strong>아이디를 입력해주세요.</strong>";
     }
-    if(!pwdVal) {
-    	id.focus();
-		return errId.innerHTML="<strong>비밀번호를 입력해주세요.</strong>";
-    }
-    if(!emailVal) {
-    	email.focus();
-		return errId.innerHTML="<strong>이메일을 입력해주세요.</strong>";
-    }
-    if(!phoneVal) {
-    	phone.focus();
-		return errId.innerHTML="<strong>휴대폰을 입력해주세요.</strong>";
-    }
-    
-    if(!authYN) {
-    	id.focus();
-    	return errId.innerHTML="<strong>아이디 중복을 확인해주세요.</strong>";
-    }
-    
     if(!rexForId.test(idVal)) {
     	id.focus();
 		return errId.innerHTML="<strong>아이디는 6~20자의 영문자, 숫자만 사용 가능합니다.</strong>";
     }
+    if(authYN != "Y") {
+    	id.focus();
+		return errId.innerHTML="<strong>아이디 중복확인을 진행해주세요</strong>";
+    }
     
+    // 비밀번호 관련
+    if(!pwdVal) {
+    	pwd.focus();
+		return errId.innerHTML="<strong>비밀번호를 입력해주세요.</strong>";
+    }
     if(!rexForPwd.test(pwdVal)) {
     	pwd.focus();
     	return errId.innerHTML="<strong>8~20자의 영문자, 숫자, 특수문자(!, @, #)만 사용가능합니다.</strong>";
@@ -134,22 +130,62 @@ frm.addEventListener("submit", function(e){
     	pwd.focus();
 		return errId.innerHTML="<strong>비밀번호가 일치하지 않습니다.</strong>";
     }
+    
+    // 잡다
+    if(!nameVal) {
+    	name.focus();
+		return errId.innerHTML="<strong>이름을 입력해주세요.</strong>";
+    }
+    if(!emailVal) {
+    	email.focus();
+		return errId.innerHTML="<strong>이메일을 입력해주세요.</strong>";
+    }
+    if(!phoneVal) {
+    	phone.focus();
+		return errId.innerHTML="<strong>휴대폰을 입력해주세요.</strong>";
+    }
+    if(!authYN) {
+    	id.focus();
+    	return errId.innerHTML="<strong>아이디 중복을 확인해주세요.</strong>";
+    }
+    if(!yearVal) {
+    	year.focus();
+    	return errId.innerHTML="<strong>생년월일을 입력해주세요.</strong>";
+    }
+    if(!monthVal) {
+    	month.focus();
+    	return errId.innerHTML="<strong>생년월일을 입력해주세요.</strong>";
+    }
+    if(!dayVal) {
+    	day.focus();
+    	return errId.innerHTML="<strong>생년월일을 입력해주세요.</strong>";
+    }
+    
+    
+    
+    
+    
+    
     frm.submit();
-}, false); */
+}, false);
 
 /* 중복확인 */
 let authCheck = document.querySelector(".authCheck");
 let idNow = document.querySelector("#id");
-let authPop;
+
 idNow.addEventListener("click", (e)=> {
 	e.preventDefault();
+	let authYN = document.querySelector("#authYN");
 	idNow.value = "";
-	authPop = window.open("/projectEtoos/user/authCheckPop.jsp",'_blank', 'width=500, height=300, top=50, left=50, scrollbars=yes, location=no');
+	authYN.value = "";
+	authPop = window.open("/projectEtoos/user/authCheckPop.jsp",'_blank', 'width=500, height=200, top=150, left=50, scrollbars=yes, location=no');
 })
 authCheck.addEventListener("click", (e)=> {
 	e.preventDefault();
+	let authYN = document.querySelector("#authYN");
 	idNow.value = "";
-	authPop = window.open("/projectEtoos/user/authCheckPop.jsp",'_blank', 'width=500, height=300, top=50, left=50, scrollbars=yes, location=no');
+	authYN.value = "";
+	authPop = window.open("/projectEtoos/user/authCheckPop.jsp",'_blank', 'width=500, height=200, top=150, left=50, scrollbars=yes, location=no');
 })
 
 
