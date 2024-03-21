@@ -14,6 +14,8 @@
 <jsp:include page="../common/teacherDetailSidebar.jsp">
 		<jsp:param value="1" name="page_gubun"/>
 </jsp:include>
+<jsp:include page="../common/footer.jsp"></jsp:include>
+
 <main>
 	<div id="empty"></div>
 	<div class="container">

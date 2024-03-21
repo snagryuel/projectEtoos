@@ -414,3 +414,86 @@ main .container .qnaBorad .searchDiv .searchBtn:hover {
 	font-weight: bold;
 	font-size: 15px;
 }
+
+
+/*학습 Q&A 글 작성 페이지*/
+main .container .qnaDiv {
+	width: 800px;
+	height: 600px;
+	margin: 0 auto;
+	
+}
+
+
+main .container .qnaDiv .titleElement .secretElement {
+	display: flex;
+}
+
+main .container .qnaDiv .titleElement .qnaTitle {
+	width: 300px;
+	height: 20px;
+	margin-left: 40px;
+}
+main .container .qnaDiv .titleElement .secretElement .qnaPwd {
+	width: 300px;
+	height: 20px;
+	margin-left: 9px;
+}
+
+main .container .qnaDiv .titleElement .secretElement span {
+	margin-top: 5px;
+}
+
+
+main .container .qnaDiv .qnaContElement textarea {
+	width: 800px;
+	height: 400px;
+	resize: none;
+}
+
+
+main .container .qnaDiv .qnaBtnElement {
+	float: right;
+}
+
+
+main .container .qnaDiv .qnaBtnElement .saveBtn {
+    width: 150px;
+    height: 50px;
+    border-radius: 11px;
+    border: 1px solid rgba(196, 70, 28, 0.684);
+    font-weight: bold;
+    border: none;
+    color: rgba(196, 70, 28, 0.684);
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+main .container .qnaDiv .qnaBtnElement .saveBtn:hover {
+	color: white;
+    background-color: rgba(196, 70, 28, 0.684);
+
+}
+
+
+main .container .qnaDiv .qnaBtnElement .listBtn {
+    width: 150px;
+    height: 50px;
+    border-radius: 11px;
+    background-color: rgba(22, 121, 197, 0.684);
+    font-weight: bold;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin:30px 0 0 30px;
+
+}
+
+main .container .qnaDiv .qnaBtnElement .listBtn:hover {
+	border: 1px solid rgba(22, 121, 197, 0.684);
+	color: rgba(22, 121, 197, 0.684);
+	background-color: #ffffff;
+}
+

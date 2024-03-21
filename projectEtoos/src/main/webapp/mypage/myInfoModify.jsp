@@ -9,9 +9,9 @@
 </head>
 
 <body>
-<%@ include file="../common/header.jsp" %>
-<%@ include file="../common/footer.jsp" %>
-<%@ include file="../common/mypageSidebar.jsp" %>
+<jsp:include page="../common/header.jsp" ></jsp:include>
+<jsp:include page="../common/footer.jsp"></jsp:include>
+<jsp:include page="../common/mypageSidebar.jsp" ></jsp:include>
 
 <main>
 	<div class="container">
