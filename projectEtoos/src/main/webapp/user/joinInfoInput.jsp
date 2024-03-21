@@ -64,28 +64,48 @@
 <%@ include file="/common/footer.jsp" %> 
  
 <script>
+const rexForId = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,20}$/;
+const rexForPwd = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
+const rexForPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+const rexForEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+let authYN = true;
 
 document.querySelector("#completeBtn").addEventListener("click", function(e){
+	e.preventDefault();
+	
 	const id = document.querySelector("#id");
+	const idVal = document.querySelector("#id").value;
 	const pwd = document.querySelector("#pwd");
+	const pwdVal = document.querySelector("#pwd").value;
+	const pwd2 = document.querySelector("#pwd2");
+	const pwd2Val = document.querySelector("#pwd2").value;
 	
-	
-	if(id.value.length < 6 || id.value.length > 20) {
-        let errId = document.getElementById("errId");
-        errId.style.display = "block";
-        errId.style.color = "red";
-		e.preventDefault();
-		id.focus();
+	let errId = document.getElementById("errId");
+    errId.style.display = "block";
+    errId.style.color = "red";
+    
+    
+    if(!rexForId.test(idVal)) {
+    	id.focus();
 		return errId.innerHTML="<strong>아이디는 6~20자의 영문자, 숫자만 사용 가능합니다.</strong>";
-	}
+    }
+    
+    if(!rexForId.test(idVal)) {
+    	id.focus();
+		return errId.innerHTML="<strong>아이디는 6~20자의 영문자, 숫자만 사용 가능합니다.</strong>";
+    }
+    
+	
 	
 	if(pwd.value.length < 8 || pwd.value.length > 20) {
-        let errId = document.getElementById("errId");
-        errId.style.display = "block";
-        errId.style.color = "red";
 		e.preventDefault();
 		pwd.focus();
-		return errId.innerHTML="<strong>비밀번호를 8~20자의 영문자, 숫자, 특수문자(!, @, #)만 사용가능합니다.</strong>";
+		return errId.innerHTML="<strong>8~20자의 영문자, 숫자, 특수문자(!, @, #)만 사용가능합니다.</strong>";
+	}
+	
+	if(!authYN) {
+		
 	}
 	
 	else{
@@ -113,56 +133,44 @@ document.querySelector("#overlap").addEventListener("click", function(e){
 
 
 let birthYearEl = document.querySelector('#birth-year');
-isYearOptionExisted = false;
 
 birthYearEl.addEventListener('focus', function () {
+	let today = new Date();
 
-	if(!isYearOptionExisted) {
- 	isYearOptionExisted = true;
- 	
- 	for(var i = 1940; i <= 2023; i++) {
+ 	for(var i = today.getFullYear()-50; i <= today.getFullYear(); i++) {
    	let yearOption = document.createElement('option');
    	yearOption.setAttribute('value', i);
    	yearOption.innerText = i;
     this.appendChild(yearOption);
-    
- }
+
 }
 }, false);
 
 
 let birthMonthEl = document.querySelector('#birth-month');
-isMonthOptionExisted = false;
 
 birthMonthEl.addEventListener('focus', function () {
 
-	if(!isMonthOptionExisted) {
-	isMonthOptionExisted = true;
- 	
  	for(var i = 1; i <= 12; i++) {
    	let monthOption = document.createElement('option');
    	monthOption.setAttribute('value', i);
    	monthOption.innerText = i;
     this.appendChild(monthOption);
- }
+
 }
 }, false);
 
 
 let birthDayEl = document.querySelector('#birth-day');
-isDayOptionExisted = false;
 
 birthDayEl.addEventListener('focus', function () {
 
-	if(!isDayOptionExisted) {
-	isDayOptionExisted = true;
- 	
+
  	for(var i = 1; i <= 31; i++) {
    	let dayOption = document.createElement('option');
    	dayOption.setAttribute('value', i);
    	dayOption.innerText = i;
     this.appendChild(dayOption);
- }
 }
 }, false);
 

@@ -30,30 +30,30 @@ public class MemberDAO extends JDBConnect {
 	
 	
 	
-	public MemberDTO getMemberInfo(MemberDTO dto) {
-		String id = dto.getId();
-		String pwd = dto.getPwd();
+	public MemberDTO getMemberInfo(MemberDTO input) {
+		MemberDTO result = new MemberDTO();
 		
-		String sql = "SELECT id, pwd, gubun FROM tbl_memberlist WHERE id=?  ";			
+		String id = input.getId();
+		String pwd = input.getPwd();
+		
+		String sql = "SELECT id, pwd, gubun FROM tbl_memberlist WHERE id=? AND pwd=? ";			
 		
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
+			psmt.setString(2, pwd);
 			rs = psmt.executeQuery();
 		
 			if(rs.next()) {
-				if ( rs.getString("pwd").equals(pwd) ){
-					dto.setId(rs.getString("id"));
-					dto.setPwd(rs.getString("pwd"));
-					dto.setGubun(rs.getString("gubun"));
-				}
-				
+				result.setId(rs.getString("id"));
+				result.setPwd(rs.getString("pwd"));
+				result.setGubun(rs.getString("gubun"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return dto;
+		return result;
 
 	}		
 		

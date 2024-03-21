@@ -43,7 +43,7 @@ public class LoginOkController extends HttpServlet {
 			String targetPwd = (target.getPwd() != null) ? target.getPwd() : "";
 			
 			// 값 비교
-			if(id != "" || pwd != "" ) {
+			if(id != "" && pwd != "" ) {
 				if(id.equals(targetId) && pwd.equals(targetPwd)) {
 					AuthYN = true;
 				} else {
@@ -52,6 +52,8 @@ public class LoginOkController extends HttpServlet {
 			} else {
 				AuthYN = false;
 			}
+			
+			System.out.println("input pwd : " + pwd + "DAO pwd : " + targetPwd);
 			
 			// 처리
 			if (AuthYN) {
@@ -62,7 +64,7 @@ public class LoginOkController extends HttpServlet {
 				resp.sendRedirect("Main.do");
 			} else {
 			req.setAttribute("errMsg", "로그인 오류");
-			req.getRequestDispatcher("/projectEtoos/user/login.jsp").forward(req, resp);  // 로그인 페이지 주소 넣어야 함.
+			resp.sendRedirect("/projectEtoos/user/Login.do");
 			}	
 		} else {
 			session.invalidate();

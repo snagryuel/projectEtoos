@@ -27,7 +27,7 @@
  <div id="content">
  	<div>
         <img class="logo" alt="logo" src="https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg">
-        <form id="frm" name="frm" action = "LoginOk.do">
+        <form id="frm" name="frm" action = "LoginOk.do" method="post">
             <input type="text" name="id" id="id" class="login_input_text"  placeholder="아이디"><br>
             <input type="password" name="pwd" id="pwd" class="login_input_text" placeholder="비밀번호"><br>
             <div id="errId" style="display: none;"></div><br>
