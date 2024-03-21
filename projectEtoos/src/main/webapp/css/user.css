@@ -283,3 +283,134 @@ main .container .wrapper .list button:hover {
 main .container .wrapper .list > form > button {
 	float : right;
 }
+
+
+/*Q&A 리스트*/
+
+main .container .topDiv {
+	display: flex;
+	justify-content: space-evenly;
+	margin-bottom : 20px;
+}
+
+
+main .container .topDiv .topBtns {
+	display: flex;
+}
+
+main .container .topDiv .topBtn {
+	width: 100px;
+    height: 40px;
+    border-radius: 11px;
+    border: 1px solid rgba(22, 121, 197, 0.684);
+    font-weight: bold;
+    border: none;
+    color: rgba(22, 121, 197, 0.684);
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+main .container .topDiv .topBtn:hover {
+	color: white;
+    background-color: rgba(22, 121, 197, 0.684);
+}
+
+main .container .topDiv .writerDiv {
+	margin-left: 430px;
+}
+
+main .container .topDiv .writerBtn {
+	width: 80px;
+    height: 40px;
+    border-radius: 11px;
+    border: 1px solid rgba(196, 70, 28, 0.684);
+    font-weight: bold;
+    border: none;
+    color: rgba(196, 70, 28, 0.684);
+    font-size: 16px;
+
+ }
+ 
+ main .container .topDiv .writerBtn:hover {
+ 	color: white;
+    background-color: rgba(196, 70, 28, 0.684);
+ }
+
+main .container .qnaBorad  .qnaTable {
+	margin : 0 auto;
+	width: 900px;
+	
+}
+
+main .container .qnaBorad .qnaTable tr  {
+	border: 1px solid #adadad;
+	text-align : center;
+} 
+
+main .container .qnaBorad .qnaTable tr th {
+	text-align : center;
+	background : #457D87;
+	color : #fff;
+	border : 1px solid #457D87;
+	padding : 10px 0 ;
+	
+}
+
+
+main .container .qnaBorad .qnaTable tr td {
+	height : 40px;
+	padding-top: 25px;
+} 
+
+main .container .qnaBorad .qnaTable .notice .noticeNum > p {
+	border: 1px solid rgba(196, 70, 28, 0.684);
+	border-radius: 50px;
+	width: 60%;
+	text-align : center;
+	margin-left: 20px;
+}
+
+main .container .qnaBorad .qnaTable span {
+	border: 1px solid blue;
+	border-radius: 50px;
+	width: 80%;
+	text-align : center;
+	margin-left: 10px;
+}
+
+
+main .container .qnaBorad .paging p {
+	text-align : center;
+	margin-top: 30px;
+}
+
+main .container .qnaBorad .searchDiv {
+	text-align : center;
+	margin-top: 30px;
+}
+
+main .container .qnaBorad .searchDiv .searchWord {
+	border: 1px solid black;
+	border-radius: 50px;
+	width: 350px;
+	height: 30px;
+}
+
+main .container .qnaBorad .searchDiv .searchBtn {
+	width: 80px;
+    height: 30px;
+    color: white;
+    cursor: pointer;
+    border: 1px solid rgba(22, 121, 197, 0.684);
+    border-radius: 11px;
+    background-color: rgba(22, 121, 197, 0.684);
+    font-size: 15px;	
+}
+
+main .container .qnaBorad .searchDiv .searchBtn:hover {
+	border: 1px solid rgba(22, 121, 197, 0.684);
+	color: rgba(22, 121, 197, 0.684);
+	background-color: #ffffff;
+	font-weight: bold;
+	font-size: 15px;
+}
