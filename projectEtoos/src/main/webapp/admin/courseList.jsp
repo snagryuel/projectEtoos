@@ -17,33 +17,32 @@
 		<div class="container">
 			<h1 id="title">강좌 조회</h1>
 			<div class="search-area">
-				<form action="" id="frm" class="gird" method="get">
+				<form action="" id="frm" class="gird" method="post">
 					<div class="sub1 select-list">
-						<input type="hidden" name="sub1" id="sub1" value="">
+						<input type="hidden" name="sub1" id="sub1" value="${sub1 }">
 						<p>과목</p>
 						<ul>
-							<li data-value="1">과목1</li>
-							<li data-value="2">과목2</li>
-							<li data-value="3">과목3</li>
-							<li data-value="4">과목4</li>
+						<c:forEach var = "list" items = "${SubList1 }">
+							<li data-value="${list }" <c:if test="${sub1 eq list }">class = "selected"</c:if>>${list }</li>
+						</c:forEach>
 						</ul>
 					</div>
 					<div class="sub2 select-list">
-						<input type="hidden" name="sub2" id="sub2" value="">
+						<input type="hidden" name="sub2" id="sub2" value="${sub2 }">
 						<p>세부 과목</p>
 						<ul>
-							<li data-value="1">과목1</li>
-							<li data-value="2">과목2</li>
-							<li data-value="3">과목3</li>
+							<c:forEach var = "list" items = "${SubList2 }">
+								<li data-value="${list }" <c:if test="${sub2 eq list }">class = "selected"</c:if>>${list }</li>
+							</c:forEach>
 						</ul>
 					</div>
 					<div class="sub3 select-list">
-						<input type="hidden" name="sub3" id="sub3" value="">
+						<input type="hidden" name="sub3" id="sub3" value="${sub3 }">
 						<p>선생님</p>
 						<ul>
-							<li data-value="1">과목1</li>
-							<li data-value="2">과목2</li>
-							<li data-value="3">과목3</li>
+							<c:forEach var = "list" items = "${teacherList }">
+								<li data-value="${list.id }"<c:if test="${sub3 eq list.id }">class = "selected"</c:if>>${list.name }</li>
+							</c:forEach>
 						</ul>
 					</div>
 					<div class="buttones">

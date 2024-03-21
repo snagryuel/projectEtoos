@@ -22,9 +22,18 @@ public class CourseListController extends HttpServlet {
 		
 		AdminDAO dao = new AdminDAO();
 		List<AdminDTO> courseList = dao.CourseInfo(sub1, sub2, sub3);
+		List<String> SubList1 = dao.getSub();
+		List<String> SubList2 = dao.getSub2(sub1);
+		List<AdminDTO> teacherList = dao.getteacher(sub1, sub2);
 		dao.Close();
 		
 		req.setAttribute("courseList", courseList);
+		req.setAttribute("SubList1", SubList1);
+		req.setAttribute("SubList2", SubList2);
+		req.setAttribute("teacherList", teacherList);
+		req.setAttribute("sub1", sub1);
+		req.setAttribute("sub2", sub2);
+		req.setAttribute("sub3", sub3);
 		req.getRequestDispatcher("courseList.jsp").forward(req, resp);
 	}
 
