@@ -39,10 +39,10 @@
 
 			<div class="tap">
 				<ul>
-					<li class="selected-tap"><span>전체</span></li>
-					<li><span>선생님</span></li>
-					<li><span>강좌</span></li>
-					<li><span>공지사항</span></li>
+					<li class="selected-tap"><span><a href="/projectEtoos/search/searchMain.jsp">전체</a></span></li>
+					<li><span><a href="/projectEtoos/search/serachTeacherListDetail.jsp">선생님</a></span></li>
+					<li><span><a href="/projectEtoos/search/searchCourseListDetail.jsp">강좌</a></span></li>
+					<li><span><a href="/projectEtoos/search/searchNotiListDetail.jsp">공지사항</a></span></li>
 				</ul>
 			</div>
 
