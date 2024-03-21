@@ -10,27 +10,41 @@ import member.MemberDTO;
 
 import java.io.IOException;
 
-public class MypageController extends HttpServlet {
+@WebServlet("/projectEtoos/mypage/mypagemodify.do")
+public class MyInfoModifyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		MemberDTO dto = new MemberDTO();
 		String birth = "";
-		
+		System.out.println("뭐왜뭐 뭘봐");
 		String name = req.getParameter("name");
+		System.out.println("뭐왜뭐 뭘봐");
 		String phone = req.getParameter("phone");
+		System.out.println("뭐왜뭐 뭘봐");
 		String email = req.getParameter("email");
+		System.out.println("뭐왜뭐 뭘봐");
 		String birthYear = req.getParameter("birthYear");
+		System.out.println("뭐왜뭐 뭘봐");
 		String birthMonth = req.getParameter("birthMonth");
+		System.out.println("뭐왜뭐 뭘봐");
 		String birthDay = req.getParameter("birthDay");
+		System.out.println("뭐왜뭐 뭘봐");
 		String addr = req.getParameter("addr");
-		String pwd = req.getParameter("pwd");
-		String pwdCheck = req.getParameter("pwdCheck");
+		System.out.println("뭐왜뭐 뭘봐");
+		String pwd = req.getParameter("pwd2");
+		System.out.println("뭐왜뭐 뭘봐");
+		String pwdCheck = req.getParameter("pwd3");
 		
+		System.out.println("뭐왜뭐 뭘봐");
 		birth = birthYear+"-"+birthMonth+"-"+birthDay;
-		if(!pwd.equals(pwdCheck)) {
-			req.setAttribute("errMsg", "회원정보 수정에 실패하였습니다 다시 확인해 주시기 바랍니다");
-			req.getRequestDispatcher("/mypage.do").forward(req, resp);
+		System.out.println("뭐왜뭐 뭘봐");
+		if(!pwd.isEmpty()||!pwd.equals("")) {
+			if(!pwd.equals(pwdCheck)) {
+				req.setAttribute("errMsg", "회원정보 수정에 실패하였습니다 다시 확인해 주시기 바랍니다");
+				req.getRequestDispatcher("./MyInfo.do").forward(req, resp);
+			}
 		}
+		System.out.println("뭐왜뭐 뭘봐");
 		dto.setAddr(addr);
 		dto.setBirth(birth);
 		dto.setEmail(email);
@@ -44,7 +58,7 @@ public class MypageController extends HttpServlet {
 		if(result == 0) {
 			req.setAttribute("errMsg", "회원정보 수정에 실패하였습니다 다시 확인해 주시기 바랍니다");
 		}
-		req.getRequestDispatcher("/mypage.do").forward(req, resp);
+		resp.sendRedirect("./MyInfo.do");
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

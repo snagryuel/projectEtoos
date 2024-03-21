@@ -206,10 +206,29 @@ public class MemberDAO extends JDBConnect {
 		}
 		return result;
 	}
-//	public boolean updatePwd(MemberDTO dto){
-
-		// 작업 완료
+	public MemberDTO getMemberInfo(String id) {
 		
-	
-	//}
+		MemberDTO dto = new MemberDTO();
+		String sql = "SELECT id, phone, email, birth, addr, pwd, gubun, name FROM tbl_memberlist WHERE id = ?";
+		
+		try{
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				dto.setName(rs.getString("name"));
+				dto.setPhone(rs.getString("phone"));
+				dto.setEmail(rs.getString("email"));
+				dto.setBirth(rs.getString("birth"));
+				dto.setAddr(rs.getString("addr"));
+				dto.setPwd(rs.getString("pwd"));
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+		}	
 }

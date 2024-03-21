@@ -1,3 +1,4 @@
+<%@page import="member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,10 +24,10 @@
 		
 		<div class="content">
 			<div>	
-			<form name="frm" id="frm">
-			    <span>(*)이름</span><input type="text" class="input_text"  name="name" id="name" value="" placeholder="이름" maxlength="20"><br>
-			    <span>(*)휴대폰 번호</span><input type="tel" class="input_text"  name="phone" id="phone" value="" placeholder="휴대폰 번호" maxlength="20"><br>
-			    <span>(*)이메일</span><input type="email" class="input_text"  name="email" id="email" value="" placeholder="이메일" maxlength="100"><br>
+			<form name="frm" id="frm" method = "post" action = "./mypagemodify.do">
+			    <span>(*)이름</span><input type="text" class="input_text"  name="name" id="name" value="${result.name }" placeholder="이름" maxlength="20"><br>
+			    <span>(*)휴대폰 번호</span><input type="tel" class="input_text"  name="phone" id="phone" value="${result.phone }" placeholder="휴대폰 번호" maxlength="20"><br>
+			    <span>(*)이메일</span><input type="email" class="input_text"  name="email" id="email" value="${result.email }" placeholder="이메일" maxlength="100"><br>
 				
 				<div class="info" id="info__birth">
 					<span>생년월일</span><select class="box" id="birth-year">
@@ -40,8 +41,8 @@
 				    </select>
 				</div>
 				
-				<span>주소(선택)</span><input type="text" class="input_text" name="addr" id="addr" placeholder="주소" maxlength="20"><br>
-				<span>비밀번호</span><input type="password" class="input_text"  name="pwd1" id="pwd1" value="*******" maxlength="20" readonly>
+				<span>주소(선택)</span><input type="text" class="input_text" name="addr" id="addr" placeholder="주소" maxlength="20" value="${result.addr }"><br>
+				<span>비밀번호</span><input type="password" class="input_text"  name="pwd1" id="pwd1" value="${result.pwd }" maxlength="20" readonly>
 				<input type="submit" name="pwdChg" id="pwdChg" value="변경"><br>
 				<input type="password" class="input_text"  name="pwd2" id="pwd2" value="" placeholder="영문 + 숫자 + 특수문자 포함 8~20자 이하" maxlength="20"><br>
 
