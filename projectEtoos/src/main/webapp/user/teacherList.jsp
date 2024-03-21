@@ -18,7 +18,7 @@
 	<div id="empty"></div>
 	<div class="container">
 		<h1 id="title">선생님</h1>
-		<div class="wrapper">
+		<div class="wrapper line">
 		<div class="tap">
 			<ul>
 				<li class="selected-tap"><span>국어</span></li>
