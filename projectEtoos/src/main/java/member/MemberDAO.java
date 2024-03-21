@@ -30,10 +30,10 @@ public class MemberDAO extends JDBConnect {
 	
 	
 	public MemberDTO getMemberInfo(MemberDTO dto) {
-		String id = null;
-		String pwd = null;
+		String id = dto.getId();
+		String pwd = dto.getPwd();
 		
-		String sql = "SELECT id, pwd, FROM tbl_member WHERE id=?  ";			
+		String sql = "SELECT id, pwd, gubun FROM tbl_memberlist WHERE id=?  ";			
 		
 		try {
 			psmt = conn.prepareStatement(sql);
