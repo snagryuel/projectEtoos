@@ -50,25 +50,7 @@
 			<div class="contents_teacherlist">
 				<div class="tsection">
 					<p id="title_g">선생님</p>
-					<ul class="search_teacher sch_ul">
-						<li class="sch_t">
-							<div class="sch_c teacher_img">
-								<div class="img">
-									<img
-										src="http://img.etoos.com/teacher/teacher/200180/tch225x400.png"
-										alt="">
-								</div>
-							</div>
-							<div class="sch_c">
-								<span class="sch_tis">선생소개소개소개소개</span>
-								<div class="sch_ti">
-									<strong>수학</strong> &nbsp; <font style="color: #b16e61">정승제</font>
-									선생님 &nbsp;&nbsp;
-								</div>
-							</div>
-						</li>
-
-					</ul>
+					
 					<ul class="search_teacher sch_ul">
 						<li class="sch_t">
 							<div class="sch_c teacher_img">
