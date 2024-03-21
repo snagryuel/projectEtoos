@@ -149,9 +149,9 @@ public class AdminDAO extends JDBConnect{
 		sb.append(name);
 		sb.append("%'");
 		sb.append("AND gubun = 1");
+		sb.append(" AND state != 99");
 		try {
 			psmt = conn.prepareStatement(sb.toString());
-			System.out.println(sb.toString());
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				AdminDTO dto = new AdminDTO();
