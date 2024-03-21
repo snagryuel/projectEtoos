@@ -39,70 +39,70 @@
 					</tr>
 					<tr>
 						<td><input type="checkbox" name="idx"></td>
-						<td>[과목1] 강의 제목 입니다.</td>
+						<td>[과목1] 강좌 제목 입니다.</td>
 						<td>과목1</td>
 						<td><button>맛보기</button></td>
 						<td><button>수강신청</button></td>
 					</tr>
 					<tr>
 						<td><input type="checkbox" name="idx"></td>
-						<td>[과목1] 강의 제목 입니다.</td>
+						<td>[과목1] 강좌 제목 입니다.</td>
 						<td>과목1</td>
 						<td><button>맛보기</button></td>
 						<td><button>수강신청</button></td>
 					</tr>
 					<tr>
 						<td><input type="checkbox" name="idx"></td>
-						<td>[과목1] 강의 제목 입니다.</td>
+						<td>[과목1] 강좌 제목 입니다.</td>
 						<td>과목1</td>
 						<td><button>맛보기</button></td>
 						<td><button>수강신청</button></td>
 					</tr>
 					<tr>
 						<td><input type="checkbox" name="idx"></td>
-						<td>[과목1] 강의 제목 입니다.</td>
+						<td>[과목1] 강좌 제목 입니다.</td>
 						<td>과목1</td>
 						<td><button>맛보기</button></td>
 						<td><button>수강신청</button></td>
 					</tr>
 					<tr>
 						<td><input type="checkbox" name="idx"></td>
-						<td>[과목1] 강의 제목 입니다.</td>
+						<td>[과목1] 강좌 제목 입니다.</td>
 						<td>과목1</td>
 						<td><button>맛보기</button></td>
 						<td><button>수강신청</button></td>
 					</tr>
 					<tr>
 						<td><input type="checkbox" name="idx"></td>
-						<td>[과목1] 강의 제목 입니다.</td>
+						<td>[과목1] 강좌 제목 입니다.</td>
 						<td>과목1</td>
 						<td><button>맛보기</button></td>
 						<td><button>수강신청</button></td>
 					</tr>
 					<tr>
 						<td><input type="checkbox" name="idx"></td>
-						<td>[과목1] 강의 제목 입니다.</td>
+						<td>[과목1] 강좌 제목 입니다.</td>
 						<td>과목1</td>
 						<td><button>맛보기</button></td>
 						<td><button>수강신청</button></td>
 					</tr>
 					<tr>
 						<td><input type="checkbox" name="idx"></td>
-						<td>[과목1] 강의 제목 입니다.</td>
+						<td>[과목1] 강좌 제목 입니다.</td>
 						<td>과목1</td>
 						<td><button>맛보기</button></td>
 						<td><button>수강신청</button></td>
 					</tr>
 					<tr>
 						<td><input type="checkbox" name="idx"></td>
-						<td>[과목1] 강의 제목 입니다.</td>
+						<td>[과목1] 강좌 제목 입니다.</td>
 						<td>과목1</td>
 						<td><button>맛보기</button></td>
 						<td><button>수강신청</button></td>
 					</tr>
 					<tr>
 						<td><input type="checkbox" name="idx"></td>
-						<td>[과목1] 강의 제목 입니다.</td>
+						<td>[과목1] 강좌 제목 입니다.</td>
 						<td>과목1</td>
 						<td><button>맛보기</button></td>
 						<td><button>수강신청</button></td>

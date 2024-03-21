@@ -74,11 +74,11 @@
 
 				</div>
 
-				<!-- 강의 예정 틀 -->
+				<!-- 강좌 예정 틀 -->
 				<div class="courseList">
 					<div class="coursesection">
 					<div class="listTitle">
-						<p id="title_g">강의 <button type="button" class= "gumsaekdeo">더보기</button>
+						<p id="title_g">강좌 <button type="button" class= "gumsaekdeo">더보기</button>
 						
 						</p>
 

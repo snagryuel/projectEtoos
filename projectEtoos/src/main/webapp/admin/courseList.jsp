@@ -60,7 +60,7 @@
 					<thead>
 						<tr>
 							<th>No</th>
-							<th>강의명</th>
+							<th>강좌명</th>
 							<th>강사명</th>
 							<th>과목1</th>
 							<th>과목2</th>
