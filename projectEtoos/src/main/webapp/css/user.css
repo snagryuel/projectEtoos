@@ -225,14 +225,30 @@ main .container .wrapper .searchArea {
 
 main .container .wrapper .searchArea #frm #courseName {
 	width : 400px;
-	height : 30px;
+	height : 40px;
 	padding : 10px;
 	box-sizing : border-box;
 	border : 1px solid #adadad;
 	border-radius : 30px;	
 }
+
+main .container .wrapper .searchArea #frm button {
+	background : #fff;
+	border : 1px solid #adadad;
+	padding : 10px;
+	height : 40px;
+	box-sizing : border-box;
+}
+
+main .container .wrapper .searchArea #frm button:hover {
+	background : #457D87;
+	color : #fff;
+	border : 1px solid #457D87;
+}
+
 main .container .wrapper .list table {
 	width: 100%;
+	margin-bottom : 20px;
 }
 main .container .wrapper .list table, main .container .wrapper .list table tr {
 	border : 1px solid #adadad;
@@ -251,7 +267,19 @@ main .container .wrapper .list table tr td:not(td:nth-child(2)) {
 main .container .wrapper .list table tr td {
 	padding : 10px 0 ;
 }
+
 main .container .wrapper .list button {
 	background : #fff;
-	c
+	border : 1px solid #adadad;
+	padding : 10px;
+}
+
+main .container .wrapper .list button:hover {
+	background : #457D87;
+	color : #fff;
+	border : 1px solid #457D87;
+}
+
+main .container .wrapper .list > form > button {
+	float : right;
 }
