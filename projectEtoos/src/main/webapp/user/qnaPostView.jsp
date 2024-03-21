@@ -23,50 +23,47 @@
 <main>
 	<div id="empty"></div>
 	<div class="container">
-		<h1 id="title"><img class="qnaSymbol" alt="qnaSymbol" src="/projectEtoos/img/qnaSymbol.png"/>학습 Q&A - 답변</h1>
+		<h1 id="title"><img class="qnaSymbol" alt="qnaSymbol" src="/projectEtoos/img/qnaSymbol.png"/>학습 Q&A</h1>
 		
-		<div class="qnaDiv">
-			<div class="titleElement">
-				<span>제목</span><input type="text" class="qnaTitle" name="qnaTitle" id="qnaTitle" value=""  maxlength="30">
-				<hr>
-			</div>
-			
-			<div class="qnaContElement">
-				<textarea name="qnaContent" id="qnaContent" maxlength="1000"  rows="20" cols="80"></textarea>
-			</div>
+		<div class="qnaViewDiv">
+			 <div class="qnaViewTable">
+	           <table>
+	            <tr>
+	                <th>문포독 기초 48p 연습문제 질문 드려요.</th>
+	                <th>2024.02.27 |</th>
+	                <th>조회수</th>
+	               
+	            </tr>
+	            <tr>
+					<td>4번에서 to make가 명사인지 부사인지는 어떻게 구분하나요? <br>4번 쉼표 전 문장구조를 잘 모르겠어요..</td>
+					<td colspan="3"></td>
+				</tr>
+	            </table>
+
+	        </div> 
+
 			
 			<div class="qnaBtnElement">
-				<input type="submit" class="saveBtn" name="saveBtn" id="saveBtn" value="저장" />
 				<input type="submit" class="listBtn" name="listBtn" id="listBtn" value="목록" />
 			</div>
+			
+			<div class="preNextDiv">
+				<table>
+				<tr>
+					<td>다음글</td>
+					<td>동명사, 분사에 관한 질문입니다!</td>
+				<tr>
+				<tr>
+					<td>이전글</td>
+					<td>문포독 033페이지 연습문제 6번 질문드려요.</td>
+				<tr>
+				</table>
+			</div>
 		</div>
-		
-		
 	</div>
-
 </main>
 
 <script>
-
-document.querySelector("#saveBtn").addEventListener("click", function(e){
-	const qnaTitle = document.querySelector("#qnaTitle");
-	const qnaContent = document.querySelector("#qnaContent");
-	
-	if(qnaTitle.value.length == "") {
-		e.preventDefault();
-		qnaTitle.focus();
-		return alert("제목을 입력하세요.");
-	}
-	
-	if(qnaContent.value.length == "") {
-		e.preventDefault();
-		qnaTitle.focus();
-		return alert("내용을 입력하세요.");
-	}
-	
-	
-}, false);
-
 document.querySelector("#listBtn").addEventListener("click", function(e){
 	if(confirm("작성 중인 내용이 사라집니다. 목록으로 가시겠습니까??")){
 		window.location = "/projectEtoos/user/teacherQnaMain.jsp";

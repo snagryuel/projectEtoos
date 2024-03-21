@@ -23,20 +23,14 @@
 <main>
 	<div id="empty"></div>
 	<div class="container">
-		<h1 id="title"><img class="qnaSymbol" alt="qnaSymbol" src="/projectEtoos/img/qnaSymbol.png"/>학습 Q&A</h1>
+		<h1 id="title"><img class="noticeSymbol" alt="noticeSymbol" src="/projectEtoos/img/noticeSymbol.png"/>공지사항</h1>
 		
 		<div class="qnaDiv">
 			<div class="titleElement">
 				<span>제목</span><input type="text" class="qnaTitle" name="qnaTitle" id="qnaTitle" value=""  maxlength="30">
 				<hr>
-				<div class="secretElement">
-				<form>
-					<span>비밀번호</span><input type="password" class="qnaPwd"  name="qnaPwd" id="qnaPwd" value=""  maxlength="20">
-					<input type="checkbox" id="secretCheck" name="secretCheck" onClick="checkDisable(this.form)"><span>비밀글</span>
-				</form>	
-				</div>
 			</div>
-			<hr>
+			
 			<div class="qnaContElement">
 				<textarea name="qnaContent" id="qnaContent" maxlength="1000"  rows="20" cols="80"></textarea>
 			</div>
@@ -53,16 +47,6 @@
 </main>
 
 <script>
-//비밀글 체크 시 비밀번호 박스 열기
-function checkDisable(frm) {
-    if( frm.secretCheck.checked == false ){
-	   frm.qnaPwd.disabled = true;
-	} else 
-	{
-	   frm.qnaPwd.disabled = false;
-	}
-}
-
 
 document.querySelector("#saveBtn").addEventListener("click", function(e){
 	const qnaTitle = document.querySelector("#qnaTitle");
