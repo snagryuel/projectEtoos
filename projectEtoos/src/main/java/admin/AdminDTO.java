@@ -8,6 +8,20 @@ public class AdminDTO {
 	private String sub2;
 	private String name;
 	private String id;
+	private String birth;
+	private String joinday;
+	public String getJoinday() {
+		return joinday;
+	}
+	public void setJoinday(String joinday) {
+		this.joinday = joinday;
+	}
+	public String getBirth() {
+		return birth;
+	}
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
 	public String getId() {
 		return id;
 	}

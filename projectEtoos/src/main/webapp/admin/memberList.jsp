@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
 			<h1 id="title">회원 조회</h1>
 			<div class="search-area">
 				<form id="frm">
-					<input type="text" name="name" id="name" value="" maxlength="20">
+					<input type="text" name="name" id="name" value="${name }" maxlength="20">
 					<button type="submit">검색</button>
 				</form>
 			</div>
@@ -35,86 +36,16 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>0</td>
-							<td>장지현</td>
-							<td>Geehyun</td>
-							<td>1996-10-17</td>
-							<td>2024-03-20</td>
-							<td><button>삭제</button></td>
-						</tr>
-						<tr>
-							<td>0</td>
-							<td>장지현</td>
-							<td>Geehyun</td>
-							<td>1996-10-17</td>
-							<td>2024-03-20</td>
-							<td><button>삭제</button></td>
-						</tr>
-						<tr>
-							<td>0</td>
-							<td>장지현</td>
-							<td>Geehyun</td>
-							<td>1996-10-17</td>
-							<td>2024-03-20</td>
-							<td><button>삭제</button></td>
-						</tr>
-						<tr>
-							<td>0</td>
-							<td>장지현</td>
-							<td>Geehyun</td>
-							<td>1996-10-17</td>
-							<td>2024-03-20</td>
-							<td><button>삭제</button></td>
-						</tr>
-						<tr>
-							<td>0</td>
-							<td>장지현</td>
-							<td>Geehyun</td>
-							<td>1996-10-17</td>
-							<td>2024-03-20</td>
-							<td><button>삭제</button></td>
-						</tr>
-						<tr>
-							<td>0</td>
-							<td>장지현</td>
-							<td>Geehyun</td>
-							<td>1996-10-17</td>
-							<td>2024-03-20</td>
-							<td><button>삭제</button></td>
-						</tr>
-						<tr>
-							<td>0</td>
-							<td>장지현</td>
-							<td>Geehyun</td>
-							<td>1996-10-17</td>
-							<td>2024-03-20</td>
-							<td><button>삭제</button></td>
-						</tr>
-						<tr>
-							<td>0</td>
-							<td>장지현</td>
-							<td>Geehyun</td>
-							<td>1996-10-17</td>
-							<td>2024-03-20</td>
-							<td><button>삭제</button></td>
-						</tr>
-						<tr>
-							<td>0</td>
-							<td>장지현</td>
-							<td>Geehyun</td>
-							<td>1996-10-17</td>
-							<td>2024-03-20</td>
-							<td><button>삭제</button></td>
-						</tr>
-						<tr>
-							<td>0</td>
-							<td>장지현</td>
-							<td>Geehyun</td>
-							<td>1996-10-17</td>
-							<td>2024-03-20</td>
-							<td><button>삭제</button></td>
-						</tr>
+						<c:forEach var = "member" items="${memberList }">
+							<tr>
+								<td>0</td>
+								<td>${member.name }</td>
+								<td>${member.id }</td>
+								<td>${member.birth }</td>
+								<td>${member.joinday }</td>
+								<td><button>삭제</button></td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 				<div class="paging">

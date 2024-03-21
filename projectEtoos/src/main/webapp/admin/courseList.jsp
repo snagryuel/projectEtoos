@@ -111,6 +111,14 @@
 				for(let j of selectList1) {
 					j.classList.remove("selected");
 					sub1.value = "";
+					value2.value = "";
+					value3.value = "";
+				}
+				for(let j of selectList2) {
+					j.classList.remove("selected");
+				}
+				for(let j of selectList3) {
+					j.classList.remove("selected");
 				}
 				value1.value = i.dataset.value;
 				console.log(value1.value);
@@ -123,6 +131,10 @@
 				for(let j of selectList2) {
 					j.classList.remove("selected");
 					value2.value = "";
+					value3.value = "";
+				}
+				for(let j of selectList3) {
+					j.classList.remove("selected");
 				}
 				value2.value = i.dataset.value;
 				i.classList.add("selected");

@@ -110,4 +110,60 @@ public class AdminDAO extends JDBConnect{
 		}
 		return list;
 	}
+	public List<AdminDTO> getteacher(String name) {
+		List<AdminDTO> list = new Vector<AdminDTO>();
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("SELECT tm.NAME, tm.id, ts.sub1, ts.sub2, tm.birth, tm.joinDay FROM tbl_memberlist AS tm");
+		sb.append(" INNER JOIN tbl_teacherlist AS tt ON tm.id = tt.id");
+		sb.append(" INNER JOIN tbl_subject AS ts ON tt.subkey = ts.subKey");
+		sb.append(" WHERE NAME LIKE '%");
+		sb.append(name);
+		sb.append("%'");
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			System.out.println(sb.toString());
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				AdminDTO dto = new AdminDTO();
+				dto.setId(rs.getString("id"));
+				dto.setName(rs.getString("name"));
+				dto.setSub1(rs.getString("sub1"));
+				dto.setSub2(rs.getString("sub2"));
+				dto.setBirth(rs.getString("birth"));
+				dto.setJoinday(rs.getString("joinday"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public List<AdminDTO> getMemberList(String name) {
+		List<AdminDTO> list = new Vector<AdminDTO>();
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("SELECT NAME, id, birth, joinday");
+		sb.append(" FROM tbl_memberlist");
+		sb.append(" WHERE NAME LIKE '%");
+		sb.append(name);
+		sb.append("%'");
+		sb.append("AND gubun = 1");
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			System.out.println(sb.toString());
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				AdminDTO dto = new AdminDTO();
+				dto.setId(rs.getString("id"));
+				dto.setName(rs.getString("name"));
+				dto.setBirth(rs.getString("birth"));
+				dto.setJoinday(rs.getString("joinday"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }
