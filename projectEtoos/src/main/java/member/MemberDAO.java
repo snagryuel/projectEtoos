@@ -45,7 +45,7 @@ public class MemberDAO extends JDBConnect {
 				if ( rs.getString("pwd").equals(pwd) ){
 					dto.setId(rs.getString("id"));
 					dto.setPwd(rs.getString("pwd"));
-					
+					dto.setGubun(rs.getString("gubun"));
 				}
 				
 			}
