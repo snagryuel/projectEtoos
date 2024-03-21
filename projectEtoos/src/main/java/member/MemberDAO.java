@@ -27,7 +27,28 @@ public class MemberDAO extends JDBConnect {
 		return result;
 	}
 	
-	
+	public MemberDTO getMemberId(MemberDTO input) {
+		MemberDTO result = new MemberDTO();
+		
+		String id = input.getId();
+		
+		String sql = "SELECT id, pwd, gubun FROM tbl_memberlist WHERE id=?";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+		
+			if(rs.next()) {
+				result.setId(rs.getString("id"));
+
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	
 	
 	public MemberDTO getMemberInfo(MemberDTO input) {

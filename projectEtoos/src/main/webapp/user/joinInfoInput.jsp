@@ -28,8 +28,9 @@
 		</div>
 		
 		<form action="/projectEtoos/user/JoinOk.do" name="frm" id="frm" method="post">
-	        <input type="text" class="join_input_text_id" name="id" id="id" value="" placeholder="아이디(6자 이상, 20자 이하)" maxlength="20">
-	        <button class="overlap" name="overlap" id="overlap" >중복확인</button><br>
+	        <input type="text" class="join_input_text_id" name="id" id="id" value="" readonly placeholder="아이디(6자 이상, 20자 이하)" maxlength="20">
+	        <button class="overlap authCheck" name="overlap" id="overlap authCheck" >중복확인</button><br>
+
 	        <input type="password" class="join_input_text"  name="pwd" id="pwd" value="" placeholder="영문 + 숫자 + 특수문자 포함 8~20자 이하" maxlength="20"><br>
 	        <input type="password" class="join_input_text"  name="pwd2" id="pwd2" value="" placeholder="비밀번호 재입력" maxlength="20"><br>
 	        <div id="errId" style="display: none;"></div><br>
@@ -64,8 +65,13 @@
 </div>
 
 <%@ include file="/common/footer.jsp" %> 
- 
 <script>
+
+</script>
+<script>
+
+
+
 const rexForId = /^[0-9a-zA-Z]{6,20}$/;
 const rexForPwd = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@!#])[A-Za-z\d@!#]{8,20}$/;
 const rexForPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
@@ -131,22 +137,20 @@ frm.addEventListener("submit", function(e){
     frm.submit();
 }, false); */
 
-
-
-
-document.querySelector("#overlap").addEventListener("click", function(e){
-	const id = document.querySelector("#id");
-	
-	if(id.value.length == "") {
-        let errId = document.getElementById("errId");
-        errId.style.display = "block";
-        errId.style.color = "red";
-		e.preventDefault();
-		id.focus();
-		return errId.innerHTML="<strong>아이디를 입력해주세요.</strong>";
-	}
-	
-}, false);
+/* 중복확인 */
+let authCheck = document.querySelector(".authCheck");
+let idNow = document.querySelector("#id");
+let authPop;
+idNow.addEventListener("click", (e)=> {
+	e.preventDefault();
+	idNow.value = "";
+	authPop = window.open("/projectEtoos/user/authCheckPop.jsp",'_blank', 'width=500, height=300, top=50, left=50, scrollbars=yes, location=no');
+})
+authCheck.addEventListener("click", (e)=> {
+	e.preventDefault();
+	idNow.value = "";
+	authPop = window.open("/projectEtoos/user/authCheckPop.jsp",'_blank', 'width=500, height=300, top=50, left=50, scrollbars=yes, location=no');
+})
 
 
 
