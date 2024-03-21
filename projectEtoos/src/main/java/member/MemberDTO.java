@@ -11,6 +11,7 @@ public class MemberDTO {
 	private String email;
 	private String birth;
 	private String addr;
+	private String state;
 	
 	public String getId() {
 		return id;
@@ -59,5 +60,11 @@ public class MemberDTO {
 	}
 	public void setAddr(String addr) {
 		this.addr = addr;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
 	}
 }

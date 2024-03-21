@@ -43,7 +43,7 @@
 								<td>${member.id }</td>
 								<td>${member.birth }</td>
 								<td>${member.joinday }</td>
-								<td><button>삭제</button></td>
+								<td><button onclick="memberdelete('${member.id}');">삭제</button></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -61,5 +61,10 @@
 		</div>
 	</main>
 	<%@ include file="/common/footer.jsp" %>
+	<script>
+		function memberdelete(id){
+			window.location = "/memberDelete.do?id="+id;
+		}
+	</script>
 </body>
 </html>

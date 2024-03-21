@@ -168,6 +168,23 @@ public class MemberDAO extends JDBConnect {
 	}
 
 	
+	public int MemberDelete(String id) {
+		int result = 0;
+		StringBuilder sb = new StringBuilder();
+		sb.append("UPDATE tbl_memberlist");
+		sb.append(" SET state = 99");
+		sb.append(" WHERE id = ?");
+		
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			psmt.setString(1, id);
+			result = psmt.executeUpdate();
+			System.out.println(psmt);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 //	public boolean updatePwd(MemberDTO dto){
 
 		// 작업 완료
