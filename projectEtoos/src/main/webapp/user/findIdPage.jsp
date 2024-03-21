@@ -46,8 +46,8 @@
 	        <input type="tel" class="frmTel"  name="phone" id="phone" value="" placeholder="휴대폰 번호" maxlength="20"><br>
 			<div id="errId" style="display: none;"></div><br>
 			
-	        <input type="submit" class="completeBtn" name="completeBtn" id="completeBtn" value="확인" />
-	        <input type="submit" class="cancelBtn" name="cancelBtn" id="cancelBtn" value="취소" />
+	        <input type="submit" name="completeBtn" id="completeBtn" value="확인" />
+	        <input type="submit" name="cancelBtn" id="cancelBtn" value="취소" />
         
     </form>
 

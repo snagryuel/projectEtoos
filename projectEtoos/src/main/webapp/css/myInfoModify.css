@@ -1,0 +1,244 @@
+@charset "UTF-8";
+
+main .container {
+	padding-top:200px;
+	padding-bottom:250px;
+	padding-left:50px;
+}
+
+main .container .title {
+	width: 800px;
+	padding-left:250px;
+}
+
+main .container .title h2 {
+	font-size:150%;
+	
+}
+
+main .container .title h4 {
+	float: right;
+	cursor: ponter;
+}
+
+main .container .content{
+	margin : 0 auto;
+    height : 800px;
+    padding-bottom : 250px;
+	display : flex;
+	justify-content: center;
+    align-items: center;
+    padding-left: 200px;
+
+}
+
+main .container .content > div {
+	width: 800px;
+    height: 700px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    border: solid 1px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.04);
+    text-align: center;
+    padding-top: 50px;
+    
+    
+}
+
+	
+main .container .content div form span {
+	float: left;
+	margin-left: 30px;
+	margin-top: 10px;
+	
+}
+
+main .container .content div form .input_text {
+	width: 330px;
+    height: 50px;
+    border-radius: 11px;
+    border: solid 1px #dfdfdf;
+    background: #fff;
+    margin-bottom: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+
+#birth-year {
+	width: 140px;
+    height: 50px;
+    border-radius: 11px;
+    border: solid 1px #dfdfdf;
+    background: #fff;
+    margin-bottom: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 16px;
+	
+} 
+
+
+#birth-month {
+	width: 80px;
+    height: 50px;
+    border-radius: 11px;
+    border: solid 1px #dfdfdf;
+    background: #fff;
+    margin-top: -5px;
+    margin-bottom: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 16px;
+	
+}
+
+#birth-day {
+	width: 80px;
+    height: 50px;
+    border-radius: 11px;
+    border: solid 1px #dfdfdf;
+    background: #fff;
+    margin-top: -5px;
+    margin-bottom: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 16px;
+} 
+
+
+#phone {
+	margin-right: 55px;
+}
+
+#email {
+	margin-right: 17px;
+}
+
+#info__birth {
+	margin-right: 25px;
+}
+
+#addr {
+	margin-right: 30px;
+}
+
+#pwd1 {
+	margin-left: 65px;
+}
+
+#pwd2 {
+	margin-left: 70px;
+}
+
+#pwd3 {
+	margin-left: 155px;
+}
+
+#pwdChg {
+    width: 80px;
+    height: 40px;
+    border-radius: 11px;
+    border: 1px solid rgba(22, 121, 197, 0.684);
+    font-weight: bold;
+    border: none;
+    color: rgba(22, 121, 197, 0.684);
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#pwdChg:hover {
+	color: white;
+    background-color: rgba(22, 121, 197, 0.684);
+
+}
+
+#pwdCheck {
+    width: 80px;
+    height: 40px;
+    border-radius: 11px;
+    border: 1px solid rgba(196, 70, 28, 0.684);
+    font-weight: bold;
+    border: none;
+    color: rgba(196, 70, 28, 0.684);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#pwdCheck:hover {
+	color: white;
+    background-color: rgba(196, 70, 28, 0.684);
+
+}
+
+#completeBtn {
+    width: 420px;
+    height: 50px;
+    border-radius: 11px;
+    background-color: rgba(22, 121, 197, 0.684);
+    font-weight: bold;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 30px;
+	margin-left: 150px;
+}
+
+#completeBtn:hover {
+	border: 1px solid rgba(22, 121, 197, 0.684);
+	color: rgba(22, 121, 197, 0.684);
+	background-color: #ffffff;
+}
+
+
+
+
+aside#side {
+	background : #457D87;
+	max-width : 400px;
+	width : 25%;
+	height : 100%;
+	box-shadow : 5px 5px 5px #999999b8;
+	display : flex;
+	flex-direction: column;
+    align-items: center;
+    position : absolute;
+    padding-top:150px !important;
+    box-sizing:border-box;
+}
+aside#side h1 > a{
+	color : #fff !important;
+	padding : 50px 20px;
+	display : block;
+	font-size : 30px;
+	font-weight : 600;
+}
+aside#side ul {
+	width : 100%;
+}
+aside#side ul li:first-child {
+	border-top : 1px solid #fff;
+}
+aside#side ul li {
+	background : #ffffff5e;
+	width : 100%;
+	border-bottom : 1px solid #fff;
+}
+aside#side ul li a {
+	display : block;
+	width : 100%;
+	padding : 20px 30px;
+	font-size : 20px;
+	box-sizing : border-box;
+}
+aside#side ul li.selected,  
+aside#side ul li.selected > a,
+aside#side ul li:hover, 
+aside#side ul li:hover > a {
+	background : #fff;
+	color : #457D87 !important;
+	font-weight : 600;
+}

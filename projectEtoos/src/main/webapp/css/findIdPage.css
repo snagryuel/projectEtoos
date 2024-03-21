@@ -155,7 +155,7 @@ info#info__birth select::-webkit-scrollbar {
 
 
 
-.completeBtn {
+#completeBtn {
     width: 330px;
     height: 50px;
     border-radius: 11px;
@@ -169,14 +169,14 @@ info#info__birth select::-webkit-scrollbar {
 
 }
 
-.completeBtn:hover {
+#completeBtn:hover {
 	color: white;
     background-color: #0D6E77;
 
 }
 
 
-.cancelBtn {
+#cancelBtn {
     width: 330px;
     height: 50px;
     border-radius: 11px;
@@ -190,7 +190,7 @@ info#info__birth select::-webkit-scrollbar {
 
 }
 
-.cancelBtn:hover {
+#cancelBtn:hover {
 	border: 1px solid #0D6E77;
 	color: #0D6E77;
 	background-color: #ffffff;
