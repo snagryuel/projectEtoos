@@ -16,8 +16,64 @@
 				<input type="text" name="search_word" id="search_word" value="" maxlength="20" />
 				<!-- &nbsp;<input type="button" name="btn_search" id="btn_search" value="검색" /> -->
 				</li>
-				<li><button id="login">로그인</button></li>
-				<li><button id="join">회원가입</button></li>
+				<c:set var="loginYN" value="${sessionScope.loginYN}" />
+				<c:set var="id" value="${sessionScope.id}" />
+				<c:set var="gubun" value="${sessionScope.gubun}" />
+				<c:choose>
+					<c:when test="${loginYN == 'Y'}">
+						<c:choose>
+							<c:when test="${ gubun == 0 }">
+							<li><button id="logout">로그아웃</button></li>
+							<li><button id="admin">관라자</button></li>
+							<script>
+							let logout = document.querySelector("#logout");
+							let admin = document.querySelector("#admin");
+	
+							logout.addEventListener("click", ()=>{
+								window.location = "/projectEtoos/user/LoginOk.do?flag=logout";
+							})
+	
+							admin.addEventListener("click", ()=>{
+								window.location = "/projectEtoos/admin/memberList.jsp";
+							})
+							</script>
+							</c:when>
+							<c:otherwise>
+							<li><button id="logout">로그아웃</button></li>
+							<li><button id="myPage">마이페이지</button></li>
+							<script>
+							let logout = document.querySelector("#logout");
+							let myPage = document.querySelector("#myPage");
+	
+							logout.addEventListener("click", ()=>{
+								window.location = "/projectEtoos/user/LoginOk.do?flag=logout";
+							})
+	
+							myPage.addEventListener("click", ()=>{
+								window.location = "/projectEtoos/mypage/myCourse.jsp";
+							})
+							</script>
+							</c:otherwise>
+						</c:choose>
+					</c:when>
+					<c:when test="${loginYN != 'Y'}">
+						<li><button id="login">로그인</button></li>
+						<li><button id="join">회원가입</button></li>
+						<script>
+						let login = document.querySelector("#login");
+						let join = document.querySelector("#join");
+
+						login.addEventListener("click", ()=>{
+							window.location = "/projectEtoos/user/Login.do";
+						})
+
+						join.addEventListener("click", ()=>{
+							window.location = "/projectEtoos/user/Join.do";
+						})
+						</script>
+					</c:when>
+				</c:choose>
+				
 			</ul>
 		</div>
 		<div class="menu_teacher off">
@@ -209,16 +265,5 @@ function showOfHide(menu) {
 
 teacher.addEventListener("mouseover", (e)=>{e.preventDefault();showOfHide(sub_teacher);});
 sub_teacher.addEventListener("mouseleave", (e)=>{e.preventDefault();showOfHide(sub_teacher);});
-
-let login = document.querySelector("#login");
-let join = document.querySelector("#join");
-
-login.addEventListener("click", ()=>{
-	window.location = "/projectEtoos/user/Login.do";
-})
-
-join.addEventListener("click", ()=>{
-	window.location = "/projectEtoos/user/Join.do";
-})
 
 </script>
