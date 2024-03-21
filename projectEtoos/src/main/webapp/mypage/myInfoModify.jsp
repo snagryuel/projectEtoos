@@ -48,9 +48,15 @@
 	        	<input type="password" class="input_text"  name="pwd3" id="pwd3" value="" placeholder="비밀번호 재입력" maxlength="20">
 	        	<input type="submit" name="pwdCheck" id="pwdCheck" value="확인"><br>
 				
-			    <input type="submit" name="completeBtn" id="completeBtn" value="수정 완료" />
+				<div id="teacherImg">
+					<span>이미지 업로드</span><input name="teacherImgUp" id="teacherImgUp" type="file"> 
+				</div>
+				<div>
+					<span>선생님 소개</span><textarea name="teacherMent" id="teacherMent" maxlength="500" rows="8" cols="50" placeholder="선생님 소개를 작성해주세요."></textarea>
+				</div>
+			    <input type="submit" name="completeBtn" id="completeBtn" value="수정 완료" accept="image/*"/>
 			  
-			    
+				  	
 			</form>
 			</div>	
 	
