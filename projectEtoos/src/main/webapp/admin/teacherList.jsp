@@ -65,5 +65,8 @@
 		</div>
 	</main>
 	<%@ include file="/common/footer.jsp" %>
+	<c:if test="${loginYN ne 'Y'}">
+		<script type="text/javascript" src="../js/logincheck.js" ></script>
+	</c:if> 
 </body>
 </html>

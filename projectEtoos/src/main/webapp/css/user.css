@@ -416,7 +416,7 @@ main .container .qnaBorad .searchDiv .searchBtn:hover {
 }
 
 
-/*학습 Q&A 글 작성 페이지*/
+/*학습 Q&A 질문 작성, 답변 작성, 공지사항 작성 페이지*/
 main .container .qnaDiv {
 	width: 800px;
 	height: 600px;
@@ -497,3 +497,84 @@ main .container .qnaDiv .qnaBtnElement .listBtn:hover {
 	background-color: #ffffff;
 }
 
+/*qnaPostView 질문글 보기, 답변글 보기, 공지사항 보기 페이지*/
+main .container .qnaViewDiv {
+	width: 800px;
+	height: 500px;
+	margin: 0 auto;
+	
+}
+
+main .container .qnaViewDiv .qnaViewTable table {
+	width: 800px;
+	height: 300px;
+	border-collapse: collapse;
+}
+
+main .container .qnaViewDiv .qnaViewTable tr th {
+	height: 40px;
+	text-align: left;
+	border-top: 2px solid #adadad;
+	border-bottom: 2px solid #adadad;
+	color: #000;
+	padding-top: 20px;
+}
+
+main .container .qnaViewDiv .qnaViewTable tr td {
+	padding-top: 40px;
+    text-align: left;
+    border-bottom: 2px solid #adadad;
+    
+    
+}
+
+main .container .qnaViewDiv .qnaBtnElement .listBtn {
+	width: 80px;
+    height: 40px;
+    border-radius: 11px;
+    border: 1px solid rgba(22, 121, 197, 0.684);
+    font-weight: bold;
+    border: none;
+    color: rgba(22, 121, 197, 0.684);
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    float: right;
+}
+
+
+main .container .qnaViewDiv .qnaBtnElement .listBtn:hover {
+	color: white;
+    background-color: rgba(22, 121, 197, 0.684);
+    
+}
+
+main .container .qnaViewDiv .preNextDiv {
+	width: 800px;
+	height: 200px;
+	margin-top: 100px; 
+	
+}
+
+main .container .qnaViewDiv .preNextDiv tr:first-child {
+	padding: 10px;
+	border-top: 2px solid #adadad;
+	border-bottom: 1px solid #adadad;
+	text-align: left;
+}
+
+main .container .qnaViewDiv .preNextDiv tr:nth-last-child(1) {
+	border-bottom: 2px solid #adadad;
+}
+
+main .container .qnaViewDiv .preNextDiv tr td:nth-child(2) {
+	padding: 10px;
+	width: 720px;
+	cursor: pointer;
+}
+
+main .container .qnaViewDiv .preNextDiv tr td:first-child  {
+	background-color: rgba(105, 193, 208, 0.69);
+	width: 80px;
+	text-align: center;
+} 

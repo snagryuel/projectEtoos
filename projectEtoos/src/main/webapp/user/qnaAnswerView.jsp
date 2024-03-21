@@ -25,48 +25,52 @@
 	<div class="container">
 		<h1 id="title"><img class="qnaSymbol" alt="qnaSymbol" src="/projectEtoos/img/qnaSymbol.png"/>학습 Q&A - 답변</h1>
 		
-		<div class="qnaDiv">
-			<div class="titleElement">
-				<span>제목</span><input type="text" class="qnaTitle" name="qnaTitle" id="qnaTitle" value=""  maxlength="30">
-				<hr>
-			</div>
-			
-			<div class="qnaContElement">
-				<textarea name="qnaContent" id="qnaContent" maxlength="1000"  rows="20" cols="80"></textarea>
-			</div>
+		<div class="qnaViewDiv">
+			 <div class="qnaViewTable">
+	           <table>
+	            <tr>
+	                <th>조계헌 학생, 답변입니다.</th>
+	                <th>2024.02.28 |</th>
+	                <th>조회수</th>
+	               
+	            </tr>
+	            <tr>
+					<td>아까도 얘기했듯이,<br>
+						문장 맨 앞에 오는 경우에는<br>
+						1. 명사(주어)<br>
+						2. 부사(목적)<br>
+						둘 중에 하나일 가능성이 높습니다.<br>
+						해당 문장의 경우 쉼표 뒤에 we라는 주어가 나오므로,<br>
+						To make는 부사(목적)로 보는 게 적합할 듯합니다 ㅎㅎ<br>
+					</td>
+					<td colspan="3"></td>
+				</tr>
+	            </table>
+
+	        </div> 
+
 			
 			<div class="qnaBtnElement">
-				<input type="submit" class="saveBtn" name="saveBtn" id="saveBtn" value="저장" />
 				<input type="submit" class="listBtn" name="listBtn" id="listBtn" value="목록" />
 			</div>
+			
+			<div class="preNextDiv">
+				<table>
+				<tr>
+					<td>다음글</td>
+					<td>동명사, 분사에 관한 질문입니다!</td>
+				<tr>
+				<tr>
+					<td>이전글</td>
+					<td>문포독 033페이지 연습문제 6번 질문드려요.</td>
+				<tr>
+				</table>
+			</div>
 		</div>
-		
-		
 	</div>
-
 </main>
 
 <script>
-
-document.querySelector("#saveBtn").addEventListener("click", function(e){
-	const qnaTitle = document.querySelector("#qnaTitle");
-	const qnaContent = document.querySelector("#qnaContent");
-	
-	if(qnaTitle.value.length == "") {
-		e.preventDefault();
-		qnaTitle.focus();
-		return alert("제목을 입력하세요.");
-	}
-	
-	if(qnaContent.value.length == "") {
-		e.preventDefault();
-		qnaTitle.focus();
-		return alert("내용을 입력하세요.");
-	}
-	
-	
-}, false);
-
 document.querySelector("#listBtn").addEventListener("click", function(e){
 	if(confirm("작성 중인 내용이 사라집니다. 목록으로 가시겠습니까??")){
 		window.location = "/projectEtoos/user/teacherQnaMain.jsp";

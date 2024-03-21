@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/gumsaek.css" type="text/css">
+<link rel="stylesheet" href="../css/search.css" type="text/css">
 <link rel="stylesheet" href="../css/common.css" type="text/css">
 <link rel="stylesheet" href="../css/user.css" type="text/css">
 <link rel="stylesheet" href="../css/main.css" type="text/css">
@@ -268,7 +268,9 @@
 						<li><a href="">▶</a></li>
 					</ul>
 				</div>
+				</div>
 				
+				</div>
 				
 	</main>
 

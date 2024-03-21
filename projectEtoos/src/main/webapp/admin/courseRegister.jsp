@@ -99,6 +99,9 @@
 			</form>
 		</div>
 	</main>
+	<c:if test="${loginYN ne 'Y'}">
+		<script type="text/javascript" src="../js/logincheck.js" ></script>
+	</c:if> 
 	<script>
 	// 세부 강좌 추가 로직
 	let btn_add = document.querySelector("#btn_add");

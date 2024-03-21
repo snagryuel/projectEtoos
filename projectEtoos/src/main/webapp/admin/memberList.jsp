@@ -61,6 +61,9 @@
 		</div>
 	</main>
 	<%@ include file="/common/footer.jsp" %>
+	<c:if test="${loginYN ne 'Y'}">
+		<script type="text/javascript" src="../js/logincheck.js" ></script>
+	</c:if> 
 	<script>
 		function memberdelete(id){
 			if(confirm("정말로 삭제하시겠습니까?")){

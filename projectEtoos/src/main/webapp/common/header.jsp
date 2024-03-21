@@ -34,7 +34,7 @@
 							})
 	
 							admin.addEventListener("click", ()=>{
-								window.location = "/projectEtoos/admin/memberList.jsp";
+								window.location = "/projectEtoos/admin/MemberList.do";
 							})
 							</script>
 							</c:when>
