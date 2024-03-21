@@ -95,7 +95,9 @@
 		</div>
 	</main>
 	<%@ include file="/common/footer.jsp" %>
-	<script type="text/javascript" src="../js/logincheck.js" ></script> 
+	<c:if test="${loginYN ne 'Y'}">
+		<script type="text/javascript" src="../js/logincheck.js" ></script>
+	</c:if> 
 	<script>
 		// 과목 선택 클릭 이벤트
 		let selectList1 = document.querySelectorAll(".sub1 > ul > li");
