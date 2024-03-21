@@ -63,7 +63,9 @@
 	<%@ include file="/common/footer.jsp" %>
 	<script>
 		function memberdelete(id){
-			window.location = "/memberDelete.do?id="+id;
+			if(confirm("정말로 삭제하시겠습니까?")){
+				window.location = "/projectEtoos/memberDelete.do?id="+id;
+			}
 		}
 	</script>
 </body>
