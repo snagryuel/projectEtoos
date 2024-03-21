@@ -34,6 +34,7 @@ public class JoinOkController extends HttpServlet {
 		dto.setBirth(birth);
 		dto.setEmail(email);
 		dto.setGubun(gubun);
+		System.out.println("gubun2 :"+gubun);
 		dto.setId(id);
 		dto.setName(name);
 		dto.setPhone(phone);
@@ -43,7 +44,7 @@ public class JoinOkController extends HttpServlet {
 		try {
 			int result = dao.joinmember(dto);
 			if(result != 0) {
-				req.getRequestDispatcher("/Login.do").forward(req, resp);
+				req.getRequestDispatcher("/user/Main.do").forward(req, resp);
 			}else {
 				req.setAttribute("errMsg", "회원가입에 실패하였습니다 다시 확인해 주시기 바랍니다");
 				req.getRequestDispatcher("Join.do").forward(req, resp);

@@ -27,7 +27,7 @@
 			<img class="logo" alt="logo" src="https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg">
 		</div>
 		
-		<form name="frm" id="frm">
+		<form action="/projectEtoos/user/JoinOk.do" name="frm" id="frm" method="post">
 	        <input type="text" class="join_input_text_id" name="id" id="id" value="" placeholder="아이디(6자 이상, 20자 이하)" maxlength="20">
 	        <button class="overlap" name="overlap" id="overlap" >중복확인</button><br>
 	        <input type="password" class="join_input_text"  name="pwd" id="pwd" value="" placeholder="영문 + 숫자 + 특수문자 포함 8~20자 이하" maxlength="20"><br>
@@ -35,18 +35,20 @@
 	        <div id="errId" style="display: none;"></div><br>
 	        <div>(필수) 개인정보</div><br>
 	        
+	        <input type="text" class="join_input_text"  name="name" id="name" value="" placeholder="이름" maxlength="50"><br>
 	        <input type="email" class="join_input_text"  name="email" id="email" value="" placeholder="이메일" maxlength="100"><br>
 	        <input type="tel" class="join_input_text"  name="phone" id="phone" value="" placeholder="휴대폰 번호" maxlength="20"><br>
+	        <input type="hidden" name="gubun" value="${param.gubun}">
 			
 			<div class="info" id="info__birth">
 			생년월일<br><br>
-			  <select class="box" id="birth-year">
+			  <select class="box" name="birthYear" id="birth-year">
 			    <option selected>출생 연도</option>
 			  </select>
-			  <select class="box" id="birth-month">
+			  <select class="box" name="birthMonth" id="birth-month">
 			    <option selected>월</option>
 			  </select>
-			  <select class="box" id="birth-day">
+			  <select class="box" name="birthDay"  id="birth-day">
 			    <option selected>일</option>
 			  </select>
 			</div>
@@ -64,14 +66,15 @@
 <%@ include file="/common/footer.jsp" %> 
  
 <script>
-const rexForId = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,20}$/;
-const rexForPwd = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
+const rexForId = /^[0-9a-zA-Z]{6,20}$/;
+const rexForPwd = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@!#])[A-Za-z\d@!#]{8,20}$/;
 const rexForPhone = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
 const rexForEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
 let authYN = true;
-
-document.querySelector("#completeBtn").addEventListener("click", function(e){
+/* 
+let frm = document.querySelector("#frm");
+frm.addEventListener("submit", function(e){
 	e.preventDefault();
 	
 	const id = document.querySelector("#id");
@@ -80,15 +83,35 @@ document.querySelector("#completeBtn").addEventListener("click", function(e){
 	const pwdVal = document.querySelector("#pwd").value;
 	const pwd2 = document.querySelector("#pwd2");
 	const pwd2Val = document.querySelector("#pwd2").value;
+	const email = document.querySelector("#email");
+	const emailVal = document.querySelector("#email").value;
+	const phone = document.querySelector("#phone");
+	const phoneVal = document.querySelector("#phone").value;
 	
 	let errId = document.getElementById("errId");
     errId.style.display = "block";
     errId.style.color = "red";
     
-    
-    if(!rexForId.test(idVal)) {
+    if(!idVal) {
     	id.focus();
-		return errId.innerHTML="<strong>아이디는 6~20자의 영문자, 숫자만 사용 가능합니다.</strong>";
+		return errId.innerHTML="<strong>아이디를 입력해주세요.</strong>";
+    }
+    if(!pwdVal) {
+    	id.focus();
+		return errId.innerHTML="<strong>비밀번호를 입력해주세요.</strong>";
+    }
+    if(!emailVal) {
+    	email.focus();
+		return errId.innerHTML="<strong>이메일을 입력해주세요.</strong>";
+    }
+    if(!phoneVal) {
+    	phone.focus();
+		return errId.innerHTML="<strong>휴대폰을 입력해주세요.</strong>";
+    }
+    
+    if(!authYN) {
+    	id.focus();
+    	return errId.innerHTML="<strong>아이디 중복을 확인해주세요.</strong>";
     }
     
     if(!rexForId.test(idVal)) {
@@ -96,22 +119,17 @@ document.querySelector("#completeBtn").addEventListener("click", function(e){
 		return errId.innerHTML="<strong>아이디는 6~20자의 영문자, 숫자만 사용 가능합니다.</strong>";
     }
     
-	
-	
-	if(pwd.value.length < 8 || pwd.value.length > 20) {
-		e.preventDefault();
-		pwd.focus();
-		return errId.innerHTML="<strong>8~20자의 영문자, 숫자, 특수문자(!, @, #)만 사용가능합니다.</strong>";
-	}
-	
-	if(!authYN) {
-		
-	}
-	
-	else{
-		location.href = "joinInfoInput.jsp";
-	}
-}, false);
+    if(!rexForPwd.test(pwdVal)) {
+    	pwd.focus();
+    	return errId.innerHTML="<strong>8~20자의 영문자, 숫자, 특수문자(!, @, #)만 사용가능합니다.</strong>";
+    }
+    
+    if(pwdVal != pwd2Val) {
+    	pwd.focus();
+		return errId.innerHTML="<strong>비밀번호가 일치하지 않습니다.</strong>";
+    }
+    frm.submit();
+}, false); */
 
 
 
