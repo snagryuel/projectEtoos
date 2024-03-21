@@ -89,5 +89,17 @@
 	</div>
 </main>
 <jsp:include page="../common/footer.jsp" />
+<script>
+let lies = document.querySelectorAll(".tap > ul > li");
+for (let li of lies) {
+	li.addEventListener("click", ()=>{
+		for (let li2 of lies) {
+			console.log(li2);
+			li2.classList.remove("selected-tap");
+		}
+		li.classList.add("selected-tap");
+	})
+}
+</script>
 </body>
 </html>
