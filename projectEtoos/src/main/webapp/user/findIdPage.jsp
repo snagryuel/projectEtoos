@@ -44,7 +44,6 @@
 			</div>
 			
 	        <input type="tel" class="frmTel"  name="phone" id="phone" value="${requestScope.phone}" placeholder="휴대폰 번호" maxlength="20"><br>
-			<div id="errId" style="display: none;"></div><br>
 			
 	        <input type="submit" name="completeBtn" id="completeBtn" value="확인" />
 	        <input type="button" name="cancelBtn" id="cancelBtn" value="취소" />
@@ -63,7 +62,7 @@ if (${requestScope.errMsg == null ? false : true}) {
 
 let cancelBtn = document.querySelector("#cancelBtn");
 cancelBtn.addEventListener("click", (e)=>{
-	history.back();
+	window.location.replace("./FindYourInfo.do?step=1");
 });
 
 let frm = document.querySelector("#frm");
@@ -109,55 +108,6 @@ frm.addEventListener("submit", (e)=>{
     frm.submit();
 });
 
-/* let birthYearEl = document.querySelector('#birth-year');
-
-birthYearEl.addEventListener('focus', function () {
-	let today = new Date();
-
- 	for(var i = today.getFullYear()-50; i <= today.getFullYear(); i++) {
-   	let yearOption = document.createElement('option');
-   	yearOption.setAttribute('value', i);
-   	if(i == ${requestScope.birthYear == null ? 0 : requestScope.birthYear}) {
-   		yearOption.setAttribute('selected', true);
-   	}
-   	yearOption.innerText = i;
-    this.appendChild(yearOption);
-
-}
-}, false);
-
-
-let birthMonthEl = document.querySelector('#birth-month');
-
-document.addEventListener('load', function () {
-
- 	
- 	for(var i = 1; i <= 12; i++) {
-   	let monthOption = document.createElement('option');
-   	monthOption.setAttribute('value', i);
-   	if(i == ${requestScope.birthMonth == null ? 0 : requestScope.birthMonth}) {
-   		monthOption.setAttribute('selected', true);
-   	}
-   	monthOption.innerText = i;
-    this.appendChild(monthOption);
-}
-}, false);
-
-
-let birthDayEl = document.querySelector('#birth-day');
-
-birthDayEl.addEventListener('focus', function () {
-
- 	for(var i = 1; i <= 31; i++) {
-   	let dayOption = document.createElement('option');
-   	dayOption.setAttribute('value', i);
-   	if(i == ${requestScope.birthDay == null ? 0 : requestScope.birthDay}) {
-   		dayOption.setAttribute('selected', true);
-   	}
-   	dayOption.innerText = i;
-    this.appendChild(dayOption);
-}
-}, false); */
 
 window.onload = ()=> {
 	let birthYearEl = document.querySelector('#birth-year');

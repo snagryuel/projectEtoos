@@ -27,8 +27,9 @@
 <div id="content">
 	<div>
 		
-	<form name="frm" id="frm">
-       
+	<form name="frm" id="frm" action="FindInfoOk.do?flag=pwd" method="post">
+       	<input type="text" name="authYN" value="${requestScope.authYN}" readonly>
+       	<input type="text" name="id" value="${requestScope.id}" readonly>
         <input type="password" class="input_text"  name="pwd" id="pwd" value="" placeholder="영문 + 숫자 + 특수문자 포함 8~20자 이하" maxlength="20"><br>
         <input type="password" class="input_text"  name="pwd2" id="pwd2" value="" placeholder="비밀번호 재입력" maxlength="20"><br>
         <div id="errId" style="display: none;"></div><br>
@@ -43,33 +44,42 @@
 <%@ include file="/common/footer.jsp" %> 
  
 <script>
+if (${requestScope.errMsg == null ? false : true}) {
+	alert("비밀번호 변경에 실패하였습니다.");
+}
 
-document.querySelector("#completeBtn").addEventListener("click", function(e){
-	const id = document.querySelector("#id");
+const rexForPwd = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@!#])[A-Za-z\d@!#]{8,20}$/;
+
+let frm = document.querySelector("#frm");
+frm.addEventListener("submit", function(e){
+	e.preventDefault();
+	
+
 	const pwd = document.querySelector("#pwd");
+	const pwdVal = document.querySelector("#pwd").value;
+	const pwd2 = document.querySelector("#pwd2");
+	const pwd2Val = document.querySelector("#pwd2").value;
 	
-	
-	if(id.value.length < 6 || id.value.length > 20) {
-        let errId = document.getElementById("errId");
-        errId.style.display = "block";
-        errId.style.color = "red";
-		e.preventDefault();
-		id.focus();
-		return errId.innerHTML="<strong>아이디는 6~20자의 영문자, 숫자만 사용 가능합니다.</strong>";
-	}
-	
-	if(pwd.value.length < 8 || pwd.value.length > 20) {
-        let errId = document.getElementById("errId");
-        errId.style.display = "block";
-        errId.style.color = "red";
-		e.preventDefault();
-		pwd.focus();
-		return errId.innerHTML="<strong>비밀번호를 8~20자의 영문자, 숫자, 특수문자(!, @, #)만 사용가능합니다.</strong>";
-	}
-	
-	else{
-		location.href = "joinInfoInput.jsp";
-	}
+	let errId = document.getElementById("errId");
+    errId.style.display = "block";
+    errId.style.color = "red";
+  
+    // 비밀번호 관련
+    if(!pwdVal) {
+    	pwd.focus();
+		return errId.innerHTML="<strong>비밀번호를 입력해주세요.</strong>";
+    }
+    if(!rexForPwd.test(pwdVal)) {
+    	pwd.focus();
+    	return errId.innerHTML="<strong>8~20자의 영문자, 숫자, 특수문자(!, @, #)만 사용가능합니다.</strong>";
+    }
+    
+    if(pwdVal != pwd2Val) {
+    	pwd.focus();
+		return errId.innerHTML="<strong>비밀번호가 일치하지 않습니다.</strong>";
+    }
+    
+    frm.submit();
 }, false);
 
 

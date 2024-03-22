@@ -32,19 +32,29 @@
 	<div>
 		<!-- 아이디 출력 -->
 		<div id="idView">
-			<p>abcde123</p>
+			<p>${requestScope.id}</p>
 		</div>
 		<form name="frm" id="frm">
-
-	        <input type="submit" class="loginBtn" name="loginBtn" id="loginBtn" value="로그인하러 가기" />
-	        <input type="submit" class="pwdFindBtn" name="pwdFindBtn" id="pwdFindBtn" value="비밀번호 찾기" /> 
+	        <input type="button" class="loginBtn" name="loginBtn" id="loginBtn" value="로그인하러 가기" />
+	        <input type="button" class="pwdFindBtn" name="pwdFindBtn" id="pwdFindBtn" value="비밀번호 찾기" /> 
     	</form>
 
 	</div>
 </div>
 
 <%@ include file="/common/footer.jsp" %> 
- 
+<script>
+let loginBtn = document.querySelector("#loginBtn");
+let pwdFindBtn = document.querySelector("#pwdFindBtn");
+
+loginBtn.addEventListener("click", ()=>{
+	window.location = "Login.do";
+})
+
+pwdFindBtn.addEventListener("click", ()=>{
+	window.location = "FindYourInfo.do?step=2&flag=pwd";
+})
+</script> 
 
 </body>
 </html>

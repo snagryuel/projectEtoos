@@ -34,7 +34,7 @@
             <input type="submit" class="login_input_btn" value="Login" onclick="loginOk()" >
         </form>
         <div class="find_info"><br>
-            <a id="find_id" href="#">계정 찾기</a><a> |</a>
+            <a id="find_id" href="FindYourInfo.do?step=1&flag=">계정 찾기</a><a> |</a>
             <a id="joinPage" href="Join.do">회원가입</a>
         </div>
   	</div>

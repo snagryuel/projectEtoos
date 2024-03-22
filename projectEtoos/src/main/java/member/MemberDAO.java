@@ -83,8 +83,9 @@ public class MemberDAO extends JDBConnect {
 	
 	public MemberDTO getMemberInfoForId(MemberDTO dto) {
 		
-		String sql = "SELECT id FROM tbl_member WHERE name=? AND birth=? phone=? ";			
-		String id= null;
+		MemberDTO result = new MemberDTO();
+		
+		String sql = "SELECT id, name, birth, phone FROM tbl_memberlist WHERE name=? AND birth=? AND phone=? ";			
 		String name= dto.getName();
 		String birth= dto.getBirth();
 		String phone= dto.getPhone();
@@ -94,71 +95,72 @@ public class MemberDAO extends JDBConnect {
 			psmt.setString(1, name);
 			psmt.setString(2, birth);
 			psmt.setString(3, phone);
-
-
+			
 			rs = psmt.executeQuery();
 			
-			while(rs.next()) {
-				
-				id= rs.getString("id");
-				
+			if(rs.next()) {
+				result.setId(rs.getString("id"));
+				result.setName(rs.getString("name"));
+				result.setBirth(rs.getString("birth"));
+				result.setPhone(rs.getString("phone"));
 			}
-		
-			/*if(rs.next()) {
-				if ( rs.getString("name").equals(name) && rs.getString("birth").equals(birth) &&rs.getString("phone").equals(phone)  ){
-					dto.setId(rs.getString("id"));
-					dto.setName(rs.getString("name"));
-					dto.setPwd(rs.getString("pwd"));
-					dto.setBirth(rs.getString("birth"));
-					dto.setAddr(rs.getString("addr"));
-				}
-				
-			} */
-			
-			dto.setId(id);
-			
 		} catch(Exception e) {
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}
-		
-		return dto;
-
+		return result;
 	}		
+	
+public MemberDTO getMemberInfoForPwd(MemberDTO dto) {
+		
+		MemberDTO result = new MemberDTO();
+		
+		String sql = "SELECT id, name, birth, phone FROM tbl_memberlist WHERE id=? AND name=? AND birth=? AND phone=? ";			
+		String id= dto.getId();
+		String name= dto.getName();
+		String birth= dto.getBirth();
+		String phone= dto.getPhone();
+		
+		try{
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			psmt.setString(2, name);
+			psmt.setString(3, birth);
+			psmt.setString(4, phone);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				result.setId(rs.getString("id"));
+				result.setName(rs.getString("name"));
+				result.setBirth(rs.getString("birth"));
+				result.setPhone(rs.getString("phone"));
+			}
+		} catch(Exception e) {
+			e.printStackTrace(); 
+		}
+		return result;
+	}
 		
 	public int updatePwd(MemberDTO dto) {
 
 		int result = 0;
-		String pwd = dto.getPwd();
 		String id = dto.getId();
-		String name = dto.getName();
-		String phone = dto.getPhone();
-		String sql = "SELECT id, name, pwd, birth, addr  FROM tbl_memberlist WHERE id=? AND name=? AND birth=? AND phone=?" ;
-		
-		
+		System.out.println(id);
+		String pwd = dto.getPwd();
+		System.out.println(pwd);
+
+		String sql = "UPDATE tbl_memberlist SET pwd=? WHERE id=?" ;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1,id);
-			psmt.setString(2,name);
-			psmt.setString(3,phone);
-			rs = psmt.executeQuery();
-			if(rs.next()) {
-					sql = "UPDATE tbl_memberList "
-							+ "SET pwd=? WHERE id=? "; 
-					
-					psmt = conn.prepareStatement(sql);
-					psmt.setString(1, pwd);
-					psmt.setString(2, id);
-					result = psmt.executeUpdate();
-				}
-
+			psmt.setString(1,pwd);
+			psmt.setString(2,id);
 			
+			System.out.println(psmt);
+			result = psmt.executeUpdate();	
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
 		return result;
-		
-
 	}
 	public int MemberUpdate(MemberDTO dto) {
 		int result = 0;

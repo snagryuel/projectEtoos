@@ -160,12 +160,6 @@ frm.addEventListener("submit", function(e){
     	day.focus();
     	return errId.innerHTML="<strong>생년월일을 입력해주세요.</strong>";
     }
-    
-    
-    
-    
-    
-    
     frm.submit();
 }, false);
 
