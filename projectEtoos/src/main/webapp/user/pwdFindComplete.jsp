@@ -37,7 +37,7 @@
 
 <script>
 document.querySelector("#loginGo").addEventListener("click", function(e){
-	location.href = "login.jsp";	
+	location.href = "Login.do";	
 }, false);
 
 </script>

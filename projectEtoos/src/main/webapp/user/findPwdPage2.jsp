@@ -28,8 +28,8 @@
 	<div>
 		
 	<form name="frm" id="frm" action="FindInfoOk.do?flag=pwd" method="post">
-       	<input type="text" name="authYN" value="${requestScope.authYN}" readonly>
-       	<input type="text" name="id" value="${requestScope.id}" readonly>
+       	<input type="hidden" name="authYN" value="${requestScope.authYN}" readonly>
+       	<input type="hidden" name="id" value="${requestScope.id}" readonly>
         <input type="password" class="input_text"  name="pwd" id="pwd" value="" placeholder="영문 + 숫자 + 특수문자 포함 8~20자 이하" maxlength="20"><br>
         <input type="password" class="input_text"  name="pwd2" id="pwd2" value="" placeholder="비밀번호 재입력" maxlength="20"><br>
         <div id="errId" style="display: none;"></div><br>

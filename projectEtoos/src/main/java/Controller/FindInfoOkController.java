@@ -123,7 +123,7 @@ public class FindInfoOkController extends HttpServlet {
 				int result = dao.updatePwd(dto);
 				
 				if(result != 0) {
-					resp.sendRedirect("Main.do?pwdChange=ok");
+					req.getRequestDispatcher("/user/pwdFindComplete.jsp").forward(req, resp);
 				} else {
 					req.setAttribute("authYN", authYN);
 					req.setAttribute("errMsg", "정보 불일치");
