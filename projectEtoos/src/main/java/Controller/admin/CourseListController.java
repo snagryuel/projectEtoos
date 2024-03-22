@@ -33,6 +33,7 @@ public class CourseListController extends HttpServlet {
 		String sub3 = req.getParameter("sub3")==null?"":req.getParameter("sub3");
 		
 		String queryString = "sub1=" + sub1 + "&sub2=" + sub2 + "&sub3=" + sub3;
+		System.out.println("queryString : " + queryString);
 		
 		AdminDAO dao = new AdminDAO();
 		List<AdminDTO> courseList = dao.CourseInfo(sub1, sub2, sub3);

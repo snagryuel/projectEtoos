@@ -22,7 +22,7 @@ public class CourseDAO extends JDBConnect {
 		if(!sub2.equals("")) {
 			sb.append(" AND sub2 = ?");
 		}
-		if(!sub2.equals("")) {
+		if(!sub3.equals("")) {
 			sb.append(" AND teacherId = ?");
 		}
 		

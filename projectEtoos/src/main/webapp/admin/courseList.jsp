@@ -18,7 +18,7 @@
 		<div class="container">
 			<h1 id="title">강좌 조회</h1>
 			<div class="search-area">
-				<form action="" id="frm" class="gird" method="post">
+				<form action="" id="frm" class="gird" method="get">
 					<div class="sub1 select-list">
 						<input type="hidden" name="sub1" id="sub1" value="${sub1 }">
 						<p>과목</p>
@@ -70,19 +70,32 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:set var="i" value="${totalCount - (((pageSelected != null ? pageSelected : 1)-1) * 10)}" />
-					<c:forEach var = "list" items="${courseList }">
-						<tr>
-							<td>${i}</td>
-							<td>${list.coursename }</td>
-							<td>${list.name }</td>
-							<td>${list.sub1 }</td>
-							<td>${list.sub2 }</td>
-							<td>${list.sugangStart } ~ ${list.sugangEnd }</td>
-							<td><button onclick ="location.">수정</button><button>삭제</button></td>
-						</tr>
-						<c:set var="i" value="${i - 1}"/>
-					</c:forEach>
+					
+					<c:choose>
+						<c:when test="${totalCount != null && totalCount != 0}">
+							<c:set var="i" value="${totalCount - (((pageSelected != null ? pageSelected : 1)-1) * 10)}" />
+							<c:forEach var = "list" items="${courseList }">
+								<c:set var="thisUrl">
+									CourseView.do?courseIdx=${list.courseIdx}&pageSelected=${(param.pageSelected != null) ? param.pageSelected : 1 }&sub1=${param.sub1}&sub2=${param.sub2}&sub3=${param.sub3}					
+								</c:set>
+								<tr>
+									<td><a href="${thisUrl}">${i}</a></td>
+									<td>${list.coursename }</td>
+									<td>${list.name }</td>
+									<td>${list.sub1 }</td>
+									<td>${list.sub2 }</td>
+									<td>${list.sugangStart } ~ ${list.sugangEnd }</td>
+									<td><button onclick ="location.">수정</button><button>삭제</button></td>
+								</tr>
+								<c:set var="i" value="${i - 1}"/>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td colspan="7">표시할 내용이 없습니다.</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
 					</tbody>
 				</table>
 				<div class="paging">
@@ -156,7 +169,9 @@
 		
 		// 초기화
 		let reset = document.querySelector(".reset");
-		reset.addEventListener("click", ()=> {
+		reset.addEventListener("click", (e)=> {
+			e.preventDefault();
+			console.log("바보");
 			for (let i of selectList1) {i.classList.remove("selected");}
 			for (let i of selectList2) {i.classList.remove("selected");}
 			for (let i of selectList3) {i.classList.remove("selected");}
@@ -177,7 +192,7 @@
 		
 		for(let i of nextes){
 			i.addEventListener("click", (e) => {
-				if(${(param.pageSelected != null) ? param.pageSelected : 1} == ${requestScope.totalPage}) {
+				if(${(param.pageSelected != null) ? param.pageSelected : 1} >= ${requestScope.totalPage}) {
 					e.preventDefault();
 					alert("마지막 페이지 입니다.");
 				} 

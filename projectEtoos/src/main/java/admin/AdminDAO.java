@@ -12,7 +12,7 @@ public class AdminDAO extends JDBConnect{
 		int cnt = 1;
 		List<AdminDTO> list = new Vector<AdminDTO>();
 		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT courseName, sugangStart, sugangEnd , sub1, sub2, name");
+		sb.append("SELECT courseIdx, courseName, sugangStart, sugangEnd , sub1, sub2, name");
 		sb.append(" FROM tbl_courselist AS tc ");
 		sb.append(" INNER JOIN tbl_teacherlist AS tt ON tc.teacherid = tt.id");
 		sb.append(" INNER JOIN tbl_subject AS ts ON tt.subkey = ts.subKey");
@@ -49,6 +49,7 @@ public class AdminDAO extends JDBConnect{
 				dto.setSub1(rs.getString("sub1"));
 				dto.setSub2(rs.getString("sub2"));
 				dto.setName(rs.getString("name"));
+				dto.setCourseIdx(rs.getInt("courseIdx"));
 				list.add(dto);
 			}
 		}catch(Exception e) {

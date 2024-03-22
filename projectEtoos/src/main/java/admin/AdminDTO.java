@@ -1,6 +1,7 @@
 package admin;
 
 public class AdminDTO {
+	private int courseIdx;
 	private String coursename;
 	private String sugangStart;
 	private String sugangEnd;
@@ -63,5 +64,11 @@ public class AdminDTO {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public int getCourseIdx() {
+		return courseIdx;
+	}
+	public void setCourseIdx(int courseIdx) {
+		this.courseIdx = courseIdx;
 	}
 }
