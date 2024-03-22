@@ -1,8 +1,12 @@
 package board;
 
-public class boardDTO {
-	public boardDTO() {}
-	
+public class TeacherDTO {
+	public TeacherDTO() {}
+	private String coursename;
+	private String sugangStart;
+	private String sugangEnd;
+	private String sub1;
+	private String sub2;
 	private String id;
 	private String name;
 	private String gubun;
@@ -12,6 +16,66 @@ public class boardDTO {
 	private String birth;
 	private String addr;
 	private String state;
+	/**
+	 * @return the coursename
+	 */
+	public String getCoursename() {
+		return coursename;
+	}
+	/**
+	 * @param coursename the coursename to set
+	 */
+	public void setCoursename(String coursename) {
+		this.coursename = coursename;
+	}
+	/**
+	 * @return the sugangStart
+	 */
+	public String getSugangStart() {
+		return sugangStart;
+	}
+	/**
+	 * @param sugangStart the sugangStart to set
+	 */
+	public void setSugangStart(String sugangStart) {
+		this.sugangStart = sugangStart;
+	}
+	/**
+	 * @return the sugangEnd
+	 */
+	public String getSugangEnd() {
+		return sugangEnd;
+	}
+	/**
+	 * @param sugangEnd the sugangEnd to set
+	 */
+	public void setSugangEnd(String sugangEnd) {
+		this.sugangEnd = sugangEnd;
+	}
+	/**
+	 * @return the sub1
+	 */
+	public String getSub1() {
+		return sub1;
+	}
+	/**
+	 * @param sub1 the sub1 to set
+	 */
+	public void setSub1(String sub1) {
+		this.sub1 = sub1;
+	}
+	/**
+	 * @return the sub2
+	 */
+	public String getSub2() {
+		return sub2;
+	}
+	/**
+	 * @param sub2 the sub2 to set
+	 */
+	public void setSub2(String sub2) {
+		this.sub2 = sub2;
+	}
 	/**
 	 * @return the id
 	 */
@@ -120,5 +184,6 @@ public class boardDTO {
 	public void setState(String state) {
 		this.state = state;
 	}
+
 
 }
