@@ -30,7 +30,7 @@
 						<c:choose>
 							<c:when test="${ gubun == 0 }">
 							<li><button id="logout">로그아웃</button></li>
-							<li><button id="admin">관라자</button></li>
+							<li><button id="admin">관리자</button></li>
 							<script>
 							let logout = document.querySelector("#logout");
 							let admin = document.querySelector("#admin");
