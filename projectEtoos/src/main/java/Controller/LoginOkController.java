@@ -64,7 +64,7 @@ public class LoginOkController extends HttpServlet {
 				resp.sendRedirect("Main.do");
 			} else {
 			req.setAttribute("errMsg", "로그인 오류");
-			resp.sendRedirect("/projectEtoos/user/Login.do");
+			resp.sendRedirect("/projectEtoos/user/Login.do?errMsg=err");
 			}	
 		} else {
 			session.invalidate();

@@ -7,7 +7,7 @@
 <div id="header">
 	<div class="container">
 		<div class="nav">
-			<h1><a href="/projectEtoos/user/main.jsp"><img src="https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg"></a></h1>
+			<h1><a href="Main.do"><img src="https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg"></a></h1>
 			<ul>
 				<li><a href="/projectEtoos/user/teacherList.jsp" id="teacher" <c:if test="${param.page_gubun eq 1 }">class="selected"</c:if>>선생님</a></li>
 				<li><a href="#" id="course" <c:if test="${param.page_gubun eq 2 }">class="selected"</c:if>>전체강좌</a></li>	
