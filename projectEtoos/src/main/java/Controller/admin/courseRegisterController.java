@@ -16,12 +16,11 @@ public class courseRegisterController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int idx = 0;
+		int idx = Integer.parseInt(req.getParameter("idx"));
 		AdminDAO dao =new AdminDAO();
 		
 		CourseDTO courseList = dao.getCourseList(idx);
 		CourseDTO sesbuList = dao.getCourseSebu(idx);
-		System.out.println("####"+courseList.getCourseName());
 		req.setAttribute("courseList",courseList);
 		req.setAttribute("sesbuList",sesbuList);
 		

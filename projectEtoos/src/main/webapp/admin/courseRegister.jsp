@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@
 					<caption>기본정보</caption>
 					<tr>
 						<th>강좌명</th>
-						<td><input type="text" name="courseName" id="courseName" maxlength="100" value = "${courseList.get }"></td>
+						<td><input type="text" name="courseName" id="courseName" maxlength="100" value = "${courseList.courseName }"></td>
 					</tr>
 					<tr>
 						<th>선생님</th>
@@ -35,11 +36,11 @@
 					</tr>
 					<tr>
 						<th>수강기간</th>
-						<td><input type="date" name="sugangStart" id="sugangStart"> ~ <input type="date" name="sugangEnd" id="sugangEnd"></td>
+						<td><input type="date" name="sugangStart" id="sugangStart" value="${courseList.sugangStart }"> ~ <input type="date" name="sugangEnd" id="sugangEnd" value = "${courseList.sugangEnd }"></td>
 					</tr>
 					<tr>
 						<th>강좌구성</th>
-						<td><input type="text" name="guseong" id="guseong" maxlength="20"></td>
+						<td><input type="text" name="guseong" id="guseong" maxlength="20" value="${courseList.guseong }"></td>
 					</tr>
 					<tr>
 						<th>미리보기 영상</th>
@@ -50,15 +51,15 @@
 					<caption>강좌정보</caption>
 					<tr>
 						<th>강좌범위</th>
-						<td><textarea name="gangBumwi" id="gangBumwi" cols="100" rows="5"></textarea></td>
+						<td><textarea name="gangBumwi" id="gangBumwi" cols="100" rows="5">${courseList.gangBumwi }</textarea></td>
 					</tr>
 					<tr>
 						<th>강좌특징</th>
-						<td><textarea name="gangChar" id="gangChar" cols="100" rows="5"></textarea></td>
+						<td><textarea name="gangChar" id="gangChar" cols="100" rows="5">${courseList.gangChar }</textarea></td>
 					</tr>
 					<tr>
 						<th>수강대상</th>
-						<td><input type="text" name="range" id="range" maxlength="20"></td>
+						<td><input type="text" name="range" id="range" maxlength="20" value = "${courseList.range }"></td>
 					</tr>
 				</table>
 				<table>

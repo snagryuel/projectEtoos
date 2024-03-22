@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
 
+import board.CourseDTO;
 import common.JDBConnect;
 
 public class AdminDAO extends JDBConnect{
@@ -209,5 +210,13 @@ public class AdminDAO extends JDBConnect{
 			e.printStackTrace();
 		}
 		return totalCount;
+	}
+	public CourseDTO getCourseList(int idx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public CourseDTO getCourseSebu(int idx) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

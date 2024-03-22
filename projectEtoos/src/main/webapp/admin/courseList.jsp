@@ -85,7 +85,7 @@
 									<td>${list.sub1 }</td>
 									<td>${list.sub2 }</td>
 									<td>${list.sugangStart } ~ ${list.sugangEnd }</td>
-									<td><button onclick ="location.">수정</button><button>삭제</button></td>
+									<td><button onclick ="modify(${list.courseIdx});">수정</button><button>삭제</button></td>
 								</tr>
 								<c:set var="i" value="${i - 1}"/>
 							</c:forEach>
@@ -171,10 +171,12 @@
 		let reset = document.querySelector(".reset");
 		reset.addEventListener("click", (e)=> {
 			e.preventDefault();
-			console.log("바보");
 			for (let i of selectList1) {i.classList.remove("selected");}
 			for (let i of selectList2) {i.classList.remove("selected");}
 			for (let i of selectList3) {i.classList.remove("selected");}
+			value1.value = "";
+			value2.value = "";
+			value3.value = "";
 		})
 		
 		// 페이징 첫번째, 마지막 페이지 알럿
@@ -198,6 +200,9 @@
 				} 
 			})
 
+		}
+		function modify(idx){
+			location.href="/projectEtoos/admin/CourseRegister.do?idx="+idx;
 		}
 	</script>
 </body>

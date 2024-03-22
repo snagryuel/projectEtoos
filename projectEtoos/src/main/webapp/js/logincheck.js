@@ -1,2 +1,2 @@
 alert("로그인하고 와라...");
-//window.history.back();
+window.location ="/projectEtoos/user/Login.do";
