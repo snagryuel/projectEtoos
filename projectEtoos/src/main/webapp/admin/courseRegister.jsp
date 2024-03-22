@@ -20,7 +20,7 @@
 					<caption>기본정보</caption>
 					<tr>
 						<th>강좌명</th>
-						<td><input type="text" name="courseName" id="courseName" maxlength="100"></td>
+						<td><input type="text" name="courseName" id="courseName" maxlength="100" value = "${courseList.get }"></td>
 					</tr>
 					<tr>
 						<th>선생님</th>

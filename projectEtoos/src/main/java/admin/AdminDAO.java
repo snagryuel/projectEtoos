@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
 
+import board.CourseDTO;
 import common.JDBConnect;
 
 public class AdminDAO extends JDBConnect{
@@ -188,5 +189,52 @@ public class AdminDAO extends JDBConnect{
 			e.printStackTrace();
 		}
 		return totalCount;
+	}
+	public CourseDTO getCourseList(int idx) {
+		CourseDTO dto = new CourseDTO();
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("SELECT teacherid, coursename, sugangStart, sugangEnd, guseong,");
+		sb.append(" gangBumwi, gangChar, `RANGE`, bookName, bookIntro");
+		sb.append(" FROM tbl_courselist WHERE courseIdx = ?");
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			psmt.setInt(1, idx);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				dto.setTeacherId(rs.getString("teacherid"));
+				dto.setCourseName(rs.getString("coursename"));
+				dto.setSugangStart(rs.getString("sugangStart"));
+				dto.setSugangEnd(rs.getString("sugangEnd"));
+				dto.setGuseong(rs.getString("guseong"));
+				dto.setGangBumwi(rs.getString("gangBumwi"));
+				dto.setGangChar(rs.getString("gangChar"));
+				dto.setRange(rs.getString("RANGE"));
+				dto.setBookName(rs.getString("bookname"));
+				dto.setBookIntro(rs.getString("bookIntro"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
+	public CourseDTO getCourseSebu(int idx) {
+		CourseDTO dto = new CourseDTO();
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("SELECT teacherid, coursename, sugangStart, sugangEnd, guseong,");
+		sb.append(" gangBumwi, gangChar, `RANGE`, bookName, bookIntro");
+		sb.append(" FROM tbl_courselist WHERE courseIdx = ?");
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			psmt.setInt(1, idx);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				dto.setTeacherId(rs.getString("teacherid"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return dto;
 	}
 }
