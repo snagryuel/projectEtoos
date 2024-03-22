@@ -109,7 +109,7 @@ main {
 	width : 400px;
 }
 main .container {
-	height : 1000px;
+	height : auto;
 	padding : 20px;
 	margin : 0;
 	
@@ -285,6 +285,7 @@ main .container .wrapper .list > form > button {
 }
 
 
+
 /*Q&A 리스트*/
 
 main .container .topDiv {
@@ -417,6 +418,7 @@ main .container .qnaBorad .searchDiv .searchBtn:hover {
 
 
 /*학습 Q&A 질문 작성, 답변 작성, 공지사항 작성 페이지*/
+
 main .container .qnaDiv {
 	width: 800px;
 	height: 600px;
@@ -498,6 +500,7 @@ main .container .qnaDiv .qnaBtnElement .listBtn:hover {
 }
 
 /*qnaPostView 질문글 보기, 답변글 보기, 공지사항 보기 페이지*/
+
 main .container .qnaViewDiv {
 	width: 800px;
 	height: 500px;
@@ -523,9 +526,7 @@ main .container .qnaViewDiv .qnaViewTable tr th {
 main .container .qnaViewDiv .qnaViewTable tr td {
 	padding-top: 40px;
     text-align: left;
-    border-bottom: 2px solid #adadad;
-    
-    
+    border-bottom: 2px solid #adadad; 
 }
 
 main .container .qnaViewDiv .qnaBtnElement .listBtn {
@@ -578,3 +579,254 @@ main .container .qnaViewDiv .preNextDiv tr td:first-child  {
 	width: 80px;
 	text-align: center;
 } 
+
+/*강좌 상세 페이지*/
+main .container .detailCorsDiv {
+	margin: 0 auto;
+	width: 1000px;
+	display: grid;
+	grid-template-columns: 500px 500px;
+    grid-template-rows: 430px 480px 500px;
+}
+
+main .container .detailCorsDiv .prvwVideo {
+	grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+main .container .detailCorsDiv .courseDetailDiv {
+	grid-column: 2/3;
+    grid-row: 1/2;  
+}
+
+main .container .detailCorsDiv .courseDetailConDiv {
+	grid-column: 1/3;
+    grid-row: 2/3;
+    display: grid;
+}
+
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .courseConfigure {
+	grid-column: 1/3;
+    grid-row: 3/4;
+    margin-top:30px;
+}
+
+main .container .detailCorsDiv .courseDetailDiv tr {
+	border-bottom: 1px solid #adadad;
+}
+
+main .container .detailCorsDiv .courseDetailDiv tr:first-child {
+	padding: 10px;
+	border-top: 2px solid #adadad;
+	text-align: left;
+}
+
+main .container .detailCorsDiv .courseDetailDiv tr:nth-last-child(1) {
+	border-bottom: 2px solid #adadad;
+}
+
+main .container .detailCorsDiv .courseDetailDiv tr td:nth-child(2) {
+	padding: 10px;
+	width: 400px;
+	border-bottom: 1px solid #adadad;
+}
+
+main .container .detailCorsDiv .courseDetailDiv tr td:first-child  {
+	background-color: rgba(105, 193, 208, 0.69);
+	width: 100px;
+	text-align: center;
+} 
+
+main .container .detailCorsDiv .courseDetailDiv h1 {
+	font-weight: bold;
+	font-size: 25px;
+	margin: 15px 10px;
+}
+
+
+main .container .detailCorsDiv .courseDetailDiv .courseApplyBtn {
+    width: 400px;
+    height: 50px;
+    border-radius: 11px;
+    background-color: rgba(22, 121, 197, 0.684);
+    font-weight: bold;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 30px 0 0 50px;
+}
+
+main .container .detailCorsDiv .courseDetailDiv .courseApplyBtn:hover {
+	border: 1px solid rgba(22, 121, 197, 0.684);
+	color: rgba(22, 121, 197, 0.684);
+	background-color: #ffffff;
+}
+
+main .container .detailCorsDiv .courseDetailConDiv {
+	width: 1000px;
+	height: 40px;
+}
+
+
+main .container .detailCorsDiv .courseDetailConDiv ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .courseTab {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .courseTab .tabItem {
+  padding: 0.6rem 1.3rem;
+  border: 1px solid #ddd;
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .courseTab .tabItem.active {
+  display: inline-block;
+  border: 1px solid #b81c0f;
+  border-bottom: #fff;
+  background-color: #b81c0f;
+  color: #fff;
+}
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap {
+  padding: 1rem;
+  height:1000px;
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent {
+  display: none;
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent.active {
+  display: block;
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap h3 {
+	font-weight: bold;
+	font-size: 25px;
+	margin: 20px 10px 10px 10px;
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent tr {
+	border-bottom: 1px solid #adadad;
+	height: 40px;
+}
+
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent tr:first-child {
+	padding: 10px;
+	border-top: 2px solid #adadad;
+	text-align: left;
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent tr:nth-last-child(1) {
+	border-bottom: 2px solid #adadad;
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent td:nth-child(2) {
+	padding: 10px;
+	border-bottom: 1px solid #adadad;
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .courseInfoTable tr td:first-child  {
+	background-color: rgba(105, 193, 208, 0.69);
+	width: 100px;
+	text-align: center;
+	
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .bookInfo h3 {
+	font-weight: bold;
+	font-size: 25px;
+	margin: 15px 0;
+	display: flex;
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .bookInfo .bookImg {
+	border: 2px solid #adadad;
+	width: 100px;
+	height: 120px;
+	margin-right: 20px;
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .bookInfo {
+	margin: 30px 10px;
+	height: 150px;
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .bookInfo .bookInfoTable tr td:first-child  {
+	background-color: rgba(105, 193, 208, 0.69);
+	width: 100px;
+	text-align: center;
+
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .bookInfo .bookInfoTable tr td:last-child  {
+	width: 700px;
+	height: 53px;
+
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .bookInfo .bookInfoTable {
+	width: 780px;
+	height: 50%;
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .bookInfo > div {
+	display: flex;
+	height: 80px;
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .courseConfigure .courseConfiTable {
+	width: 100%;
+	
+} 
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .courseConfigure h3 {
+	font-weight: bold;
+	font-size: 25px;
+	margin-left: 10px;
+	margin-top: 30px;
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .courseConfigure .courseConfiTable th {
+	width: 900px;
+	text-align: left;
+	border-bottom: 2px solid #adadad;
+	padding-top: 10px;
+	padding-left:185px;
+	
+}
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .courseConfigure .courseConfiTable tr {
+	border-bottom: 1px solid #adadad;
+	height: 40px;
+	
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .courseConfigure .courseConfiTable tr:first-child {
+	padding: 10px;
+	border-top: 2px solid #adadad;
+
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .courseConfigure .courseConfiTable tr td:first-child  {
+	width: 300px;
+	text-align: center;
+	
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .courseConfigure .courseConfiTable tr:nth-last-child(1) {
+	border-bottom: 2px solid #adadad;
+}
+
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .courseConfigure .courseConfiTable td:nth-child(2) {
+	padding: 10px;
+	border-bottom: 1px solid #adadad;
+	padding-left:200px;
+}
