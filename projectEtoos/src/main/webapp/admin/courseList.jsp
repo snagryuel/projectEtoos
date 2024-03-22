@@ -77,7 +77,7 @@
 							<td>${list.sub1 }</td>
 							<td>${list.sub2 }</td>
 							<td>${list.sugangStart } ~ ${list.sugangEnd }</td>
-							<td><button>수정</button><button>삭제</button></td>
+							<td><button onclick ="location.">수정</button><button>삭제</button></td>
 						</tr>
 					</c:forEach>
 					</tbody>

@@ -13,7 +13,9 @@
 <body>
 <jsp:include page="../common/header.jsp" ></jsp:include>
 <jsp:include page="../common/footer.jsp"></jsp:include>
-<jsp:include page="../common/mypageSidebar.jsp" ></jsp:include>
+<jsp:include page="../common/mypageSidebar.jsp" >
+	<jsp:param value="2" name="sideNum"/>
+</jsp:include>
 
 <main>
 	<div class="container">
