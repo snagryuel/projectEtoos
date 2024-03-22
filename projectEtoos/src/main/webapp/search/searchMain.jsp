@@ -15,6 +15,19 @@
 <link rel="stylesheet" href="../css/main.css" type="text/css">
 <link rel="stylesheet" href="../css/reset.css" type="text/css">
 
+<%
+String searchWord = request.getParameter("search_word");
+if (searchWord == null) {
+    searchWord = "";
+}
+
+// 검색 결과 수 계산 로직
+//int resultCount = ... ;
+%>
+
+
+
+
 </head>
 <body>
 	<jsp:include page="../common/header.jsp">
@@ -33,7 +46,7 @@
 				</div>
 
 				<div class="gumsaekGyelGwa">
-					<p id="gyeolGwadata">ㅇㅇㅇ 에 대한 검색결과 00건</p>
+   					 <p id="gyeolGwadata"><%= searchWord %> 에 대한 검색결과 ${resultCount}건</p>
 				</div>
 			</div>
 
