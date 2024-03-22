@@ -144,9 +144,7 @@ public MemberDTO getMemberInfoForPwd(MemberDTO dto) {
 
 		int result = 0;
 		String id = dto.getId();
-		System.out.println(id);
 		String pwd = dto.getPwd();
-		System.out.println(pwd);
 
 		String sql = "UPDATE tbl_memberlist SET pwd=? WHERE id=?" ;
 		try {
@@ -154,7 +152,6 @@ public MemberDTO getMemberInfoForPwd(MemberDTO dto) {
 			psmt.setString(1,pwd);
 			psmt.setString(2,id);
 			
-			System.out.println(psmt);
 			result = psmt.executeUpdate();	
 		}catch(Exception e) {
 			e.printStackTrace();

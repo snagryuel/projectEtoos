@@ -36,7 +36,7 @@ public class LoginOkController extends HttpServlet {
 			dto.setPwd(pwd);
 			
 			// DB 접근해서 데이터 갖고오는 부분 필요
-			MemberDAO dao = new MemberDAO();  // DAO에서 DTO 객체를 보내서 그걸로 처리하고, close()도 그 안에서 했으면 좋겠다.
+			MemberDAO dao = new MemberDAO();  
 			MemberDTO target = dao.getMemberInfo(dto);
 			
 			String targetId = (target.getId() != null) ? target.getId() : "";
