@@ -233,4 +233,20 @@ public MemberDTO getMemberInfoForPwd(MemberDTO dto) {
 		}
 		return dto;
 		}	
+	public String getFile() {
+		String sql = "SELECT * FROM tbl_filemanage";
+		String file = "";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				String path = rs.getString("filepath");
+				String name = rs.getString("filename");
+				file = path+name;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return file;
+	}
 }

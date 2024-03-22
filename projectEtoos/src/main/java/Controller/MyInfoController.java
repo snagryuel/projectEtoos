@@ -20,7 +20,17 @@ public class MyInfoController extends HttpServlet {
 		String id = (String) session.getAttribute("id");
 		MemberDAO dao = new MemberDAO();
 		MemberDTO result = dao.getMemberInfo(id);
+		String path = dao.getFile();
+		path = path.replace("\\", "/");
+		String birth = result.getBirth();
+		String birthYear = birth.substring(0,4);
+		String birthMonth = birth.substring(birth.indexOf("-")+1,birth.lastIndexOf("-"));
+		String birthDay = birth.substring(birth.lastIndexOf("-")+1);
+		req.setAttribute("birthYear", birthYear);
+		req.setAttribute("birthMonth", birthMonth);
+		req.setAttribute("birthDay", birthDay);
 		req.setAttribute("result", result);
+		req.setAttribute("path", path);
 		req.getRequestDispatcher("/mypage/myInfoModify.jsp").forward(req, resp);
 	}
 

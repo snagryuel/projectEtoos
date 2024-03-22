@@ -24,7 +24,7 @@
 		
 		<div class="content">
 			<div>	
-			<form name="frm" id="frm" method = "post" action ="/MypageModifyController")>
+			<form name="frm" id="frm" method = "post" action = "./mypagemodify.do">
 			    <span>(*)이름</span><input type="text" class="input_text"  name="name" id="name" value="${result.name }" placeholder="이름" maxlength="20"><br>
 			    <span>(*)휴대폰 번호</span><input type="tel" class="input_text"  name="phone" id="phone" value="${result.phone }" placeholder="휴대폰 번호" maxlength="20"><br>
 			    <span>(*)이메일</span><input type="email" class="input_text"  name="email" id="email" value="${result.email }" placeholder="이메일" maxlength="100"><br>

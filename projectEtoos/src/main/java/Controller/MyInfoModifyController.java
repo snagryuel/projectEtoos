@@ -1,60 +1,66 @@
 package Controller;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import member.MemberDAO;
 import member.MemberDTO;
 
 import java.io.IOException;
 
-@WebServlet("/projectEtoos/mypage/mypagemodify.do")
+import File.FileDAO;
+import File.FileUtil;
+
+@WebServlet("/mypage/MypageModify.do")
+@MultipartConfig(
+		maxFileSize = 1024 * 1024*1,
+		maxRequestSize = 1024*1024*10
+		)
 public class MyInfoModifyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
 		MemberDTO dto = new MemberDTO();
+		FileDAO fileDAO = new FileDAO();
 		String birth = "";
-		System.out.println("뭐왜뭐 뭘봐");
 		String name = req.getParameter("name");
-		System.out.println("뭐왜뭐 뭘봐");
+		String id = (String) session.getAttribute("id");
 		String phone = req.getParameter("phone");
-		System.out.println("뭐왜뭐 뭘봐");
 		String email = req.getParameter("email");
-		System.out.println("뭐왜뭐 뭘봐");
 		String birthYear = req.getParameter("birthYear");
-		System.out.println("뭐왜뭐 뭘봐");
 		String birthMonth = req.getParameter("birthMonth");
-		System.out.println("뭐왜뭐 뭘봐");
 		String birthDay = req.getParameter("birthDay");
-		System.out.println("뭐왜뭐 뭘봐");
 		String addr = req.getParameter("addr");
-		System.out.println("뭐왜뭐 뭘봐");
-		String pwd = req.getParameter("pwd2");
-		System.out.println("뭐왜뭐 뭘봐");
+		String pwd = req.getParameter("pwd2")==null?"":req.getParameter("pwd2");
 		String pwdCheck = req.getParameter("pwd3");
 		
-		System.out.println("뭐왜뭐 뭘봐");
 		birth = birthYear+"-"+birthMonth+"-"+birthDay;
-		System.out.println("뭐왜뭐 뭘봐");
 		if(!pwd.isEmpty()||!pwd.equals("")) {
 			if(!pwd.equals(pwdCheck)) {
 				req.setAttribute("errMsg", "회원정보 수정에 실패하였습니다 다시 확인해 주시기 바랍니다");
 				req.getRequestDispatcher("./MyInfo.do").forward(req, resp);
 			}
 		}
-		System.out.println("뭐왜뭐 뭘봐");
 		dto.setAddr(addr);
 		dto.setBirth(birth);
 		dto.setEmail(email);
 		dto.setName(name);
 		dto.setPhone(phone);
 		dto.setPwd(pwd);
+		dto.setId(id);
 		
 		MemberDAO dao = new MemberDAO();
 		
+		String directory = "D:\\jsp\\eclipse\\upload";
+		System.out.println(directory);
+		String FileName = FileUtil.uploadFile(req, directory);
+		fileDAO.registFile("t", FileName, directory);
 		int result = dao.MemberUpdate(dto);
+		System.out.println(result);
 		if(result == 0) {
 			req.setAttribute("errMsg", "회원정보 수정에 실패하였습니다 다시 확인해 주시기 바랍니다");
 		}
