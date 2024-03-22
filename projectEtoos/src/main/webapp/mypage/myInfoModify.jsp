@@ -32,13 +32,13 @@
 				
 				<div class="info" id="info__birth">
 					<span>생년월일</span><select class="box" id="birth-year">
-				      <option selected>출생 연도</option>
+				      <option>출생 연도</option>
 				    </select>
 				    <select class="box" id="birth-month">
-				      <option selected>월</option>
+				      <option>월</option>
 				    </select>
 				    <select class="box" id="birth-day">
-				      <option selected>일</option>
+				      <option>일</option>
 				    </select>
 				</div>
 				
@@ -78,59 +78,43 @@ document.querySelector("#cancelMembership").addEventListener("click", function(e
 	confirm("탈퇴 하시겠습니까?");
 }, false);
 
-let birthYearEl = document.querySelector('#birth-year');
-isYearOptionExisted = false;
+window.onload = ()=> {
+	let birthYearEl = document.querySelector('#birth-year');
+	let birthMonthEl = document.querySelector('#birth-month');
+	let birthDayEl = document.querySelector('#birth-day');
+	
+	let today = new Date();
 
-birthYearEl.addEventListener('focus', function () {
-
-	if(!isYearOptionExisted) {
- 	isYearOptionExisted = true;
- 	
- 	for(var i = 1940; i <= 2023; i++) {
+ 	for(var i = today.getFullYear()-50; i <= today.getFullYear(); i++) {
    	let yearOption = document.createElement('option');
    	yearOption.setAttribute('value', i);
+   	if(i == ${requestScope.birthYear == null ? 0 : requestScope.birthYear}) {
+   		yearOption.setAttribute('selected', true);
+   	}
    	yearOption.innerText = i;
-    this.appendChild(yearOption);
+   	birthYearEl.appendChild(yearOption);
+ 	}
     
- }
+    for(var i = 1; i <= 12; i++) {
+       	let monthOption = document.createElement('option');
+       	monthOption.setAttribute('value', i);
+       	if(i == ${requestScope.birthMonth == null ? 0 : requestScope.birthMonth}) {
+       		monthOption.setAttribute('selected', true);
+       	}
+       	monthOption.innerText = i;
+       	birthMonthEl.appendChild(monthOption);
+    }
+    
+    for(var i = 1; i <= 31; i++) {
+       	let dayOption = document.createElement('option');
+       	dayOption.setAttribute('value', i);
+       	if(i == ${requestScope.birthDay == null ? 0 : requestScope.birthDay}) {
+       		dayOption.setAttribute('selected', true);
+       	}
+       	dayOption.innerText = i;
+       	birthDayEl.appendChild(dayOption);
+    } 
 }
-}, false);
-
-
-let birthMonthEl = document.querySelector('#birth-month');
-isMonthOptionExisted = false;
-
-birthMonthEl.addEventListener('focus', function () {
-
-	if(!isMonthOptionExisted) {
-	isMonthOptionExisted = true;
- 	
- 	for(var i = 1; i <= 12; i++) {
-   	let monthOption = document.createElement('option');
-   	monthOption.setAttribute('value', i);
-   	monthOption.innerText = i;
-    this.appendChild(monthOption);
- }
-}
-}, false);
-
-
-let birthDayEl = document.querySelector('#birth-day');
-isDayOptionExisted = false;
-
-birthDayEl.addEventListener('focus', function () {
-
-	if(!isDayOptionExisted) {
-	isDayOptionExisted = true;
- 	
- 	for(var i = 1; i <= 31; i++) {
-   	let dayOption = document.createElement('option');
-   	dayOption.setAttribute('value', i);
-   	dayOption.innerText = i;
-    this.appendChild(dayOption);
- }
-}
-}, false);
 
 </script>
 
