@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ page import="common.PageUtil" %>
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
@@ -53,7 +54,7 @@
 			</div>
 			<div class="list">
 				<div class="list-top">
-					<p>총 000건</p>
+					<p>총 ${totalCount}건</p>
 					<p><button><a href="./courseRegister.jsp">등록하기</a></button></p>
 				</div>
 				<table>
@@ -69,9 +70,10 @@
 						</tr>
 					</thead>
 					<tbody>
+					<c:set var="i" value="${totalCount - (((pageSelected != null ? pageSelected : 1)-1) * 10)}" />
 					<c:forEach var = "list" items="${courseList }">
 						<tr>
-							<td>0</td>
+							<td>${i}</td>
 							<td>${list.coursename }</td>
 							<td>${list.name }</td>
 							<td>${list.sub1 }</td>
@@ -79,16 +81,13 @@
 							<td>${list.sugangStart } ~ ${list.sugangEnd }</td>
 							<td><button onclick ="location.">수정</button><button>삭제</button></td>
 						</tr>
+						<c:set var="i" value="${i - 1}"/>
 					</c:forEach>
 					</tbody>
 				</table>
 				<div class="paging">
 					<ul>
-						<li><a href="">◀</a></li>
-						<li><a href="" class="selected">1</a></li>
-						<li><a href="">2</a></li>
-						<li><a href="">3</a></li>
-						<li><a href="">▶</a></li>
+						${page}
 					</ul>
 				</div>
 			</div>
@@ -163,6 +162,28 @@
 			for (let i of selectList3) {i.classList.remove("selected");}
 		})
 		
+		// 페이징 첫번째, 마지막 페이지 알럿
+		let preves = document.querySelectorAll(".prev");
+		let nextes = document.querySelectorAll(".next");
+		
+		for(let i of preves){
+			i.addEventListener("click", (e) => {
+				if(${(param.pageSelected != null) ? param.pageSelected : 1} == 1) {
+					e.preventDefault();
+					alert("첫번째 페이지 입니다.");
+				} 
+			})
+		}
+		
+		for(let i of nextes){
+			i.addEventListener("click", (e) => {
+				if(${(param.pageSelected != null) ? param.pageSelected : 1} == ${requestScope.totalPage}) {
+					e.preventDefault();
+					alert("마지막 페이지 입니다.");
+				} 
+			})
+
+		}
 	</script>
 </body>
 </html>
