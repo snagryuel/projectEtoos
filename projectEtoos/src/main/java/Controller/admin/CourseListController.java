@@ -33,8 +33,11 @@ public class CourseListController extends HttpServlet {
 		String queryString = "sub1=" + sub1 + "&sub2=" + sub2 + "&sub3=" + sub3;
 		System.out.println("queryString : " + queryString);
 		
+		// 시작 페이지
+		int starNo = (pageSelected*10)-10;
+		
 		AdminDAO dao = new AdminDAO();
-		List<AdminDTO> courseList = dao.CourseInfo(sub1, sub2, sub3);
+		List<AdminDTO> courseList = dao.CourseInfo(sub1, sub2, sub3, starNo);
 		List<String> SubList1 = dao.getSub();
 		List<String> SubList2 = dao.getSub2(sub1);
 		List<AdminDTO> teacherList = dao.getteacher(sub1, sub2);

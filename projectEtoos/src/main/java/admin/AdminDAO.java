@@ -9,7 +9,7 @@ import common.JDBConnect;
 
 public class AdminDAO extends JDBConnect{
 	public AdminDAO() {}
-	public List<AdminDTO> CourseInfo(String sub1 ,String sub2, String sub3) {
+	public List<AdminDTO> CourseInfo(String sub1 ,String sub2, String sub3, int startNo) {
 		int cnt = 1;
 		List<AdminDTO> list = new Vector<AdminDTO>();
 		StringBuilder sb = new StringBuilder();
@@ -28,6 +28,8 @@ public class AdminDAO extends JDBConnect{
 		if(!sub3.equals("")) {
 			sb.append(" AND tm.id = ?");
 		}
+		sb.append(" ORDER BY courseIdx DESC");
+		sb.append(" LIMIT ?, 10");
 		try {
 			psmt = conn.prepareStatement(sb.toString());
 			if(!sub1.equals("")) {
@@ -40,7 +42,9 @@ public class AdminDAO extends JDBConnect{
 			}
 			if(!sub3.equals("")) {
 				psmt.setString(cnt, sub3);
+				cnt++;
 			}
+			psmt.setInt(cnt, startNo);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				AdminDTO dto = new AdminDTO();
@@ -112,7 +116,7 @@ public class AdminDAO extends JDBConnect{
 		}
 		return list;
 	}
-	public List<AdminDTO> getteacher(String name) {
+	public List<AdminDTO> getteacher(String name, int StartNo) {
 		List<AdminDTO> list = new Vector<AdminDTO>();
 		StringBuilder sb = new StringBuilder();
 		
@@ -122,8 +126,10 @@ public class AdminDAO extends JDBConnect{
 		sb.append(" WHERE NAME LIKE '%");
 		sb.append(name);
 		sb.append("%'");
+		sb.append(" LIMIT ?, 10");
 		try {
 			psmt = conn.prepareStatement(sb.toString());
+			psmt.setInt(1, StartNo);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				AdminDTO dto = new AdminDTO();
@@ -162,7 +168,7 @@ public class AdminDAO extends JDBConnect{
 		return totalCount;
 	}
 	
-	public List<AdminDTO> getMemberList(String name) {
+	public List<AdminDTO> getMemberList(String name, int StartNo) {
 		List<AdminDTO> list = new Vector<AdminDTO>();
 		StringBuilder sb = new StringBuilder();
 		
@@ -173,8 +179,10 @@ public class AdminDAO extends JDBConnect{
 		sb.append("%'");
 		sb.append("AND gubun = 1");
 		sb.append(" AND state != 99");
+		sb.append(" LIMIT ?, 10");
 		try {
 			psmt = conn.prepareStatement(sb.toString());
+			psmt.setInt(1, StartNo);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				AdminDTO dto = new AdminDTO();

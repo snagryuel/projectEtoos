@@ -73,7 +73,7 @@
 					
 					<c:choose>
 						<c:when test="${totalCount != null && totalCount != 0}">
-							<c:set var="i" value="${totalCount - (((pageSelected != null ? pageSelected : 1)-1) * 10)}" />
+							<c:set var="i" value="${totalCount - (((param.pageSelected != null ? param.pageSelected : 1)-1) * 10)}" />
 							<c:forEach var = "list" items="${courseList }">
 								<c:set var="thisUrl">
 									CourseView.do?courseIdx=${list.courseIdx}&pageSelected=${(param.pageSelected != null) ? param.pageSelected : 1 }&sub1=${param.sub1}&sub2=${param.sub2}&sub3=${param.sub3}					

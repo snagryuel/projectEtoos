@@ -40,7 +40,7 @@
 					<tbody>
 						<c:choose>
 						<c:when test="${totalCount != null && totalCount != 0}">
-							<c:set var="i" value="${totalCount - (((pageSelected != null ? pageSelected : 1)-1) * 10)}" />
+							<c:set var="i" value="${totalCount - (((param.pageSelected != null ? param.pageSelected : 1)-1) * 10)}" />
 							<c:forEach var = "teacher" items="${teacherList }">
 								<tr>
 									<td>${i}</td>

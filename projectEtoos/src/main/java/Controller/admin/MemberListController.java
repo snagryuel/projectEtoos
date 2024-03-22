@@ -26,9 +26,12 @@ public class MemberListController extends HttpServlet {
 		
 		String sub1 = req.getParameter("sub1")==null?"":req.getParameter("sub1");
 		String courseName = req.getParameter("courseName")==null?"":req.getParameter("courseName");
-
+		
+		// 시작 페이지
+		int starNo = (pageSelected*10)-10;
+		
 		AdminDAO dao = new AdminDAO();
-		List<AdminDTO> memberList = dao.getMemberList(name);
+		List<AdminDTO> memberList = dao.getMemberList(name, starNo);
 		int totalCount = dao.getMemberTotalCount(name);
 		dao.Close();
 		

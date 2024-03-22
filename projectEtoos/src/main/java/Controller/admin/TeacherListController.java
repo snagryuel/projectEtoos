@@ -24,8 +24,11 @@ public class TeacherListController extends HttpServlet {
 		String uri = req.getRequestURI();
 		String commandStr = uri.substring(uri.lastIndexOf("/")+1);
 		
+		// 시작 페이지
+		int starNo = (pageSelected*10)-10;
+		
 		AdminDAO dao = new AdminDAO();
-		List<AdminDTO> teacherList = dao.getteacher(name);
+		List<AdminDTO> teacherList = dao.getteacher(name, starNo);
 		int totalCount = dao.getTeacherTotalCount(name);
 		dao.Close();
 
