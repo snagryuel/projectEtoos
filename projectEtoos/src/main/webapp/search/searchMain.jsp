@@ -22,10 +22,7 @@
 	}
 	
 	%>
-	
-	
-	
-	
+
 	</head>
 	<body>
 		<jsp:include page="../common/header.jsp">
@@ -38,9 +35,8 @@
 			<div class="container center">
 				<div class="wrapper">
 					<div class="gumsaekbar">
-					<form id="searchForm" action="/projectEtoos/search/searchMain.jsp" method="get">
-					
-						<ul>
+					<form name = form id="searchForm" method="post" action="/projectEtoos/search/searchMain.do">					
+							<ul>
 								<li><input type="text" onkeyup="enterkey(event)"
 									name="search_word" id="search_word" value="" maxlength="20" />
 								</li>
@@ -88,9 +84,7 @@
 	
 	
 					</div>
-					
-					
-			
+
 					<!-- 강의 예정 틀 -->
 					<div class="courseList">
 						<div class="coursesection">
@@ -226,11 +220,13 @@
 			}
 			
 			function enterkey(event) {
-			    if (event.keyCode === 13) {
+			    if (event.keyCode === 13) { // Enter 키 코드는 13입니다.
 			        event.preventDefault(); // 기본 동작 방지
-			        document.getElementById("searchForm").submit();
+			        document.getElementById("searchForm").submit(); // 폼 전송
 			    }
 			}
+			
+			
 			
 	</script>
 	</body>

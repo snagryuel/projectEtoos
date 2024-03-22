@@ -13,8 +13,14 @@
 				<li><a href="#" id="course" <c:if test="${param.page_gubun eq 2 }">class="selected"</c:if>>전체강좌</a></li>	
 				<!--검색바  -->
 				<li>
+				<form name = form id="searchForm" onkeyup="enterkey(event)" method="post" action="/projectEtoos/search/searchMain.do">
+									
+				
 				<input type="text" name="search_word" id="search_word" value="" maxlength="20" />
 				<!-- &nbsp;<input type="button" name="btn_search" id="btn_search" value="검색" /> -->
+				</form>
+				
+				
 				</li>
 				<c:set var="loginYN" value="${sessionScope.loginYN}" />
 				<c:set var="id" value="${sessionScope.id}" />
@@ -265,5 +271,13 @@ function showOfHide(menu) {
 
 teacher.addEventListener("mouseover", (e)=>{e.preventDefault();showOfHide(sub_teacher);});
 sub_teacher.addEventListener("mouseleave", (e)=>{e.preventDefault();showOfHide(sub_teacher);});
+
+function enterkey(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault(); // 기본 동작 방지
+        document.getElementById("searchForm").submit();
+    }
+}
+
 
 </script>
