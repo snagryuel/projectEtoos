@@ -72,11 +72,11 @@
 					  
 					  <!-- 탭 내용 영역 -->
 					  <div class="tabContentWrap" id="target1">
-					    <div class="tabcontent active" id="target2">
+					    <div class="tabcontent active" >
 					    <h3>강좌정보</h3>
 					    
 					    <div>
-					    <table class="courseInfoTable" >
+					    <table class="courseInfoTable" id="target2">
 					    <tr>
 					    	<td>강좌 범위<td>
 					    	<td>교재 전 범위</td>
@@ -99,12 +99,12 @@
 					    </table>
 					    </div>
 					    
-					    <div class="bookInfo" id="target3">
+					    <div class="bookInfo" >
 					    	<h3>교재정보</h3>
 					    	<div>
 					    	<div class="bookImg"></div>
 					    	<div>
-							    <table class="bookInfoTable">
+							    <table class="bookInfoTable" id="target3">
 							    <tr>
 							    	<td>주 교재명<td>
 							    	<td>Oracle : 평가원 실전 어법</td>
@@ -123,9 +123,9 @@
 						    </div>
 					    </div>
 					    
-					    <div class="courseConfigure" id="target4">
+					    <div class="courseConfigure" >
 					    	<h3>강좌구성</h3>
-					    <table class="courseConfiTable">
+					    <table class="courseConfiTable" id="target4">
 					    	<tr>
 					    		<th>강좌명</th>
 					    		<th>강좌시간</th>
@@ -194,28 +194,28 @@ let totalTab = document.querySelector("#totalTab");
  totalTab.addEventListener("click", (e)=> {
 	let target1 = document.querySelector("#target1");
 	e.preventDefault();
-	window.scrollTo({top:target1.getBoundingClientRect().top});
+	window.scrollTo({top:target1.getBoundingClientRect().top, behavior: 'smooth'});
  });
  
 let courseTab = document.querySelector("#courseTab");
 courseTab.addEventListener("click", (e)=> {
 	let target2 = document.querySelector("#target2");
 	e.preventDefault();
-	window.scrollTo({top:target2.getBoundingClientRect().top});
+	window.scrollTo({top:target2.getBoundingClientRect().top, behavior: 'smooth'});
  });
  
 let bookTab = document.querySelector("#bookTab");
 bookTab.addEventListener("click", (e)=> {
 	let target3 = document.querySelector("#target3");
 	e.preventDefault();
-	window.scrollTo({top:target3.getBoundingClientRect().top});
+	window.scrollTo({top:target3.getBoundingClientRect().top, behavior: 'smooth'});
  });
 
  let configureTab = document.querySelector("#configureTab");
  configureTab.addEventListener("click", (e)=> {
 	let target4 = document.querySelector("#target4");
 	e.preventDefault();
-	window.scrollTo({top:target4.getBoundingClientRect().top});
+	window.scrollTo({top:target4.getBoundingClientRect().top, behavior: 'smooth'});
  });
 
  
