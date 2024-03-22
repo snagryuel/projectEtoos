@@ -18,18 +18,15 @@ public class MemberListController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String name = req.getParameter("name")==null?"":req.getParameter("name");
-<<<<<<< HEAD
 		int pageSelected = req.getParameter("pageSelected")==null? 1 : Integer.parseInt(req.getParameter("pageSelected"));
 		
 		// 들어온 URL에 따라 처리
 		String uri = req.getRequestURI();
 		String commandStr = uri.substring(uri.lastIndexOf("/")+1);
 		
-=======
 		String sub1 = req.getParameter("sub1")==null?"":req.getParameter("sub1");
 		String courseName = req.getParameter("courseName")==null?"":req.getParameter("courseName");
 
->>>>>>> branch 'main' of https://github.com/snagryuel/projectEtoos.git
 		AdminDAO dao = new AdminDAO();
 		List<AdminDTO> memberList = dao.getMemberList(name);
 		int totalCount = dao.getMemberTotalCount(name);
@@ -42,15 +39,12 @@ public class MemberListController extends HttpServlet {
 		
 		req.setAttribute("memberList", memberList);
 		req.setAttribute("name", name);
-<<<<<<< HEAD
 		req.setAttribute("totalCount", totalCount);
 		req.setAttribute("totalPage", totalPage);
 		req.setAttribute("page", page);
-=======
 		req.setAttribute("sub1", sub1);
 		req.setAttribute("courseName", courseName);
 		
->>>>>>> branch 'main' of https://github.com/snagryuel/projectEtoos.git
 		req.getRequestDispatcher("/admin/memberList.jsp").forward(req, resp);
 	}
 
