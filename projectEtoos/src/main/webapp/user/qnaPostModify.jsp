@@ -9,6 +9,7 @@
 
 <title>Teacher</title>
 <link rel="stylesheet" href="../css/user.css" type="text/css">
+<link rel="stylesheet" href="../css/reset.css" type="text/css">
 </head>
 
 <body>

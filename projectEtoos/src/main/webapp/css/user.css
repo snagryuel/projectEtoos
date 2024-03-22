@@ -843,4 +843,102 @@ main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .
 	padding: 10px;
 	border-bottom: 1px solid #adadad;
 	padding-left:200px;
+} 
+
+/*로그인 중복체크 페이지 (authCheck)*/
+
+body .authChekDiv {
+	margin: 0 auto;
+	width: 50%;
+}
+
+body .authChekDiv h2 {
+	margin-top :50px;
+	display: flex;
+	justify-content: center;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+body .authChekDiv .authCheckForm {
+	height: 30px;
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	
+}
+
+body .authChekDiv .authCheckForm .inputIdBox {
+	border-radius: 8px;
+	width: 140px;
+    height: 30px;
+}
+
+
+body .authChekDiv .authCheckForm .overlapBtn {
+	width: 80px;
+    height: 33px;
+    border-radius: 11px;
+    border: 1px solid rgba(196, 70, 28, 0.684);
+    font-weight: bold;
+    border: none;
+    color: rgba(196, 70, 28, 0.684);
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+body .authChekDiv .authCheckForm .overlapBtn:hover {
+	color: white;
+    background-color: rgba(196, 70, 28, 0.684);
+    box-shadow: 0 1px 2px rgba(165, 57, 21, 0.684);
+    transition: 0.4s;
+}
+
+body .checkMsg {
+	margin-top: 30px;
+	text-align: center;
+}
+
+body .checkMsg .sendBtn {
+	margin-top: 30px;
+	width: 80px;
+    height: 33px;
+    border-radius: 11px;
+    background-color: rgba(196, 70, 28, 0.684);
+    font-weight: bold;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    
+}
+
+body .checkMsg .sendBtn:hover {
+	border: 1px solid rgba(196, 70, 28, 0.684);
+	color: rgba(196, 70, 28, 0.684);
+	background-color: #ffffff;
+    transition: 0.4s;
+}
+
+
+body .checkMsg .resetBtn {
+	margin: 30px 0 0 10px;
+	width: 80px;
+    height: 33px;
+    border-radius: 11px;
+    border: 1px solid rgba(196, 70, 28, 0.684);
+    font-weight: bold;
+    border: none;
+    color: rgba(196, 70, 28, 0.684);
+    font-size: 14px;
+    cursor: pointer;
+    
+}
+
+body .checkMsg .resetBtn:hover {
+	color: white;
+    background-color: rgba(196, 70, 28, 0.684);
+    box-shadow: 0 1px 2px rgba(165, 57, 21, 0.684);
+    transition: 0.4s;
 }
