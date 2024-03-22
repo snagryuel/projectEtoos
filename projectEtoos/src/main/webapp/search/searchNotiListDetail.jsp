@@ -13,7 +13,12 @@
 <link rel="stylesheet" href="../css/user.css" type="text/css">
 <link rel="stylesheet" href="../css/main.css" type="text/css">
 <link rel="stylesheet" href="../css/reset.css" type="text/css">
-
+<%
+String searchWord = request.getParameter("search_word");
+if (searchWord == null) {
+	searchWord = "";
+}
+%>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp">
@@ -22,19 +27,21 @@
 
 	<main>
 
-		<div class="container center" style="height: 1400px;">
-			<div class="wrapper">
-				<div class="gumsaekbar">
-					<ul>
-						<li><input type="text" name="search_word" id="search_word"
-							value="" maxlength="20" /></li>
-					</ul>
+		<div class="container center">
+				<div class="wrapper">
+					<div class="gumsaekbar">
+					<form name = form id="searchForm" method="post" action="/projectEtoos/search/searchMain.do">					
+							<ul>
+								<li><input type="text" onkeyup="enterkey(event)"
+									name="search_word" id="search_word" value="" maxlength="20" />
+								</li>
+							</ul>
+						</form>
+					</div>
+					<div class="gumsaekGyelGwa">
+	   					 <p id="gyeolGwadata"><%= searchWord %> 에 대한 검색결과 ${resultCount}<!-- 이 부분 아직 안될 것 --> 건</p>
+					</div>
 				</div>
-
-				<div class="gumsaekGyelGwa">
-					<p id="gyeolGwadata">ㅇㅇㅇ 에 대한 검색결과 00건</p>
-				</div>
-			</div>
 			
 				<div class="tap">
 				<ul>
@@ -48,213 +55,47 @@
 			<div class="gonjiList">
 				<div class="gongjiDetail">
 					<div class="listTitle">
-						<p id="title_g">
-							공지
-							<button type="button" class="gumsaekdeo">더보기</button>
+				
+				<p id="title_g">강의 <button type="button" class= "gumsaekdeo">더보기</button>
+							
+							</p>
+					
+					<c:if test="${not empty searchResults}">
+						<c:forEach var="result" items="${searchResults}">
 
+							<div>
+								<ul class="search_teacher sch_ul">
+								<li class="sch_t">
+									<div class="sch_c teacher_img">
+										<div class="img">
+											<img
+												src="http://img.etoos.com/teacher/teacher/200180/tch225x400.png"
+												alt="">
+										</div>
+										<p class="imgTName">${result.name} 선생님</p>
+	
+									</div>
+									<div class="sch_c">
+										<span class="sch_tis">기초가 부족한 고1 학생들을 위해</span>
+										<div class="sch_ti">
+											<strong>"${result.courseName}" </strong>
+	
+										</div>
+									</div>
+								</li>
+	
+							</ul>
+							</div>
+						</c:forEach>
+					</c:if>
+					<c:if test="${empty searchResults}">
+						<p><%=searchWord%>
+							검색결과가 존재하지 않습니다
 						</p>
-						<ul class="search_teacher sch_ul">
-							<li class="sch_t">
-								<div class="sch_c teacher_img">
-									<div class="img">
-										<img
-											src="http://img.etoos.com/teacher/teacher/200180/tch225x400.png"
-											alt="">
-									</div>
-									<p class="imgTName">정승제 선생님</p>
+					</c:if>
 
-								</div>
-								<div class="sch_c">
-									<div class="sch_ti">
-										<strong>안내말씀 드립니다.</strong>
-
-									</div>
-									<br> <span class="sch_tis">기초가 부족한 고1 학생들을 위해</span>
-								</div>
-							</li>
-						</ul>
-						<ul class="search_teacher sch_ul">
-							<li class="sch_t">
-								<div class="sch_c teacher_img">
-									<div class="img">
-										<img
-											src="http://img.etoos.com/teacher/teacher/200180/tch225x400.png"
-											alt="">
-									</div>
-									<p class="imgTName">정승제 선생님</p>
-
-								</div>
-								<div class="sch_c">
-									<div class="sch_ti">
-										<strong>안내말씀 드립니다.</strong>
-
-									</div>
-									<br> <span class="sch_tis">기초가 부족한 고1 학생들을 위해</span>
-								</div>
-							</li>
-						</ul>
-						<ul class="search_teacher sch_ul">
-							<li class="sch_t">
-								<div class="sch_c teacher_img">
-									<div class="img">
-										<img
-											src="http://img.etoos.com/teacher/teacher/200180/tch225x400.png"
-											alt="">
-									</div>
-									<p class="imgTName">정승제 선생님</p>
-
-								</div>
-								<div class="sch_c">
-									<div class="sch_ti">
-										<strong>안내말씀 드립니다.</strong>
-
-									</div>
-									<br> <span class="sch_tis">기초가 부족한 고1 학생들을 위해</span>
-								</div>
-							</li>
-						</ul>
-						<ul class="search_teacher sch_ul">
-							<li class="sch_t">
-								<div class="sch_c teacher_img">
-									<div class="img">
-										<img
-											src="http://img.etoos.com/teacher/teacher/200180/tch225x400.png"
-											alt="">
-									</div>
-									<p class="imgTName">정승제 선생님</p>
-
-								</div>
-								<div class="sch_c">
-									<div class="sch_ti">
-										<strong>안내말씀 드립니다.</strong>
-
-									</div>
-									<br> <span class="sch_tis">기초가 부족한 고1 학생들을 위해</span>
-								</div>
-							</li>
-						</ul>
-						<ul class="search_teacher sch_ul">
-							<li class="sch_t">
-								<div class="sch_c teacher_img">
-									<div class="img">
-										<img
-											src="http://img.etoos.com/teacher/teacher/200180/tch225x400.png"
-											alt="">
-									</div>
-									<p class="imgTName">정승제 선생님</p>
-
-								</div>
-								<div class="sch_c">
-									<div class="sch_ti">
-										<strong>안내말씀 드립니다.</strong>
-
-									</div>
-									<br> <span class="sch_tis">기초가 부족한 고1 학생들을 위해</span>
-								</div>
-							</li>
-						</ul>
-						<ul class="search_teacher sch_ul">
-							<li class="sch_t">
-								<div class="sch_c teacher_img">
-									<div class="img">
-										<img
-											src="http://img.etoos.com/teacher/teacher/200180/tch225x400.png"
-											alt="">
-									</div>
-									<p class="imgTName">정승제 선생님</p>
-
-								</div>
-								<div class="sch_c">
-									<div class="sch_ti">
-										<strong>안내말씀 드립니다.</strong>
-
-									</div>
-									<br> <span class="sch_tis">기초가 부족한 고1 학생들을 위해</span>
-								</div>
-							</li>
-						</ul>
-						<ul class="search_teacher sch_ul">
-							<li class="sch_t">
-								<div class="sch_c teacher_img">
-									<div class="img">
-										<img
-											src="http://img.etoos.com/teacher/teacher/200180/tch225x400.png"
-											alt="">
-									</div>
-									<p class="imgTName">정승제 선생님</p>
-
-								</div>
-								<div class="sch_c">
-									<div class="sch_ti">
-										<strong>안내말씀 드립니다.</strong>
-
-									</div>
-									<br> <span class="sch_tis">기초가 부족한 고1 학생들을 위해</span>
-								</div>
-							</li>
-						</ul>
-						<ul class="search_teacher sch_ul">
-							<li class="sch_t">
-								<div class="sch_c teacher_img">
-									<div class="img">
-										<img
-											src="http://img.etoos.com/teacher/teacher/200180/tch225x400.png"
-											alt="">
-									</div>
-									<p class="imgTName">정승제 선생님</p>
-
-								</div>
-								<div class="sch_c">
-									<div class="sch_ti">
-										<strong>안내말씀 드립니다.</strong>
-
-									</div>
-									<br> <span class="sch_tis">기초가 부족한 고1 학생들을 위해</span>
-								</div>
-							</li>
-						</ul>
-						<ul class="search_teacher sch_ul">
-							<li class="sch_t">
-								<div class="sch_c teacher_img">
-									<div class="img">
-										<img
-											src="http://img.etoos.com/teacher/teacher/200180/tch225x400.png"
-											alt="">
-									</div>
-									<p class="imgTName">정승제 선생님</p>
-
-								</div>
-								<div class="sch_c">
-									<div class="sch_ti">
-										<strong>안내말씀 드립니다.</strong>
-
-									</div>
-									<br> <span class="sch_tis">기초가 부족한 고1 학생들을 위해</span>
-								</div>
-							</li>
-						</ul>
-
-						<ul class="search_teacher sch_ul">
-							<li class="sch_t">
-								<div class="sch_c teacher_img">
-									<div class="img">
-										<img
-											src="http://img.etoos.com/teacher/teacher/200180/tch225x400.png"
-											alt="">
-									</div>
-									<p class="imgTName">정승제 선생님</p>
-
-								</div>
-								<div class="sch_c">
-									<div class="sch_ti">
-										<strong>안내말씀 드립니다.</strong>
-
-									</div>
-									<br> <span class="sch_tis">기초가 부족한 고1 학생들을 위해</span>
-								</div>
-							</li>
-						</ul>
-					</div>
+				</div>
+			</div>
 					
 				</div>
 				
@@ -267,9 +108,7 @@
 						<li><a href="">▶</a></li>
 					</ul>
 				</div>
-				</div>
-				
-			</div>
+			</div>	
 	</main>
 	<jsp:include page="../common/footer.jsp" />
 

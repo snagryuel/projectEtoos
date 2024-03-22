@@ -2,7 +2,7 @@ package board;
 
 public class TeacherDTO {
 	public TeacherDTO() {}
-	private String coursename;
+	private String courseName;
 	private String sugangStart;
 	private String sugangEnd;
 	private String sub1;
@@ -16,21 +16,10 @@ public class TeacherDTO {
 	private String birth;
 	private String addr;
 	private String state;
-	/**
-	 * @return the coursename
-	 */
-	public String getCoursename() {
-		return coursename;
-	}
-	/**
-	 * @param coursename the coursename to set
-	 */
-	public void setCoursename(String coursename) {
-		this.coursename = coursename;
-	}
-	/**
-	 * @return the sugangStart
-	 */
+	private String titleGubun;
+	
+
+	
 	public String getSugangStart() {
 		return sugangStart;
 	}
@@ -183,6 +172,30 @@ public class TeacherDTO {
 	 */
 	public void setState(String state) {
 		this.state = state;
+	}
+	/**
+	 * @return the courseName
+	 */
+	public String getCourseName() {
+		return courseName;
+	}
+	/**
+	 * @param courseName the courseName to set
+	 */
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
+	}
+	/**
+	 * @return the titleGubun
+	 */
+	public String getTitleGubun() {
+		return titleGubun;
+	}
+	/**
+	 * @param titleGubun the titleGubun to set
+	 */
+	public void setTitleGubun(String titleGubun) {
+		this.titleGubun = titleGubun;
 	}
 
 
