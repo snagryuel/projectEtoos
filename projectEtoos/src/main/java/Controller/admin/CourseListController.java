@@ -24,9 +24,7 @@ public class CourseListController extends HttpServlet {
 		String uri = req.getRequestURI();
 		uri = uri.substring(uri.indexOf("/") + 1);
 		String commandStr = uri.substring(uri.indexOf("/"));
-		
-		System.out.println(uri);
-		
+				
 		int pageSelected = req.getParameter("pageSelected")==null? 1 : Integer.parseInt(req.getParameter("pageSelected"));
 		String sub1 = req.getParameter("sub1")==null?"":req.getParameter("sub1");
 		String sub2 = req.getParameter("sub2")==null?"":req.getParameter("sub2");

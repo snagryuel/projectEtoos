@@ -167,4 +167,26 @@ public class AdminDAO extends JDBConnect{
 		}
 		return list;
 	}
+	
+	public int getMemberTotalCount(String name) {
+		int totalCount = 0;
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("SELECT count(id)");
+		sb.append(" FROM tbl_memberlist");
+		sb.append(" WHERE NAME LIKE '%");
+		sb.append(name);
+		sb.append("%'");
+		sb.append("AND gubun = 1");
+		sb.append(" AND state != 99");
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			rs = psmt.executeQuery();
+			rs.next();
+			totalCount = rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return totalCount;
+	}
 }

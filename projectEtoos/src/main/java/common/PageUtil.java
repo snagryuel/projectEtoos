@@ -34,7 +34,6 @@ public class PageUtil {
 		}
 		sb.append("<li><a class='next' href='" + uri + "?page_selected="+ next + "&" + queryString +"'>&gt;</a></li>");
 		sb.append("<li><a class='next' href='" + uri + "?page_selected="+ grandNext + "&" + queryString +"'>&gt;&gt;</a></li>");
-		
 		text = sb.toString();
 		
 		return text;
