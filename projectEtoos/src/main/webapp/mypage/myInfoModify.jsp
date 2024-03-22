@@ -1,5 +1,6 @@
 <%@page import="member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix = "c" uri = "jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,7 @@
 		
 		<div class="content">
 			<div>	
-			<form name="frm" id="frm" method = "post" action = "./mypagemodify.do">
+			<form name="frm" id="frm" method = "post" action = "./MypageModify.do">
 			    <span>(*)이름</span><input type="text" class="input_text"  name="name" id="name" value="${result.name }" placeholder="이름" maxlength="20"><br>
 			    <span>(*)휴대폰 번호</span><input type="tel" class="input_text"  name="phone" id="phone" value="${result.phone }" placeholder="휴대폰 번호" maxlength="20"><br>
 			    <span>(*)이메일</span><input type="email" class="input_text"  name="email" id="email" value="${result.email }" placeholder="이메일" maxlength="100"><br>
@@ -50,7 +51,12 @@
 	        	<input type="submit" name="pwdCheck" id="pwdCheck" value="확인"><br>
 				
 				<div id="teacherImg">
-					<span>이미지 업로드</span><input name="teacherImgUp" id="teacherImgUp" type="file"> 
+				<c:if test="${empty path }">
+					<span>이미지 업로드</span><input name="teacherImgUp" id="teacherImgUp" type="file">
+				</c:if>
+				<c:if test="${empty path }">
+					<img alt="" src="${path }">
+				</c:if>
 				</div>
 				<div>
 					<span>선생님 소개</span><textarea name="teacherMent" id="teacherMent" maxlength="500" rows="8" cols="50" placeholder="선생님 소개를 작성해주세요."></textarea>

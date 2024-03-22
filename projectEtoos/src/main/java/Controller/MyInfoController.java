@@ -21,7 +21,6 @@ public class MyInfoController extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 		MemberDTO result = dao.getMemberInfo(id);
 		String path = dao.getFile();
-		path = path.replace("\\", "/");
 		String birth = result.getBirth();
 		String birthYear = birth.substring(0,4);
 		String birthMonth = birth.substring(birth.indexOf("-")+1,birth.lastIndexOf("-"));
