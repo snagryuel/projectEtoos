@@ -32,8 +32,6 @@ public class AuthCheck extends HttpServlet {
 		MemberDTO target = dao.getMemberId(dto);
 		
 		String targetId = (target.getId() != null) ? target.getId() : "";
-		System.out.println("input ID : " + id);
-		System.out.println("target ID : "+ target.getId());
 		// 값 비교
 		if(!id.equals(targetId)) {
 			AuthYN = true;

@@ -52,15 +52,12 @@ public class LoginOkController extends HttpServlet {
 			} else {
 				AuthYN = false;
 			}
-			
-			System.out.println("input pwd : " + pwd + "DAO pwd : " + targetPwd);
-			
+						
 			// 처리
 			if (AuthYN) {
 				session.setAttribute("id", id);
 				session.setAttribute("loginYN", "Y");
 				session.setAttribute("gubun", target.getGubun());
-				System.out.println("id : " + id + "gubun : " + target.getGubun());
 				resp.sendRedirect("Main.do");
 			} else {
 			req.setAttribute("errMsg", "로그인 오류");

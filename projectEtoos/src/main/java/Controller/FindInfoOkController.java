@@ -35,9 +35,6 @@ public class FindInfoOkController extends HttpServlet {
 		String flag = (req.getParameter("flag") != null) ? req.getParameter("flag") : "";
 		boolean authYN = (req.getParameter("authYN") != null ) ? (req.getParameter("authYN").equals("Y") || req.getParameter("authYN").equals("true")) ?  true : true : false ;
 		
-		System.out.println(flag);
-		System.out.println(authYN);
-		
 		String id = (req.getParameter("id") != null) ? req.getParameter("id").trim() : "";
 		String name = (req.getParameter("name") != null) ? req.getParameter("name").trim() : "";
 		String pwd = (req.getParameter("pwd") != null) ? req.getParameter("pwd").trim() : "";
@@ -49,7 +46,6 @@ public class FindInfoOkController extends HttpServlet {
 		String phone = (req.getParameter("phone") != null) ? req.getParameter("phone").trim() : "";
 		
 		String birth = (birthYear + "-" + birthMonth + "-" + birthDay);
-		System.out.println(birth);
 			
 		if (flag.equals("id")) {
 			dto.setName(name);
@@ -122,12 +118,8 @@ public class FindInfoOkController extends HttpServlet {
 					req.getRequestDispatcher("/user/findPwdPage.jsp").forward(req, resp);
 				}
 			} else {
-				System.out.println("비밀번호 변경 컨트롤러 들어옴");
 				dto.setId(id);
-				System.out.println("입력된 ID : "+id);
 				dto.setPwd(pwd);
-				System.out.println("입력된 PWD : "+pwd);
-				
 				int result = dao.updatePwd(dto);
 				
 				if(result != 0) {

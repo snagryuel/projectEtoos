@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
 
-import board.CourseDTO;
 import common.JDBConnect;
 
 public class AdminDAO extends JDBConnect{
@@ -124,7 +123,6 @@ public class AdminDAO extends JDBConnect{
 		sb.append("%'");
 		try {
 			psmt = conn.prepareStatement(sb.toString());
-			System.out.println(sb.toString());
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				AdminDTO dto = new AdminDTO();
@@ -141,6 +139,28 @@ public class AdminDAO extends JDBConnect{
 		}
 		return list;
 	}
+	
+	public int getTeacherTotalCount(String name) {
+		int totalCount = 0;
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("SELECT COUNT(tm.id) FROM tbl_memberlist AS tm");
+		sb.append(" INNER JOIN tbl_teacherlist AS tt ON tm.id = tt.id");
+		sb.append(" INNER JOIN tbl_subject AS ts ON tt.subkey = ts.subKey");
+		sb.append(" WHERE NAME LIKE '%");
+		sb.append(name);
+		sb.append("%'");
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			rs = psmt.executeQuery();
+			rs.next();
+			totalCount = rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return totalCount;
+	}
+	
 	public List<AdminDTO> getMemberList(String name) {
 		List<AdminDTO> list = new Vector<AdminDTO>();
 		StringBuilder sb = new StringBuilder();
@@ -189,53 +209,5 @@ public class AdminDAO extends JDBConnect{
 			e.printStackTrace();
 		}
 		return totalCount;
-	}
-	public CourseDTO getCourseList(int idx) {
-		CourseDTO dto = new CourseDTO();
-		StringBuilder sb = new StringBuilder();
-		
-		sb.append("SELECT teacherid, coursename, sugangStart, sugangEnd, guseong,");
-		sb.append(" gangBumwi, gangChar, `RANGE`, bookName, bookIntro");
-		sb.append(" FROM tbl_courselist WHERE courseIdx = ?");
-		try {
-			psmt = conn.prepareStatement(sb.toString());
-			psmt.setInt(1, idx);
-			rs = psmt.executeQuery();
-			while(rs.next()) {
-				dto.setTeacherId(rs.getString("teacherid"));
-				dto.setCourseName(rs.getString("coursename"));
-				dto.setSugangStart(rs.getString("sugangStart"));
-				dto.setSugangEnd(rs.getString("sugangEnd"));
-				dto.setGuseong(rs.getString("guseong"));
-				dto.setGangBumwi(rs.getString("gangBumwi"));
-				dto.setGangChar(rs.getString("gangChar"));
-				dto.setRange(rs.getString("RANGE"));
-				dto.setBookName(rs.getString("bookname"));
-				dto.setBookIntro(rs.getString("bookIntro"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return dto;
-	}
-	
-	public CourseDTO getCourseSebu(int idx) {
-		CourseDTO dto = new CourseDTO();
-		StringBuilder sb = new StringBuilder();
-		
-		sb.append("SELECT teacherid, coursename, sugangStart, sugangEnd, guseong,");
-		sb.append(" gangBumwi, gangChar, `RANGE`, bookName, bookIntro");
-		sb.append(" FROM tbl_courselist WHERE courseIdx = ?");
-		try {
-			psmt = conn.prepareStatement(sb.toString());
-			psmt.setInt(1, idx);
-			rs = psmt.executeQuery();
-			while(rs.next()) {
-				dto.setTeacherId(rs.getString("teacherid"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return dto;
 	}
 }
