@@ -9,8 +9,10 @@
 		<div class="nav">
 			<h1><a href="/projectEtoos//user/Main.do"><img src="https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg"></a></h1>
 			<ul>
-				<li><a href="/projectEtoos/user/teacherList.jsp" id="teacher" <c:if test="${param.page_gubun eq 1 }">class="selected"</c:if>>선생님</a></li>
-				<li><a href="#" id="course" <c:if test="${param.page_gubun eq 2 }">class="selected"</c:if>>전체강좌</a></li>	
+				<c:set var="teacher" value="/projectEtoos/user/teacherList.jsp"/>
+				<c:set var="user" value="/projectEtoos/user/courseList.do"/>
+				<li><a href="${teacher}" id="teacher" <c:if test="${param.page_gubun eq 1 }">class="selected"</c:if>>선생님</a></li>
+				<li><a href="${user}" id="course" <c:if test="${param.page_gubun eq 2 }">class="selected"</c:if>>전체강좌</a></li>	
 				<!--검색바  -->
 				<li>
 				<form name = form id="searchForm" onkeyup="enterkey(event)" method="post" action="/projectEtoos/search/searchMain.do">

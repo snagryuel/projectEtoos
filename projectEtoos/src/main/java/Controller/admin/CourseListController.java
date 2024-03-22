@@ -17,9 +17,7 @@ import common.PageUtil;
 @WebServlet(urlPatterns = {"/admin/courseList.do", "/user/courseList.do"})
 public class CourseListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("들어옴");
-		
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
 		// 들어온 URL에 따라 처리
 		String uri = req.getRequestURI();
 		uri = uri.substring(uri.indexOf("/") + 1);
@@ -31,7 +29,6 @@ public class CourseListController extends HttpServlet {
 		String sub3 = req.getParameter("sub3")==null?"":req.getParameter("sub3");
 		
 		String queryString = "sub1=" + sub1 + "&sub2=" + sub2 + "&sub3=" + sub3;
-		System.out.println("queryString : " + queryString);
 		
 		// 시작 페이지
 		int starNo = (pageSelected*10)-10;
@@ -46,9 +43,7 @@ public class CourseListController extends HttpServlet {
 		CourseDAO dao2 = new CourseDAO() ;
 		
 		int totalCount = dao2.totalCount(sub1, sub2, sub3);
-		System.out.println("totalCount : " + totalCount);
 		int totalPage =  (int) Math.ceil((double)totalCount / 10);
-		System.out.println("totalPage : " + totalPage);
 		dao2.Close();
 		
 		// 페이징 만들기

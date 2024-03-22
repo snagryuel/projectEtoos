@@ -199,7 +199,6 @@ public MemberDTO getMemberInfoForPwd(MemberDTO dto) {
 			psmt = conn.prepareStatement(sb.toString());
 			psmt.setString(1, id);
 			result = psmt.executeUpdate();
-			System.out.println(psmt);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

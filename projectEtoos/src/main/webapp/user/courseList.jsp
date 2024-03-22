@@ -83,7 +83,7 @@ div.list div.list-top {
 </head>
 <body>
 <jsp:include page="../common/header.jsp">
-		<jsp:param value="1" name="page_gubun"/>
+		<jsp:param value="2" name="page_gubun"/>
 </jsp:include>
 <jsp:include page="../common/courseSidebar.jsp">
 		<jsp:param value="1" name="page_gubun"/>
@@ -94,7 +94,7 @@ div.list div.list-top {
 		<h1 id="title">강좌 검색</h1>
 		<div class="wrapper">
 			<div class="search-area">
-				<form action="" id="frm" class="gird" method="post">
+				<form action="" id="frm" class="gird" method="get">
 					<div class="sub1 select-list">
 						<input type="hidden" name="sub1" id="sub1" value="${sub1 }">
 						<p>과목</p>
@@ -130,7 +130,7 @@ div.list div.list-top {
 			</div>
 			<div class="list">
 				<div class="list-top">
-					<p>총 000건</p>
+					<p>총 ${totalCount}건</p>
 				</div>
 				<table>
 					<thead>
@@ -141,30 +141,42 @@ div.list div.list-top {
 							<th>과목1</th>
 							<th>과목2</th>
 							<th>수강기간</th>
-							<th>관리</th>
+							<th>맛보기</th>
+							<th>수강신청</th>
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach var = "list" items="${courseList }">
-						<tr>
-							<td>0</td>
-							<td>${list.coursename }</td>
-							<td>${list.name }</td>
-							<td>${list.sub1 }</td>
-							<td>${list.sub2 }</td>
-							<td>${list.sugangStart } ~ ${list.sugangEnd }</td>
-							<td><button>수정</button><button>삭제</button></td>
-						</tr>
-					</c:forEach>
+					<c:choose>
+						<c:when test="${totalCount != null && totalCount != 0}">
+							<c:set var="i" value="${totalCount - (((param.pageSelected != null ? param.pageSelected : 1)-1) * 10)}" />
+							<c:forEach var = "list" items="${courseList }">
+								<c:set var="thisUrl">
+									CourseView.do?courseIdx=${list.courseIdx}&pageSelected=${(param.pageSelected != null) ? param.pageSelected : 1 }&sub1=${param.sub1}&sub2=${param.sub2}&sub3=${param.sub3}					
+								</c:set>
+								<tr>
+									<td><a href="${thisUrl}">${i}</a></td>
+									<td>${list.coursename }</td>
+									<td>${list.name }</td>
+									<td>${list.sub1 }</td>
+									<td>${list.sub2 }</td>
+									<td>${list.sugangStart } ~ ${list.sugangEnd }</td>
+									<td><button>맛보기</button></td>
+									<td><button>수강신청</button></td>
+								</tr>
+								<c:set var="i" value="${i - 1}"/>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td colspan="7">표시할 내용이 없습니다.</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
 					</tbody>
 				</table>
 				<div class="paging">
 					<ul>
-						<li><a href="">◀</a></li>
-						<li><a href="" class="selected">1</a></li>
-						<li><a href="">2</a></li>
-						<li><a href="">3</a></li>
-						<li><a href="">▶</a></li>
+						${page}
 					</ul>
 				</div>
 			</div>
@@ -235,6 +247,9 @@ div.list div.list-top {
 		for (let i of selectList1) {i.classList.remove("selected");}
 		for (let i of selectList2) {i.classList.remove("selected");}
 		for (let i of selectList3) {i.classList.remove("selected");}
+		value1.value = "";
+		value2.value = "";
+		value3.value = "";
 	})
 	
 </script>
