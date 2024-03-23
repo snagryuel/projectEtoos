@@ -65,11 +65,14 @@ body {
 	height : 50px;
 	border-radius : 50px;
 	border : 1px solid #ababab;
+	cursor: pointer;
 }
 
 #header .nav ul button:hover {
 	background : #457D87;
 	color : #fff;
+	transition: 0.4s;
+    box-shadow: 0 1px 2px #3a5d63;
 }
 
 #header .menu_teacher {

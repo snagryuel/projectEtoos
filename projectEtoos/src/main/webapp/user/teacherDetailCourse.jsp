@@ -32,8 +32,8 @@
 					<td>김현수</td>
 				</tr>
 				<tr>
-					<td>강좌유형</td>
-					<td>수능(문제풀이)</td>
+					<td>과목유형</td>
+					<td>영어</td>
 				</tr>
 				<tr>
 					<td>수강기간</td>
@@ -161,9 +161,12 @@
 					    </div>
 					    
 					    </div>
-	
+						<div class="listGo">
+						 	<button id="listGoBtn">목록으로</button>
+						</div>
 				 </div>
 			 </div>
+			 
 		</div>
 		
 	</div>
@@ -223,6 +226,12 @@ document.querySelector("#courseApplyBtn").addEventListener("click", function(e){
 	if(confirm("강좌를 신청하시겠습니까?")){
 		window.location = "/projectEtoos/mypage/myCourse.jsp";
 	}
+}, false);
+
+
+document.querySelector("#listGoBtn").addEventListener("click", function(e){
+	window.location = "/projectEtoos/user/teacherDetailList.jsp";
+	
 }, false);
 
 </script>
