@@ -70,24 +70,26 @@
 					</tr>
 					<tr>
 						<th>교재명</th>
-						<td><input type="text" name="bookName" id="bookName" maxlength="20"></td>
+						<td><input type="text" name="bookName" id="bookName" maxlength="20" value = "${courseList.bookName }"></td>
 					</tr>
 					<tr>
 						<th>교재설명</th>
-						<td><textarea name="bookIntro" id="bookIntro" cols="100" rows="5"></textarea></td>
+						<td><textarea name="bookIntro" id="bookIntro" cols="100" rows="5" >${courseList.bookIntro }</textarea></td>
 					</tr>
 				</table>
 				<table id="sebu">
 					<caption>강좌구성</caption>
-					<tr data-idx="1">
-						<th class="idx" rowspan="2">1</th>
+					<c:forEach var="list" items="${sesbuList }" varStatus="status">
+					<tr data-idx="${status.count }">
+						<th class="idx" rowspan="2">${status.count }</th>
 						<th>세부 강좌명</th>
-						<td><input type="text" name="courseSebuName1" id="courseSebuName1" maxlength="20"></td>
+						<td><input type="text" name="courseSebuName${status.count }" id="courseSebuName${status.count }" maxlength="20" value = "${list.courseSebuName }"></td>
 					</tr>
-					<tr data-idx="1">
+					<tr data-idx="${status.count }">
 						<th>강좌시간</th>
-						<td><input type="text" name="courseTime1" id="courseTime1" maxlength="20"></td>
+						<td><input type="text" name="courseTime${status.count }" id="courseTime${status.count }" maxlength="20" value = "${list.courseTime }"></td>
 					</tr>
+					</c:forEach>
 				</table>
 				<div class="btn_manager">
 					<button id="btn_add">강좌 명 추가</button>

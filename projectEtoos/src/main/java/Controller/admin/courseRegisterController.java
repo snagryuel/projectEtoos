@@ -20,15 +20,15 @@ public class courseRegisterController extends HttpServlet {
 		AdminDAO dao =new AdminDAO();
 		
 		CourseDTO courseList = dao.getCourseList(idx);
-		CourseDTO sesbuList = dao.getCourseSebu(idx);
+		List<CourseDTO> sebuList = dao.getCourseSebu(idx);
 		req.setAttribute("courseList",courseList);
-		req.setAttribute("sesbuList",sesbuList);
+		req.setAttribute("sesbuList",sebuList);
+		System.out.println(sebuList.get(0).getCourseSebuName());
 		
 		req.getRequestDispatcher("/admin/courseRegister.jsp").forward(req, resp);
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(req, resp);
 	}
 

@@ -219,12 +219,61 @@ public class AdminDAO extends JDBConnect{
 		}
 		return totalCount;
 	}
+
 	public CourseDTO getCourseList(int idx) {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder sb = new StringBuilder();
+		CourseDTO dto = new CourseDTO();
+		
+		sb.append("SELECT courseName, sugangStart, sugangEnd, guseong,  ");
+		sb.append(" bookName, bookIntro, teacherId, gangBumwi, gangChar, `range`");
+		sb.append(" FROM tbl_courselist");
+		sb.append(" WHERE courseidx = ?");
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			psmt.setInt(1, idx);
+			rs = psmt.executeQuery();
+
+			while(rs.next()) {
+				dto.setCourseName(rs.getString("coursename"));
+				dto.setSugangStart(rs.getString("sugangstart"));
+				dto.setSugangEnd(rs.getString("sugangEnd"));
+				dto.setGuseong(rs.getString("guseong"));
+				dto.setBookName(rs.getString("bookname"));
+				dto.setBookIntro(rs.getString("bookintro"));
+				dto.setTeacherId(rs.getString("teacherid"));
+				dto.setGangBumwi(rs.getString("gangBumwi"));
+				dto.setGangChar(rs.getString("gangChar"));
+				dto.setRange(rs.getString("range"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return dto ;
 	}
-	public CourseDTO getCourseSebu(int idx) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<CourseDTO> getCourseSebu(int idx) {
+		StringBuilder sb = new StringBuilder();
+		List<CourseDTO> list = new Vector<CourseDTO>();
+		
+		sb.append("SELECT sebuIdx, courseSebuName, courseTime");
+		sb.append(" FROM tbl_coursesebu");
+		sb.append(" WHERE courseidx = ?");
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			psmt.setInt(1, idx);
+			rs = psmt.executeQuery();
+			
+			System.out.println(psmt);
+
+			while(rs.next()) {
+				CourseDTO dto = new CourseDTO();
+				dto.setSebuIdx(rs.getInt("sebuidx"));
+				dto.setCourseSebuName(rs.getString("courseSebuName"));
+				dto.setCourseTime(rs.getString("coursetime"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list ;
 	}
 }
