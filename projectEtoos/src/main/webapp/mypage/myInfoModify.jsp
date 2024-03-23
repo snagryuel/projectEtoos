@@ -27,19 +27,19 @@
 		
 		<div class="content">
 			<div>	
-			<form name="frm" id="frm" method = "post" action = "./MypageModify.do">
+			<form name="frm" id="frm" method = "post" action = "./MypageModify.do" enctype="multipart/form-data">
 			    <span>(*)이름</span><input type="text" class="input_text"  name="name" id="name" value="${result.name }" placeholder="이름" maxlength="20"><br>
 			    <span>(*)휴대폰 번호</span><input type="tel" class="input_text"  name="phone" id="phone" value="${result.phone }" placeholder="휴대폰 번호" maxlength="20"><br>
 			    <span>(*)이메일</span><input type="email" class="input_text"  name="email" id="email" value="${result.email }" placeholder="이메일" maxlength="100"><br>
 				
 				<div class="info" id="info__birth">
-					<span>생년월일</span><select class="box" id="birth-year">
+					<span>생년월일</span><select class="box" id="birth-year" name = "birthYear">
 				      <option>출생 연도</option>
 				    </select>
-				    <select class="box" id="birth-month">
+				    <select class="box" id="birth-month"name = "birthMonth"> 
 				      <option>월</option>
 				    </select>
-				    <select class="box" id="birth-day">
+				    <select class="box" id="birth-day" name = "birthDay">
 				      <option>일</option>
 				    </select>
 				</div>
@@ -56,7 +56,7 @@
 				<c:if test="${empty path }">
 					<span>이미지 업로드</span><input name="teacherImgUp" id="teacherImgUp" type="file">
 				</c:if>
-				<c:if test="${empty path }">
+				<c:if test="${not empty path }">
 					<img alt="" src="${path }">
 				</c:if>
 				</div>

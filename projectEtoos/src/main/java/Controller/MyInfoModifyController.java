@@ -57,7 +57,7 @@ public class MyInfoModifyController extends HttpServlet {
 		
 		String directory = req.getServletContext().getRealPath("/")+"upload";
 		String FileName = FileUtil.uploadFile(req, directory);
-		fileDAO.registFile("t", FileName, "/projectEtoos/upload");
+		fileDAO.registFile("t", FileName, directory);
 		int result = dao.MemberUpdate(dto);
 		if(result == 0) {
 			req.setAttribute("errMsg", "회원정보 수정에 실패하였습니다 다시 확인해 주시기 바랍니다");

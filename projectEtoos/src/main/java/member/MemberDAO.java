@@ -237,8 +237,11 @@ public MemberDTO getMemberInfoForPwd(MemberDTO dto) {
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				String path = rs.getString("filepath");
+				String path2 = path.substring(0, path.lastIndexOf("\\"));
+				path = path.substring(path2.lastIndexOf("\\"));
+				path = path.replace("\\", "/");
 				String name = rs.getString("filename");
-				file = path+name;
+				file = path+"/"+name;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
