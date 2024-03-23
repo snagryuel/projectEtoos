@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,186 +12,174 @@
 <jsp:include page="../common/header.jsp">
 		<jsp:param value="1" name="page_gubun"/>
 </jsp:include>
-<jsp:include page="../common/teacherDetailSidebar.jsp">
-		<jsp:param value="1" name="page_gubun"/>
-</jsp:include>
+<c:choose>
+	<c:when test="${param.menuGubun == 'teacher'}">
+		<jsp:include page="../common/teacherDetailSidebar.jsp">
+				<jsp:param value="1" name="page_gubun"/>
+		</jsp:include>
+	</c:when>
+	<c:otherwise>
+		<jsp:include page="../common/courseSidebar.jsp">
+				<jsp:param value="1" name="page_gubun"/>
+		</jsp:include>
+	</c:otherwise>
+</c:choose>
 <jsp:include page="../common/footer.jsp"></jsp:include>
-
 <main>
 	<div id="empty"></div>
 	<div class="container">
 		<h1 id="title">강좌 상세</h1>
-		<div class="detailCorsDiv">
-			<div class="prvwVideo">
-				<video src=""  controls width="450"  height="350" preload="auto"></video>
-			</div>
-			<div class="courseDetailDiv">
-				<h1>강좌 제목</h1>
-				<table>
-				<tr>
-					<td>선생님</td>
-					<td>김현수</td>
-				</tr>
-				<tr>
-					<td>과목유형</td>
-					<td>영어</td>
-				</tr>
-				<tr>
-					<td>수강기간</td>
-					<td>120일</td>
-				</tr>
-				<tr>
-					<td>강좌구성</td>
-					<td>30분씩 총 20강</td>
-				</tr>
-				<tr>
-					<td>교재</td>
-					<td>강좌교재 (주교재 1권)</td>
-				</tr>
-				</table>
+		<c:choose>
+			<c:when test="${viewList.courseName == null }">
+				<div>
+					<p>존재하지 않는 게시글 입니다.</p>
+				</div>
 				
-				<input type="submit" name="courseApplyBtn" id="courseApplyBtn" class="courseApplyBtn" value="수강신청" />
-			  
-			 </div>
-			 
-			 <div class="courseDetailConDiv">
-			 		<!-- 탭 버튼 영역 -->
-					<ul class="courseTab">
-					    <li class="tabItem active" id="totalTab">
-					      <p>전체</p>
-					    </li>
-					    <li class="tabItem" id="courseTab">
-					      <p>강좌정보</p>
-					    </li>
-					    <li class="tabItem" id="bookTab">
-					      <p>교재정보</p>
-					    </li>
-					    <li class="tabItem" id="configureTab">
-					      <p>강좌구성</p>
-					    </li>
-					  </ul>
-					  
-					  <!-- 탭 내용 영역 -->
-					  <div class="tabContentWrap" id="target1">
-					    <div class="tabcontent active" >
-					    <h3>강좌정보</h3>
-					    
-					    <div>
-					    <table class="courseInfoTable" id="target2">
-					    <tr>
-					    	<td>강좌 범위<td>
-					    	<td>교재 전 범위</td>
-					    </tr>
-					    <tr>
-					    	<td>강좌 특징<td>
-					    	<td>
-					    	2주 만에 끝내는 수능 어법 문제 풀이 <br>
-					    	: 절대평가 시대에 어법 공부에 시간을 끄는 것은 현명하지 못하다. 
-							평가원 출제 패턴을 짧고 굵게 정리해, 수능 어법(29번) 문항을 확실히 가져가자!
-							</td>
-					    </tr>
-					    <tr>
-					    	<td>수강 대상<td>
-					    	<td>
-					    	- 수능 어법(29번) 문항을 대비하고자 하는 학생<br>
-							- 어법 문제 풀이를 빠르게 정리하고 싶은 학생
-							</td>
-					    </tr>
-					    </table>
-					    </div>
-					    
-					    <div class="bookInfo" >
-					    	<h3>교재정보</h3>
-					    	<div>
-					    	<div class="bookImg"></div>
-					    	<div>
-							    <table class="bookInfoTable" id="target3">
+				<div class="listGo">
+				 	<button id="listGoBtn">목록으로</button>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="detailCorsDiv">
+					<div class="prvwVideo">
+						<!-- <video src="https://youtu.be/FxB6_qaqHlY?si=a9LUk3AtySqSu-mT"  controls width="450"  height="350" preload="auto"></video> -->
+						<iframe width="450" height="350" src="https://www.youtube.com/embed/FxB6_qaqHlY?si=a9LUk3AtySqSu-mT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					</div>
+					<div class="courseDetailDiv">
+						<h1>${viewList.courseName}</h1>
+						<table>
+						<tr>
+							<td>선생님</td>
+							<td>${viewList.teacherName}</td>
+						</tr>
+						<tr>
+							<td>과목유형</td>
+							<td>${viewList.sub1} - ${viewList.sub2}</td>
+						</tr>
+						<tr>
+							<td>수강기간</td>
+							<td>${viewList.sugangStart} ~ ${ viewList.sugangEnd }</td>
+						</tr>
+						<tr>
+							<td>강좌구성</td>
+							<td>${viewList.guseong}</td>
+						</tr>
+						<tr>
+							<td>교재</td>
+							<td>${viewList.bookName}</td>
+						</tr>
+						</table>
+						<input type="button" name="courseApplyBtn" id="courseApplyBtn" class="courseApplyBtn" value="수강신청" />
+					 </div>
+					 <div class="courseDetailConDiv">
+					 		<!-- 탭 버튼 영역 -->
+							<ul class="courseTab">
+							    <li class="tabItem active" id="totalTab">
+							      <p>전체</p>
+							    </li>
+							    <li class="tabItem" id="courseTab">
+							      <p>강좌정보</p>
+							    </li>
+							    <li class="tabItem" id="bookTab">
+							      <p>교재정보</p>
+							    </li>
+							    <li class="tabItem" id="configureTab">
+							      <p>강좌구성</p>
+							    </li>
+							  </ul>
+							  
+							  <!-- 탭 내용 영역 -->
+							  <div class="tabContentWrap" id="target1">
+							    <div class="tabcontent active" >
+							    <h3>강좌정보</h3>
+							    
+							    <div>
+							    <table class="courseInfoTable" id="target2">
 							    <tr>
-							    	<td>주 교재명<td>
-							    	<td>Oracle : 평가원 실전 어법</td>
+							    	<td>강좌 범위<td>
+							    	<td>${viewList.gangBumwi}</td>
 							    </tr>
 							    <tr>
-							    	<td>교재 설명<td>
+							    	<td>강좌 특징<td>
 							    	<td>
-							    	1. 4개의 대단원, 17개의 출제 포인트로 수능 어법 문제 풀이 정리<br>
-									2. [기출문장 변형하기]를 통한 출제 포인트 체화<br>
-									3. 최근 10년간의 출제 양상 정리<br>
-									4. [기출 라이브러리] - 최근 10개년 기출 문제 전부 수록<br>
+							    	${viewList.gangChar}
+									</td>
+							    </tr>
+							    <tr>
+							    	<td>수강 대상<td>
+							    	<td>
+							    	${viewList.range}
 									</td>
 							    </tr>
 							    </table>
-						    </div>
-						    </div>
-					    </div>
-					    
-					    <div class="courseConfigure" >
-					    	<h3>강좌구성</h3>
-					    <table class="courseConfiTable" id="target4">
-					    	<tr>
-					    		<th>강좌명</th>
-					    		<th>강좌시간</th>
-					    	</tr>
-					    	<tr>
-					    		<td>01강 [출제 Point 1] 동사 vs 준동사</td>
-					    		<td>30분</td>
-					    	</tr>
-					    	<tr>
-					    		<td>02강 [출제 Point 2] 동사의 수일치</td>
-					    		<td>27분</td>
-					    	</tr>
-					    	<tr>
-					    		<td>03강 [출제 Point 3] 능동 vs 수동</td>
-					    		<td>35분</td>
-					    	</tr>
-					    	<tr>
-					    		<td>04강 [출제 Point 4] 병렬구조</td>
-					    		<td>22분</td>
-					    	</tr>
-					    	<tr>
-					    		<td>05강 [출제 Point 5] 대동사</td>
-					    		<td>17분</td>
-					    	</tr>
-					    	<tr>
-					    		<td>06강 [출제 Point 6] 전치사 + 동명사</td>
-					    		<td>18분</td>
-					    	</tr>
-					    
-					    </table>
-					    
-					    
-					    </div>
-					    
-					    </div>
-						<div class="listGo">
-						 	<button id="listGoBtn">목록으로</button>
-						</div>
-				 </div>
-			 </div>
-			 
-		</div>
+							    </div>
+							    
+							    <div class="bookInfo" >
+							    	<h3>교재정보</h3>
+							    	<div>
+							    	<div class="bookImg">
+							    		<img src="${ viewList.filePath}/${viewList.fileName}" width="100%" height="100%">
+							    	</div>
+							    	<div>
+									    <table class="bookInfoTable" id="target3">
+									    <tr>
+									    	<td>주 교재명<td>
+									    	<td>${viewList.bookName}</td>
+									    </tr>
+									    <tr>
+									    	<td>교재 설명<td>
+									    	<td>
+									    	${viewList.bookIntro}
+											</td>
+									    </tr>
+									    </table>
+								    </div>
+								    </div>
+							    </div>
+							    
+							    <div class="courseConfigure" >
+							    	<h3>강좌구성</h3>
+							    <table class="courseConfiTable" id="target4">
+							    	<tr>
+							    		<th>강좌명</th>
+							    		<th>강좌시간</th>
+							    	</tr>
+							    	<c:choose>
+							    		<c:when test="${sebulist[0].courseSebuName == null}">
+							    			<tr>
+							    				<td colspan="2">
+							    					표시할 내용이 없습니다.
+							    				</td>
+							    			</tr>
+							    		</c:when>
+							    		<c:otherwise>
+							    			<c:forEach var="e" items="${sebulist}" varStatus="status">
+							    				<tr>
+							    					<td> ${status.count}강 ${e.courseSebuName} </td>
+							    					<td> ${e.courseTime} </td>
+							    				</tr>
+							    			</c:forEach>
+							    		</c:otherwise>
+							    	</c:choose>							    
+							    </table>					    
+							    </div>
+							    
+							    </div>
+								<div class="listGo">
+								 	<button id="listGoBtn">목록으로</button>
+								</div>
+						 </div>
+					 </div>
+					 
+				</div>
+			</c:otherwise>
+		</c:choose>
+		
 		
 	</div>
 </main>
 
 <script>
-
-/* 로그인 정보 있을때.. 확인필요..
-document.querySelector("#courseApplyBtn").addEventListener("click", function(e){
-	let signIn = "";
-	if (signIn == ""){
-		confirm("로그인 후 이용해주세요.");
-		location.href="/login.jsp";
-	} else {
-		location.href="/projectEtoos/user/teacherDetailCourse.jsp";
-	}
-	
-	if (signIn != null ){
-		confirm("강좌를 신청하시겠습니까?"){
-		window.location = "/projectEtoos/mypage/myCourse.jsp";
-		}
-	}
-}, false);
- */
  
  //메뉴 탭 스크롤
 let totalTab = document.querySelector("#totalTab");
@@ -223,18 +212,30 @@ bookTab.addEventListener("click", (e)=> {
 
  
 document.querySelector("#courseApplyBtn").addEventListener("click", function(e){
-	if(confirm("강좌를 신청하시겠습니까?")){
-		window.location = "/projectEtoos/mypage/myCourse.jsp";
+	if(${(sessionScope.id != null) ? true : false}) {
+		if (${(sessionScope.gubun != '1') ? true : false}) {
+			alert("학생만 신청 가능합니다.");
+		} else {
+			if(confirm("강좌를 신청하시겠습니까?")){
+				window.location = "/projectEtoos/mypage/myCourse.jsp";
+			}
+		}
+	} else {
+		alert("로그인 후 이용해주세요.");
+		window.location = "Login.do";
 	}
 }, false);
 
-
-document.querySelector("#listGoBtn").addEventListener("click", function(e){
-	window.location = "/projectEtoos/user/teacherDetailList.jsp";
+let listGoBtn = document.querySelector("#listGoBtn");
+listGoBtn.addEventListener("click", ()=>{
+	if (${(param.menuGubun == null) ? 'course' : param.menuGubun } == "teacher") {
+		window.location = "teacherList.do?courseIdx=${param.courseIdx}&pageSelected=${param.pageSelected}&sub1=${param.sub1}&sub2=${param.sub2}&sub3=${param.sub3}&menuGubun=teacher";
+	} else {
+		window.location = "courseList.do?courseIdx=${param.courseIdx}&pageSelected=${param.pageSelected}&sub1=${param.sub1}&sub2=${param.sub2}&sub3=${param.sub3}&menuGubun=course";
+	}
 	
-}, false);
+})
 
 </script>
-
 </body>
 </html>

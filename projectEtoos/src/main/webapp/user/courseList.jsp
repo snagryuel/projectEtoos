@@ -151,15 +151,15 @@ div.list div.list-top {
 							<c:set var="i" value="${totalCount - (((param.pageSelected != null ? param.pageSelected : 1)-1) * 10)}" />
 							<c:forEach var = "list" items="${courseList }">
 								<c:set var="thisUrl">
-									CourseView.do?courseIdx=${list.courseIdx}&pageSelected=${(param.pageSelected != null) ? param.pageSelected : 1 }&sub1=${param.sub1}&sub2=${param.sub2}&sub3=${param.sub3}					
+									CourseList_course.do?courseIdx=${list.courseIdx}&pageSelected=${(param.pageSelected != null) ? param.pageSelected : 1 }&sub1=${param.sub1}&sub2=${param.sub2}&sub3=${param.sub3}&menuGubun=course"					
 								</c:set>
 								<tr>
 									<td><a href="${thisUrl}">${i}</a></td>
-									<td>${list.coursename }</td>
-									<td>${list.name }</td>
-									<td>${list.sub1 }</td>
-									<td>${list.sub2 }</td>
-									<td>${list.sugangStart } ~ ${list.sugangEnd }</td>
+									<td><a href="${thisUrl}">${list.coursename }</a></td>
+									<td><a href="${thisUrl}">${list.name }</a></td>
+									<td><a href="${thisUrl}">${list.sub1 }</a></td>
+									<td><a href="${thisUrl}">${list.sub2 }</a></td>
+									<td><a href="${thisUrl}">${list.sugangStart } ~ ${list.sugangEnd }</a></td>
 									<td><button>맛보기</button></td>
 									<td><button>수강신청</button></td>
 								</tr>

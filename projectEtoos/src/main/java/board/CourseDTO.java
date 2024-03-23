@@ -1,10 +1,13 @@
 package board;
 
+import java.util.Map;
+
 public class CourseDTO {
 	public CourseDTO() {}
 	private int courseIdx;
 	private String registerId;
 	private String teacherId;
+	private String teacherName;
 	private String courseName;
 	private String sugangStart;
 	private String sugangEnd;
@@ -21,6 +24,8 @@ public class CourseDTO {
 	private String fileGubun;
 	private String fileName;
 	private String filePath;
+	private String sub1;
+	private String sub2;
 	
 	public int getCourseIdx() {
 		return courseIdx;
@@ -135,5 +140,23 @@ public class CourseDTO {
 	}
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
+	}
+	public String getTeacherName() {
+		return teacherName;
+	}
+	public void setTeacherName(String teacherName) {
+		this.teacherName = teacherName;
+	}
+	public String getSub1() {
+		return sub1;
+	}
+	public void setSub1(String sub1) {
+		this.sub1 = sub1;
+	}
+	public String getSub2() {
+		return sub2;
+	}
+	public void setSub2(String sub2) {
+		this.sub2 = sub2;
 	}
 }
