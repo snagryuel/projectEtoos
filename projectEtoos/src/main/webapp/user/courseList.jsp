@@ -302,7 +302,7 @@ div.list div.list-top {
 	if (${(param.sucessYN != null)}) {
 		if (${param.sucessYN == 'true'}) {
 			if (confirm("정상 신청되었습니다. 내역 페이지로 이동하시겠습니까?")) {
-				window.location = "MyCourse.do";
+				window.location = "/projectEtoos/mypage/MyCourse.do";
 			}
 		} else {
 			alert("수강신청에 실패하였습니다.");
@@ -313,7 +313,7 @@ div.list div.list-top {
 	if (${param.cancelSucessYN != null}) {
 		if (${param.cancelSucessYN == 'true'}) {
 			if (confirm("취소되었습니다. 내역 페이지로 이동하시겠습니까?")) {
-				window.location = "MyCourse.do";
+				window.location = "/projectEtoos/mypage/MyCourse.do";
 			}
 		} else {
 			alert("신청취소에 실패하였습니다.");

@@ -57,7 +57,7 @@ public class MemberDAO extends JDBConnect {
 		String id = input.getId();
 		String pwd = input.getPwd();
 		
-		String sql = "SELECT id, pwd, gubun FROM tbl_memberlist WHERE id=? AND pwd=? ";			
+		String sql = "SELECT id, name, pwd, gubun FROM tbl_memberlist WHERE id=? AND pwd=? ";			
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -67,6 +67,7 @@ public class MemberDAO extends JDBConnect {
 		
 			if(rs.next()) {
 				result.setId(rs.getString("id"));
+				result.setName(rs.getString("name"));
 				result.setPwd(rs.getString("pwd"));
 				result.setGubun(rs.getString("gubun"));
 			}

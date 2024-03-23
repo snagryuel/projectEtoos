@@ -7,7 +7,7 @@
 <div id="header">
 	<div class="container">
 		<div class="nav">
-			<h1><a href="/projectEtoos//user/Main.do"><img src="https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg"></a></h1>
+			<h1><a href="/projectEtoos/user/Main.do"><img src="https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg"></a></h1>
 			<ul>
 				<c:set var="teacher" value="/projectEtoos/user/teacherList.jsp"/>
 				<c:set var="user" value="/projectEtoos/user/courseList.do"/>
@@ -58,7 +58,7 @@
 							})
 	
 							myPage.addEventListener("click", ()=>{
-								window.location = "/projectEtoos/mypage/myCourse.jsp";
+								window.location = "/projectEtoos/mypage/MyCourse.do";
 							})
 							</script>
 							</c:otherwise>

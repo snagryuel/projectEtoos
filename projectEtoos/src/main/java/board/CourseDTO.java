@@ -1,5 +1,6 @@
 package board;
 
+import java.util.Date;
 import java.util.Map;
 
 public class CourseDTO {
@@ -28,6 +29,7 @@ public class CourseDTO {
 	private String sub2;
 	private String historyYN;
 	private String state;
+	private Date applicationDate;
 	
 	public int getCourseIdx() {
 		return courseIdx;
@@ -172,5 +174,11 @@ public class CourseDTO {
 	}
 	public void setState(String state) {
 		this.state = state;
+	}
+	public Date getApplicationDate() {
+		return applicationDate;
+	}
+	public void setApplicationDate(Date applicationDate) {
+		this.applicationDate = applicationDate;
 	}
 }

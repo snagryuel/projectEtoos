@@ -58,6 +58,7 @@ public class LoginOkController extends HttpServlet {
 				session.setAttribute("id", id);
 				session.setAttribute("loginYN", "Y");
 				session.setAttribute("gubun", target.getGubun());
+				session.setAttribute("name", target.getName());
 				resp.sendRedirect("Main.do");
 			} else {
 			req.setAttribute("errMsg", "로그인 오류");

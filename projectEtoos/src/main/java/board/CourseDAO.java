@@ -181,4 +181,49 @@ public class CourseDAO extends JDBConnect {
 		}
 		return result;
 	}
+	
+	public List<CourseDTO> getMyCourseHistory(String id) {
+		List<CourseDTO> list = new ArrayList<CourseDTO>();
+		
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("SELECT");
+		sb.append(" CS.courseIdx, CS.courseName, CS.teacherId");
+		sb.append(" , MB.name, SB.sub1, SB.sub2");
+		sb.append(" , CH.applicationDate");
+		sb.append(" , FM.fileGubun, FM.fileName, FM.filePath");
+		sb.append(" FROM tbl_coursehistory AS CH");
+		sb.append(" LEFT OUTER JOIN tbl_courselist AS CS ON CH.courseIdx = CS.courseIdx");
+		sb.append(" LEFT OUTER JOIN tbl_teacherlist AS TL ON CS.teacherId = TL.id");
+		sb.append(" LEFT OUTER JOIN tbl_subject AS SB ON SB.subKey = TL.subKey");
+		sb.append(" LEFT OUTER JOIN tbl_memberlist AS MB ON MB.id = TL.id");
+		sb.append(" LEFT OUTER JOIN tbl_filemanage AS FM ON CS.fileIdx = FM.fileIdx");
+		sb.append(" WHERE CH.id = ?");
+		sb.append(" ORDER BY CH.applicationDate DESC");
+		
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			psmt.setString(1, id);
+			
+			rs = psmt.executeQuery();
+			
+			while (rs.next()) {
+				CourseDTO dto = new CourseDTO();
+				dto.setCourseIdx(rs.getInt("courseIdx"));
+				dto.setCourseName(rs.getString("courseName"));
+				dto.setTeacherId(rs.getString("teacherId"));
+				dto.setTeacherName(rs.getString("name"));
+				dto.setSub1(rs.getString("sub1"));
+				dto.setSub2(rs.getString("sub2"));
+				dto.setApplicationDate(rs.getDate("applicationDate"));
+				dto.setFileGubun(rs.getString("fileGubun"));
+				dto.setFileName(rs.getString("fileName"));
+				dto.setFilePath(rs.getString("filePath"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }
