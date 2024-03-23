@@ -17,8 +17,26 @@ public class TeacherDTO {
 	private String addr;
 	private String state;
 	private String titleGubun;
-	
+	private String title;
+	private String tMent;
 
+	
+	
+	public String gettMent() {
+		return tMent;
+	}
+	public void settMent(String tMent) {
+		this.tMent = tMent;
+	}
+
+
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	
 	public String getSugangStart() {
 		return sugangStart;
