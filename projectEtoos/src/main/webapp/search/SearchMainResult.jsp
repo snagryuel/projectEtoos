@@ -90,7 +90,7 @@ if (searchWord == null) {
 												</div>
 											</div>
 											<div class="sch_c">
-												<span class="sch_tis">선생소개소개소개소개</span>
+												<span class="sch_tis">${result.tMent}</span>
 												<div class="sch_ti">
 													<strong>"${result.sub1}"</strong> &nbsp; <font
 														style="color: #b16e61">${result.name}</font> 선생님
@@ -190,10 +190,10 @@ if (searchWord == null) {
 												</div>
 												<div class="sch_c">
 													<div class="sch_ti">
-														<strong>${result.title}</strong>
+														<span><strong>${result.title}</strong></span>
 
 													</div>
-													<br> <span class="sch_tis">기초가 부족한 고1 학생들을 위해</span>
+													<br> <span class="sch_tis">${result.contents}</span>
 												</div>
 											</li>
 										</ul>

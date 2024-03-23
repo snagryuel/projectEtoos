@@ -19,7 +19,15 @@ public class TeacherDTO {
 	private String titleGubun;
 	private String title;
 	private String tMent;
+	private String contents;
 
+	public String getContents() {
+		return contents;
+	}
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+	
 	
 	
 	public String gettMent() {
