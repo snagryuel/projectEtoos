@@ -11,7 +11,8 @@ import java.util.List;
 import board.CourseDAO;
 import board.CourseDTO;
 
-@WebServlet(urlPatterns = {"/user/CourseList_teacher.do", "/user/CourseList_course.do"})public class CourseViewController extends HttpServlet {
+@WebServlet(urlPatterns = {"/user/CourseList_teacher.do", "/user/CourseList_course.do"})
+public class CourseViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 

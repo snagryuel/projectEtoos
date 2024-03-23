@@ -138,4 +138,22 @@ public class CourseDAO extends JDBConnect {
 		}
 		return list ;
 	}
+	
+	public int applyToCourse(String idx, String id) {
+		int result = 0;
+		StringBuilder sb = new StringBuilder();
+		sb.append("INSERT INTO tbl_courseHistory (id, courseIdx)");
+		sb.append(" VALUES (?, ?)");
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			psmt.setString(1, id);
+			psmt.setString(2, idx);
+			System.out.println(psmt);
+			
+			result = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

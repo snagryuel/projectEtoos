@@ -43,7 +43,7 @@
 				<div class="detailCorsDiv">
 					<div class="prvwVideo">
 						<!-- <video src="https://youtu.be/FxB6_qaqHlY?si=a9LUk3AtySqSu-mT"  controls width="450"  height="350" preload="auto"></video> -->
-						<iframe width="450" height="350" src="https://www.youtube.com/embed/FxB6_qaqHlY?si=a9LUk3AtySqSu-mT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+						<iframe width="100%" height="90%" src="https://www.youtube.com/embed/FxB6_qaqHlY?si=a9LUk3AtySqSu-mT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 					</div>
 					<div class="courseDetailDiv">
 						<h1>${viewList.courseName}</h1>
@@ -217,7 +217,7 @@ document.querySelector("#courseApplyBtn").addEventListener("click", function(e){
 			alert("학생만 신청 가능합니다.");
 		} else {
 			if(confirm("강좌를 신청하시겠습니까?")){
-				window.location = "/projectEtoos/mypage/myCourse.jsp";
+				window.location = "CourseApplication.do?<%=request.getQueryString()%>";
 			}
 		}
 	} else {
@@ -235,6 +235,17 @@ listGoBtn.addEventListener("click", ()=>{
 	}
 	
 })
+
+// 수강신청 성공/실패 알럿
+if (${sucessYN != null ? true : false}) {
+	if (${(sucessYN != null) ? sucessYN : false}) {
+		if (confirm("정상 신청되었습니다. 내역 페이지로 이동하시겠습니까?")) {
+			window.location = "MyCourse.do";
+		}
+	} else {
+		alert("수강신청에 실패하였습니다.");
+	}
+}
 
 </script>
 </body>

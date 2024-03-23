@@ -160,8 +160,8 @@ div.list div.list-top {
 									<td><a href="${thisUrl}">${list.sub1 }</a></td>
 									<td><a href="${thisUrl}">${list.sub2 }</a></td>
 									<td><a href="${thisUrl}">${list.sugangStart } ~ ${list.sugangEnd }</a></td>
-									<td><button>맛보기</button></td>
-									<td><button>수강신청</button></td>
+									<td><button data-idx="${list.courseIdx}" class="semple">맛보기</button></td>
+									<td><button id="courseApplyBtn">수강신청</button></td>
 								</tr>
 								<c:set var="i" value="${i - 1}"/>
 							</c:forEach>
@@ -251,6 +251,43 @@ div.list div.list-top {
 		value2.value = "";
 		value3.value = "";
 	})
+	
+	// 강좌 신청
+	document.querySelector("#courseApplyBtn").addEventListener("click", function(e){
+		if(${(sessionScope.id != null) ? true : false}) {
+			if (${(sessionScope.gubun != '1') ? true : false}) {
+				alert("학생만 신청 가능합니다.");
+			} else {
+				if(confirm("강좌를 신청하시겠습니까?")){
+					window.location = "CourseApplication.do?<%=request.getQueryString()%>";
+				}
+			}
+		} else {
+			alert("로그인 후 이용해주세요.");
+			window.location = "Login.do";
+		}
+	}, false);
+	
+	// 맛보기
+	let semples = document.querySelectorAll(".semple");
+	
+	for (let i of semples) {
+		i.addEventListener("click", ()=>{
+			window.open("/projectEtoos/user/SemplePopup.do?courseIdx="+i.dataset.idx,'_blank', 'width=500, height=300, top=150, left=50, scrollbars=yes, location=no');
+		})
+	}
+	
+	// 수강신청 성공/실패 알럿
+	if (${(sucessYN != null) ? true : false}) {
+		if (${(sucessYN != null) ? sucessYN : false}) {
+			if (confirm("정상 신청되었습니다. 내역 페이지로 이동하시겠습니까?")) {
+				window.location = "MyCourse.do";
+			}
+		} else {
+			alert("수강신청에 실패하였습니다.");
+		}
+	}
+	
 	
 </script>
 </body>

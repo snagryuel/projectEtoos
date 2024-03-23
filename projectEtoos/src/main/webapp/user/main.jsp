@@ -146,5 +146,11 @@
 		</div>
 	</main>
 	<jsp:include page="../common/footer.jsp" />
+	<script>
+	if(${(param.Err != null) ? true : false}) {
+		alert("잘못된 접근입니다.");
+	}
+	
+	</script>
 </body>
 </html>
