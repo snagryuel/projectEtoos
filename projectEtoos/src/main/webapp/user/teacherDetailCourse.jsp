@@ -69,7 +69,17 @@
 							<td>${viewList.bookName}</td>
 						</tr>
 						</table>
-						<input type="button" name="courseApplyBtn" id="courseApplyBtn" class="courseApplyBtn" value="수강신청" />
+						<c:choose>
+							<c:when test="${viewList.state == 'N' }" >
+								<p> 종료된 강의 입니다. </p>		
+							</c:when>
+							<c:when test="${viewList.historyYN == 'Y' }" >
+								<input type="button" id="applyCancelBtn" class="applyCancelBtn" value="신청취소" onclick="applyCancel()"/>		
+							</c:when>
+							<c:otherwise>
+								<input type="button" id="courseApplyBtn" class="courseApplyBtn" value="수강신청" onclick="apply()"/>
+							</c:otherwise>
+						</c:choose>		
 					 </div>
 					 <div class="courseDetailConDiv">
 					 		<!-- 탭 버튼 영역 -->
@@ -209,22 +219,29 @@ bookTab.addEventListener("click", (e)=> {
 	e.preventDefault();
 	window.scrollTo({top:target4.getBoundingClientRect().top, behavior: 'smooth'});
  });
+ 
+ 
+function applyCancel(){
+	if(confirm("강좌 신청을 취소하시겠습니까?")){
+		window.location = "CourseApplication.do?applyStatus=cancel&<%=request.getQueryString()%>";
+	}
+}
 
  
-document.querySelector("#courseApplyBtn").addEventListener("click", function(e){
+function apply(){
 	if(${(sessionScope.id != null) ? true : false}) {
 		if (${(sessionScope.gubun != '1') ? true : false}) {
 			alert("학생만 신청 가능합니다.");
 		} else {
 			if(confirm("강좌를 신청하시겠습니까?")){
-				window.location = "CourseApplication.do?<%=request.getQueryString()%>";
+				window.location = "CourseApplication.do?applyStatus=apply&<%=request.getQueryString()%>";
 			}
 		}
 	} else {
 		alert("로그인 후 이용해주세요.");
 		window.location = "Login.do";
 	}
-}, false);
+}
 
 let listGoBtn = document.querySelector("#listGoBtn");
 listGoBtn.addEventListener("click", ()=>{
@@ -237,8 +254,8 @@ listGoBtn.addEventListener("click", ()=>{
 })
 
 // 수강신청 성공/실패 알럿
-if (${sucessYN != null ? true : false}) {
-	if (${(sucessYN != null) ? sucessYN : false}) {
+if (${param.sucessYN != null}) {
+	if (${param.sucessYN == true}) {
 		if (confirm("정상 신청되었습니다. 내역 페이지로 이동하시겠습니까?")) {
 			window.location = "MyCourse.do";
 		}
@@ -247,6 +264,16 @@ if (${sucessYN != null ? true : false}) {
 	}
 }
 
+//신청취소 성공/실패 알럿
+if (${param.cancelSucessYN != null}) {
+	if (${param.cancelSucessYN == true}) {
+		if (confirm("취소되었습니다. 내역 페이지로 이동하시겠습니까?")) {
+			window.location = "MyCourse.do";
+		}
+	} else {
+		alert("신청취소에 실패하였습니다.");
+	}
+}
 </script>
 </body>
 </html>

@@ -5,8 +5,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.util.List;
+
+import org.apache.tomcat.jakartaee.commons.lang3.StringUtils;
 
 import board.CourseDAO;
 import board.CourseDTO;
@@ -17,7 +21,9 @@ public class CourseViewController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		// 아이디 가져오기
+		HttpSession session = req.getSession();
+		String id = (session.getAttribute("id") != null) ? (String) session.getAttribute("id") : "";
 		
 		// 조회할 INDEX
 		String courseIdx = req.getParameter("courseIdx");
@@ -33,7 +39,7 @@ public class CourseViewController extends HttpServlet {
 		
 		// 세부 화면 데이터 가져오기
 		CourseDAO dao = new CourseDAO();
-		CourseDTO dto = dao.getDetail(courseIdx);
+		CourseDTO dto = dao.getDetail(courseIdx, id);
 		
 		// 세부 코스 데이터 가져오기
 		List<CourseDTO> sebulist = dao.getCourseSebu(courseIdx);

@@ -11,6 +11,9 @@ public class AdminDTO {
 	private String id;
 	private String birth;
 	private String joinday;
+	private String historyYN;
+	private String state;
+
 	public String getJoinday() {
 		return joinday;
 	}
@@ -70,5 +73,17 @@ public class AdminDTO {
 	}
 	public void setCourseIdx(int courseIdx) {
 		this.courseIdx = courseIdx;
+	}
+	public String getHistoryYN() {
+		return historyYN;
+	}
+	public void setHistoryYN(String historyYN) {
+		this.historyYN = historyYN;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
 	}
 }

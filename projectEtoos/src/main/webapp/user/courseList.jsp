@@ -149,7 +149,7 @@ div.list div.list-top {
 					<c:choose>
 						<c:when test="${totalCount != null && totalCount != 0}">
 							<c:set var="i" value="${totalCount - (((param.pageSelected != null ? param.pageSelected : 1)-1) * 10)}" />
-							<c:forEach var = "list" items="${courseList }">
+							<c:forEach var = "list" items="${courseList}">
 								<c:set var="thisUrl">
 									CourseList_course.do?courseIdx=${list.courseIdx}&pageSelected=${(param.pageSelected != null) ? param.pageSelected : 1 }&sub1=${param.sub1}&sub2=${param.sub2}&sub3=${param.sub3}&menuGubun=course"					
 								</c:set>
@@ -160,8 +160,20 @@ div.list div.list-top {
 									<td><a href="${thisUrl}">${list.sub1 }</a></td>
 									<td><a href="${thisUrl}">${list.sub2 }</a></td>
 									<td><a href="${thisUrl}">${list.sugangStart } ~ ${list.sugangEnd }</a></td>
-									<td><button data-idx="${list.courseIdx}" class="semple">맛보기</button></td>
-									<td><button id="courseApplyBtn">수강신청</button></td>
+									<td><button data-idx="${list.courseIdx}" class="sample">맛보기</button></td>
+									<td>
+									<c:choose>
+										<c:when test="${list.state == 'N' }">
+											종료
+										</c:when>
+										<c:when test="${list.historyYN == 'Y' }">
+											<button data-courseIdx="${list.courseIdx}" class="applyCancelBtn" onclick="applyCancel(this)">신청취소</button>
+										</c:when>
+										<c:otherwise>
+											<button data-courseIdx="${list.courseIdx}" class="courseApplyBtn" onclick="apply(this)">수강신청</button>
+										</c:otherwise>
+									</c:choose>
+									</td>
 								</tr>
 								<c:set var="i" value="${i - 1}"/>
 							</c:forEach>
@@ -252,34 +264,43 @@ div.list div.list-top {
 		value3.value = "";
 	})
 	
+	// 강좌 취소
+	function applyCancel(item){
+		if(confirm("강좌 신청을 취소하시겠습니까?")){
+			window.location = "CourseApplication.do?"+"applyStatus=cancel&"+"<%=request.getQueryString()%>&courseIdx="+item.dataset.courseidx;
+		}
+	}
+	
 	// 강좌 신청
-	document.querySelector("#courseApplyBtn").addEventListener("click", function(e){
+	function apply(item){
 		if(${(sessionScope.id != null) ? true : false}) {
 			if (${(sessionScope.gubun != '1') ? true : false}) {
 				alert("학생만 신청 가능합니다.");
 			} else {
 				if(confirm("강좌를 신청하시겠습니까?")){
-					window.location = "CourseApplication.do?<%=request.getQueryString()%>";
+					window.location = "CourseApplication.do?"+"applyStatus=apply&"+"<%=request.getQueryString()%>"+"&courseIdx="+item.dataset.courseidx;
 				}
 			}
 		} else {
 			alert("로그인 후 이용해주세요.");
 			window.location = "Login.do";
 		}
-	}, false);
+	}
+	
+	// ${(sessionScope.id != null) ? true : false}
 	
 	// 맛보기
-	let semples = document.querySelectorAll(".semple");
+	let samples = document.querySelectorAll(".sample");
 	
-	for (let i of semples) {
+	for (let i of samples) {
 		i.addEventListener("click", ()=>{
-			window.open("/projectEtoos/user/SemplePopup.do?courseIdx="+i.dataset.idx,'_blank', 'width=500, height=300, top=150, left=50, scrollbars=yes, location=no');
+			window.open("/projectEtoos/user/SamplePopup.do?courseIdx="+i.dataset.idx,'_blank', 'width=500, height=300, top=150, left=50, scrollbars=yes, location=no');
 		})
 	}
 	
 	// 수강신청 성공/실패 알럿
-	if (${(sucessYN != null) ? true : false}) {
-		if (${(sucessYN != null) ? sucessYN : false}) {
+	if (${(param.sucessYN != null)}) {
+		if (${param.sucessYN == 'true'}) {
 			if (confirm("정상 신청되었습니다. 내역 페이지로 이동하시겠습니까?")) {
 				window.location = "MyCourse.do";
 			}
@@ -288,6 +309,16 @@ div.list div.list-top {
 		}
 	}
 	
+	//신청취소 성공/실패 알럿
+	if (${param.cancelSucessYN != null}) {
+		if (${param.cancelSucessYN == 'true'}) {
+			if (confirm("취소되었습니다. 내역 페이지로 이동하시겠습니까?")) {
+				window.location = "MyCourse.do";
+			}
+		} else {
+			alert("신청취소에 실패하였습니다.");
+		}
+	}
 	
 </script>
 </body>

@@ -19,28 +19,46 @@ public class CourseApplicationController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		
+		String applyStatus = (req.getParameter("applyStatus") != null) ? req.getParameter("applyStatus") : "err";
 		String id = (session.getAttribute("id") != null) ? (String) session.getAttribute("id") : "";
 		
-		if(id != "") {
+		// 성공여부 초기화
+		req.removeAttribute("cancelSucessYN");
+		
+		if(!id.equals("") && !applyStatus.equals("err")) {
 			String courseIdx = req.getParameter("courseIdx");
-			
-			// 쿼리 실행
-			CourseDAO dao = new CourseDAO();
-			int result = dao.applyToCourse(courseIdx, id);
-			
-			// 이전 페이지
-			String url = req.getHeader("referer").substring(req.getHeader("referer").lastIndexOf("/")+1);
-			
-			// 성공여부
-			boolean sucessYN = false;
-			if (result > 0) {
-				sucessYN = true;
-				req.setAttribute("sucessYN", sucessYN);
-				req.getRequestDispatcher(url+req.getQueryString()).forward(req, resp);
-			} else {
-				req.setAttribute("sucessYN", sucessYN);
-				req.getRequestDispatcher(url+req.getQueryString()).forward(req, resp);
+			if (applyStatus.equals("apply")) {
+				// 쿼리 실행
+				CourseDAO dao = new CourseDAO();
+				int result = dao.applyToCourse(courseIdx, id);
+				dao.Close();
+								
+				// 성공여부
+				boolean sucessYN = false;
+				if (result > 0) {
+					sucessYN = true;
+					resp.sendRedirect("courseList.do?"+req.getQueryString()+"&sucessYN="+sucessYN);
+				} else {
+					req.setAttribute("sucessYN", sucessYN);
+					resp.sendRedirect("courseList.do?"+req.getQueryString()+"&sucessYN="+sucessYN);
+				}
+			} else if (applyStatus.equals("cancel")) {
+				// 쿼리 실행
+				CourseDAO dao = new CourseDAO();
+				int result = dao.cancelToCourse(courseIdx, id);
+				dao.Close();
+				
+				// 이전 페이지
+				String url = req.getHeader("referer").substring(req.getHeader("referer").lastIndexOf("/")+1);
+				
+				// 성공여부
+				boolean cancelSucessYN = false;
+				if (result > 0) {
+					cancelSucessYN = true;
+					resp.sendRedirect("courseList.do?"+req.getQueryString()+"&cancelSucessYN="+cancelSucessYN);
+				} else {
+					resp.sendRedirect("courseList.do?"+req.getQueryString()+"&cancelSucessYN="+cancelSucessYN);
+				}
 			}
 		} else {
 			resp.sendRedirect("Main.do?Err=wrongAcess");

@@ -26,6 +26,8 @@ public class CourseDTO {
 	private String filePath;
 	private String sub1;
 	private String sub2;
+	private String historyYN;
+	private String state;
 	
 	public int getCourseIdx() {
 		return courseIdx;
@@ -158,5 +160,17 @@ public class CourseDTO {
 	}
 	public void setSub2(String sub2) {
 		this.sub2 = sub2;
+	}
+	public String getHistoryYN() {
+		return historyYN;
+	}
+	public void setHistoryYN(String historyYN) {
+		this.historyYN = historyYN;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
 	}
 }

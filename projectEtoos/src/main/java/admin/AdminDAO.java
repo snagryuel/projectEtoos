@@ -9,15 +9,19 @@ import common.JDBConnect;
 
 public class AdminDAO extends JDBConnect{
 	public AdminDAO() {}
-	public List<AdminDTO> CourseInfo(String sub1 ,String sub2, String sub3, int startNo) {
+	public List<AdminDTO> CourseInfo(String sub1 ,String sub2, String sub3, int startNo, String id) {
 		int cnt = 1;
 		List<AdminDTO> list = new Vector<AdminDTO>();
 		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT courseIdx, courseName, sugangStart, sugangEnd , sub1, sub2, name");
+		sb.append("SELECT tc.courseIdx, courseName, sugangStart, sugangEnd , sub1, sub2, name");
+		sb.append(" , NVL2(CH.id, 'Y', 'N') AS 'historyYN', CH.applicationDate");
+		sb.append(" , CASE WHEN tc.sugangEnd >= CURDATE() then 'Y' ELSE 'N' END AS 'state'");
 		sb.append(" FROM tbl_courselist AS tc ");
 		sb.append(" INNER JOIN tbl_teacherlist AS tt ON tc.teacherid = tt.id");
 		sb.append(" INNER JOIN tbl_subject AS ts ON tt.subkey = ts.subKey");
 		sb.append(" INNER JOIN tbl_memberlist AS tm ON tm.id = tc.teacherId");
+		sb.append(" LEFT OUTER JOIN tbl_coursehistory AS CH ON tc.courseIdx = CH.courseIdx");
+		sb.append(" AND CH.id = ?");
 		sb.append(" WHERE 1=1");
 		if(!sub1.equals("")) {
 			sb.append(" AND ts.sub1 = ?");
@@ -32,6 +36,8 @@ public class AdminDAO extends JDBConnect{
 		sb.append(" LIMIT ?, 10");
 		try {
 			psmt = conn.prepareStatement(sb.toString());
+			psmt.setString(cnt, id);
+			cnt++;
 			if(!sub1.equals("")) {
 				psmt.setString(cnt, sub1);
 				cnt++;
@@ -55,6 +61,8 @@ public class AdminDAO extends JDBConnect{
 				dto.setSub2(rs.getString("sub2"));
 				dto.setName(rs.getString("name"));
 				dto.setCourseIdx(rs.getInt("courseIdx"));
+				dto.setHistoryYN(rs.getString("historyYN"));
+				dto.setState(rs.getString("state"));
 				list.add(dto);
 			}
 		}catch(Exception e) {
@@ -219,7 +227,7 @@ public class AdminDAO extends JDBConnect{
 		}
 		return totalCount;
 	}
-
+	
 	public CourseDTO getCourseList(int idx) {
 		StringBuilder sb = new StringBuilder();
 		CourseDTO dto = new CourseDTO();
@@ -250,6 +258,7 @@ public class AdminDAO extends JDBConnect{
 		}
 		return dto ;
 	}
+
 	public List<CourseDTO> getCourseSebu(int idx) {
 		StringBuilder sb = new StringBuilder();
 		List<CourseDTO> list = new Vector<CourseDTO>();

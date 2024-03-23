@@ -63,7 +63,7 @@ public class CourseDAO extends JDBConnect {
 	}
 	
 	
-	public CourseDTO getDetail(String idx) {
+	public CourseDTO getDetail(String idx, String id) {
 		CourseDTO dto = new CourseDTO();
 		
 		StringBuilder sb = new StringBuilder();
@@ -73,16 +73,21 @@ public class CourseDAO extends JDBConnect {
 		sb.append(" , CL.bookName, CL.bookIntro, CL.gangBumwi");
 		sb.append(" , FM.fileGubun, FM.fileName, FM.filePath");
 		sb.append(" , SJ.sub1, SJ.sub2");
+		sb.append(" , NVL2(CH.id, 'Y', 'N') AS 'historyYN', CH.applicationDate");
+		sb.append(" , CASE WHEN CL.sugangEnd >= CURDATE() then 'Y' ELSE 'N' END AS 'state'");
 		sb.append(" FROM tbl_courselist AS CL ");
 		sb.append(" LEFT OUTER JOIN tbl_teacherList AS TL ON CL.teacherId = TL.id");
 		sb.append(" LEFT OUTER JOIN tbl_memberList AS MB ON MB.id = TL.id ");
 		sb.append(" LEFT OUTER JOIN tbl_subject AS SJ ON TL.subKey = SJ.subKey ");
 		sb.append(" LEFT OUTER JOIN tbl_filemanage AS FM ON CL.fileIdx = FM.fileIdx");
-		sb.append(" WHERE CL.courseIdx = ?");		
+		sb.append(" LEFT OUTER JOIN tbl_coursehistory AS CH ON CL.courseIdx = CH.courseIdx");
+		sb.append(" AND CH.id = ?");
+		sb.append(" WHERE CL.courseIdx = ?");
 		
 		try {
 			psmt = conn.prepareStatement(sb.toString());
-			psmt.setString(1, idx);
+			psmt.setString(1, id);
+			psmt.setString(2, idx);
 						
 			rs = psmt.executeQuery();
 			
@@ -103,6 +108,8 @@ public class CourseDAO extends JDBConnect {
 				dto.setSub1(rs.getString("sub1"));
 				dto.setSub2(rs.getString("sub2"));
 				dto.setRange(rs.getString("range"));
+				dto.setHistoryYN(rs.getString("historyYN"));
+				dto.setState(rs.getString("state"));
 				
 			}
 		} catch (Exception e) {
@@ -149,6 +156,25 @@ public class CourseDAO extends JDBConnect {
 			psmt.setString(1, id);
 			psmt.setString(2, idx);
 			System.out.println(psmt);
+			
+			result = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public int cancelToCourse(String idx, String id) {
+		int result = 0;
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("DELETE FROM tbl_courseHistory");
+		sb.append(" WHERE courseIdx = ? AND id = ?");
+		
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			psmt.setString(1, idx);
+			psmt.setString(2, id);
 			
 			result = psmt.executeUpdate();
 		} catch (SQLException e) {

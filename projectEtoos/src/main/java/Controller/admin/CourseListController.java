@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,6 +19,10 @@ import common.PageUtil;
 public class CourseListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
+		// 아이디 가져오기
+		HttpSession session = req.getSession();
+		String id = (session.getAttribute("id") != null) ? (String) session.getAttribute("id") : "";
+		
 		// 들어온 URL에 따라 처리
 		String uri = req.getRequestURI();
 		uri = uri.substring(uri.indexOf("/") + 1);
@@ -33,10 +38,14 @@ public class CourseListController extends HttpServlet {
 		// 시작 페이지
 		int starNo = (pageSelected*10)-10;
 		
+		// DB 데이터 가져오기
 		AdminDAO dao = new AdminDAO();
-		List<AdminDTO> courseList = dao.CourseInfo(sub1, sub2, sub3, starNo);
+		// 리스트 가져오기
+		List<AdminDTO> courseList = dao.CourseInfo(sub1, sub2, sub3, starNo, id	);
+		// 과목 가져오기
 		List<String> SubList1 = dao.getSub();
 		List<String> SubList2 = dao.getSub2(sub1);
+		// 선생님 장보 가져오기
 		List<AdminDTO> teacherList = dao.getteacher(sub1, sub2);
 		dao.Close();
 		
