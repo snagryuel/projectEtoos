@@ -26,10 +26,11 @@ public class SearchCourseController extends HttpServlet {
         String keyword = req.getParameter("search_word");
         TeacherDAO dao = new TeacherDAO();
         System.out.println(keyword+", "+bbs);
+        
         List<TeacherDTO> searchResults1 = dao.getTeacherList(keyword, bbs);
         List<TeacherDTO> searchResults2 = dao.getNoticeList(keyword, bbs);
         List<TeacherDTO> searchResults3 = dao.getCourseList(keyword, bbs);
- 
+        
         req.setAttribute("bbs", bbs);
         req.setAttribute("keyword", keyword);
         req.setAttribute("searchResults1", searchResults1);
