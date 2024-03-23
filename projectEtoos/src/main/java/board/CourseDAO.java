@@ -155,7 +155,6 @@ public class CourseDAO extends JDBConnect {
 			psmt = conn.prepareStatement(sb.toString());
 			psmt.setString(1, id);
 			psmt.setString(2, idx);
-			System.out.println(psmt);
 			
 			result = psmt.executeUpdate();
 		} catch (SQLException e) {
