@@ -224,7 +224,7 @@ public class AdminDAO extends JDBConnect{
 		StringBuilder sb = new StringBuilder();
 		CourseDTO dto = new CourseDTO();
 		
-		sb.append("SELECT courseName, sugangStart, sugangEnd, guseong,  ");
+		sb.append("SELECT courseName, sugangStart, sugangEnd, guseong, ");
 		sb.append(" bookName, bookIntro, teacherId, gangBumwi, gangChar, `range`");
 		sb.append(" FROM tbl_courselist");
 		sb.append(" WHERE courseidx = ?");
@@ -275,5 +275,37 @@ public class AdminDAO extends JDBConnect{
 			e.printStackTrace();
 		}
 		return list ;
+	}
+	public void insertSebu(String name, String time, String idx) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("INSERT INTO tbl_coursesebu(courseIdx, courseSebuName, courseTime)");
+		sb.append(" VALUES(?, ?, ?)");
+		
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			psmt.setString(1, idx);
+			psmt.setString(2, name);
+			psmt.setString(3, time);
+			psmt.executeQuery();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	public void updateSebu(String name, String time, String idx) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("UPDATE tbl_coursesebu");
+		sb.append(" SET courseSebuName = ?");
+		sb.append(" , courseTime = ?");
+		sb.append("WHERE sebuidx = ?");
+		
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			psmt.setString(1, name);
+			psmt.setString(2, time);
+			psmt.setString(3, idx);
+			psmt.executeQuery();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 }

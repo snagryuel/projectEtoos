@@ -16,7 +16,7 @@
 	<main>
 		<div class="container">
 			<h1 id="title">강좌 관리</h1>
-			<form action="" id="frm">
+			<form id="frm" method = "post" action = "/projectEtoos/admin/CourseRegisterOk.do">
 				<table>
 					<caption>기본정보</caption>
 					<tr>
@@ -59,7 +59,8 @@
 					</tr>
 					<tr>
 						<th>수강대상</th>
-						<td><input type="text" name="range" id="range" maxlength="20" value = "${courseList.range }"></td>
+						<td><input type="text" name="range" id="range" maxlength="20" value = "${courseList.range }">
+						<input type="hidden" name="courseIdx" id="courseIdx" value = "${idx }"></td>
 					</tr>
 				</table>
 				<table>
@@ -83,11 +84,12 @@
 					<tr data-idx="${status.count }">
 						<th class="idx" rowspan="2">${status.count }</th>
 						<th>세부 강좌명</th>
-						<td><input type="text" name="courseSebuName${status.count }" id="courseSebuName${status.count }" maxlength="20" value = "${list.courseSebuName }"></td>
+						<td><input type="text" name="courseSebuName" id="courseSebuName${status.count }" maxlength="20" value = "${list.courseSebuName }"></td>
 					</tr>
 					<tr data-idx="${status.count }">
 						<th>강좌시간</th>
-						<td><input type="text" name="courseTime${status.count }" id="courseTime${status.count }" maxlength="20" value = "${list.courseTime }"></td>
+						<td><input type="text" name="courseTime" id="courseTime${status.count }" maxlength="20" value = "${list.courseTime }">
+						<input type="hidden" name="sebuIdx" id="sebuIdx${status.count }"value = "${list.sebuIdx }"/></td>
 					</tr>
 					</c:forEach>
 				</table>
@@ -105,6 +107,11 @@
 	<c:if test="${loginYN ne 'Y'}">
 		<script type="text/javascript" src="../js/logincheck.js" ></script>
 	</c:if> 
+	<c:if test="${success eq 'Y'}">
+		<script>
+			alert("수정에 성공하였습니다.");
+		</script>
+	</c:if>
 	<script>
 	// 세부 강좌 추가 로직
 	let btn_add = document.querySelector("#btn_add");
@@ -119,8 +126,8 @@
 		tr1.setAttribute("data-idx",row);
 		let tr2 = document.createElement("tr");
 		tr2.setAttribute("data-idx",row);
-		tr1.innerHTML = "<th class='idx' rowspan='2'>" + row + "</th><th>세부 강좌명</th><td><input type='text' name='courseSebuName" + row + "' id='courseSebuName" + row + "' maxlength='20'></td>";
-		tr2.innerHTML = "<th>강좌시간</th><td><input type='text' name='courseTime" + row + "' id='courseTime" + row + "' maxlength='20'></td>";
+		tr1.innerHTML = "<th class='idx' rowspan='2'>" + row + "</th><th>세부 강좌명</th><td><input type='text' name='courseSebuName' id='courseSebuName" + row + "' maxlength='20'></td>";
+		tr2.innerHTML = "<th>강좌시간</th><td><input type='text' name='courseTime' id='courseTime" + row + "' maxlength='20'></td>";
 		sebu.append(tr1);
 		sebu.append(tr2);
 	})

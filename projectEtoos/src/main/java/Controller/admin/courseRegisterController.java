@@ -17,12 +17,15 @@ public class courseRegisterController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int idx = Integer.parseInt(req.getParameter("idx"));
+		String success = req.getParameter("success");
 		AdminDAO dao =new AdminDAO();
 		
 		CourseDTO courseList = dao.getCourseList(idx);
 		List<CourseDTO> sebuList = dao.getCourseSebu(idx);
 		req.setAttribute("courseList",courseList);
 		req.setAttribute("sesbuList",sebuList);
+		req.setAttribute("idx",idx);
+		req.setAttribute("success",success);
 		System.out.println(sebuList.get(0).getCourseSebuName());
 		
 		req.getRequestDispatcher("/admin/courseRegister.jsp").forward(req, resp);
