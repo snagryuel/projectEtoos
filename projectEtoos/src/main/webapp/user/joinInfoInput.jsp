@@ -188,7 +188,7 @@ let birthYearEl = document.querySelector('#birth-year');
 
 birthYearEl.addEventListener('focus', function () {
 	let today = new Date();
-
+ 
  	for(var i = today.getFullYear()-50; i <= today.getFullYear(); i++) {
    	let yearOption = document.createElement('option');
    	yearOption.setAttribute('value', i);
