@@ -37,7 +37,7 @@ public class TeacherController extends HttpServlet {
 			System.out.println("sub2List"+sub2List);
 			for (String sub1 : sub2List.keySet()) {
 				for(String sub2 : sub2List.get(sub1)) {
-					teacherList.put(sub2, dao.getteacher(sub1, sub2));
+					teacherList.put(sub1 + "-" + sub2, dao.getteacher(sub1, sub2));
 				}
 			}
 			System.out.println("teacherList"+teacherList);
