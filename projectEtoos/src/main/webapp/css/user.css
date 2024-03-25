@@ -285,12 +285,14 @@ main .container .wrapper .list button {
 	background : #fff;
 	border : 1px solid #adadad;
 	padding : 10px;
+	cursor: pointer;
 }
 
 main .container .wrapper .list button:hover {
-	background : #457D87;
+	background : #95c1bd;
 	color : #fff;
 	border : 1px solid #457D87;
+	
 }
 
 main .container .wrapper .list > form > button {
@@ -645,6 +647,7 @@ main .container .detailCorsDiv .prvwVideo {
 main .container .detailCorsDiv .courseDetailDiv {
 	grid-column: 2/3;
     grid-row: 1/2;  
+    margin-left: 20px;
 }
 
 main .container .detailCorsDiv .courseDetailConDiv {
@@ -816,15 +819,27 @@ main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent t
 main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .courseInfoTable tr td:nth-last-child(1)  {
 	vertical-align: middle;
 	height: 65px;
+	width: 80%;
+}
+
+main .container .detailCorsDiv .courseDetailDiv p {
+	font-weight: bold;
+	text-align: center;
+	margin-top: 60px; 
+	font-size: 25px;
 }
 
 main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent > div {
 	height: 200px;
 } 
 
+main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .courseInfoDiv {
+	width:100%;
+}
+
 main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .courseInfoTable tr td:first-child  {
 	background-color: rgba(105, 193, 208, 0.69);
-	width: 100px;
+	width: 20%;
 	text-align: center;
 	vertical-align: middle;
 }
@@ -908,7 +923,7 @@ main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .
 main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .courseConfigure .courseConfiTable tr td:first-child  {
 	width: 300px;
 	text-align: center;
-	
+	padding-top: 10px;
 }
 
 main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .courseConfigure .courseConfiTable tr:nth-last-child(1) {

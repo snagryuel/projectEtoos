@@ -65,14 +65,27 @@ main .container .search-area .buttones {
 	grid-area : buttones;
 	text-align : center;
 	padding : 10px 0;
+	
+	
 }
+
 main .container .search-area .buttones button, div.list div.list-top button {
 	padding : 10px 20px;
 	background : #fff;
 	border : 1px solid #ababab;
 	box-sizing : border-box;
 	font-size : 15px;
+	cursor: pointer;
+	background-color: rgb(159 208 213 / 68%);
+	border-radius: 11px;
 }
+
+main .container .search-area .buttones button:hover, div.list div.list-top button:hover {
+	transition: 0.4s;
+    box-shadow: 0 1px 2px rgb(120 166 169 / 68%);
+    background-color: rgb(185 231 219 / 68%);
+}
+
 
 div.list div.list-top {
 	display : flex;

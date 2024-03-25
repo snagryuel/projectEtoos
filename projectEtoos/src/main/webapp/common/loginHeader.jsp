@@ -11,7 +11,7 @@
 <body>
 
 <div id="exit">
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/projectEtoos/user/main.jsp"><img class="xSymbol" alt="xSymbol" src="/projectEtoos/img/xSymbol.png"/></a>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/projectEtoos/user/main.jsp"><img class="xSymbol" alt="xSymbol" src="/projectEtoos/img/homeSymbol.png"/></a>
 </div>
 
 </body>
