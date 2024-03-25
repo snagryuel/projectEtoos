@@ -181,7 +181,7 @@ authCheck.addEventListener("click", (e)=> {
 	authYN.value = "";
 	authPop = window.open("/projectEtoos/user/AuthChekPopup.do",'_blank', 'width=500, height=300, top=150, left=50, scrollbars=yes, location=no');
 })
-
+ 
 
 
 let birthYearEl = document.querySelector('#birth-year');
