@@ -14,6 +14,7 @@ public class QnaDTO {
 	private String teacherId;
 	private String registId;
 	private int boardIdx;
+	private String name;
 	
 	/**
 	 * @return the boardIdx
@@ -158,6 +159,12 @@ public class QnaDTO {
 	 */
 	public void setRegistId(String rigistId) {
 		this.registId = rigistId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	
