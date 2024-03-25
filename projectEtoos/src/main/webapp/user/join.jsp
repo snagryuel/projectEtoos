@@ -15,7 +15,7 @@
 <div id="titleContents">
 
 	<div id="headerTitle">
-		<p>ETOOS 통합회원</p>
+		<p style="font-size:32px; font-weight:900;"><span style="color:#047f89; font-size:32px; font-weight:900;">E</span>TOOS 통합회원</p>
 	</div>
 	
 	<%@ include file="/common/loginHeader.jsp" %>
@@ -24,7 +24,7 @@
 
 
  <div id="content">
- 	<div>
+ 	<div>  
 		<img class="logo" alt="logo" src="https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg">
 		<h2>ETOOS 이용을 위해</h2>
 		<h2>ETOOS통합회원 가입이 진행됩니다.</h2><br>

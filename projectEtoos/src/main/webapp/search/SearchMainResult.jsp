@@ -5,7 +5,6 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ page import="common.PageUtil" %>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,11 +51,11 @@ if (searchWord == null || searchWord.trim().isEmpty()) {
 				</div>
 			</div>
 			<div class="tap">
-				<ul>									
-						<li class="selected-tap"><span><a href="./searchMain.do?search_word=${keyword }">전체</a></span></li>
-						<li><span><a href="./searchMain.do?bbs=teacher&search_word=${keyword }">선생님</a></span></li>
-						<li><span><a href="./searchMain.do?bbs=course&search_word=${keyword}&page=${currentPage}">강좌</a></span></li>
-						<li><span><a href="./searchMain.do?bbs=notice&search_word=${keyword}&page=${currentPage}">공지사항</a></span></li>
+				<ul>				
+						<li <c:if test="${param.bbs == '' || param.bbs == null }"> class="selected-tap"</c:if>><span><a href="./searchMain.do?search_word=${keyword }">전체(${searchResults5+searchResults6+searchResults7})</a></span></li>
+						<li <c:if test="${param.bbs == 'teacher'}"> class="selected-tap"</c:if>><span><a href="./searchMain.do?bbs=teacher&search_word=${keyword }">선생님(${searchResults7})</a></span></li>
+						<li <c:if test="${param.bbs == 'course'}"> class="selected-tap"</c:if>><span><a href="./searchMain.do?bbs=course&search_word=${keyword}&page=${currentPage}">강좌(${searchResults5})</a></span></li>
+						<li <c:if test="${param.bbs == 'notice'}"> class="selected-tap"</c:if>	><span><a href="./searchMain.do?bbs=notice&search_word=${keyword}&page=${currentPage}">공지사항(${searchResults6})</a></span></li>
 				</ul>
 			</div>
 			<!-- 선생님 목록결과 -->
@@ -269,7 +268,7 @@ if (searchWord == null || searchWord.trim().isEmpty()) {
 
 	<script>           
 	
-	
+/* 	
 	let lies = document.querySelectorAll(".tap > ul > li ");
 	for (let li of lies) {
 		li.addEventListener("click", ()=>{
@@ -281,7 +280,7 @@ if (searchWord == null || searchWord.trim().isEmpty()) {
 		})			
 		
 		
-	}
+	} */
 			
 			
 
@@ -292,7 +291,7 @@ if (searchWord == null || searchWord.trim().isEmpty()) {
             }
         }
 
-			function toggleBtn1() {
+/* 			function toggleBtn1() {
 				  
 				  // 토글 할 버튼 선택 (btn1)
 				  const btn1 = document.getElementById('btn1');
@@ -306,7 +305,7 @@ if (searchWord == null || searchWord.trim().isEmpty()) {
 				    btn1.style.display = 'block';
 				  }
 				  
-				}
+				} */
 			
 			
         

@@ -57,9 +57,7 @@ public class TeacherDAO extends JDBConnect {
 		}
 		try {
 			psmt = conn.prepareStatement(sb.toString());
-			System.out.println(sb.toString());
 			rs = psmt.executeQuery();
-			System.out.println(psmt);
 			while(rs.next()) {
 				TeacherDTO dto = new TeacherDTO();
 				dto.setId(rs.getString("id"));
@@ -98,7 +96,6 @@ public class TeacherDAO extends JDBConnect {
 		}
 		    try {
 		        psmt = conn.prepareStatement(sb.toString());
-		        System.out.println(sb.toString());
 		        rs = psmt.executeQuery();
 
 		        while (rs.next()) {
@@ -142,7 +139,6 @@ public class TeacherDAO extends JDBConnect {
 		}
 		    try {
 		        psmt = conn.prepareStatement(sb.toString());
-		        System.out.println(sb.toString());
 		        rs = psmt.executeQuery();
 			while(rs.next()) {
 				TeacherDTO dto = new TeacherDTO();
@@ -180,7 +176,6 @@ public class TeacherDAO extends JDBConnect {
 
 	    try {
 	        psmt = conn.prepareStatement(sb.toString());
-	        System.out.println(sb.toString());
 	        rs = psmt.executeQuery();
 
 	        if (rs.next()) {
@@ -215,7 +210,6 @@ public class TeacherDAO extends JDBConnect {
 
 	    try {
 	        psmt = conn.prepareStatement(sb.toString());
-	        System.out.println(sb.toString());
 	        rs = psmt.executeQuery();
 
 	        if (rs.next()) {
@@ -249,7 +243,6 @@ public class TeacherDAO extends JDBConnect {
 
 	    try {
 	        psmt = conn.prepareStatement(sb.toString());
-	        System.out.println(sb.toString());
 	        rs = psmt.executeQuery();
 
 	        if (rs.next()) {
@@ -287,7 +280,6 @@ public class TeacherDAO extends JDBConnect {
 
 	    try {
 	        psmt = conn.prepareStatement(sb.toString());
-	        System.out.println(sb.toString());
 	        rs = psmt.executeQuery();
 
 	        if (rs.next()) {

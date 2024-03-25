@@ -14,7 +14,7 @@
 
 <div id="titleContents">
 	<div id="title">
-		<p>ETOOS 통합회원</p>
+		<p style="font-size:32px; font-weight:900;"><span style="color:#047f89; font-size:32px; font-weight:900;">E</span>TOOS 통합회원</p>
 	</div>
 	<%@ include file="/common/loginHeader.jsp" %>
 </div>
@@ -181,14 +181,14 @@ authCheck.addEventListener("click", (e)=> {
 	authYN.value = "";
 	authPop = window.open("/projectEtoos/user/AuthChekPopup.do",'_blank', 'width=450, height=250, top=150, left=50, scrollbars=yes, location=no');
 })
-
+ 
 
 
 let birthYearEl = document.querySelector('#birth-year');
 
 birthYearEl.addEventListener('focus', function () {
 	let today = new Date();
-
+ 
  	for(var i = today.getFullYear()-50; i <= today.getFullYear(); i++) {
    	let yearOption = document.createElement('option');
    	yearOption.setAttribute('value', i);
