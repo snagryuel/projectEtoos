@@ -84,7 +84,7 @@
 				
 			</ul>
 		</div>
-		<div class="menu_teacher off">
+		<!-- <div class="menu_teacher off">
 			<div class="sub">
 				<p>선생님</p>
 			</div>
@@ -257,7 +257,7 @@
 					</ul>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 	</div>
 	</div>

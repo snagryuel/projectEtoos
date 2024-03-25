@@ -30,9 +30,11 @@
 					<ul class="swiper-wrapper">
 						<c:forEach var="teacher" items="${teacherList}">
 							<li class="swiper-slide">
+							<a href="TeacherDetailList.do?teacherId=${teacher.id }">
 								<div class="thum">
 									<img src="${teacher.filePath}/${teacher.fileName}">
 								</div>
+								</a>
 								<div class="desc">
 									<span>${teacher.name}</span>
 									<span>${teacher.tMent}</span>
@@ -48,9 +50,11 @@
 					<ul class="swiper-wrapper">
 						<c:forEach var="course" items="${courseList}">
 							<li class="swiper-slide">
+							<a href="CourseList_course.do?courseIdx=${course.courseIdx }">
 								<div class="thum">
 									<img src="${course.filePath}/${course.fileName}">
 								</div>
+								</a>
 								<div class="desc">
 									<span>${course.coursename}</span>
 									<span>${course.name}</span>
