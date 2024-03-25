@@ -172,14 +172,14 @@ idNow.addEventListener("click", (e)=> {
 	let authYN = document.querySelector("#authYN");
 	idNow.value = "";
 	authYN.value = "";
-	authPop = window.open("/projectEtoos/user/AuthChekPopup.do",'_blank', 'width=500, height=300, top=150, left=50, scrollbars=yes, location=no');
+	authPop = window.open("/projectEtoos/user/AuthChekPopup.do",'_blank', 'width=450, height=250, top=150, left=50, scrollbars=yes, location=no');
 })
 authCheck.addEventListener("click", (e)=> {
 	e.preventDefault();
 	let authYN = document.querySelector("#authYN");
 	idNow.value = "";
 	authYN.value = "";
-	authPop = window.open("/projectEtoos/user/AuthChekPopup.do",'_blank', 'width=500, height=300, top=150, left=50, scrollbars=yes, location=no');
+	authPop = window.open("/projectEtoos/user/AuthChekPopup.do",'_blank', 'width=450, height=250, top=150, left=50, scrollbars=yes, location=no');
 })
 
 
