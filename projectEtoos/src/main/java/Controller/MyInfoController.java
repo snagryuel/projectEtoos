@@ -20,11 +20,18 @@ public class MyInfoController extends HttpServlet {
 		String id = (String) session.getAttribute("id");
 		MemberDAO dao = new MemberDAO();
 		MemberDTO result = dao.getMemberInfo(id);
-		String path = dao.getFile();
+		String path = "";
+		String ment = "";
 		String birth = result.getBirth();
 		String birthYear = birth.substring(0,4);
 		String birthMonth = birth.substring(birth.indexOf("-")+1,birth.lastIndexOf("-"));
 		String birthDay = birth.substring(birth.lastIndexOf("-")+1);
+		
+		if(result.getGubun().equals("2")) {
+			path = dao.getFile(result.getFileidx());
+			ment = result.getMent();
+		}
+		
 		req.setAttribute("birthYear", birthYear);
 		req.setAttribute("birthMonth", birthMonth);
 		req.setAttribute("birthDay", birthDay);

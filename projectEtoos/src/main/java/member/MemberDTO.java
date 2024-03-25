@@ -12,6 +12,8 @@ public class MemberDTO {
 	private String birth;
 	private String addr;
 	private String state;
+	private String fileidx;
+	private String ment;
 	
 	public String getId() {
 		return id;
@@ -66,5 +68,17 @@ public class MemberDTO {
 	}
 	public void setState(String state) {
 		this.state = state;
+	}
+	public String getFileidx() {
+		return fileidx;
+	}
+	public void setFileidx(String fileidx) {
+		this.fileidx = fileidx;
+	}
+	public String getMent() {
+		return ment;
+	}
+	public void setMent(String ment) {
+		this.ment = ment;
 	}
 }

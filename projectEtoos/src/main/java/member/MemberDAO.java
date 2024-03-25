@@ -164,8 +164,7 @@ public MemberDTO getMemberInfoForPwd(MemberDTO dto) {
 		int result = 0;
 		StringBuilder sb = new StringBuilder();
 		sb.append("UPDATE tbl_memberlist");
-		sb.append(" SET pwd = ?,");
-		sb.append("name = ?,");
+		sb.append(" SET name = ?,");
 		sb.append("phone = ?,");
 		sb.append("birth = ?,");
 		sb.append("addr = ?,");
@@ -174,13 +173,12 @@ public MemberDTO getMemberInfoForPwd(MemberDTO dto) {
 		
 		try {
 			psmt = conn.prepareStatement(sb.toString());
-			psmt.setString(1, dto.getPwd());
-			psmt.setString(2, dto.getName());
-			psmt.setString(3, dto.getPhone());
-			psmt.setString(4, dto.getBirth());
-			psmt.setString(5, dto.getAddr());
-			psmt.setString(6, dto.getEmail());
-			psmt.setString(7, dto.getId());
+			psmt.setString(1, dto.getName());
+			psmt.setString(2, dto.getPhone());
+			psmt.setString(3, dto.getBirth());
+			psmt.setString(4, dto.getAddr());
+			psmt.setString(5, dto.getEmail());
+			psmt.setString(6, dto.getId());
 			result = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -208,7 +206,7 @@ public MemberDTO getMemberInfoForPwd(MemberDTO dto) {
 	public MemberDTO getMemberInfo(String id) {
 		
 		MemberDTO dto = new MemberDTO();
-		String sql = "SELECT id, phone, email, birth, addr, pwd, gubun, name FROM tbl_memberlist WHERE id = ?";
+		String sql = "SELECT tm.id, phone, email, birth, addr, pwd, gubun, NAME, fileIdx, tment FROM tbl_memberlist AS tm INNER JOIN tbl_teacherlist AS tt ON tm.id=tt.id WHERE tm.id = ?";
 		
 		try{
 			psmt = conn.prepareStatement(sql);
@@ -223,6 +221,9 @@ public MemberDTO getMemberInfoForPwd(MemberDTO dto) {
 				dto.setBirth(rs.getString("birth"));
 				dto.setAddr(rs.getString("addr"));
 				dto.setPwd(rs.getString("pwd"));
+				dto.setGubun(rs.getString("gubun"));
+				dto.setFileidx(rs.getString("fileidx"));
+				dto.setMent(rs.getString("tment"));
 			}
 			
 		} catch(Exception e) {
@@ -230,23 +231,52 @@ public MemberDTO getMemberInfoForPwd(MemberDTO dto) {
 		}
 		return dto;
 		}	
-	public String getFile() {
-		String sql = "SELECT * FROM tbl_filemanage";
+	public String getFile(String idx) {
+		String sql = "SELECT * FROM tbl_filemanage WHERE fileidx = ?";
 		String file = "";
 		try {
 			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, idx);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				String path = rs.getString("filepath");
-				String path2 = path.substring(0, path.lastIndexOf("\\"));
-				path = path.substring(path2.lastIndexOf("\\"));
-				path = path.replace("\\", "/");
-				String name = rs.getString("filename");
-				file = path+"/"+name;
+				System.out.println(path);
+				if(path!=null) {
+					String path2 = path.substring(0, path.lastIndexOf("\\"));
+					path = path.substring(path2.lastIndexOf("\\"));
+					path = path.replace("\\", "/");
+					String name = rs.getString("filename");
+					file = path+"/"+name;
+				}else {
+					file = "https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg";
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return file;
+	}
+	public int getFileIdx(String gubun) {
+		String sql = "SELECT file_idx FROM tbl_idxmanager where tbl_name = ?";
+		int idx = 0;
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, gubun);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				idx = rs.getInt("file_idx");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		sql = "UPDATE tbl_idxmanager SET file_idx = file_idx+1 WHERE tbl_name = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, gubun);
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return idx;
 	}
 }
