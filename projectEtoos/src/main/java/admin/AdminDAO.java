@@ -70,6 +70,64 @@ public class AdminDAO extends JDBConnect{
 		}
 		return list;
 	}
+	
+	public List<AdminDTO> CourseInfo(String courseName, int startNo, String id, String teacherId) {
+		int cnt = 1;
+		List<AdminDTO> list = new Vector<AdminDTO>();
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT tc.courseIdx, courseName, sugangStart, sugangEnd , sub1, sub2, name");
+		sb.append(" , NVL2(CH.id, 'Y', 'N') AS 'historyYN', CH.applicationDate");
+		sb.append(" , CASE WHEN tc.sugangEnd >= CURDATE() then 'Y' ELSE 'N' END AS 'state'");
+		sb.append(" FROM tbl_courselist AS tc ");
+		sb.append(" INNER JOIN tbl_teacherlist AS tt ON tc.teacherid = tt.id");
+		sb.append(" INNER JOIN tbl_subject AS ts ON tt.subkey = ts.subKey");
+		sb.append(" INNER JOIN tbl_memberlist AS tm ON tm.id = tc.teacherId");
+		sb.append(" LEFT OUTER JOIN tbl_coursehistory AS CH ON tc.courseIdx = CH.courseIdx");
+		if(!id.equals(id)) {sb.append(" AND CH.id = ?");}
+		sb.append(" WHERE 1=1");
+		if(!courseName.equals("")) {
+			sb.append(" AND tc.courseName LIKE ?");
+		}
+		if(!teacherId.equals("")) {
+			sb.append(" AND tc.teacherId = ?");
+		}
+		sb.append(" ORDER BY courseIdx DESC");
+		sb.append(" LIMIT ?, 10");
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			if(!id.equals(id)) {
+				psmt.setString(cnt, id);
+				cnt++;
+			}
+			if(!courseName.equals("")) {
+				psmt.setString(cnt, "%"+courseName+"%");
+				cnt++;
+			}
+			if(!teacherId.equals("")) {
+				psmt.setString(cnt, teacherId);
+				cnt++;
+			}
+			psmt.setInt(cnt, startNo);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				AdminDTO dto = new AdminDTO();
+				dto.setCoursename(rs.getString("courseName"));
+				dto.setSugangStart(rs.getString("sugangStart"));
+				dto.setSugangEnd(rs.getString("sugangEnd"));
+				dto.setSub1(rs.getString("sub1"));
+				dto.setSub2(rs.getString("sub2"));
+				dto.setName(rs.getString("name"));
+				dto.setCourseIdx(rs.getInt("courseIdx"));
+				dto.setHistoryYN(rs.getString("historyYN"));
+				dto.setState(rs.getString("state"));
+				list.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	public List<String> getSub() {
 		List<String> list = new Vector<String>();
 		StringBuilder sb = new StringBuilder();
@@ -135,12 +193,10 @@ public class AdminDAO extends JDBConnect{
 		try {
 			psmt = conn.prepareStatement(sb.toString());
 			rs = psmt.executeQuery();
-			System.out.println(rs.next());
 			while(rs.next()) {
 				AdminDTO dto = new AdminDTO();
 				dto.setId(rs.getString("id"));
 				dto.setName(rs.getString("name"));
-				System.out.println(rs.getString("name"));
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -295,8 +351,6 @@ public class AdminDAO extends JDBConnect{
 			psmt.setInt(1, idx);
 			rs = psmt.executeQuery();
 			
-			System.out.println(psmt);
-
 			while(rs.next()) {
 				CourseDTO dto = new CourseDTO();
 				dto.setSebuIdx(rs.getInt("sebuidx"));
@@ -361,7 +415,6 @@ public class AdminDAO extends JDBConnect{
 			psmt.setString(9, dto.getRange());
 			psmt.setString(10, dto.getBookIntro());
 			psmt.setString(11, dto.getBookName());
-			System.out.println(psmt);
 			psmt.executeUpdate();
 		}catch(Exception e){
 			e.printStackTrace();

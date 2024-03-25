@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <aside id="side">
-	<h1 class="thum"><p></p><img src="https://img.etoos.com/teacher/teacher/200481/m300x300.png"></h1>
-	<h1><a href="#">선생님1</a></h1>
+	<h1 class="thum"><p></p><img src="${filePath}"></h1>
+	<h1><a href="#">${teacherInfo.name}</a></h1>
 	<ul>
 		<li class="depth1 selected">
 			<div>개설강좌(00)</div>

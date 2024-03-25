@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ETOOS</title>
 <link rel="stylesheet" href="../css/main.css" type="text/css">
 </head>
 <body>

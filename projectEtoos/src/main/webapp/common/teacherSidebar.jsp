@@ -12,7 +12,7 @@
 				<c:forEach var="sub2" items="${sub.value}">
 					<c:set var="sub1sub2" value="${sub.key}-${sub2}" />
 					<c:forEach var="teacher" items="${teacherList[sub1sub2]}" varStatus="status2">
-							<li class="depth2 <c:if test="${param.sub1 == sub.key}">selected </c:if>"><a href="prjectEtoos/user/TeacherDetailList.do?teacherId=${teacher.id}">${teacher.name}</a></li>
+							<li class="depth2 <c:if test="${param.sub1 == sub.key}">selected </c:if>"><a href="/projectEtoos/user/TeacherDetailList.do?teacherId=${teacher.id}">${teacher.name}</a></li>
 					</c:forEach>
 				</c:forEach>
 				</ul>

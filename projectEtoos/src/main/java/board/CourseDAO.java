@@ -62,6 +62,43 @@ public class CourseDAO extends JDBConnect {
 		return totalCount;
 	}
 	
+	public int totalCount(String courseName, String teacherId) {
+		int totalCount = 0;
+		
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("SELECT COUNT(courseIdx) FROM tbl_courselist AS CL");
+		sb.append(" INNER JOIN tbl_teacherList AS TL ON CL.teacherId = TL.id");
+		sb.append(" INNER JOIN tbl_subject AS SJ ON TL.subKey = SJ.subKey");
+		
+		sb.append(" WHERE 1=1 AND CL.teacherId = ?");
+		
+		if(!courseName.equals("")) {
+			sb.append(" AND courseName LIKE ?");
+		}
+		
+		int cnt = 1;
+		
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			psmt.setString(cnt, teacherId);
+			cnt++;
+			if(!courseName.equals("")) {
+				psmt.setString(cnt, "%"+courseName+"%");
+				cnt++;
+			}
+			rs = psmt.executeQuery();
+			
+			rs.next();
+			totalCount = rs.getInt(1);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return totalCount;
+	}
+	
 	
 	public CourseDTO getDetail(String idx, String id) {
 		CourseDTO dto = new CourseDTO();

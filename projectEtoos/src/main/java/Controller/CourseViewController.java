@@ -6,6 +6,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import member.MemberDAO;
+import member.MemberDTO;
 
 import java.io.IOException;
 import java.util.List;
@@ -55,6 +57,14 @@ public class CourseViewController extends HttpServlet {
 		String commandStr = uri.substring(uri.indexOf("/"));
 		
 		if (commandStr.equals("/user/CourseList_teacher.do")) {
+			// 선생님 정보 가져오기
+			String teacherId = req.getParameter("teacherId");
+			MemberDAO tdao = new MemberDAO();
+			MemberDTO teacherInfo = tdao.getMemberInfo(teacherId);
+			String filePath = tdao.getFile(teacherInfo.getFileidx());
+			tdao.Close();
+			req.setAttribute("teacherInfo", teacherInfo);
+			req.setAttribute("filePath", filePath);
 			req.getRequestDispatcher("teacherDetailCourse.jsp?"+queryString+"&menuGubun=teacher").forward(req, resp);
 		} else if (commandStr.equals("/user/CourseList_course.do")) {
 			req.getRequestDispatcher("teacherDetailCourse.jsp?"+queryString+"&menuGubun=course").forward(req, resp);

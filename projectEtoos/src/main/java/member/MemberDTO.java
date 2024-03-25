@@ -14,6 +14,9 @@ public class MemberDTO {
 	private String state;
 	private String fileidx;
 	private String ment;
+	private String fileGubun;
+	private String fileName;
+	private String filePath;
 	
 	public String getId() {
 		return id;
@@ -80,5 +83,23 @@ public class MemberDTO {
 	}
 	public void setMent(String ment) {
 		this.ment = ment;
+	}
+	public String getFileGubun() {
+		return fileGubun;
+	}
+	public void setFileGubun(String fileGubun) {
+		this.fileGubun = fileGubun;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 }
