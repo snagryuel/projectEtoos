@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="/projectEtoos/css/findAccount.css" type="text/css">
 <link rel="stylesheet" href="../css/reset.css" type="text/css">
 </head>
-<body>
+<body> 
 
 <div id="titleContents">
 	<div id="title">
