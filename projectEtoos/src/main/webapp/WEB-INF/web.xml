@@ -15,7 +15,7 @@
   </context-param>
   <context-param>
     <param-name>URL</param-name>
-    <param-value>jdbc:mariadb://10.41.1.171:3306/etoos</param-value>
+    <param-value>jdbc:mariadb://localhost/etoos</param-value>
   </context-param>
   <context-param>
     <param-name>dbId</param-name>
@@ -25,5 +25,14 @@
     <param-name>dbPwd</param-name>
     <param-value>1234</param-value>
   </context-param>
- 
+  <servlet>
+    <description></description>
+    <display-name>TeacherController</display-name>
+    <servlet-name>TeacherController</servlet-name>
+    <servlet-class>Controller.TeacherController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TeacherController</servlet-name>
+    <url-pattern>/TeacherController</url-pattern>
+  </servlet-mapping>
 </web-app>

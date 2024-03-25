@@ -175,9 +175,9 @@
 							    </div>
 							    
 							    </div>
-								<div class="listGo">
+<!-- 								<div class="listGo">
 								 	<button id="listGoBtn">목록으로</button>
-								</div>
+								</div> -->
 						 </div>
 					 </div>
 					 
@@ -223,7 +223,7 @@ bookTab.addEventListener("click", (e)=> {
  
 function applyCancel(){
 	if(confirm("강좌 신청을 취소하시겠습니까?")){
-		window.location = "CourseApplication.do?applyStatus=cancel&<%=request.getQueryString()%>";
+		window.location = "CourseApplication.do?applyStatus=cancel&menuGubun=${param.memnuGubun}&<%=request.getQueryString()%>";
 	}
 }
 
@@ -234,7 +234,7 @@ function apply(){
 			alert("학생만 신청 가능합니다.");
 		} else {
 			if(confirm("강좌를 신청하시겠습니까?")){
-				window.location = "CourseApplication.do?applyStatus=apply&<%=request.getQueryString()%>";
+				window.location = "CourseApplication.do?applyStatus=apply&menuGubun=${param.memnuGubun}&<%=request.getQueryString()%>";
 			}
 		}
 	} else {
@@ -243,15 +243,15 @@ function apply(){
 	}
 }
 
-let listGoBtn = document.querySelector("#listGoBtn");
+<%-- let listGoBtn = document.querySelector("#listGoBtn");
 listGoBtn.addEventListener("click", ()=>{
-	if (${(param.menuGubun == null) ? 'course' : param.menuGubun } == "teacher") {
-		window.location = "teacherList.do?courseIdx=${param.courseIdx}&pageSelected=${param.pageSelected}&sub1=${param.sub1}&sub2=${param.sub2}&sub3=${param.sub3}&menuGubun=teacher";
+	if (${param.menuGubun == "teacher"}) {
+		window.location = "TeacherDetailList.do?<%=request.getQueryString()%>";
 	} else {
 		window.location = "courseList.do?courseIdx=${param.courseIdx}&pageSelected=${param.pageSelected}&sub1=${param.sub1}&sub2=${param.sub2}&sub3=${param.sub3}&menuGubun=course";
 	}
 	
-})
+}) --%>
 
 // 수강신청 성공/실패 알럿
 if (${param.sucessYN != null}) {

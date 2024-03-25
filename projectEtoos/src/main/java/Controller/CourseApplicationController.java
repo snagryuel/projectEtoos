@@ -37,7 +37,11 @@ public class CourseApplicationController extends HttpServlet {
 				boolean sucessYN = false;
 				if (result > 0) {
 					sucessYN = true;
-					resp.sendRedirect("courseList.do?"+req.getQueryString()+"&sucessYN="+sucessYN);
+					if (req.getParameter("menuGubun").equals("teacher")) {
+						resp.sendRedirect("TeacherDetailList.do?"+req.getQueryString()+"&sucessYN="+sucessYN);
+					} else {
+						resp.sendRedirect("courseList.do?"+req.getQueryString()+"&sucessYN="+sucessYN);
+					}
 				} else {
 					req.setAttribute("sucessYN", sucessYN);
 					resp.sendRedirect("courseList.do?"+req.getQueryString()+"&sucessYN="+sucessYN);
@@ -55,7 +59,11 @@ public class CourseApplicationController extends HttpServlet {
 				boolean cancelSucessYN = false;
 				if (result > 0) {
 					cancelSucessYN = true;
-					resp.sendRedirect("courseList.do?"+req.getQueryString()+"&cancelSucessYN="+cancelSucessYN);
+					if (req.getParameter("menuGubun").equals("teacher")) {
+						resp.sendRedirect("TeacherDetailList.do?"+req.getQueryString()+"&cancelSucessYN="+cancelSucessYN);
+					} else {
+						resp.sendRedirect("courseList.do?"+req.getQueryString()+"&cancelSucessYN="+cancelSucessYN);
+					}
 				} else {
 					resp.sendRedirect("courseList.do?"+req.getQueryString()+"&cancelSucessYN="+cancelSucessYN);
 				}

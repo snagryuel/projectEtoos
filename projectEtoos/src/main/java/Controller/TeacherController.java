@@ -65,7 +65,7 @@ public class TeacherController extends HttpServlet {
 			req.setAttribute("filePath", filePath);
 			
 			// 리스트 뿌리기
-			int pageSelected = req.getParameter("pageSelected")==null? 1 : Integer.parseInt(req.getParameter("pageSelected"));
+			int pageSelected = (req.getParameter("pageSelected") == null) ? 1 : Integer.parseInt(req.getParameter("pageSelected"));
 			int starNo = (pageSelected*10)-10;
 			String courseName = (req.getParameter("courseName") == null)? "" : req.getParameter("courseName");
 			System.out.println("코스네임 : " + courseName);
@@ -87,7 +87,7 @@ public class TeacherController extends HttpServlet {
 			req.setAttribute("totalCount", totalCount);
 			req.setAttribute("totalPage", totalPage);
 			req.setAttribute("page", page);
-			req.getRequestDispatcher("/user/teacherDetailList.jsp?"+queryString).forward(req, resp);
+			req.getRequestDispatcher("/user/teacherDetailList.jsp?menuGubun=teacher&"+queryString).forward(req, resp);
 		}
 	}
 

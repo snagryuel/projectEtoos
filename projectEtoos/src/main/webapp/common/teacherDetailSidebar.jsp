@@ -8,7 +8,7 @@
 	<h1><a href="#">${teacherInfo.name}</a></h1>
 	<ul>
 		<li class="depth1 selected">
-			<div>개설강좌(00)</div>
+			<div>개설강좌</div>
 		</li>
 		<li class="depth1">
 			<div>선생님 Q&A</div>
