@@ -201,8 +201,7 @@ public class AdminDAO extends JDBConnect{
 		sb.append("INNER JOIN tbl_memberlist AS tm ON tm.id = tt.id ");
 		sb.append("INNER JOIN tbl_subject AS ts ON ts.subKey = tt.subKey ");
 		sb.append(" LEFT OUTER JOIN tbl_filemanage AS FM ON tt.fileIdx = FM.fileIdx");
-		sb.append(" WHERE FM.fileGubun = 't'");
-		sb.append(" AND ts.sub1 = ? AND ts.sub2 = ?");
+		sb.append(" WHERE ts.sub1 = ? AND ts.sub2 = ?");
 		try {
 			psmt = conn.prepareStatement(sb.toString());
 			psmt.setString(1, sub1);
