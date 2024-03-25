@@ -316,7 +316,6 @@ div.list div.list-top {
 		if (${param.sucessYN == 'true'}) {
 			alert("정상 신청되었습니다. 내역 페이지로 이동하시겠습니까?");
 			window.location = "/projectEtoos/mypage/MyCourse.do";
-			}
 		} else {
 			alert("수강신청에 실패하였습니다.");
 		}
