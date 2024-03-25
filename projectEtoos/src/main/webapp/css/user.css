@@ -905,7 +905,7 @@ main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .
 	text-align: left;
 	border-bottom: 2px solid #adadad;
 	padding-top: 10px;
-	padding-left:185px;
+	text-align: center;
 	
 }
 main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .courseConfigure .courseConfiTable tr {
@@ -933,7 +933,7 @@ main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .
 main .container .detailCorsDiv .courseDetailConDiv .tabContentWrap .tabcontent .courseConfigure .courseConfiTable td:nth-child(2) {
 	padding: 10px;
 	border-bottom: 1px solid #adadad;
-	padding-left:200px;
+	text-align: center;
 } 
 
 /*로그인 중복체크 페이지 (authCheck)*/

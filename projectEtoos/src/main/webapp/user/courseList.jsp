@@ -90,6 +90,7 @@ main .container .search-area .buttones button:hover, div.list div.list-top butto
 div.list div.list-top {
 	display : flex;
 	justify-content: space-between;
+	margin-bottom: 10px;
 }
 </style>
 <title>Course</title>
