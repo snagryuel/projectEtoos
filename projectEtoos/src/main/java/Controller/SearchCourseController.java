@@ -20,7 +20,7 @@ public class SearchCourseController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doGet(req, resp);
     }
-
+  
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	String bbs = req.getParameter("bbs") == null?"":req.getParameter("bbs");
         String keyword = req.getParameter("search_word");
