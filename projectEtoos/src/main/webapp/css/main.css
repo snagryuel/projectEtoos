@@ -58,6 +58,8 @@ main .container .section .slide ul li div.thum {
 	background : #d9f1d9;
 	border-radius : 10px;
 	overflow : hidden;
+	display: flex;
+    justify-content: center;
 }
 main .container .recomended-teacher .slide ul li div.thum {
 	background : #d9f1d9;

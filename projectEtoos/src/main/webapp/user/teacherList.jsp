@@ -47,7 +47,7 @@
 									<span>${teacher.tMent}</span>
 									<span>${teacher.name}</span>
 									<div class="thum">
-											<img src="..${teacher.filePath}${teacher.fileName}">
+											<img src="${teacher.filePath}${teacher.fileName}">
 									</div>
 								</article>
 							</c:forEach>

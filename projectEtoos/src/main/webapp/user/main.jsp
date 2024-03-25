@@ -31,7 +31,7 @@
 						<c:forEach var="teacher" items="${teacherList}">
 							<li class="swiper-slide">
 								<div class="thum">
-									<img src="${teacher.filePath}${teacher.fileName}">
+									<img src="${teacher.filePath}/${teacher.fileName}">
 								</div>
 								<div class="desc">
 									<span>${teacher.name}</span>
@@ -49,7 +49,7 @@
 						<c:forEach var="course" items="${courseList}">
 							<li class="swiper-slide">
 								<div class="thum">
-									<img src="${course.filePath}">
+									<img src="${course.filePath}/${course.fileName}">
 								</div>
 								<div class="desc">
 									<span>${course.coursename}</span>

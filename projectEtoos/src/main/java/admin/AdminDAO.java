@@ -193,10 +193,12 @@ public class AdminDAO extends JDBConnect{
 		List<AdminDTO> list = new Vector<AdminDTO>();
 		StringBuilder sb = new StringBuilder();
 		AdminDTO dto = new AdminDTO();
-		sb.append("SELECT tm.name, tm.id, tt.tMent FROM tbl_teacherlist AS tt ");
+		sb.append("SELECT tm.name, tm.id, tt.tMent, FM.fileName, FM.filePath FROM tbl_teacherlist AS tt ");
 		sb.append("INNER JOIN tbl_memberlist AS tm ON tm.id = tt.id ");
 		sb.append("INNER JOIN tbl_subject AS ts ON ts.subKey = tt.subKey ");
-		sb.append("WHERE ts.sub1 = ? AND ts.sub2 = ?");
+		sb.append(" LEFT OUTER JOIN tbl_filemanage AS FM ON tt.fileIdx = FM.fileIdx");
+		sb.append(" WHERE FM.fileGubun = 't'");
+		sb.append(" AND ts.sub1 = ? AND ts.sub2 = ?");
 		try {
 			psmt = conn.prepareStatement(sb.toString());
 			psmt.setString(1, sub1);
@@ -206,8 +208,8 @@ public class AdminDAO extends JDBConnect{
 				dto.setId(rs.getString("id"));
 				dto.setName(rs.getString("name"));
 				dto.settMent(rs.getString("tMent"));
-				dto.setFileName("icon_logo.svg");
-				dto.setFilePath("/projectTSPOON/upload/");
+				dto.setFileName(rs.getString("fileName"));
+				dto.setFilePath(rs.getString("filePath"));
 				list.add(dto);
 			}
 		} catch (SQLException e) {
