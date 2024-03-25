@@ -7,6 +7,12 @@
 <meta charset="UTF-8">
 <title>ETOOS</title>
 <link rel="stylesheet" href="../css/main.css" type="text/css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<!-- CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+<!-- JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../common/header.jsp">
@@ -20,11 +26,10 @@
 		<div class="container">
 			<div class="section recomended-teacher">
 				<h3 class="title">추천선생님</h3>
-				<div class="slide">
-					<button class="prev arrow">◀</button>
-					<ul>
+				<div class="slide swiper-container">
+					<ul class="swiper-wrapper">
 						<c:forEach var="teacher" items="${teacherList}">
-							<li>
+							<li class="swiper-slide">
 								<div class="thum">
 									<img src="${teacher.filePath}${teacher.fileName}">
 								</div>
@@ -35,16 +40,14 @@
 							</li>
 						</c:forEach>
 					</ul>
-					<button class="next arrow">▶</button>
 				</div>
 			</div>
 			<div class="section recomended-course">
 				<h3 class="title">추천 강좌</h3>
-				<div class="slide">
-					<button class="prev arrow">◀</button>
-					<ul>
+				<div class="slide swiper-container">
+					<ul class="swiper-wrapper">
 						<c:forEach var="course" items="${courseList}">
-							<li>
+							<li class="swiper-slide">
 								<div class="thum">
 									<img src="${course.filePath}">
 								</div>
@@ -55,7 +58,6 @@
 							</li>
 						</c:forEach>
 					</ul>
-					<button class="next arrow">▶</button>
 				</div>
 			</div>
 		</div>
@@ -66,6 +68,14 @@
 		alert("잘못된 접근입니다.");
 	}
 	
+	const mySwiper = new Swiper('.swiper-container', {
+		direction: 'horizontal',
+		slidesPerView: 3,
+	 scrollbar: {
+		    el: '.swiper-scrollbar',
+		    hide: true
+		  }
+	});
 	</script>
 </body>
 </html>

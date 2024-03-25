@@ -32,23 +32,12 @@ main .container .section .title {
 }
 
 main .container .section .slide {
-	display : grid;
-	align-items: center;
-    justify-items: center;
-	grid-template-areas: "prev list next";
-	grid-template-columns : 10% 80% 10%;
 	width : 100%;
 	text-align : center;
 	padding : 30px 0;
+	overflow : hidden;
 }
 
-main .container .section .slide .arrow {
-	width : 50px;
-	height : 50px;
-	border-radius : 100%;
-	background : #fff;
-	border : 1px solid #ababab;
-}
 
 main .container .section .slide .arrow:hover {
 	background : #457D87;
@@ -58,10 +47,6 @@ main .container .section .slide .arrow:hover {
 
 main .container .section .slide ul {
 	width : 100%;
-	display : flex;
-	flex-wrap: nowrap;
-	overflow : hidden;
-	gap :5%;
 }
 main .container .section .slide ul li {
 	width : 30%;
