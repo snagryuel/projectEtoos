@@ -26,7 +26,7 @@
 						<c:forEach var="teacher" items="${teacherList}">
 							<li>
 								<div class="thum">
-									<img src="${teacher.filePath}">
+									<img src="${teacher.filePath}${teacher.fileName}">
 								</div>
 								<div class="desc">
 									<span>${teacher.name}</span>
