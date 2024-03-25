@@ -105,7 +105,7 @@ public class AdminDAO extends JDBConnect{
 		List<AdminDTO> list = new Vector<AdminDTO>();
 		StringBuilder sb = new StringBuilder();
 		AdminDTO dto = new AdminDTO();
-		sb.append("SELECT tm.name, tm.id FROM tbl_teacherlist AS tt ");
+		sb.append("SELECT tm.name, tm.id, tt.tMent FROM tbl_teacherlist AS tt ");
 		sb.append("INNER JOIN tbl_memberlist AS tm ON tm.id = tt.id ");
 		sb.append("INNER JOIN tbl_subject AS ts ON ts.subKey = tt.subKey ");
 		sb.append("WHERE ts.sub1 = ? AND ts.sub2 = ?");
@@ -117,6 +117,7 @@ public class AdminDAO extends JDBConnect{
 			while(rs.next()) {
 				dto.setId(rs.getString("id"));
 				dto.setName(rs.getString("name"));
+				dto.settMent(rs.getString("tMent"));
 				dto.setFileName("icon_logo.svg");
 				dto.setFilePath("/projectTSPOON/upload/");
 				list.add(dto);

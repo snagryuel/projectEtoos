@@ -7,6 +7,7 @@ public class AdminDTO {
 	private String sugangEnd;
 	private String sub1;
 	private String sub2;
+	private String tMent;
 	private String name;
 	private String id;
 	private String birth;
@@ -113,5 +114,11 @@ public class AdminDTO {
 	}
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
+	}
+	public String gettMent() {
+		return tMent;
+	}
+	public void settMent(String tMent) {
+		this.tMent = tMent;
 	}
 }
