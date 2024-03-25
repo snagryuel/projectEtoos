@@ -156,6 +156,13 @@ main .container .contents {
 	box-sizing : border-box;
 }
 
+main .container .contents .section {
+	display : none;
+}
+main .container .contents .onSecion {
+	display : block !important;
+}
+
 main .container .contents .section .title {
 	padding : 20px;
 	font-weight : 800;
@@ -171,7 +178,7 @@ main .container .contents .section .list {
 }
 
 main .container .contents .section .list article {
-	background : pink;
+	background : #7ebecd73;
 	border-radius : 20px;
 	position : relative;
 	overflow : hidden;
@@ -183,7 +190,10 @@ main .container .contents .section .list article span {
 }
 
 main .container .contents .section .list article div.thum {
-	text-align : right;
+	height : 300px;
+	display : flex;
+	align-items: center;
+    justify-content: center;
 }
 
 main .container .contents .section .list article span:nth-child(1) {

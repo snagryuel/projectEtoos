@@ -6,12 +6,13 @@
 	<h1><a href="#">이투스 선생님</a></h1>
 	<ul>
 		<c:forEach var="sub" items="${sub2List}" varStatus="status1">
-			<li class="depth1 <c:if test="${status1.count == 1}">selected </c:if>">
+			<li class="depth1 <c:if test="${param.sub1 == sub.key}">selected </c:if>">
 				<div><a href="#">${sub.key}</a><span>-</span></div>
-				<ul <c:if test="${status1.count == 1}"> class="on"</c:if> <c:if test="${status1.count != 1}"> class="off"</c:if>>
+				<ul <c:if test="${param.sub1 == sub.key}"> class="on"</c:if> <c:if test="${status1.count != 1}"> class="off"</c:if>>
 				<c:forEach var="sub2" items="${sub.value}">
-					<c:forEach var="teacher" items="${teacherList[sub2]}" varStatus="status2">
-							<li class="depth2 <c:if test="${status1.count == 1}">selected </c:if>"><a href="prjectEtoos/user/TeacherDetailList.do?teacherId=${teacher.id}">${teacher.name}</a></li>
+					<c:set var="sub1sub2" value="${sub.key}-${sub2}" />
+					<c:forEach var="teacher" items="${teacherList[sub1sub2]}" varStatus="status2">
+							<li class="depth2 <c:if test="${param.sub1 == sub.key}">selected </c:if>"><a href="prjectEtoos/user/TeacherDetailList.do?teacherId=${teacher.id}">${teacher.name}</a></li>
 					</c:forEach>
 				</c:forEach>
 				</ul>
