@@ -271,9 +271,9 @@ function showOfHide(menu) {
 	menu.classList.toggle("off");
 }
 
-teacher.addEventListener("mouseover", (e)=>{e.preventDefault();showOfHide(sub_teacher);});
-sub_teacher.addEventListener("mouseleave", (e)=>{e.preventDefault();showOfHide(sub_teacher);});
-
+/*teacher.addEventListener("mouseover", (e)=>{e.preventDefault();showOfHide(sub_teacher);});
+ sub_teacher.addEventListener("mouseleave", (e)=>{e.preventDefault();showOfHide(sub_teacher);});
+ */
 function enterkey(event) {
     if (event.keyCode === 13) {
         event.preventDefault(); // 기본 동작 방지
