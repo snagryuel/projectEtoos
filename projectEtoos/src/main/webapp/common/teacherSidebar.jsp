@@ -1,60 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <aside id="side">
 	<h1><a href="#">이투스 선생님</a></h1>
 	<ul>
-		<li class="depth1 selected">
-			<div><a href="#">국어영역</a><span>-</span></div>
-			<ul class="on">
-				<li class="depth2"><a href="#">선생님1</a></li>
-				<li class="depth2"><a href="#">선생님2</a></li>
-				<li class="depth2"><a href="#">선생님3</a></li>
-				<li class="depth2"><a href="#">선생님4</a></li>
-			</ul>
-		</li>
-		<li class="depth1">
-			<div><a href="#">수학영역</a><span>+</span></div>
-			<ul class="off">
-				<li class="depth2"><a href="#">선생님1</a></li>
-				<li class="depth2"><a href="#">선생님2</a></li>
-			</ul>
-		</li>
-		<li class="depth1">
-			<div><a href="#">영어영역</a><span>+</span></div>
-			<ul class="off">
-				<li class="depth2"><a href="#">선생님1</a></li>
-				<li class="depth2"><a href="#">선생님2</a></li>
-			</ul>
-		</li>
-		<li class="depth1">
-			<div><a href="#">사회탐구영역</a><span>+</span></div>
-			<ul class="off">
-				<li class="depth2"><a href="#">선생님1</a></li>
-				<li class="depth2"><a href="#">선생님2</a></li>
-			</ul>
-		</li>
-		<li class="depth1">
-			<div><a href="#">과학탐구영역</a><span>+</span></div>
-			<ul class="off">
-				<li class="depth2"><a href="#">선생님1</a></li>
-				<li class="depth2"><a href="#">선생님2</a></li>
-			</ul>
-		</li>
-		<li class="depth1">
-			<div><a href="#">한국사영역</a><span>+</span></div>
-			<ul class="off">
-				<li class="depth2"><a href="#">선생님1</a></li>
-				<li class="depth2"><a href="#">선생님2</a></li>
-			</ul>
-		</li>
-		<li class="depth1">
-			<div><a href="#">제2외국어영역</a><span>+</span></div>
-			<ul class="off">
-				<li class="depth2"><a href="#">선생님1</a></li>
-				<li class="depth2"><a href="#">선생님2</a></li>
-			</ul>
-		</li>
+		<c:forEach var="sub" items="${sub2List}" varStatus="status1">
+			<li class="depth1 <c:if test="${status1.count == 1}">selected </c:if>">
+				<div><a href="#">${sub.key}</a><span>-</span></div>
+				<ul <c:if test="${status1.count == 1}"> class="on"</c:if> <c:if test="${status1.count != 1}"> class="off"</c:if>>
+				<c:forEach var="sub2" items="${sub.value}">
+					<c:forEach var="teacher" items="${teacherList[sub2]}" varStatus="status2">
+							<li class="depth2 <c:if test="${status1.count == 1}">selected </c:if>"><a href="prjectEtoos/user/TeacherDetailList.do?teacherId=${teacher.id}">${teacher.name}</a></li>
+					</c:forEach>
+				</c:forEach>
+				</ul>
+			</li>
+		</c:forEach>
 	</ul>
 </aside>
 <script>

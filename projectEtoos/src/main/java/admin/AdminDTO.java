@@ -13,6 +13,10 @@ public class AdminDTO {
 	private String joinday;
 	private String historyYN;
 	private String state;
+	private String fileIdx;
+	private String fileGubun;
+	private String fileName;
+	private String filePath;
 
 	public String getJoinday() {
 		return joinday;
@@ -85,5 +89,29 @@ public class AdminDTO {
 	}
 	public void setState(String state) {
 		this.state = state;
+	}
+	public String getFileIdx() {
+		return fileIdx;
+	}
+	public void setFileIdx(String fileIdx) {
+		this.fileIdx = fileIdx;
+	}
+	public String getFileGubun() {
+		return fileGubun;
+	}
+	public void setFileGubun(String fileGubun) {
+		this.fileGubun = fileGubun;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 }

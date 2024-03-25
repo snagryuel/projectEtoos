@@ -117,6 +117,8 @@ public class AdminDAO extends JDBConnect{
 			while(rs.next()) {
 				dto.setId(rs.getString("id"));
 				dto.setName(rs.getString("name"));
+				dto.setFileName("icon_logo.svg");
+				dto.setFilePath("/projectTSPOON/upload/");
 				list.add(dto);
 			}
 		} catch (SQLException e) {
