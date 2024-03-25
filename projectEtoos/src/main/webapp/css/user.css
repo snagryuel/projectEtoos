@@ -72,6 +72,9 @@ aside#side h1.thum {
 	width : 80%;
 	height : 300px;
 	margin-top : 10px;
+	display: flex;
+    align-items: center;
+    justify-content: center;
 }
 aside#side h1.thum p {
 	position : absolute;

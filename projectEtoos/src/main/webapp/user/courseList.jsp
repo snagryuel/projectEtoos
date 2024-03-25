@@ -320,6 +320,29 @@ div.list div.list-top {
 		}
 	}
 	
+	// 페이징 첫번째, 마지막 페이지 알럿
+	let preves = document.querySelectorAll(".prev");
+	let nextes = document.querySelectorAll(".next");
+	
+	for(let i of preves){
+		i.addEventListener("click", (e) => {
+			if(${(param.pageSelected != null) ? param.pageSelected : 1} == 1) {
+				e.preventDefault();
+				alert("첫번째 페이지 입니다.");
+			} 
+		})
+	}
+	
+	for(let i of nextes){
+		i.addEventListener("click", (e) => {
+			if(${(param.pageSelected != null) ? param.pageSelected : 1} >= ${requestScope.totalPage}) {
+				e.preventDefault();
+				alert("마지막 페이지 입니다.");
+			} 
+		})
+
+	}
+	
 </script>
 </body>
 </html>

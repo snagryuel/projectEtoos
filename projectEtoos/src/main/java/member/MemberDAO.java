@@ -206,14 +206,19 @@ public MemberDTO getMemberInfoForPwd(MemberDTO dto) {
 	public MemberDTO getMemberInfo(String id) {
 		
 		MemberDTO dto = new MemberDTO();
-		String sql = "SELECT tm.id, phone, email, birth, addr, pwd, gubun, NAME, fileIdx, tment FROM tbl_memberlist AS tm INNER JOIN tbl_teacherlist AS tt ON tm.id=tt.id WHERE tm.id = ?";
+		String sql = "SELECT "
+				   + "tm.id, phone, email, birth, addr, pwd, gubun, NAME, tt.fileIdx, tMent "
+				   + ",FM.fileGubun, FM.fileName, FM.filePath "
+				   + "FROM tbl_memberlist AS tm "
+				   + "LEFT OUTER JOIN tbl_teacherlist AS tt ON tm.id=tt.id "
+				   + "LEFT OUTER JOIN tbl_filemanage AS FM ON tt.fileIdx = FM.fileIdx "
+				   + "WHERE tm.id = ? AND FM.fileGubun = 't'";
 		
 		try{
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
-
-			rs = psmt.executeQuery();
 			
+			rs = psmt.executeQuery();
 			while(rs.next()) {
 				dto.setName(rs.getString("name"));
 				dto.setPhone(rs.getString("phone"));
@@ -223,6 +228,9 @@ public MemberDTO getMemberInfoForPwd(MemberDTO dto) {
 				dto.setPwd(rs.getString("pwd"));
 				dto.setGubun(rs.getString("gubun"));
 				dto.setFileidx(rs.getString("fileidx"));
+				dto.setFileGubun(rs.getString("fileGubun"));
+				dto.setFileName(rs.getString("fileName"));
+				dto.setFilePath(rs.getString("filePath"));
 				dto.setMent(rs.getString("tment"));
 			}
 			
