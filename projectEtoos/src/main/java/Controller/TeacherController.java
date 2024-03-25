@@ -49,6 +49,7 @@ public class TeacherController extends HttpServlet {
 					teacherList.put(sub1 + "-" + sub2, dao.getteacher(sub1, sub2));
 				}
 			}
+			dao.Close();
 			req.setAttribute("sub1List", sub1List);
 			req.setAttribute("sub2List", sub2List);
 			req.setAttribute("teacherList", teacherList);

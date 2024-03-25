@@ -128,6 +128,36 @@ public class AdminDAO extends JDBConnect{
 		return list;
 	}
 	
+	public List<AdminDTO> CourseInfoForMain() {
+		List<AdminDTO> list = new Vector<AdminDTO>();
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT tc.courseIdx, courseName, sugangStart, sugangEnd, name, FM.fileGubun, FM.fileName, FM.filePath ");
+		sb.append(" FROM tbl_courselist AS tc ");
+		sb.append(" INNER JOIN tbl_memberlist AS tm ON tm.id = tc.teacherId");
+		sb.append(" LEFT OUTER JOIN tbl_filemanage AS FM ON tc.fileIdx = FM.fileIdx");
+		sb.append(" WHERE FM.fileGubun = 'b'");
+		sb.append(" ORDER BY regDate DESC");
+		sb.append(" LIMIT 0, 9");
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				AdminDTO dto = new AdminDTO();
+				dto.setCoursename(rs.getString("courseName"));
+				dto.setSugangStart(rs.getString("sugangStart"));
+				dto.setSugangEnd(rs.getString("sugangEnd"));
+				dto.setName(rs.getString("name"));
+				dto.setCourseIdx(rs.getInt("courseIdx"));
+				dto.setFileName(rs.getString("fileName"));
+				dto.setFilePath(rs.getString("filePath"));
+				list.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	public List<String> getSub() {
 		List<String> list = new Vector<String>();
 		StringBuilder sb = new StringBuilder();
@@ -188,8 +218,12 @@ public class AdminDAO extends JDBConnect{
 	public List<AdminDTO> getteacher() {
 		List<AdminDTO> list = new Vector<AdminDTO>();
 		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT tm.name, tm.id FROM tbl_teacherlist AS tt ");
-		sb.append("INNER JOIN tbl_memberlist AS tm ON tm.id = tt.id");
+		sb.append("SELECT tm.name, tm.id, tt.tMent, tt.fileIdx, FM.fileGubun, FM.fileName, FM.filePath FROM tbl_teacherlist AS tt ");
+		sb.append(" INNER JOIN tbl_memberlist AS tm ON tm.id = tt.id");
+		sb.append(" LEFT OUTER JOIN tbl_filemanage AS FM ON tt.fileIdx = FM.fileIdx");
+		sb.append(" WHERE FM.fileGubun = 't'");
+		sb.append(" ORDER BY tm.joinDay DESC");
+		sb.append(" LIMIT 0, 9");
 		try {
 			psmt = conn.prepareStatement(sb.toString());
 			rs = psmt.executeQuery();
@@ -197,6 +231,10 @@ public class AdminDAO extends JDBConnect{
 				AdminDTO dto = new AdminDTO();
 				dto.setId(rs.getString("id"));
 				dto.setName(rs.getString("name"));
+				dto.settMent(rs.getString("tMent"));
+				dto.setFileIdx(rs.getString("fileIdx"));
+				dto.setFileName(rs.getString("fileName"));
+				dto.setFilePath(rs.getString("filePath"));
 				list.add(dto);
 			}
 		} catch (SQLException e) {

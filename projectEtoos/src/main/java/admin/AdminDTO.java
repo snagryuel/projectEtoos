@@ -25,6 +25,7 @@ public class AdminDTO {
 	private String bookIntro;
 	private String bookName;
 
+
 	public String getJoinday() {
 		return joinday;
 	}

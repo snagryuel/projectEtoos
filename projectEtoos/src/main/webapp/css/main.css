@@ -76,16 +76,20 @@ main .container .section .slide ul li div.thum {
 }
 main .container .recomended-teacher .slide ul li div.thum {
 	background : #d9f1d9;
+	width : 300px;
+	height : 300px;
+	display : flex;
+    align-items: center;
 }
 
 main .container .recomended-course .slide ul li div.thum {
 	background : #bfe0ed;
+	width : 300px;
+	height : 300px;
+	display : flex;
+    align-items: center;
 }
 
-main .container .section .slide ul li div.thum img {
-	position : relative;
-	bottom : -10px;
-}
 
 main .container .section .slide ul li div.desc {
 	text-align : left;

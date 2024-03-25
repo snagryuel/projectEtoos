@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,60 +23,17 @@
 				<div class="slide">
 					<button class="prev arrow">◀</button>
 					<ul>
-						<li>
-							<div class="thum">
-								<img src="https://img.etoos.com/teacher/teacher/200457/m300x300.png">
-							</div>
-							<div class="desc">
-								<span>제목</span>
-								<span>내용</span>
-							</div>
-						</li>
-						<li>
-							<div class="thum">
-								<img src="https://img.etoos.com/teacher/teacher/200505/m300x300.png">
-							</div>
-							<div class="desc">
-								<span>제목</span>
-								<span>내용</span>
-							</div>
-						</li>
-						<li>
-							<div class="thum">
-								<img src="https://img.etoos.com/teacher/teacher/200481/m300x300.png">
-							</div>
-							<div class="desc">
-								<span>제목</span>
-								<span>내용</span>
-							</div>
-						</li>
-						<li>
-							<div class="thum">
-								<img src="https://img.etoos.com/teacher/teacher/200457/m300x300.png">
-							</div>
-							<div class="desc">
-								<span>제목</span>
-								<span>내용</span>
-							</div>
-						</li>
-						<li>
-							<div class="thum">
-								<img src="https://img.etoos.com/teacher/teacher/200505/m300x300.png">
-							</div>
-							<div class="desc">
-								<span>제목</span>
-								<span>내용</span>
-							</div>
-						</li>
-						<li>
-							<div class="thum">
-								<img src="https://img.etoos.com/teacher/teacher/200481/m300x300.png">
-							</div>
-							<div class="desc">
-								<span>제목</span>
-								<span>내용</span>
-							</div>
-						</li>
+						<c:forEach var="teacher" items="${teacherList}">
+							<li>
+								<div class="thum">
+									<img src="${teacher.filePath}">
+								</div>
+								<div class="desc">
+									<span>${teacher.name}</span>
+									<span>${teacher.tMent}</span>
+								</div>
+							</li>
+						</c:forEach>
 					</ul>
 					<button class="next arrow">▶</button>
 				</div>
@@ -85,60 +43,17 @@
 				<div class="slide">
 					<button class="prev arrow">◀</button>
 					<ul>
-						<li>
-							<div class="thum">
-								<img src="https://img.etoos.com/teacher/teacher/200457/m300x300.png">
-							</div>
-							<div class="desc">
-								<span>제목</span>
-								<span>내용</span>
-							</div>
-						</li>
-						<li>
-							<div class="thum">
-								<img src="https://img.etoos.com/teacher/teacher/200505/m300x300.png">
-							</div>
-							<div class="desc">
-								<span>제목</span>
-								<span>내용</span>
-							</div>
-						</li>
-						<li>
-							<div class="thum">
-								<img src="https://img.etoos.com/teacher/teacher/200481/m300x300.png">
-							</div>
-							<div class="desc">
-								<span>제목</span>
-								<span>내용</span>
-							</div>
-						</li>
-						<li>
-							<div class="thum">
-								<img src="https://img.etoos.com/teacher/teacher/200457/m300x300.png">
-							</div>
-							<div class="desc">
-								<span>제목</span>
-								<span>내용</span>
-							</div>
-						</li>
-						<li>
-							<div class="thum">
-								<img src="https://img.etoos.com/teacher/teacher/200505/m300x300.png">
-							</div>
-							<div class="desc">
-								<span>제목</span>
-								<span>내용</span>
-							</div>
-						</li>
-						<li>
-							<div class="thum">
-								<img src="https://img.etoos.com/teacher/teacher/200481/m300x300.png">
-							</div>
-							<div class="desc">
-								<span>제목</span>
-								<span>내용</span>
-							</div>
-						</li>
+						<c:forEach var="course" items="${courseList}">
+							<li>
+								<div class="thum">
+									<img src="${course.filePath}">
+								</div>
+								<div class="desc">
+									<span>${course.coursename}</span>
+									<span>${course.name}</span>
+								</div>
+							</li>
+						</c:forEach>
 					</ul>
 					<button class="next arrow">▶</button>
 				</div>
