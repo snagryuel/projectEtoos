@@ -48,17 +48,15 @@ if (searchWord == null || searchWord.trim().isEmpty()) {
 				<div class="gumsaekGyelGwa">
 					<p id="gyeolGwadata"><%=searchWord%>
 						에 대한 검색결과 <span class="totalCount">${searchResults5+searchResults6+searchResults7} </span> 건
-						<!-- 이 부분 아직 안될 것 -->
-
 					</p>
 				</div>
 			</div>
 			<div class="tap">
-				<ul>
-					<li class="selected-tap"><span><a href="./searchMain.do?search_word=${keyword }">전체</a> (${searchResults4})</span></li>
-					<li class=""><span><a href="./searchMain.do?bbs=teacher&search_word=${keyword }"> 선생님</a> (${searchResults7})</span></li>		
-					<li class=""><span><a href="./searchMain.do?bbs=course&search_word=${keyword }&page=${currentPage}">강좌 </a> (${searchResults5})</span></li>
-					<li class=""><span><a href="./searchMain.do?bbs=notice&search_word=${keyword}">공지사항 </a>(${searchResults6})</span></li>
+				<ul>									
+						<li class="selected-tap"><span><a href="./searchMain.do?search_word=${keyword }">전체</a></span></li>
+						<li><span><a href="./searchMain.do?bbs=teacher&search_word=${keyword }">선생님</a></span></li>
+						<li><span><a href="./searchMain.do?bbs=course&search_word=${keyword}&page=${currentPage}">강좌</a></span></li>
+						<li><span><a href="./searchMain.do?bbs=notice&search_word=${keyword}&page=${currentPage}">공지사항</a></span></li>
 				</ul>
 			</div>
 			<!-- 선생님 목록결과 -->
@@ -112,8 +110,9 @@ if (searchWord == null || searchWord.trim().isEmpty()) {
 
 							<p id="title_g">
 								강의 <span>(${searchResults5})</span>
-								<button type="button" class="gumsaekdeo"
-									onclick="location.href='./searchMain.do?bbs=course&search_word=${keyword}'">검색결과 더보기</button>
+								<button type="button" id="btn1" class="gumsaekdeo"
+									onclick="location.href='./searchMain.do?bbs=course&search_word=${keyword}';  toggleBtn1(); "
+									 >검색결과 더보기</button>
 							</p>
 
 							<c:if test="${not empty searchResults3}">
@@ -195,7 +194,7 @@ if (searchWord == null || searchWord.trim().isEmpty()) {
 							<p id="title_g">
 								공지사항 <span>(${searchResults6})</span>
 								<button type="button" class="gumsaekdeo"
-									onclick="location.href='./searchMain.do?bbs=notice&search_word=${keyword }'">검색결과 더보기</button>
+									onclick="location.href='./searchMain.do?bbs=notice&search_word=${keyword }'; toggleBtn1();">검색결과 더보기</button>
 
 							</p>
 
@@ -268,19 +267,23 @@ if (searchWord == null || searchWord.trim().isEmpty()) {
 
 	<jsp:include page="../common/footer.jsp" />
 
-	<script>
-       li.setAtrribute("selected-tap");
-             
-
-        let lies = document.querySelectorAll(".tap > ul > li > span");
-        for (let li of lies) {
-        	li.addEventListener("click", ()=>{
-        		for (let li2 of lies) {
-        			li2.classList.remove("selected-tap");
-        		}
-        		li.classList.add("selected-tap");
-        	})
-        }
+	<script>           
+	
+	
+	let lies = document.querySelectorAll(".tap > ul > li ");
+	for (let li of lies) {
+		li.addEventListener("click", ()=>{
+			for (let li2 of lies) {
+				console.log(li2);
+				li2.classList.remove("selected-tap");
+			}
+			li.classList.add("selected-tap");
+		})			
+		
+		
+	}
+			
+			
 
         function enterkey(event) {
             if (event.keyCode === 13) {
@@ -289,6 +292,23 @@ if (searchWord == null || searchWord.trim().isEmpty()) {
             }
         }
 
+			function toggleBtn1() {
+				  
+				  // 토글 할 버튼 선택 (btn1)
+				  const btn1 = document.getElementById('btn1');
+				  
+				  // btn1 숨기기 (display: none)
+				  if(btn1.style.display !== 'none') {
+				    btn1.style.display = 'none';
+				  }
+				  // btn` 보이기 (display: block)
+				  else {
+				    btn1.style.display = 'block';
+				  }
+				  
+				}
+			
+			
         
 /* 검색값이 없을시 막는 로직. => 추후 필요시 활용
         function checkSearchInput(event) {
