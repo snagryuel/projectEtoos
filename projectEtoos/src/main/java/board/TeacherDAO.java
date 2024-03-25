@@ -15,7 +15,7 @@ public class TeacherDAO extends JDBConnect {
         List<TeacherDTO> list = new Vector<TeacherDTO>();
         StringBuilder sb = new StringBuilder();
         
-        sb.append("SELECT NAME, id ");
+        sb.append("SELECT distinct NAME, id ");
         sb.append(" FROM tbl_memberlist");
         sb.append(" WHERE NAME LIKE '%");
         sb.append(name);
@@ -42,7 +42,7 @@ public class TeacherDAO extends JDBConnect {
         List<TeacherDTO> list = new Vector<TeacherDTO>();
         StringBuilder sb = new StringBuilder();
         
-        sb.append("SELECT tm.NAME ,tm.id, tt.tMent, ts.sub1, ts.sub2 FROM tbl_memberlist AS tm");
+        sb.append("SELECT distinct tm.NAME ,tm.id, tt.tMent, ts.sub1, ts.sub2 FROM tbl_memberlist AS tm");
 		sb.append(" INNER JOIN tbl_teacherlist AS tt ON tm.id = tt.id");
 		sb.append(" INNER JOIN tbl_subject AS ts ON tt.subkey = ts.subKey");
 		sb.append(" INNER JOIN tbl_courselist AS tc ON tm.id = tc.teacherId ");
@@ -76,11 +76,11 @@ public class TeacherDAO extends JDBConnect {
 		
     }
    
-   public List<TeacherDTO> getCourseList(String name, String bbs) {
+   public List<TeacherDTO> getCourseList(String name, String bbs, int pageNumber) {
        List<TeacherDTO> list = new Vector<TeacherDTO>();
        StringBuilder sb = new StringBuilder();
        
-       sb.append("SELECT tm.NAME, tm.id, tt.tMent, ts.sub1, tc.courseName FROM tbl_memberlist AS tm ");
+       sb.append("SELECT distinct tm.NAME, tm.id, tt.tMent, ts.sub1, tc.courseName FROM tbl_memberlist AS tm ");
 		sb.append(" INNER JOIN tbl_teacherlist AS tt ON tm.id = tt.id ");
 		sb.append("INNER JOIN tbl_subject AS ts ON tt.subkey = ts.subKey ");
 		sb.append("INNER JOIN tbl_courselist AS tc ON tm.id = tc.teacherId ");
@@ -91,37 +91,37 @@ public class TeacherDAO extends JDBConnect {
 		sb.append("%'");
 
 		if(bbs.isEmpty()) {
-			sb.append(" Limit 2");
+			sb.append(" Limit 2 ");
+		}else {
+			int offset = (pageNumber - 1) * 6;
+		    sb.append(" LIMIT 6 OFFSET ").append(offset); 
 		}
-		try {
-			psmt = conn.prepareStatement(sb.toString());
-			System.out.println(sb.toString());
-			rs = psmt.executeQuery();
-			while(rs.next()) {
-				TeacherDTO dto = new TeacherDTO();
-				dto.setId(rs.getString("id"));
-				dto.setName(rs.getString("name"));
-				dto.settMent(rs.getString("tMent"));
-				dto.setSub1(rs.getString("sub1"));
-				dto.setCourseName(rs.getString("courseName"));
-				list.add(dto);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+		    try {
+		        psmt = conn.prepareStatement(sb.toString());
+		        System.out.println(sb.toString());
+		        rs = psmt.executeQuery();
+
+		        while (rs.next()) {
+		            TeacherDTO dto = new TeacherDTO();
+		            dto.setId(rs.getString("id"));
+		            dto.setName(rs.getString("name"));
+		            dto.settMent(rs.getString("tMent"));
+		            dto.setSub1(rs.getString("sub1"));
+		            dto.setCourseName(rs.getString("courseName"));
+		            list.add(dto);
+		        }
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    }
+
+		    return list;
 		}
-		return list;
-		
-   }
-  
-  
-  
    
-   
-   public List<TeacherDTO> getNoticeList(String name, String bbs) {
-        List<TeacherDTO> list = new Vector<TeacherDTO>();
-        StringBuilder sb = new StringBuilder();
-        
-        sb.append("SELECT tm.NAME, tq.title, tm.id, tqd.contents  FROM tbl_memberlist AS tm");
+   public List<TeacherDTO> getNoticeList(String name, String bbs, int pageNumber) {
+       List<TeacherDTO> list = new Vector<TeacherDTO>();
+       StringBuilder sb = new StringBuilder();
+       
+       sb.append("SELECT distinct tm.NAME, tq.title, tm.id, tqd.contents  FROM tbl_memberlist AS tm");
 		sb.append(" INNER JOIN tbl_qna AS tq ON tm.id = tq.id");
 		sb.append(" INNER JOIN tbl_courselist AS tc ON tm.id = tc.teacherId ");
 		sb.append(" INNER JOIN tbl_qnadetail AS tqd ON tq.boardIdx = tqd.boardIdx");
@@ -133,13 +133,17 @@ public class TeacherDAO extends JDBConnect {
 		sb.append(" OR tq.title LIKE '%");
 		sb.append(name);
 		sb.append("%'");
+
 		if(bbs.isEmpty()) {
-			sb.append(" Limit 2");
+			sb.append(" Limit 2 ");
+		}else {
+			int offset = (pageNumber - 1) * 6;
+		    sb.append(" LIMIT 6 OFFSET ").append(offset); 
 		}
-		try {
-			psmt = conn.prepareStatement(sb.toString());
-			System.out.println(sb.toString());
-			rs = psmt.executeQuery();
+		    try {
+		        psmt = conn.prepareStatement(sb.toString());
+		        System.out.println(sb.toString());
+		        rs = psmt.executeQuery();
 			while(rs.next()) {
 				TeacherDTO dto = new TeacherDTO();
 				dto.setId(rs.getString("id"));
@@ -153,10 +157,148 @@ public class TeacherDAO extends JDBConnect {
 		}
 		return list;
 		
-    }
+   }
    
+  
+   public int getTotalResultCount(String keyword, String bbs) {
+	    int totalCount = 0;
+	    StringBuilder sb = new StringBuilder();
 
+	    sb.append("SELECT COUNT(*) FROM tbl_memberlist AS tm ");
+	    sb.append(" INNER JOIN tbl_teacherlist AS tt ON tm.id = tt.id ");
+	    sb.append("INNER JOIN tbl_subject AS ts ON tt.subkey = ts.subKey ");
+	    sb.append("INNER JOIN tbl_courselist AS tc ON tm.id = tc.teacherId ");
+	    sb.append(" WHERE NAME LIKE '%");
+	    sb.append(keyword);
+	    sb.append("%' OR tc.courseName LIKE '%");
+	    sb.append(keyword);
+	    sb.append("%'");
+
+	    if (!bbs.isEmpty()) {
+			sb.append(" Limit 2");
+	    }
+
+	    try {
+	        psmt = conn.prepareStatement(sb.toString());
+	        System.out.println(sb.toString());
+	        rs = psmt.executeQuery();
+
+	        if (rs.next()) {
+	            totalCount = rs.getInt(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return totalCount;
+	}
    
    
+   
+   public int getTotalResultCount_teacher(String keyword, String bbs) {
+	    int totalCount = 0;
+	    StringBuilder sb = new StringBuilder();
+
+	    sb.append("SELECT COUNT(distinct tm.NAME ,tm.id, tt.tMent, ts.sub1, ts.sub2) FROM tbl_memberlist AS tm");
+	    sb.append(" INNER JOIN tbl_teacherlist AS tt ON tm.id = tt.id");
+		sb.append(" INNER JOIN tbl_subject AS ts ON tt.subkey = ts.subKey");
+		sb.append(" INNER JOIN tbl_courselist AS tc ON tm.id = tc.teacherId ");
+		sb.append(" WHERE NAME LIKE '%");
+		sb.append(keyword);
+		sb.append("' OR tc.courseName LIKE '%");
+		sb.append(keyword);
+		sb.append("%'");
+
+	    if (!bbs.isEmpty()) {
+			sb.append(" Limit 2");
+	    }
+
+	    try {
+	        psmt = conn.prepareStatement(sb.toString());
+	        System.out.println(sb.toString());
+	        rs = psmt.executeQuery();
+
+	        if (rs.next()) {
+	        	totalCount = rs.getInt(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return totalCount;
+	}
+   
+   
+   public int getTotalResultCount_course(String keyword, String bbs) {
+	    int totalCount = 0;
+	    StringBuilder sb = new StringBuilder();
+
+	    sb.append("SELECT COUNT(distinct tm.NAME, tm.id, tt.tMent, ts.sub1, tc.courseName) FROM tbl_memberlist AS tm ");
+		sb.append(" INNER JOIN tbl_teacherlist AS tt ON tm.id = tt.id ");
+		sb.append("INNER JOIN tbl_subject AS ts ON tt.subkey = ts.subKey ");
+		sb.append("INNER JOIN tbl_courselist AS tc ON tm.id = tc.teacherId ");
+		sb.append(" WHERE NAME LIKE '%");
+		sb.append(keyword);
+		sb.append("' OR tc.courseName LIKE '%");
+		sb.append(keyword);
+		sb.append("%'");
+
+	    if (!bbs.isEmpty()) {
+			sb.append(" Limit 2");
+	    }
+
+	    try {
+	        psmt = conn.prepareStatement(sb.toString());
+	        System.out.println(sb.toString());
+	        rs = psmt.executeQuery();
+
+	        if (rs.next()) {
+	        	totalCount = rs.getInt(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return totalCount;
+	}
+  
+   
+   
+   public int getTotalResultCount_notice(String keyword, String bbs) {
+	    int totalCount = 0;
+	    StringBuilder sb = new StringBuilder();
+
+	    sb.append("SELECT COUNT(distinct tm.NAME, tq.title, tm.id, tqd.contents)  FROM tbl_memberlist AS tm");
+	  		sb.append(" INNER JOIN tbl_qna AS tq ON tm.id = tq.id");
+	  		sb.append(" INNER JOIN tbl_courselist AS tc ON tm.id = tc.teacherId ");
+	  		sb.append(" INNER JOIN tbl_qnadetail AS tqd ON tq.boardIdx = tqd.boardIdx");
+	  		sb.append(" WHERE NAME LIKE '%");
+	  		sb.append(keyword);
+	  		sb.append("' OR tc.courseName LIKE '%");
+	  		sb.append(keyword);
+	  		sb.append("%'");
+	  		sb.append(" OR tq.title LIKE '%");
+	  		sb.append(keyword);
+	  		sb.append("%'");
+
+	    if (!bbs.isEmpty()) {
+			sb.append(" Limit 2");
+	    }
+
+	    try {
+	        psmt = conn.prepareStatement(sb.toString());
+	        System.out.println(sb.toString());
+	        rs = psmt.executeQuery();
+
+	        if (rs.next()) {
+	        	totalCount = rs.getInt(1);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return totalCount;
+	}
+
 
     }
