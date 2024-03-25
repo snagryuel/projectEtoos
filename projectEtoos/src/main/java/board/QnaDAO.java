@@ -45,9 +45,9 @@ public class QnaDAO extends JDBConnect {
 		List<QnaDTO> list = new Vector<QnaDTO>();
 
 		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT boardIdx, title, teacherId, regDate");
+		sb.append("SELECT boardIdx, title, regDate");
 		sb.append(", modifyDate, readCnt");
-		sb.append(" FROM tbl_qnadetail");
+		sb.append(" FROM tbl_qna");
 		sb.append(" WHERE titleGubun='공지'");
 		sb.append(" ORDER BY regDate DESC");
 		/* sb.append(" LIMIT 2"); */
@@ -67,7 +67,6 @@ public class QnaDAO extends JDBConnect {
 				QnaDTO dto = new QnaDTO();
 				dto.setBoardIdx(rs.getInt("boardIdx"));
 				dto.setTitle(rs.getString("title"));
-				dto.setTeacherId(rs.getString("teacherId"));
 				dto.setRegDate(rs.getString("regDate"));
 				dto.setModifyDate(rs.getString("modifyDate"));
 				dto.setReadCnt(rs.getInt("readCnt"));
@@ -87,18 +86,12 @@ public class QnaDAO extends JDBConnect {
 		List<QnaDTO> list = new Vector<QnaDTO>();
 
 		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT boardIdx, title, teacherId, studentId, registId, regDate");
-		sb.append(", modifyDate, readCnt, refIdx");
-		sb.append(" FROM tbl_qnadetail");
-		sb.append(" WHERE titleGubun !='공지'");
-		sb.append(" ORDER BY regDate DESC");
+		sb.append("SELECT boardIdx, title, NAME, regDate, readCnt FROM tbl_qna AS tq INNER JOIN tbl_memberlist AS tm ON tq.id = tm.id WHERE titleGubun !='공지' ORDER BY regDate DESC");
 		/* sb.append(" LIMIT 2"); */
 		
 		  if (map.get("searchCategory") != null && map.get("searchWord") != null) {
-		  sb.append(" WHERE " + map.get("searchCategory")); sb.append(" LIKE '%" +
-		  map.get("searchWord") + "%'"); }
-		 
-		System.out.println("sql : " + sb.toString());
+			  sb.append(" WHERE " + map.get("searchCategory")); sb.append(" LIKE '%" +map.get("searchWord") + "%'"); 
+			 }
 
 		try {
 			psmt = conn.prepareStatement(sb.toString());
@@ -108,14 +101,9 @@ public class QnaDAO extends JDBConnect {
 				QnaDTO dto = new QnaDTO();
 				dto.setBoardIdx(rs.getInt("boardIdx"));
 				dto.setTitle(rs.getString("title"));
-				dto.setTeacherId(rs.getString("teacherId"));
-				dto.setStudentId(rs.getString("studentId"));
-				dto.setRegistId(rs.getString("registId"));
-				
+				dto.setName(rs.getString("name"));
 				dto.setRegDate(rs.getString("regDate"));
-				dto.setModifyDate(rs.getString("modifyDate"));
 				dto.setReadCnt(rs.getInt("readCnt"));
-				dto.setRefIdx(rs.getInt("refIdx"));
 				
 				list.add(dto);
 			}
@@ -164,24 +152,17 @@ public class QnaDAO extends JDBConnect {
 		QnaDTO dto = new QnaDTO();
 
 		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT boardIdx, titleGubun, title, studentId,  regDate, registId, refIdx, modifyDate, readCnt");
-		sb.append(" FROM tbl_qnadetail");
-		sb.append(" WHERE titleGubun != '공지'");
-
+		sb.append("SELECT title, regdate, readcnt, contents FROM tbl_qna WHERE boardidx = ?");
+		
 		try {
 			psmt = conn.prepareStatement(sb.toString());
+			psmt.setInt(1, boardIdx);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
-				dto.setBoardIdx(rs.getInt("boardIdx"));
 				dto.setTitle(rs.getString("title"));
-				dto.setStudentId(rs.getString("studentId"));
-				dto.setRegistId("registId");
 				dto.setRegDate(rs.getString("regDate"));
-				dto.setModifyDate(rs.getString("modifyDate"));
 				dto.setReadCnt(rs.getInt("readCnt"));
 				dto.setContents(rs.getString("contents"));
-				dto.setContents_pwd(rs.getString("contents_pwd"));
-				dto.setRefIdx(rs.getInt("refIdx"));
 			}
 		} catch (Exception e) {
 			System.out.println("게시판 데이터 조회 오류 : " + e.getMessage());
@@ -300,6 +281,27 @@ public class QnaDAO extends JDBConnect {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	public List<QnaDTO> qnaba(int idx) {
+		List<QnaDTO> list = new Vector<QnaDTO>();
+		String sql = "SELECT title, boardidx FROM tbl_qna WHERE boardidx = ? or boardidx = ?";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, idx-1);
+			psmt.setInt(2, idx+1);
+			rs = psmt.executeQuery();
+			while(rs.next()){
+				QnaDTO dto = new QnaDTO();
+				dto.setTitle(rs.getString("title"));
+				dto.setBoardIdx(rs.getInt("boardidx"));
+				list.add(dto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 	
 	
