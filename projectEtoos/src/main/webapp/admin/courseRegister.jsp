@@ -28,9 +28,9 @@
 						<td>
 							<select name="teacher">
 								<option value="">선택</option>
-								<option value="id1">선생님1</option>
-								<option value="id2">선생님2</option>
-								<option value="id3">선생님3</option>
+								<c:forEach var = "teacher" items = "${teacherList }" >
+									<option value="${teacher.id }">${teacher.name }</option>
+								</c:forEach>
 							</select>
 						</td>
 					</tr>
@@ -80,18 +80,32 @@
 				</table>
 				<table id="sebu">
 					<caption>강좌구성</caption>
-					<c:forEach var="list" items="${sesbuList }" varStatus="status">
-					<tr data-idx="${status.count }">
-						<th class="idx" rowspan="2">${status.count }</th>
-						<th>세부 강좌명</th>
-						<td><input type="text" name="courseSebuName" id="courseSebuName${status.count }" maxlength="20" value = "${list.courseSebuName }"></td>
-					</tr>
-					<tr data-idx="${status.count }">
-						<th>강좌시간</th>
-						<td><input type="text" name="courseTime" id="courseTime${status.count }" maxlength="20" value = "${list.courseTime }">
-						<input type="hidden" name="sebuIdx" id="sebuIdx${status.count }"value = "${list.sebuIdx }"/></td>
-					</tr>
-					</c:forEach>
+					<c:if test="${not empty sesbuList }">
+						<c:forEach var="list" items="${sesbuList }" varStatus="status">
+							<tr data-idx="${status.count }">
+								<th class="idx" rowspan="2">${status.count }</th>
+								<th>세부 강좌명</th>
+								<td><input type="text" name="courseSebuName" id="courseSebuName${status.count }" maxlength="20" value = "${list.courseSebuName }"></td>
+							</tr>
+							<tr data-idx="${status.count }">
+								<th>강좌시간</th>
+								<td><input type="text" name="courseTime" id="courseTime${status.count }" maxlength="20" value = "${list.courseTime }">
+								<input type="hidden" name="sebuIdx" id="sebuIdx${status.count }"value = "${list.sebuIdx }"/></td>
+							</tr>
+						</c:forEach>
+					</c:if>
+					<c:if test="${empty sesbuList }">
+						<tr data-idx="1">
+								<th class="idx" rowspan="2">1</th>
+								<th>세부 강좌명</th>
+								<td><input type="text" name="courseSebuName" id="courseSebuName1" maxlength="20" value = ""></td>
+							</tr>
+							<tr data-idx="1">
+								<th>강좌시간</th>
+								<td><input type="text" name="courseTime" id="courseTime1" maxlength="20" value = "">
+								<input type="hidden" name="sebuIdx" id="sebuIdx1"value = ""/></td>
+							</tr>
+					</c:if>
 				</table>
 				<div class="btn_manager">
 					<button id="btn_add">강좌 명 추가</button>
