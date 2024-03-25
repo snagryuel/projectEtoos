@@ -26,16 +26,16 @@
 		<h1 id="title"><img class="qnaSymbol" alt="qnaSymbol" src="/projectEtoos/img/qnaSymbol.png"/>학습 Q&A</h1>
 		
 		<div class="qnaDiv">
+		<form id="frmRegist" method="post" action="/user/qnaNewNotice.do">
 			<div class="titleElement">
 				<span>제목</span><input type="text" class="qnaTitle" name="qnaTitle" id="qnaTitle" value=""  maxlength="30">
 				<hr>
 				<div class="secretElement">
-				<form>
 					<span>비밀번호</span><input type="password" class="qnaPwd"  name="qnaPwd" id="qnaPwd" value=""  maxlength="20">
 					<input type="checkbox" id="secretCheck" name="secretCheck" onClick="checkDisable(this.form)"><span>비밀글</span>
-				</form>	
 				</div>
 			</div>
+			</form>
 			<hr>
 			<div class="qnaContElement">
 				<textarea name="qnaContent" id="qnaContent" maxlength="1000"  rows="20" cols="80"></textarea>

@@ -30,21 +30,25 @@ public class QnaMainController extends HttpServlet {
 		
 		Map<String, Object> params = new HashMap<String, Object>();
 		
-		String searchCategory = req.getParameter("searchCategory");
-		String searchWord = req.getParameter("searchWord");
-		pageNo = (req.getParameter("pageNo")!=null ? Integer.parseInt(req.getParameter("pageNo")) : 1);
 		
-		//검색 파라미터 설정
-		if ( searchWord != null && !searchWord.isEmpty() 
-				&& searchCategory != null && !searchCategory.isEmpty() ) {
-			params.put("searchCategory", searchCategory);
-			params.put("searchWord", searchWord);
-		}
+		  String searchCategory = req.getParameter("searchCategory"); 
+		  String searchWord = req.getParameter("searchWord"); pageNo = (req.getParameter("pageNo")!=null
+		  ? Integer.parseInt(req.getParameter("pageNo")) : 1);
+		  
+		  //검색 파라미터 설정 
+		  if( searchWord != null && !searchWord.isEmpty() 
+				  && searchCategory != null && !searchCategory.isEmpty()) {
+		  params.put("searchCategory", searchCategory); 
+		  params.put("searchWord", searchWord); 
+		  }
+		 
+		 
 		
 		//게시판 테이블 조회
 		QnaDAO dao = new QnaDAO();
 		List<QnaDTO> noticeList = dao.noticeList(params);
-		dao.Close();
+		List<QnaDTO> qnaList = dao.qnaList(params);
+		
 		
 		
 		// 들어온 URL에 따라 처리
@@ -64,7 +68,7 @@ public class QnaMainController extends HttpServlet {
 		System.out.println("totalCount : " + totalCount);
 		int totalPage =  (int) Math.ceil((double)totalCount / 10);
 		System.out.println("totalPage : " + totalPage);
-		dao2.Close();
+		dao2.close();
 		
 		//페이징
 		String page = PageUtil.makePageNumber(totalPage, pageSelected, uri, queryString);
@@ -73,8 +77,9 @@ public class QnaMainController extends HttpServlet {
 		req.setAttribute("totalPage", totalPage);
 		
 		req.setAttribute("noticeList", noticeList);
+		req.setAttribute("qnaList", qnaList);
 		req.setAttribute("params", params);
-		req.getRequestDispatcher("/user/teacherQnaMain.jsp").forward(req, resp);
+		req.getRequestDispatcher("teacherQnaMain.jsp").forward(req, resp);
 		
 	}
 

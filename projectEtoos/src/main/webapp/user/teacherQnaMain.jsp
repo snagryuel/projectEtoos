@@ -21,6 +21,7 @@
 </jsp:include>
 <jsp:include page="../common/footer.jsp"></jsp:include>
 
+
 <main>
 	<div id="empty"></div>
 	<div class="container">
@@ -29,12 +30,53 @@
 			<div class="topBtns">
 				<input type="submit" class="topBtn" id="noticeHideBtn" value="공지 숨기기" >
 				<c:if test="${sessionScope.id != null}">
-					<input type="submit" class="topBtn" id="viewPostBtn" value="내 글 보기" >
+					<input type="button" class="topBtn" id="viewPostBtn" value="내 글 보기" >
 				</c:if>
-			</div>
 			
-			<div class="writerDiv">
-				<input type="submit" class="writerBtn" id="writerBtn" value="작성하기" >
+			
+    			<input type="button" class="writerBtn" id="writerBtn" value="작성하기">
+    		<%-- 
+    			<c:set var="loginYN" value="${sessionScope.loginYN}" />
+				<c:set var="id" value="${sessionScope.id}" />
+				<c:set var="gubun" value="${sessionScope.gubun}" />
+				<c:choose>
+					<c:when test="${loginYN == 'Y'}">
+						<c:choose>
+							<c:when test="${ gubun != null && gubun == '1' }">
+							<p><button id="writerAnswer" class="writerBtn">질문작성</button></p>
+							<script>
+							let writerAnswer = document.querySelector("#writerAnswer");
+
+							writerAnswer.addEventListener("click", ()=>{
+								window.location = "/projectEtoos/user/qnaAnswer.do";
+							})
+							</script>
+							</c:when>
+							<c:otherwise>
+							<p><button id="writerNotice" class="writerBtn">공지작성</button></p>
+							<script>
+							let writerNotice = document.querySelector("#writerNotice");
+	
+							writerNotice.addEventListener("click", ()=>{
+								window.location = window.location = "/projectEtoos/user/qnaNewNotice.do";
+							})
+							</script>
+							</c:otherwise>
+						</c:choose>
+					</c:when>
+					<c:when test="${loginYN != 'Y'}">
+						<p><button id="NowWiterAnswer" class="writerBtn">질문작성</button></p>
+						<script>
+						let NowWiterAnswer = document.querySelector("#NowWiterAnswer");
+
+						NowWiterAnswer.addEventListener("click", ()=>{
+							alert("로그인 후 이용 가능합니다.");
+							window.location = window.location = "/projectEtoos/user/login.do";
+						})
+
+						</script>
+					</c:when>
+				</c:choose> --%>
 			</div>
 		</div>
 		<div class="qnaBoard">
@@ -56,8 +98,8 @@
      				<c:forEach var="list" items="${noticeList}" varStatus="loop" >
 		       			<tr class="notice">
 		    				<td class="noticeNum"><p>공지</p></td>
-		    				<td><a href="#">${list.title}</a></td>
-		    				<td>${list.id}</td>
+		    				<td><a href="qnaNoticeView.do?boardIdx=${list.boardIdx}">${list.title}</a></td>
+		    				<td>${list.teacherId}</td>
 		    				<td>${list.readCnt}</td>
 		    				<td>${list.regDate}</td>
 		    			</tr>
@@ -71,14 +113,15 @@
    			</c:choose>
    			
      		<c:choose>
-     			<c:when test="${not empty QnaList}">
-     				<c:forEach var="list" items="${QnaList}" varStatus="loop" >
+     			<c:when test="${not empty qnaList}">
+     				<c:forEach var="list" items="${qnaList}" varStatus="loop" >
 		     			<tr class="qnaList">
-		    				<td>${(params.totalCount - (params.pageNo -1)*params.pageSize)}</td>
+		     				<td>${list.boardIdx}</td>
 							<td><a href="view.do?boardIdx=${list=boardIdx}">${list.title}</a></td>
-		    				<td>${list.id}</td>
+		    				<td>${list.registId}</td>
 		    				<td>${list.readCnt}</td>
 		    				<td>${list.regDate}</td>
+		    				
 		    			</tr>
      				</c:forEach>
      			</c:when>
@@ -112,51 +155,8 @@
     				<td>0</td>
     				<td>2024.03.21</td>
     			</tr>
-    			<tr class="qnaList">
-    				<td>17</td>
-    				<td><a href="#">질문입니다.</a></td>
-    				<td>이름</td>
-    				<td>0</td>
-    				<td>2024.03.21</td>
-    			</tr>
-    			<tr class="qnaList">
-    				<td>16</td>
-    				<td><a href="#">질문입니다.</a><img class="pwdSymbol" alt="pwdSymbol" src="/projectEtoos/img/pwdSymbol.png"/></td>
-    				<td>이름</td>
-    				<td>0</td>
-    				<td>2024.03.21</td>
-    			</tr>
-    			<tr class="qnaList">
-    				<td>15</td>
-    				<td>ㄴ<span>답변</span><a href="#">&nbsp;답변입니다.</a></td>
-    				<td>이름</td>
-    				<td>0</td>
-    				<td>2024.03.21</td>
-    			</tr>
-    			<tr class="qnaList">
-    				<td>14</td>
-    				<td><a href="#">질문입니다.</a></td>
-    				<td>이름</td>
-    				<td>0</td>
-    				<td>2024.03.21</td>
-    			</tr>
-    			<tr class="qnaList">
-    				<td>13</td>
-    				<td><a href="#">질문입니다.</a></td>
-    				<td>이름</td>
-    				<td>0</td>
-    				<td>2024.03.21</td>
-    			</tr>
-    			<tr class="qnaList">
-    				<td>12</td>
-    				<td><a href="#">질문입니다.</a></td>
-    				<td>이름</td>
-    				<td>0</td>
-    				<td>2024.03.21</td>
-    			</tr>
 
-    		
-		
+
     		</table>
 </form>
 			
@@ -174,6 +174,16 @@
 </main>
 <jsp:include page="../common/footer.jsp" />
 <script>
+
+
+
+document.querySelector("#writerBtn").addEventListener("click", function(e){
+	e.preventDefault(); 
+	window.location = "/projectEtoos/user/qnaNewNotice.do";
+}, false);
+
+
+
 let preves = document.querySelectorAll(".prev");
 let nextes = document.querySelectorAll(".next");
 
@@ -195,6 +205,13 @@ for(let i of nextes){
 	})
 
 }
+
+
+
+
+ 
+ 
+
 </script>
 </body>
 </html>

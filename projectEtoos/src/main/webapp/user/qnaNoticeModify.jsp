@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <!DOCTYPE html>
 <html>
@@ -27,7 +28,7 @@
 		
 		<div class="qnaDiv">
 			<div class="titleElement">
-				<span>제목</span><input type="text" class="qnaTitle" name="qnaTitle" id="qnaTitle" value=""  maxlength="30">
+				<span>${qnaNoticeView.title}</span><input type="text" class="qnaTitle" name="qnaTitle" id="qnaTitle" value=""  maxlength="30">
 				<hr>
 			</div>
 			
