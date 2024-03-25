@@ -1019,3 +1019,28 @@ body .checkMsg .resetBtn:hover {
     transition: 0.4s;
 }
 
+
+/*페이징 CSS*/
+
+main .list .paging {
+	margin-top : 20px;
+	width : 100%;
+}
+main .list >  .paging > ul {
+	display : flex;
+	align-items: center;
+	justify-content: center;
+}
+main .list .paging ul li a {
+	padding : 10px;
+	font-size : 18px;
+	display : block;
+}
+main .list .paging ul li a:hover {
+	text-decoration : underline;
+}
+main .list .paging ul li a.selected {
+	color : #457D87;
+	font-weight : 600;
+	text-decoration : underline;
+}

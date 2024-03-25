@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Teacher</title>
 <link rel="stylesheet" href="../css/user.css" type="text/css">
+
+
 </head>
 <body>
 <jsp:include page="../common/header.jsp">
