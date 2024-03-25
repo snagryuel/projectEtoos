@@ -510,12 +510,10 @@ allCheck.addEventListener("change", ()=> {
 	let checkYN = allCheck.checked;
 	
 	if (checkYN == true) {
-		console.log("여기는 if문");
 		for (let i of checkBoxes) {
 			i.setAttribute("checked", "ture");
 		}
 	} else {
-		console.log("여기는 else문");
 		for (let i of checkBoxes) {
 			i.chechked = false;
 			i.removeAttribute("checked");
@@ -532,8 +530,22 @@ prev.addEventListener("click", ()=> {
 /* 다음 */
 let next = document.querySelector("button.next");
 next.addEventListener("click", ()=> {
+	let select2 = document.querySelector("#select2");
+	let select3 = document.querySelector("#select3");
+	console.log(select2.checked);
+	console.log(select3.checked);
+	if (!select2.checked) {
+		alert("필수항목에 동의해주세요");
+		return;
+	}
+	if (!select3.checked) {
+		alert("필수항목에 동의해주세요");
+		return;
+	} 
 	window.location = "/projectEtoos/user/Join.do?step=2&gubun=${param.gubun}";
 })
+
+
 </script>
 </body>
 </html>
