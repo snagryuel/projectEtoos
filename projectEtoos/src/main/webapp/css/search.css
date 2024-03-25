@@ -64,7 +64,7 @@ main .container .tsection {
 }
 main .container .tsection {
     width: 100%;
-    height: 400px;
+    height: 850px;
     margin-top: 30px;
     margin-bottom: 30px;
 }
@@ -157,7 +157,7 @@ p#title_g   {
 	
 .coursesection{
 	border-bottom: 1px solid #BDBDBD;
-	height:400px;
+	height:850px;
 	
 }	
 .coursesection #title_g {
@@ -198,7 +198,7 @@ p#title_g   {
 	
 .gonjiList .coursesection{
 	border-bottom: 1px solid #BDBDBD;
-	height:400px;
+	height:850px;
 	
 }	
 
@@ -266,21 +266,25 @@ p#title_g   {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	font-size :25px;
 }
 
-.paging ul li a {
+.paging ul a {
 	padding: 10px;
 	font-size: 18px;
 	display: block;
 }
 
-.paging ul li a:hover {
+.paging ul a:hover {
 	text-decoration: underline;
 }
 
-.paging ul li a.selected {
+.paging ul a.selected {
 	color: #457D87;
-	font-weight: 600;
+	font-weight: 800;
 	text-decoration: underline;
 }
+
+
+
 
