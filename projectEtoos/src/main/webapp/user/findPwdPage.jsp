@@ -14,7 +14,7 @@
 
 <div id="titleContents">
 	<div id="title">
-		<p>ETOOS 통합회원</p>
+		<p style="font-size:32px; font-weight:900;"><span style="color:#047f89; font-size:32px; font-weight:900;">E</span>TOOS 통합회원</p>
 	</div>
 	<%@ include file="/common/loginHeader.jsp" %>
 </div>
