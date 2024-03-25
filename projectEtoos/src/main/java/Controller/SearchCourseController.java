@@ -32,7 +32,7 @@ public class SearchCourseController extends HttpServlet {
             try {
                 pageNumber = Integer.parseInt(pageParam);
             } catch (NumberFormatException e) {
-                e.printStackTrace();
+                e.printStackTrace(); 
             }
         }
             
