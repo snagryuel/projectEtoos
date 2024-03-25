@@ -126,6 +126,27 @@ public class AdminDAO extends JDBConnect{
 		}
 		return list;
 	}
+	public List<AdminDTO> getteacher() {
+		List<AdminDTO> list = new Vector<AdminDTO>();
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT tm.name, tm.id FROM tbl_teacherlist AS tt ");
+		sb.append("INNER JOIN tbl_memberlist AS tm ON tm.id = tt.id");
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			rs = psmt.executeQuery();
+			System.out.println(rs.next());
+			while(rs.next()) {
+				AdminDTO dto = new AdminDTO();
+				dto.setId(rs.getString("id"));
+				dto.setName(rs.getString("name"));
+				System.out.println(rs.getString("name"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 	public List<AdminDTO> getteacher(String name, int StartNo) {
 		List<AdminDTO> list = new Vector<AdminDTO>();
 		StringBuilder sb = new StringBuilder();
