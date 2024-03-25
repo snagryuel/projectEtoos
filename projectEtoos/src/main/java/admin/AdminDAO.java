@@ -341,4 +341,81 @@ public class AdminDAO extends JDBConnect{
 			e.printStackTrace();
 		}
 	}
+	public void insertcourse(AdminDTO dto, String id) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("insert into tbl_courselist");
+		sb.append("(registerid, teacherid, regdate, coursename, sugangstart");
+		sb.append(", sugangend, guseong, gangbumwi, gangchar, `range`, bookname, bookintro)");
+		sb.append("values(?, ?, now(), ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			psmt.setString(1, id);
+			psmt.setString(2, dto.getName());
+			psmt.setString(3, dto.getCoursename());
+			psmt.setString(4, dto.getSugangStart());
+			psmt.setString(5, dto.getSugangEnd());
+			psmt.setString(6, dto.getGuseong());
+			psmt.setString(7, dto.getBumwi());
+			psmt.setString(8, dto.getGangchr());
+			psmt.setString(9, dto.getRange());
+			psmt.setString(10, dto.getBookIntro());
+			psmt.setString(11, dto.getBookName());
+			System.out.println(psmt);
+			psmt.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	public void updatecourse(AdminDTO dto, String courseid) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("update tbl_courselist ");
+		sb.append("set teacherid = ?,");
+		sb.append("modifydate = now(),");
+		sb.append("coursename = ?,");
+		sb.append("sugangStart = ?,");
+		sb.append("sugangend = ?,");
+		sb.append("guseong = ?,");
+		sb.append("gangbumwi = ?,");
+		sb.append("gangchar = ?,");
+		sb.append("`range` = ?,");
+		sb.append("bookname = ?,");
+		sb.append("bookintro = ? ");
+		sb.append("WHERE courseidx = ?");
+		
+		try {
+			psmt = conn.prepareStatement(sb.toString());
+			psmt.setString(1, dto.getName());
+			psmt.setString(2, dto.getCoursename());
+			psmt.setString(3, dto.getSugangStart());
+			psmt.setString(4, dto.getSugangEnd());
+			psmt.setString(5, dto.getGuseong());
+			psmt.setString(6, dto.getBumwi());
+			psmt.setString(7, dto.getGangchr());
+			psmt.setString(8, dto.getRange());
+			psmt.setString(9, dto.getBookIntro());
+			psmt.setString(10, dto.getBookName());
+			psmt.setString(11, courseid);
+			psmt.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+	}
+	public String getcourseid() {
+		String sql = "select last_insert_id() as idx";
+		String coutseidx = "";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs=psmt.executeQuery();
+			if(rs.next()) {
+				coutseidx =	rs.getString("idx");
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return coutseidx;
+	}
 }

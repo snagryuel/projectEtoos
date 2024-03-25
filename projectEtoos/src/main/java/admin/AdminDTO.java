@@ -18,6 +18,12 @@ public class AdminDTO {
 	private String fileGubun;
 	private String fileName;
 	private String filePath;
+	private String guseong;
+	private String bumwi;
+	private String gangchr;
+	private String range;
+	private String bookIntro;
+	private String bookName;
 
 	public String getJoinday() {
 		return joinday;
@@ -120,5 +126,41 @@ public class AdminDTO {
 	}
 	public void settMent(String tMent) {
 		this.tMent = tMent;
+	}
+	public String getGuseong() {
+		return guseong;
+	}
+	public void setGuseong(String guseong) {
+		this.guseong = guseong;
+	}
+	public String getBumwi() {
+		return bumwi;
+	}
+	public void setBumwi(String bumwi) {
+		this.bumwi = bumwi;
+	}
+	public String getGangchr() {
+		return gangchr;
+	}
+	public void setGangchr(String gangchr) {
+		this.gangchr = gangchr;
+	}
+	public String getRange() {
+		return range;
+	}
+	public void setRange(String range) {
+		this.range = range;
+	}
+	public String getBookIntro() {
+		return bookIntro;
+	}
+	public void setBookIntro(String bookIntro) {
+		this.bookIntro = bookIntro;
+	}
+	public String getBookName() {
+		return bookName;
+	}
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
 	}
 }
