@@ -35,9 +35,8 @@ public class CourseRegisterOkController extends HttpServlet {
 		String bookIntro = req.getParameter("bookIntro");
 		String registerid = (String) session.getAttribute("id");
 		
-		System.out.println(courseidx);
-		
 		AdminDTO dto = new AdminDTO();
+		AdminDAO dao = new AdminDAO();
 		
 		dto.setCoursename(courseName);
 		dto.setName(teacher);
@@ -49,8 +48,6 @@ public class CourseRegisterOkController extends HttpServlet {
 		dto.setRange(range);
 		dto.setBookIntro(bookName);
 		dto.setBookName(bookIntro);
-		
-		AdminDAO dao = new AdminDAO();
 		
 		if(courseidx.equals("0")) {
 			dao.insertcourse(dto, registerid);

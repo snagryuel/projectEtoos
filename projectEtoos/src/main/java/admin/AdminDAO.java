@@ -149,7 +149,11 @@ public class AdminDAO extends JDBConnect{
 				dto.setName(rs.getString("name"));
 				dto.setCourseIdx(rs.getInt("courseIdx"));
 				dto.setFileName(rs.getString("fileName"));
-				dto.setFilePath(rs.getString("filePath"));
+				String path = rs.getString("filePath");
+				String path2 = path.substring(0, path.lastIndexOf("\\"));
+				path = path.substring(path2.lastIndexOf("\\"));
+				path = path.replace("\\", "/");
+				dto.setFilePath(path);;
 				list.add(dto);
 			}
 		}catch(Exception e) {
