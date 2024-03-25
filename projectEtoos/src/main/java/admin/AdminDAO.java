@@ -213,9 +213,11 @@ public class AdminDAO extends JDBConnect{
 				dto.settMent(rs.getString("tMent"));
 				dto.setFileName(rs.getString("fileName"));
 				String path = rs.getString("filePath");
-				String path2 = path.substring(0, path.lastIndexOf("\\"));
-				path = path.substring(path2.lastIndexOf("\\"));
-				path = path.replace("\\", "/");
+				if (path != null) {
+					String path2 = path.substring(0, path.lastIndexOf("\\"));
+					path = path.substring(path2.lastIndexOf("\\"));
+					path = path.replace("\\", "/");
+				}
 				dto.setFilePath(path);
 				list.add(dto);
 			}
