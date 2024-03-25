@@ -57,7 +57,7 @@ public class MemberDAO extends JDBConnect {
 		String id = input.getId();
 		String pwd = input.getPwd();
 		
-		String sql = "SELECT id, name, pwd, gubun FROM tbl_memberlist WHERE id=? AND pwd=? ";			
+		String sql = "SELECT id, name, pwd, gubun, state FROM tbl_memberlist WHERE id=? AND pwd=? ";			
 		
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -70,6 +70,7 @@ public class MemberDAO extends JDBConnect {
 				result.setName(rs.getString("name"));
 				result.setPwd(rs.getString("pwd"));
 				result.setGubun(rs.getString("gubun"));
+				result.setState(rs.getString("state"));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -212,11 +213,12 @@ public MemberDTO getMemberInfoForPwd(MemberDTO dto) {
 				   + "FROM tbl_memberlist AS tm "
 				   + "LEFT OUTER JOIN tbl_teacherlist AS tt ON tm.id=tt.id "
 				   + "LEFT OUTER JOIN tbl_filemanage AS FM ON tt.fileIdx = FM.fileIdx "
-				   + "WHERE tm.id = ? AND FM.fileGubun = 't'";
+				   + "WHERE tm.id = ?";
 		
 		try{
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
+			System.out.println(psmt);
 			
 			rs = psmt.executeQuery();
 			while(rs.next()) {
@@ -286,5 +288,15 @@ public MemberDTO getMemberInfoForPwd(MemberDTO dto) {
 			e.printStackTrace();
 		}
 		return idx;
+	}
+	public void memberupdate(String id) {
+		String sql = "update tbl_memberlist set state = 99 where id = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

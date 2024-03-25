@@ -54,7 +54,7 @@ public class LoginOkController extends HttpServlet {
 			}
 						
 			// 처리
-			if (AuthYN) {
+			if (AuthYN&&!target.getState().equals("99")) {
 				session.setAttribute("id", id);
 				session.setAttribute("loginYN", "Y");
 				session.setAttribute("gubun", target.getGubun());

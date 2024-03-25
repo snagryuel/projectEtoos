@@ -78,6 +78,7 @@
 
 document.querySelector("#cancelMembership").addEventListener("click", function(e){
 	confirm("탈퇴 하시겠습니까?");
+	window.location = "./MypageModify.do?delete=Y"
 }, false);
 
 window.onload = ()=> {

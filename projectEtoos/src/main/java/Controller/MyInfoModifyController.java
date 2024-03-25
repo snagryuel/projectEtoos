@@ -26,6 +26,7 @@ public class MyInfoModifyController extends HttpServlet {
 		HttpSession session = req.getSession();
 		MemberDTO dto = new MemberDTO();
 		FileDAO fileDAO = new FileDAO();
+		String delete = req.getParameter("delete");
 		String birth = "";
 		String name = req.getParameter("name");
 		String id = (String) session.getAttribute("id");
@@ -55,15 +56,21 @@ public class MyInfoModifyController extends HttpServlet {
 		
 		MemberDAO dao = new MemberDAO();
 		
-		String directory = req.getServletContext().getRealPath("/")+"upload";
-		String FileName = FileUtil.uploadFile(req, directory);
-		int fileidx = dao.getFileIdx("tbl_teacherlist");
-		fileDAO.registFile(fileidx, "t", FileName, directory);
-		int result = dao.MemberUpdate(dto);
-		if(result == 0) {
-			req.setAttribute("errMsg", "회원정보 수정에 실패하였습니다 다시 확인해 주시기 바랍니다");
+		if(!delete.equals("Y")) {
+		
+			String directory = req.getServletContext().getRealPath("/")+"upload";
+			String FileName = FileUtil.uploadFile(req, directory);
+			int fileidx = dao.getFileIdx("tbl_teacherlist");
+			fileDAO.registFile(fileidx, "t", FileName, directory);
+			int result = dao.MemberUpdate(dto);
+			if(result == 0) {
+				req.setAttribute("errMsg", "회원정보 수정에 실패하였습니다 다시 확인해 주시기 바랍니다");
+			}
+			resp.sendRedirect("./MyInfo.do");
+		}else {
+			dao.memberupdate(id);
+			resp.sendRedirect("/projectEtoos/user/LoginOk.do?flag=logout");
 		}
-		resp.sendRedirect("./MyInfo.do");
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
