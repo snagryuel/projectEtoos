@@ -24,7 +24,7 @@ public class PageUtil {
 				String selected = "";
 				if(i == page_selected) {
 					selected = "class='selected'";
-				}
+				}	
 				
 				sb.append("<li><a href='" + fullUrl + "'"+selected+">"+ i +"</a></li>");
 			}

@@ -25,5 +25,32 @@ public class FileDAO extends JDBConnect {
 		return result;
 		
 	}
+	public String getfile(String id) {
+		String sql = "SELECT filepath, filename FROM tbl_filemanage AS tf INNER JOIN tbl_teacherlist AS tt ON tf.fileIdx = tt.fileidx WHERE tt.id = ?";
+		String file = "";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				String filepath = rs.getString("filepath");
+				String filename = rs.getString("filename");
+				file = filepath+"\\"+filename;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return file;
+	}
+	public void update(String id) {
+		String sql = "update tbl_teacherlist set fileidx = null where id = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			psmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 }
