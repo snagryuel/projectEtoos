@@ -63,7 +63,7 @@ if (searchWord == null || searchWord.trim().isEmpty()) {
 				<div class="contents_teacherlist" id="teacherList">
 					<div class="tsection">
 						<p id="title_g">
-							선생님 <span>(${searchResults7})</span>
+							선생님 <span>(${searchResults7})</span> 
 						</p>
 
 						<c:if test="${not empty searchResults1}">

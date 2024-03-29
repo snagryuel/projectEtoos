@@ -203,7 +203,7 @@ public class TeacherDAO extends JDBConnect {
    
    public int getTotalResultCount_teacher(String keyword, String bbs) {
 	    int totalCount = 0;
-	    StringBuilder sb = new StringBuilder();
+	    StringBuilder sb = new StringBuilder(); 
 
 	    sb.append("SELECT COUNT(distinct tm.NAME ,tm.id, tt.tMent, ts.sub1, ts.sub2) FROM tbl_memberlist AS tm");
 	    sb.append(" INNER JOIN tbl_teacherlist AS tt ON tm.id = tt.id");
