@@ -424,6 +424,7 @@ public class AdminDAO extends JDBConnect{
 			psmt.setString(2, name);
 			psmt.setString(3, time);
 			psmt.executeQuery();
+			System.out.println(psmt);
 		}catch(Exception e){
 			e.printStackTrace();
 		}

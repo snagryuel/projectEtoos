@@ -8,6 +8,8 @@ public class FileDTO {
 	private String saveFile;
 	private String reg_date;
 	private String bbs_idx;
+	private String filepath;
+	private String filename;
 	
 	public FileDTO(){
 		
@@ -56,5 +58,21 @@ public class FileDTO {
 
 	public void setBbs_idx(String bbs_idx) {
 		this.bbs_idx = bbs_idx;
+	}
+
+	public String getFilepath() {
+		return filepath;
+	}
+
+	public void setFilepath(String filepath) {
+		this.filepath = filepath;
+	}
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 }

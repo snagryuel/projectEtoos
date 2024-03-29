@@ -59,6 +59,8 @@
 				</c:if>
 				<c:if test="${not empty path&&path ne 'https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg' }">
 					<img alt="" src="${path }" style="height:150px">
+					<button type="button" onclick="location.href='fileDelete.do'" >삭제</button>
+					<input type = "hidden" name="filepath" id="filepath" value="${path }">
 				</c:if>
 				</div>
 				<div>

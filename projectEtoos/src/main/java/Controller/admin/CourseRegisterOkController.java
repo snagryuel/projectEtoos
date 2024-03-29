@@ -59,7 +59,7 @@ public class CourseRegisterOkController extends HttpServlet {
 		}
 		
 		for(int i = 0; i < sebuname.length; i++) {
-			if(i>=sebuidx.length) {
+			if(i>=sebuidx.length-1) {
 				dao.insertSebu(sebuname[i], time[i], courseidx);
 			}else {
 				dao.updateSebu(sebuname[i], time[i], sebuidx[i]);

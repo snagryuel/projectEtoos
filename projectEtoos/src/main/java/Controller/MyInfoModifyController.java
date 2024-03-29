@@ -39,6 +39,7 @@ public class MyInfoModifyController extends HttpServlet {
 		String pwd = req.getParameter("pwd2")==null?"":req.getParameter("pwd2");
 		String pwdCheck = req.getParameter("pwd3");
 		String teacherMent = req.getParameter("teacherMent")==null?"":req.getParameter("teacherMent");
+		String filepath = req.getParameter("filepath")==null?"":req.getParameter("filepath");
 		
 		birth = birthYear+"-"+birthMonth+"-"+birthDay;
 		if(!pwd.isEmpty()||!pwd.equals("")) {
@@ -60,11 +61,13 @@ public class MyInfoModifyController extends HttpServlet {
 		if(!delete.equals("Y")) {
 			String directory = "D:\\java4\\apache-tomcat-10.1.19localhost\\webapps\\projectEtoos\\upload";
 			System.out.println("directory : "+directory);
-			String FileName = FileUtil.uploadFile(req, directory);
-			int fileidx = dao.getFileIdx("tbl_teacherlist");
-			fileDAO.registFile(fileidx, "t", FileName, directory);
+			if(filepath.equals("")) {
+				String FileName = FileUtil.uploadFile(req, directory);
+				int fileidx = dao.getFileIdx("tbl_teacherlist");
+				fileDAO.registFile(fileidx, "t", FileName, directory);
+				dao.teacherupdate(fileidx, id, teacherMent);
+			}
 			int result = dao.MemberUpdate(dto);
-			dao.teacherupdate(fileidx, id, teacherMent);
 			dao.teacherment(id, teacherMent);
 			if(result == 0) {
 				req.setAttribute("errMsg", "회원정보 수정에 실패하였습니다 다시 확인해 주시기 바랍니다");
