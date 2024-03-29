@@ -38,14 +38,20 @@ public class TeacherDAO extends JDBConnect {
     
     
     
+    
+    
+    
+    
    public List<TeacherDTO> getTeacherList(String name, String bbs) {
         List<TeacherDTO> list = new Vector<TeacherDTO>();
         StringBuilder sb = new StringBuilder();
         
-        sb.append("SELECT distinct tm.NAME ,tm.id, tt.tMent, ts.sub1, ts.sub2 FROM tbl_memberlist AS tm");
+        sb.append("SELECT distinct tm.NAME ,tm.id, tt.tMent, tt.fileIdx, tb.filePath, ts.sub1, ts.sub2 FROM tbl_memberlist AS tm");
 		sb.append(" INNER JOIN tbl_teacherlist AS tt ON tm.id = tt.id");
 		sb.append(" INNER JOIN tbl_subject AS ts ON tt.subkey = ts.subKey");
 		sb.append(" INNER JOIN tbl_courselist AS tc ON tm.id = tc.teacherId ");
+		sb.append(" INNER JOIN tbl_filemanage AS tb ON tt.fileIdx = tb.fileIdx AND tb.fileGubun='t' ");
+
 		sb.append(" WHERE NAME LIKE '%");
 		sb.append(name);
 		sb.append("' OR tc.courseName LIKE '%");
@@ -78,10 +84,12 @@ public class TeacherDAO extends JDBConnect {
        List<TeacherDTO> list = new Vector<TeacherDTO>();
        StringBuilder sb = new StringBuilder();
        
-       sb.append("SELECT distinct tm.NAME, tm.id, tt.tMent, ts.sub1, tc.courseName FROM tbl_memberlist AS tm ");
+       sb.append("SELECT distinct tm.NAME, tm.id, tt.tMent, tc.courseIdx, tb.filePath, ts.sub1, tc.courseName FROM tbl_memberlist AS tm ");
 		sb.append(" INNER JOIN tbl_teacherlist AS tt ON tm.id = tt.id ");
 		sb.append("INNER JOIN tbl_subject AS ts ON tt.subkey = ts.subKey ");
 		sb.append("INNER JOIN tbl_courselist AS tc ON tm.id = tc.teacherId ");
+		sb.append(" INNER JOIN tbl_filemanage AS tb ON tt.fileIdx = tb.fileIdx AND tb.fileGubun='t'" );
+
 		sb.append(" WHERE NAME LIKE '%");
 		sb.append(name);
 		sb.append("' OR tc.courseName LIKE '%");
@@ -105,6 +113,7 @@ public class TeacherDAO extends JDBConnect {
 		            dto.settMent(rs.getString("tMent"));
 		            dto.setSub1(rs.getString("sub1"));
 		            dto.setCourseName(rs.getString("courseName"));
+		            dto.setCourseIdx(rs.getInt("courseIdx"));
 		            list.add(dto);
 		        }
 		    } catch (SQLException e) {
@@ -118,10 +127,12 @@ public class TeacherDAO extends JDBConnect {
        List<TeacherDTO> list = new Vector<TeacherDTO>();
        StringBuilder sb = new StringBuilder();
        
-       sb.append("SELECT distinct tm.NAME, tq.title, tm.id, tqd.contents  FROM tbl_memberlist AS tm");
+       sb.append("SELECT distinct tm.NAME, tq.title, tb.filePath,  tm.id, tqd.contents  FROM tbl_memberlist AS tm");
 		sb.append(" INNER JOIN tbl_qna AS tq ON tm.id = tq.id");
 		sb.append(" INNER JOIN tbl_courselist AS tc ON tm.id = tc.teacherId ");
 		sb.append(" INNER JOIN tbl_qnadetail AS tqd ON tq.boardIdx = tqd.boardIdx");
+		sb.append(" INNER JOIN tbl_filemanage AS tb ON tt.fileIdx = tb.fileIdx AND tb.fileGubun='t'" );
+
 		sb.append(" WHERE NAME LIKE '%");
 		sb.append(name);
 		sb.append("' OR tc.courseName LIKE '%");

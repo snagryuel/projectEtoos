@@ -68,22 +68,25 @@ if (searchWord == null || searchWord.trim().isEmpty()) {
 
 						<c:if test="${not empty searchResults1}">
 							<c:forEach var="result" items="${searchResults1}">
+							<c:set var="thisUrl">
+								/projectEtoos/user/TeacherDetailList.do?teacherId=${result.id}					
+								</c:set>
 								<div>
 									<ul class="search_teacher sch_ul">
 										<li class="sch_t" id="sch_t" id="t1">
 											<div class="sch_c teacher_img">
 												<div class="img">
 													<img
-														src="http://img.etoos.com/teacher/teacher/200180/tch225x400.png"
+														src= "${result.filePath}"
 														alt="">
 												</div>
 											</div>
 											<div class="sch_c">
 												<span class="sch_tis">${result.tMent}</span>
 												<div class="sch_ti">
-													<strong>"${result.sub1}"</strong> &nbsp; <font
+													<a href="{}"><strong>"${result.sub1}"</strong> &nbsp; <font
 														style="color: #b16e61">${result.name}</font> 선생님
-													&nbsp;&nbsp;
+													&nbsp;&nbsp;</a>
 												</div>
 											</div>
 										</li>
@@ -116,14 +119,16 @@ if (searchWord == null || searchWord.trim().isEmpty()) {
 
 							<c:if test="${not empty searchResults3}">
 								<c:forEach var="result" items="${searchResults3}">
-
+									<c:set var="thisUrl">
+								/projectEtoos/user/CourseList_teacher.do?courseIdx=${result.courseIdx}&<%= request.getQueryString() %>&menuGubun=teacher"					
+								</c:set>
 									<div>
 										<ul class="search_teacher sch_ul">
 											<li class="sch_t" id="t2">
 												<div class="sch_c teacher_img">
 													<div class="img">
 														<img
-															src="http://img.etoos.com/teacher/teacher/200180/tch225x400.png"
+															src="./${result.filePath}"
 															alt="">
 													</div>
 													<p class="imgTName">${result.name}선생님</p>
@@ -132,7 +137,8 @@ if (searchWord == null || searchWord.trim().isEmpty()) {
 												<div class="sch_c">
 													<span class="sch_tis">${result.tMent}</span>
 													<div class="sch_ti">
-														<strong>"${result.courseName}" </strong>
+													<a href="${thisUrl}">
+														<strong>"강의이름: ${result.courseName}" </strong></a>
 
 													</div>
 												</div>
@@ -185,74 +191,7 @@ if (searchWord == null || searchWord.trim().isEmpty()) {
 
 
 			<!-- 공지 목록결과 -->
-			<c:if test="${bbs eq 'notice' || empty bbs}">
-				<div class="gonjiList" id="gonjiList">
-					<div class="coursesection">
-						<div class="listTitle">
-
-							<p id="title_g">
-								공지사항 <span>(${searchResults6})</span>
-								<button type="button" class="gumsaekdeo"
-									onclick="location.href='./searchMain.do?bbs=notice&search_word=${keyword }'; toggleBtn1();">검색결과 더보기</button>
-
-							</p>
-
-							<c:if test="${not empty searchResults2}">
-								<c:forEach var="result" items="${searchResults2}">
-									<div>
-										<ul class="search_teacher sch_ul">
-											<li class="sch_t" id="t3">
-												<div class="sch_c teacher_img">
-													<div class="img">
-														<img
-															src="http://img.etoos.com/teacher/teacher/200180/tch225x400.png"
-															alt="">
-													</div>
-													<p class="imgTName">${result.name}선생님</p>
-												</div>
-												<div class="sch_c">
-													<div class="sch_ti">
-														<span><strong>${result.title}</strong></span>
-
-													</div>
-													<br> <span class="sch_tis">${result.contents}</span>
-												</div>
-											</li>
-										</ul>
-									</div>
-								</c:forEach>
-							</c:if>
-							<c:if test="${empty searchResults2}">
-								<p><%=searchWord%>
-									검색결과가 존재하지 않습니다
-								</p>
-							</c:if>
-
-						</div>
-					</div>
-					<div class="paging" <c:if test="${bbs != 'teacher' && bbs != 'course' && bbs != 'notice'}">style="display: none;"</c:if>>
-						<c:if test="${currentPage > 1}">
-							<a
-								href="?page=${currentPage - 1}&search_word=${keyword}&bbs=${bbs}">Previous</a>
-						</c:if>
-
-						<c:forEach begin="1" end="${totalPagesQna}" var="pageNumber">
-							<c:choose>
-								<c:when test="${pageNumber == currentPage}">
-									<span class="active">${pageNumber}</span>
-								</c:when>
-								<c:otherwise>
-									<a href="?page=${pageNumber}&search_word=${keyword}&bbs=${bbs}">${pageNumber}</a>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-
-						<c:if test="${currentPage < totalPagesQna}">
-							<a
-								href="?page=${currentPage + 1}&search_word=${keyword}&bbs=${bbs}">Next</a>
-						</c:if>
-					</div>
-			</c:if>
+			
 			<!-- 공지 끝 -->
 
 		</div>

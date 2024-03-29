@@ -3,6 +3,7 @@ package board;
 public class TeacherDTO {
 	public TeacherDTO() {}
 	private String courseName;
+	private int courseIdx;
 	private String sugangStart;
 	private String sugangEnd;
 	private String sub1;
@@ -20,6 +21,8 @@ public class TeacherDTO {
 	private String title;
 	private String tMent;
 	private String contents;
+	private String filePath;
+	private String fileIdx;
 
 	public String getContents() {
 		return contents;
@@ -222,6 +225,42 @@ public class TeacherDTO {
 	 */
 	public void setTitleGubun(String titleGubun) {
 		this.titleGubun = titleGubun;
+	}
+	/**
+	 * @return the filePath
+	 */
+	public String getFilePath() {
+		return filePath;
+	}
+	/**
+	 * @param filePath the filePath to set
+	 */
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+	/**
+	 * @return the fileIdx
+	 */
+	public String getFileIdx() {
+		return fileIdx;
+	}
+	/**
+	 * @param fileIdx the fileIdx to set
+	 */
+	public void setFileIdx(String fileIdx) {
+		this.fileIdx = fileIdx;
+	}
+	/**
+	 * @return the courseIdx
+	 */
+	public int getCourseIdx() {
+		return courseIdx;
+	}
+	/**
+	 * @param courseIdx the courseIdx to set
+	 */
+	public void setCourseIdx(int courseIdx) {
+		this.courseIdx = courseIdx;
 	}
 
 
