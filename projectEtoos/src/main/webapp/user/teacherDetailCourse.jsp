@@ -43,7 +43,7 @@
 				<div class="detailCorsDiv">
 					<div class="prvwVideo">
 						<!-- <video src="https://youtu.be/FxB6_qaqHlY?si=a9LUk3AtySqSu-mT"  controls width="450"  height="350" preload="auto"></video> -->
-						<iframe width="100%" height="90%" src="https://www.youtube.com/embed/FxB6_qaqHlY?si=a9LUk3AtySqSu-mT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+						<iframe width="100%" height="90%" src="https://www.youtube.com/embed/a1b3F6d8XKM?si=m3FQulXSq7f0J6DB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 					</div>
 					<div class="courseDetailDiv">
 						<h1>${viewList.courseName}</h1>
@@ -74,7 +74,7 @@
 								<p> 종료된 강의 입니다. </p>		
 							</c:when>
 							<c:when test="${viewList.historyYN == 'Y' }" >
-								<input type="button" id="applyCancelBtn" class="applyCancelBtn" value="신청취소" onclick="applyCancel()"/>		
+								<input type="button" id="courseApplyBtn" class="courseApplyBtn" value="신청취소" onclick="applyCancel()"/>		
 							</c:when>
 							<c:otherwise>
 								<input type="button" id="courseApplyBtn" class="courseApplyBtn" value="수강신청" onclick="apply()"/>
@@ -128,7 +128,7 @@
 							    	<h3>교재정보</h3>
 							    	<div>
 							    	<div class="bookImg">
-							    		<img src="${ viewList.filePath}/${viewList.fileName}" width="100%" height="100%">
+							    		<img src="../${ viewList.filePath}/${viewList.fileName}" width="100%" height="100%">
 							    	</div>
 							    	<div>
 									    <table class="bookInfoTable" id="target3">

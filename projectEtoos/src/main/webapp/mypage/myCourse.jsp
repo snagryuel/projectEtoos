@@ -18,7 +18,8 @@
 		<div class="container">
 			<h1 id="title">내 강좌 보기</h1>
 			<div class="wrapper">
-				<table style="width : 100%;">
+				<div class="list">
+					<table style="width : 100%;" id="myCourse">
 					<tr>
 						<th></th>
 						<th>강좌 명</th>
@@ -42,11 +43,12 @@
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td colspan="6">신청한 내역이 없습니다.</td>
+							<td colspan="6" style = "text-align:center;">신청한 내역이 없습니다.</td>
 						<tr>
 					</c:otherwise>
 				</c:choose>				
 				</table>
+				</div>
 			</div>
 		</div>
 	</main>

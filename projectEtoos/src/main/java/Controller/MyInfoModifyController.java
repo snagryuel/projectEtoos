@@ -26,7 +26,7 @@ public class MyInfoModifyController extends HttpServlet {
 		HttpSession session = req.getSession();
 		MemberDTO dto = new MemberDTO();
 		FileDAO fileDAO = new FileDAO();
-		String delete = req.getParameter("delete");
+		String delete = req.getParameter("delete")==null?"":req.getParameter("delete");
 		String birth = "";
 		String name = req.getParameter("name");
 		String id = (String) session.getAttribute("id");
@@ -38,6 +38,7 @@ public class MyInfoModifyController extends HttpServlet {
 		String addr = req.getParameter("addr");
 		String pwd = req.getParameter("pwd2")==null?"":req.getParameter("pwd2");
 		String pwdCheck = req.getParameter("pwd3");
+		String teacherMent = req.getParameter("teacherMent")==null?"":req.getParameter("teacherMent");
 		
 		birth = birthYear+"-"+birthMonth+"-"+birthDay;
 		if(!pwd.isEmpty()||!pwd.equals("")) {
@@ -57,12 +58,14 @@ public class MyInfoModifyController extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 		
 		if(!delete.equals("Y")) {
-		
-			String directory = req.getServletContext().getRealPath("/")+"upload";
+			String directory = "D:\\java4\\apache-tomcat-10.1.19localhost\\webapps\\projectEtoos\\upload";
+			System.out.println("directory : "+directory);
 			String FileName = FileUtil.uploadFile(req, directory);
 			int fileidx = dao.getFileIdx("tbl_teacherlist");
 			fileDAO.registFile(fileidx, "t", FileName, directory);
 			int result = dao.MemberUpdate(dto);
+			dao.teacherupdate(fileidx, id, teacherMent);
+			dao.teacherment(id, teacherMent);
 			if(result == 0) {
 				req.setAttribute("errMsg", "회원정보 수정에 실패하였습니다 다시 확인해 주시기 바랍니다");
 			}

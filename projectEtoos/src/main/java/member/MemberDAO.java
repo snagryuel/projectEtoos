@@ -252,14 +252,14 @@ public MemberDTO getMemberInfoForPwd(MemberDTO dto) {
 				String path = rs.getString("filepath");
 				System.out.println(path);
 				if(path!=null) {
-					String path2 = path.substring(0, path.lastIndexOf("\\"));
-					path = path.substring(path2.lastIndexOf("\\"));
+					path = path.substring(path.lastIndexOf("\\"));
 					path = path.replace("\\", "/");
 					String name = rs.getString("filename");
-					file = path+"/"+name;
+					file = ".."+path+"/"+name;
 				}else {
 					file = "https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg";
 				}
+				System.out.println(file);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -294,6 +294,41 @@ public MemberDTO getMemberInfoForPwd(MemberDTO dto) {
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public void teacherupdate(int fileidx, String id, String ment) {
+		String sql = "update tbl_teacherlist set fileidx = ?, tment=? where id = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, fileidx);
+			psmt.setString(2, ment);
+			psmt.setString(3, id);
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void teacherment(String id, String ment) {
+		String sql = "update tbl_teacherlist set tment=? where id = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, ment);
+			psmt.setString(2, id);
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public void teacherinsert(String id, String subkey) {
+		String sql = "INSERT INTO tbl_teacherlist(id, subkey) VALUES(?, ?)";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			psmt.setString(2, subkey);
 			psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

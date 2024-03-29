@@ -83,7 +83,7 @@
 						</c:when>
 						<c:otherwise>
 							<tr>
-								<td colspan="7">표시할 내용이 없습니다.</td>
+								<td colspan="8">표시할 내용이 없습니다.</td>
 							</tr>
 						</c:otherwise>
 					</c:choose>

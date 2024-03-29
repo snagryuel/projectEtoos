@@ -108,7 +108,7 @@ div.list div.list-top {
 		<h1 id="title">강좌 검색</h1>
 		<div class="wrapper">
 			<div class="search-area">
-				<form action="" id="frm" class="gird" method="get">
+				<form action="" id="frm" name = "frm" class="gird" method="get">
 					<div class="sub1 select-list">
 						<input type="hidden" name="sub1" id="sub1" value="${sub1 }">
 						<p>과목</p>
@@ -194,7 +194,7 @@ div.list div.list-top {
 						</c:when>
 						<c:otherwise>
 							<tr>
-								<td colspan="7">표시할 내용이 없습니다.</td>
+								<td colspan="8">표시할 내용이 없습니다.</td>
 							</tr>
 						</c:otherwise>
 					</c:choose>
@@ -238,6 +238,8 @@ div.list div.list-top {
 			value1.value = i.dataset.value;
 			console.log(value1.value);
 			i.classList.add("selected");
+			
+			document.frm.submit();
 		})
 	}
 	
@@ -253,6 +255,7 @@ div.list div.list-top {
 			}
 			value2.value = i.dataset.value;
 			i.classList.add("selected");
+			document.frm.submit();
 		})
 	}
 	
@@ -264,6 +267,7 @@ div.list div.list-top {
 			}
 			value3.value = i.dataset.value;
 			i.classList.add("selected");
+			document.frm.submit();
 		})
 	}
 	

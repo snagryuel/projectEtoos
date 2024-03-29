@@ -14,8 +14,8 @@ public class PageUtil {
 		int next = (page_selected < total_page)? page_selected + 1 : page_selected;
 		int grandNext = (page_selected < total_page) ? (((page_selected + 10) < total_page) ? page_selected + 10 : total_page) : total_page;
 		
-		sb.append("<li><a class='prev' href='" + uri + "?page_selected="+ grandPrev + "&" + queryString +"'>&lt;&lt;</a></li>");
-		sb.append("<li><a class='prev' href='" + uri + "?page_selected="+ prev + "&" + queryString +"'>&lt;</a></li>");
+		sb.append("<li><a class='prev' href='" + uri + "?pageSelected="+ grandPrev + "&" + queryString +"'>&lt;&lt;</a></li>");
+		sb.append("<li><a class='prev' href='" + uri + "?pageSelected="+ prev + "&" + queryString +"'>&lt;</a></li>");
 		for(int i = start_page; i < (start_page + 10); i++) {
 			if(i > total_page) {
 				break;
@@ -29,8 +29,8 @@ public class PageUtil {
 				sb.append("<li><a href='" + fullUrl + "'"+selected+">"+ i +"</a></li>");
 			}
 		}
-		sb.append("<li><a class='next' href='" + uri + "?page_selected="+ next + "&" + queryString +"'>&gt;</a></li>");
-		sb.append("<li><a class='next' href='" + uri + "?page_selected="+ grandNext + "&" + queryString +"'>&gt;&gt;</a></li>");
+		sb.append("<li><a class='next' href='" + uri + "?pageSelected="+ next + "&" + queryString +"'>&gt;</a></li>");
+		sb.append("<li><a class='next' href='" + uri + "?pageSelected="+ grandNext + "&" + queryString +"'>&gt;&gt;</a></li>");
 		text = sb.toString();
 		
 		return text;

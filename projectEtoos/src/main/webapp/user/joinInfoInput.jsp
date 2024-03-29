@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
-
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,6 +58,37 @@
 				(선택) 개인정보<br><br>
 				<input type="text" class="join_input_text" name="addr" id="addr"placeholder="주소" maxlength="20">
 			</div>
+			<c:choose>
+				<c:when test="${param.gubun == '2'}">
+				<div class="info" id="info__suject">
+				과목<br><br>
+				<select class="box" name="sub" id="sub">
+			    <option selected value="">과목</option>
+				<option value="1">국어</option>
+				<option value="2">영어</option>
+				<option value="3">사회 - 일반사회</option>
+				<option value="4">사회 - 윤리</option>
+				<option value="5">사회 - 지리</option>
+				<option value="6">사회 - 역사</option>
+				<option value="7">사회 - 통합사회</option>
+				<option value="8">사회 - 22개정 통합사회</option>
+				<option value="9">과학 - 물리학</option>
+				<option value="10">과학 - 지구과학</option>
+				<option value="11">과학 - 생명과학</option>
+				<option value="12">과학 - 통합과학</option>
+				<option value="13">과학 - 22개정 통합과학</option>
+				<option value="14">제2외국어 - 일본어</option>
+				<option value="15">제2외국어 - 아랍어</option>
+				<option value="16">제2외국어 - 스페인어</option>
+				<option value="17">제2외국어 - 프랑스어</option>
+				<option value="18">제2외국어 - 베트남어</option>
+				<option value="19">제2외국어 - 한문</option>
+				<option value="20">수학</option>
+				<option value="20">한국사</option>
+			 	 </select>
+			 	 </div>
+				</c:when>
+			</c:choose>
 	        <input type="submit" class="completeBtn" name="completeBtn" id="completeBtn" value="완료" />
         
     </form>

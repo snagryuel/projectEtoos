@@ -18,7 +18,7 @@
 		<div class="container">
 			<h1 id="title">강좌 조회</h1>
 			<div class="search-area">
-				<form action="" id="frm" class="gird" method="get">
+				<form action="" id="frm" class="gird" method="get" action="" name="frm">
 					<div class="sub1 select-list">
 						<input type="hidden" name="sub1" id="sub1" value="${sub1 }">
 						<p>과목</p>
@@ -48,14 +48,14 @@
 					</div>
 					<div class="buttones">
 						<button type="submit" class="search">검색</button>
-						<button class="reset">초기화</button>
+						<button class="reset" onclick="location.href='/projectEtoos/admin/courseList.do'">초기화</button>
 					</div>
 				</form>
 			</div>
 			<div class="list">
 				<div class="list-top">
 					<p>총 ${totalCount}건</p>
-					<p><button><a href="./courseRegister.jsp">등록하기</a></button></p>
+					<p><button><a href="./CourseRegister.do">등록하기</a></button></p>
 				</div>
 				<table>
 					<thead>
@@ -138,6 +138,7 @@
 				value1.value = i.dataset.value;
 				console.log(value1.value);
 				i.classList.add("selected");
+				document.frm.submit();
 			})
 		}
 		
@@ -153,6 +154,7 @@
 				}
 				value2.value = i.dataset.value;
 				i.classList.add("selected");
+				document.frm.submit();
 			})
 		}
 		
@@ -164,6 +166,8 @@
 				}
 				value3.value = i.dataset.value;
 				i.classList.add("selected");
+				document.frm.submit();
+				document.frm.submit();
 			})
 		}
 		

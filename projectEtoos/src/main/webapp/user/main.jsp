@@ -25,7 +25,7 @@
 		</div>
 		<div class="container">
 			<div class="section recomended-teacher">
-				<h3 class="title">추천선생님</h3>
+				<h3 class="title">최신 선생님</h3>
 				<div class="slide swiper-container">
 					<ul class="swiper-wrapper">
 						<c:forEach var="teacher" items="${teacherList}">
@@ -45,7 +45,7 @@
 				</div>
 			</div>
 			<div class="section recomended-course">
-				<h3 class="title">추천 강좌</h3>
+				<h3 class="title">최신 강좌</h3>
 				<div class="slide swiper-container">
 					<ul class="swiper-wrapper">
 						<c:forEach var="course" items="${courseList}">

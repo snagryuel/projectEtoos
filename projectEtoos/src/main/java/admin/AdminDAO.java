@@ -150,10 +150,9 @@ public class AdminDAO extends JDBConnect{
 				dto.setCourseIdx(rs.getInt("courseIdx"));
 				dto.setFileName(rs.getString("fileName"));
 				String path = rs.getString("filePath");
-				String path2 = path.substring(0, path.lastIndexOf("\\"));
-				path = path.substring(path2.lastIndexOf("\\"));
+				path = path.substring(path.lastIndexOf("\\"));
 				path = path.replace("\\", "/");
-				dto.setFilePath(path);;
+				dto.setFilePath(".."+path);;
 				list.add(dto);
 			}
 		}catch(Exception e) {
@@ -214,11 +213,10 @@ public class AdminDAO extends JDBConnect{
 				dto.setFileName(rs.getString("fileName"));
 				String path = rs.getString("filePath");
 				if (path != null) {
-					String path2 = path.substring(0, path.lastIndexOf("\\"));
-					path = path.substring(path2.lastIndexOf("\\"));
+					path = path.substring(path.lastIndexOf("\\"));
 					path = path.replace("\\", "/");
 				}
-				dto.setFilePath(path);
+				dto.setFilePath(".."+path);
 				list.add(dto);
 			}
 		} catch (SQLException e) {
@@ -246,10 +244,9 @@ public class AdminDAO extends JDBConnect{
 				dto.setFileIdx(rs.getString("fileIdx"));
 				dto.setFileName(rs.getString("fileName"));
 				String path = rs.getString("filePath");
-				String path2 = path.substring(0, path.lastIndexOf("\\"));
-				path = path.substring(path2.lastIndexOf("\\"));
+				path = path.substring(path.lastIndexOf("\\"));
 				path = path.replace("\\", "/");
-				dto.setFilePath(path);
+				dto.setFilePath(".."+path);
 				list.add(dto);
 			}
 		} catch (SQLException e) {

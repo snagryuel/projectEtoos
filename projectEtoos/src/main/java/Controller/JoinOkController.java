@@ -15,6 +15,7 @@ public class JoinOkController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		MemberDTO dto = new MemberDTO();
+		MemberDAO dao = new MemberDAO();
 		String birth = "";
 				
 		String gubun = req.getParameter("gubun");
@@ -27,6 +28,11 @@ public class JoinOkController extends HttpServlet {
 		String birthMonth = req.getParameter("birthMonth");
 		String birthDay = req.getParameter("birthDay");
 		String addr = req.getParameter("addr");
+		if(gubun.equals("2")) {
+			String subkey = req.getParameter("sub");
+			dao.teacherinsert(id, subkey);
+		}
+		
 		
 		birth = birthYear+"-"+birthMonth+"-"+birthDay;
 		
@@ -40,7 +46,6 @@ public class JoinOkController extends HttpServlet {
 		dto.setPhone(phone);
 		dto.setPwd(pwd);
 		
-		MemberDAO dao = new MemberDAO();
 		try {
 			int result = dao.joinmember(dto);
 			if(result != 0) {

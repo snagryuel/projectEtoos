@@ -66,7 +66,7 @@ public class LoginOkController extends HttpServlet {
 			}	
 		} else {
 			session.invalidate();
-			resp.sendRedirect("/projectEtoos/user/main.jsp");
+			resp.sendRedirect("/projectEtoos/user/Main.do");
 		}
 	}
 

@@ -37,7 +37,8 @@ public class CourseApplicationController extends HttpServlet {
 				boolean sucessYN = false;
 				if (result > 0) {
 					sucessYN = true;
-					if (req.getParameter("menuGubun").equals("teacher")) {
+					String menuGubun = (req.getParameter("menuGubun") != null) ? req.getParameter("menuGubun") : "course" ;
+					if (menuGubun.equals("teacher")) {
 						resp.sendRedirect("TeacherDetailList.do?"+req.getQueryString()+"&sucessYN="+sucessYN);
 					} else {
 						resp.sendRedirect("courseList.do?"+req.getQueryString()+"&sucessYN="+sucessYN);
@@ -59,7 +60,8 @@ public class CourseApplicationController extends HttpServlet {
 				boolean cancelSucessYN = false;
 				if (result > 0) {
 					cancelSucessYN = true;
-					if (req.getParameter("menuGubun").equals("teacher")) {
+					String menuGubun = (req.getParameter("menuGubun") != null) ? req.getParameter("menuGubun") : "course" ;
+					if (menuGubun.equals("teacher")) {
 						resp.sendRedirect("TeacherDetailList.do?"+req.getQueryString()+"&cancelSucessYN="+cancelSucessYN);
 					} else {
 						resp.sendRedirect("courseList.do?"+req.getQueryString()+"&cancelSucessYN="+cancelSucessYN);

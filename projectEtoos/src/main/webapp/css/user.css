@@ -75,6 +75,7 @@ aside#side h1.thum {
 	display: flex;
     align-items: center;
     justify-content: center;
+    overflow : hidden;
 }
 aside#side h1.thum p {
 	position : absolute;
@@ -89,6 +90,7 @@ aside#side h1.thum img {
 	position : absolute;
 	z-index : 100;
 	bottom : 0;
+	max-width: 200px;
 }
 
 /* 메뉴 제목 */
@@ -1058,4 +1060,9 @@ main .list .paging ul li a.selected {
 	color : #457D87;
 	font-weight : 600;
 	text-decoration : underline;
+}
+
+/* 마이페이지 내 강좌 보기 */
+main .container .wrapper table#myCourse tr td {
+	vertical-align : middle;
 }

@@ -27,6 +27,7 @@ public class FileUtil {
 			if(!FileName.isEmpty()) {
 				System.out.println("파일 인서트 실행");
 				part.write(directory+File.separator + FileName);	        
+				System.out.println("directory :"+directory+File.separator + FileName);
 			}
 		}
 		

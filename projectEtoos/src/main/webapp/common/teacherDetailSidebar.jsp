@@ -10,9 +10,6 @@
 		<li class="depth1 selected">
 			<div>개설강좌</div>
 		</li>
-		<li class="depth1">
-			<div>선생님 Q&A</div>
-		</li>
 	</ul>
 </aside>
 <script>
@@ -24,7 +21,7 @@
 				target.classList.remove("selected");
 			}
 			depth1.classList.add("selected");
-
+	
 		})
 	}
 </script>

@@ -52,17 +52,19 @@
 	        	<input type="password" class="input_text"  name="pwd3" id="pwd3" value="" placeholder="비밀번호 재입력" maxlength="20">
 	        	<input type="submit" name="pwdCheck" id="pwdCheck" value="확인"><br>
 				
+				<c:if test = "${gubun eq 2 }">
 				<div id="teacherImg">
 				<c:if test="${empty path||path eq 'https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg' }">
 					<span>이미지 업로드</span><input name="teacherImgUp" id="teacherImgUp" type="file"><br>
 				</c:if>
 				<c:if test="${not empty path&&path ne 'https://img.etoos.com/enp/front/main/2023/web/icon_logo.svg' }">
-					<img alt="" src="${path }">
+					<img alt="" src="${path }" style="height:150px">
 				</c:if>
 				</div>
 				<div>
 					<span>선생님 소개</span><textarea name="teacherMent" id="teacherMent" maxlength="500" rows="8" cols="50" placeholder="선생님 소개를 작성해주세요.">${result.ment }</textarea>
 				</div>
+				</c:if>
 			    <input type="submit" name="completeBtn" id="completeBtn" value="수정 완료" accept="image/*"/>
 			  
 				  	

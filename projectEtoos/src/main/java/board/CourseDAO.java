@@ -127,6 +127,7 @@ public class CourseDAO extends JDBConnect {
 			psmt.setString(2, idx);
 						
 			rs = psmt.executeQuery();
+			System.out.println(psmt);
 			
 			while(rs.next()) {
 				dto.setTeacherId(rs.getString("id"));
@@ -141,7 +142,12 @@ public class CourseDAO extends JDBConnect {
 				dto.setGangBumwi((rs.getString("gangBumwi") != null) ? rs.getString("gangBumwi").replace("\r\n", "<br>") : null);
 				dto.setFileGubun(rs.getString("fileGubun"));
 				dto.setFileName(rs.getString("fileName"));
-				dto.setFilePath(rs.getString("filePath"));
+				String path = rs.getString("filepath");
+				if(path != null) {
+					path = path.substring(path.lastIndexOf("\\"));
+					path = path.replace("\\", "/");
+					dto.setFilePath(path);
+				}
 				dto.setSub1(rs.getString("sub1"));
 				dto.setSub2(rs.getString("sub2"));
 				dto.setRange(rs.getString("range"));
@@ -255,7 +261,12 @@ public class CourseDAO extends JDBConnect {
 				dto.setApplicationDate(rs.getDate("applicationDate"));
 				dto.setFileGubun(rs.getString("fileGubun"));
 				dto.setFileName(rs.getString("fileName"));
-				dto.setFilePath(rs.getString("filePath"));
+				String path = rs.getString("filePath")==null?"":rs.getString("filePath");
+				if(!path.equals("")) {
+					path = path.substring(path.lastIndexOf("\\"));
+					path = path.replace("\\", "/");
+					dto.setFilePath(".."+path);
+				}
 				list.add(dto);
 			}
 		} catch (SQLException e) {

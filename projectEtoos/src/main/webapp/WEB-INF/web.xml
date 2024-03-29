@@ -35,4 +35,14 @@
     <servlet-name>TeacherController</servlet-name>
     <url-pattern>/TeacherController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>filedeleteController</display-name>
+    <servlet-name>filedeleteController</servlet-name>
+    <servlet-class>common.filedeleteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>filedeleteController</servlet-name>
+    <url-pattern>/filedeleteController</url-pattern>
+  </servlet-mapping>
 </web-app>
