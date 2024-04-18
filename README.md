@@ -108,7 +108,7 @@ Back – 공통적으로 적용되는 Mthod 및 Util 정의
 ![image](https://github.com/snagryuel/projectEtoos/assets/141742542/5f1cab8e-f8ee-462a-a860-7b0b741e6fee)
 
 ### 🔸 시연 영상
-// 영상주소 넣을 자리
+https://youtu.be/n7u30as-1tw
 
 ## 자체 평가
 ![image](https://github.com/snagryuel/projectEtoos/assets/141742542/c027bb6a-c5e2-4bdc-a54e-b729d9bc3dfd)
