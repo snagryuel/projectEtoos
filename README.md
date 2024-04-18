@@ -108,8 +108,9 @@ Back – 공통적으로 적용되는 Mthod 및 Util 정의
 ![image](https://github.com/snagryuel/projectEtoos/assets/141742542/5f1cab8e-f8ee-462a-a860-7b0b741e6fee)
 
 ### 🔸 시연 영상
-https://youtu.be/n7u30as-1tw
-
+[![image](https://github.com/snagryuel/projectEtoos/assets/141742542/9447930b-55e2-4026-82b4-0b3cad7a632e)
+](https://youtu.be/n7u30as-1tw?si=0cHHWOcx9jlM6Rd9)
+[▲ 클릭 해주세요](https://youtu.be/n7u30as-1tw?si=0cHHWOcx9jlM6Rd9)
 ## 자체 평가
 ![image](https://github.com/snagryuel/projectEtoos/assets/141742542/c027bb6a-c5e2-4bdc-a54e-b729d9bc3dfd)
 ### 🔸 팀원 별 개인 의견
